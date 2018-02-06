@@ -11,9 +11,11 @@ public class Karte {
 	private String frage;
 	private String antwort;
 	
-	public Karte()
-	{}
-
+	public Karte() {
+		
+	}
+	
+	
 	public Karte(String frage, String antwort) {
 		// Was ist mit der ID? Gehört diese in den Konstruktor?
 		this.frage = frage;
