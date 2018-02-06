@@ -2,6 +2,10 @@ package Model;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+
 public class User {
 
 	private ArrayList<String> userliste;
@@ -9,6 +13,11 @@ public class User {
 	private String benutzername;
 	private String passwort;
 	private String benutzersprache;
+	
+	public User()
+	{
+		
+	}
 
 	public User(String username, String userpasswort, String lang) {
 		benutzername = username;
