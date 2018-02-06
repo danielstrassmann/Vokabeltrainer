@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Box {
-	//huhu1
+
 	private int id;
 	private ArrayList<Karte> sammlung;
 	
