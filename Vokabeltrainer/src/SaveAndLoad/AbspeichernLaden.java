@@ -11,6 +11,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import Controller.UserSammlung;
+
 public class AbspeichernLaden {
 
 	public AbspeichernLaden() {
@@ -49,10 +51,10 @@ public class AbspeichernLaden {
 		}
 	}
 
-	public File benutzerSpeichern(ArrayList<User> userliste) {
+	public File userSpeichern(UserSammlung userliste) {
 		try {
 			File xmlfile = new File("Benutzer.xml");
-			JAXBContext jaxbContext = JAXBContext.newInstance(User.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -66,4 +68,20 @@ public class AbspeichernLaden {
 
 		}
 	}
+
+	public UserSammlung userLaden(File xmlFile) {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
+			Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
+
+			UserSammlung gelesen = (UserSammlung) jaxbMarshaller.unmarshal(xmlFile);
+
+			return gelesen;
+
+		} catch (JAXBException ex) {
+			System.out.println(ex);
+			return null;
+		}
+	}
+	
 }

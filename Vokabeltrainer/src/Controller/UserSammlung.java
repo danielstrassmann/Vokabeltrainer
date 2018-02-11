@@ -1,9 +1,11 @@
-package SaveAndLoad;
+package Controller;
 
 import java.util.ArrayList;
 
-import Model.User;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import Model.User;
+@XmlRootElement
 public class UserSammlung {
 
 	ArrayList<User> userliste = new ArrayList<User>();
@@ -12,8 +14,10 @@ public class UserSammlung {
 		return userliste;
 	}
 
-	public void setRecords(ArrayList<User> userliste) {
+	public void setUserliste(ArrayList<User> userliste) {
 		this.userliste = userliste;
 	}
 
+	
+	
 }
