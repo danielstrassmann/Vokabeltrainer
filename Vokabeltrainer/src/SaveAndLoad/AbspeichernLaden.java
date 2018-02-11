@@ -53,7 +53,7 @@ public class AbspeichernLaden {
 
 	public File userSpeichern(UserSammlung userliste) {
 		try {
-			File xmlfile = new File("Benutzer.xml");
+			File xmlfile = new File("User.xml");
 			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
