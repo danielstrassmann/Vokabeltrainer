@@ -10,7 +10,7 @@ public class test {
 		// TODO Auto-generated method stub
 		ArrayList<User> userliste = new ArrayList<User>();
 		
-		userliste.add(new User("Daniel","eli", "de"));
+		userliste.add(new User("Daniel","eli","de"));
 		userliste.add(new User("Thomas","eli", "de"));
 		userliste.add(new User("Marius","eli", "de"));
 		userliste.add(new User("Duc","eli", "de"));

@@ -29,6 +29,7 @@ public class User {
 		passwort = userpasswort;
 		benutzersprache = lang;
 		/// generiert neuen User sprache nur provisorisch
+		ArrayList<User> userliste = new ArrayList<User>();
 		
 
 	}
@@ -63,6 +64,11 @@ public class User {
 
 	public void setUserliste(ArrayList<String> userliste) {
 		this.userliste = userliste;
+	}
+	
+	public String toString() {
+		return benutzername + ", "+ passwort + ", " + benutzersprache;
+
 	}
 
 }
