@@ -9,7 +9,15 @@ public class Kartei {
 	private String frage;
 	private String antwort;
 
+	// Standardkonstruktor
 	public Kartei() {
+	}
+	
+	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können
+	public Kartei(String frage, String antwort) {
+		this.frage = frage;
+		this.antwort = antwort;
+		sammlung = new ArrayList<Karte>();
 	}
 
 	public int getId() {
