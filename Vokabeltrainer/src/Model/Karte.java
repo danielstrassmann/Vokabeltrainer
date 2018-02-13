@@ -20,7 +20,7 @@ public class Karte {
 	
 	
 	public Karte(String frage, String antwort) {
-		// Was ist mit der ID? Gehört diese in den Konstruktor?
+		// die ID wird erst gesetzt, wenn die Karte in die ArrayList der Kartei abgelegt wird
 		this.frage = frage;
 		this.antwort = antwort;
 
