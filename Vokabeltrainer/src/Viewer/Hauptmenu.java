@@ -128,7 +128,7 @@ public class Hauptmenu {
 		
 		linkeMenuZeile.setPreferredSize(new Dimension(100,100));
 		linkeMenuZeile.setMinimumSize(new Dimension(500,100));
-		linkeMenuZeile.setMaximumSize(new Dimension(100, 500));
+		linkeMenuZeile.setMaximumSize(new Dimension(200, 500));
 		
 		actionFenster.setMinimumSize(new Dimension(700,700));
 		
