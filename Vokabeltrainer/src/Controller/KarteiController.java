@@ -31,18 +31,22 @@ public class KarteiController {
 		karteiCounter++;
 	}
 	
-	
+	// Ein Objekt Karte wird erzeugt
 	public void karteErstellen(String frage, String antwort)
 	{
 		Karte k = new Karte(frage, antwort);
+		k.setId(karteCounter);
+		karteCounter++;
 	}
 	
 	
-	//Ein Objekt Karte wird in eine Kartei abgelegt
-	public void karteInKarteiAblegen(Karte k, Kartei kk)
+	//Ein Objekt Karte wird erzeugt & in eine Kartei abgelegt
+	// Wie wird Kartei kk übergeben? Wie weiss ich, welche Kartei ausgewählt ist?
+	public void karteInKarteiAblegen(String frage, String antwort, Kartei kk)
 	{
-		k.setId(karteCounter);
-		kk.karteHinzufuegen(k);
+		Karte k = new Karte(frage, antwort);
+		k.setId(karteCounter);		
+		kk.karteInSammlung(k);
 		karteCounter++;
 	}
 

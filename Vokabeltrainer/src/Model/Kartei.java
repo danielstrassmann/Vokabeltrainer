@@ -32,7 +32,7 @@ public class Kartei {
 		return kartensammlung;
 	}
 
-	public void karteHinzufuegen(Karte k)
+	public void karteInSammlung(Karte k)
 	{
 		kartensammlung.add(k);
 	}
