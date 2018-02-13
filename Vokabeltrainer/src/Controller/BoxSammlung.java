@@ -11,7 +11,7 @@ public class BoxSammlung {
 	private Box box4;
 	private Box box5;
 	
-	// 5 Boxen werden instanziert und in eine Array "Box platziert"
+	// 5 Boxen werden instanziert und in eine Array "Box" platziert
 	public BoxSammlung() {
 		
 		boxliste = new Box [5];
