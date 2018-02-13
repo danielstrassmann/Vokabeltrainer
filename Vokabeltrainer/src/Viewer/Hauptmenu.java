@@ -83,7 +83,7 @@ public class Hauptmenu {
                 "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
                 "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
                 "Saarland", "Sachsen", "Sachsen-Anhalt",
-                "Schleswig-Holstein", "Thüringene"
+                "Schleswig-Holstein", "Thüringeeneee"
                 };		
   // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
 		
