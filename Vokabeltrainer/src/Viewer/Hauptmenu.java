@@ -1,10 +1,14 @@
 package Viewer;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.JComboBox;
+
 
 public class Hauptmenu {
 
@@ -18,7 +22,9 @@ public class Hauptmenu {
 	private JPanel untenMenuZeile;
 	private JPanel actionFenster;
 	
-	private JButton key1;
+	private JComboBox benutzersprache;
+
+	private JButton abmeldenButton;
 	private JButton key2;
 	private JButton key3;
 	private JButton key4;
@@ -43,7 +49,9 @@ public class Hauptmenu {
 		this.actionFenster = new JPanel();
 		this.untenMenuZeile = new JPanel();
 				
-		this.key1 = new JButton("1");
+		this.benutzersprache = new JComboBox();
+		
+		this.abmeldenButton = new JButton("abmelden");
 		this.key2 = new JButton("2");
 		this.key3 = new JButton("3");
 		this.key4 = new JButton("4");
@@ -55,6 +63,34 @@ public class Hauptmenu {
 		this.key10 = new JButton("10");
 		this.key11 = new JButton("11");
 		this.key12 = new JButton("12");
+	}
+	
+	public void comboBox()
+	{
+		// create an empty combo box with items of type String
+		JComboBox<String> comboLanguage = new JComboBox<String>();
+		 
+		// add items to the combo box
+		comboLanguage.addItem("English");
+		comboLanguage.addItem("French");
+		comboLanguage.addItem("Spanish");
+		comboLanguage.addItem("Japanese");
+		comboLanguage.addItem("Chinese");
+		
+		String sprachenAuswahl[] = {
+        		"Baden-Württemberg", "Bayern",
+                "Berlin", "Brandenburg", "Bremen",
+                "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+                "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
+                "Saarland", "Sachsen", "Sachsen-Anhalt",
+                "Schleswig-Holstein", "Thüringen"
+                };		
+  // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
+		
+   		this.benutzersprache = comboLanguage;  
+		
+
+		
 	}
 	
 	public void paint()
@@ -92,9 +128,11 @@ public class Hauptmenu {
 		mainFrame.add(actionFenster, BorderLayout.CENTER);
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
 		
-		obenMenuZeile.add(key1);
+		obenMenuZeile.add(abmeldenButton);
 		obenMenuZeile.add(key2);
 		obenMenuZeile.add(key3);
+		obenMenuZeile.add(benutzersprache);
+//		obenMenuZeile.add(comboLanguage);
 		
 		linkeMenuZeile.add(key4);
 		linkeMenuZeile.add(key5);
@@ -129,6 +167,10 @@ public class Hauptmenu {
 		linkeMenuZeile.setPreferredSize(new Dimension(100,100));
 		linkeMenuZeile.setMinimumSize(new Dimension(500,100));
 		linkeMenuZeile.setMaximumSize(new Dimension(200, 500));
+		
+//		obenMenuZeile.setPreferredSize(new Dimension(100,100));
+//		obenMenuZeile.setMinimumSize(new Dimension(500,100));
+//		obenMenuZeile.setMaximumSize(new Dimension(200, 500));
 		
 		actionFenster.setMinimumSize(new Dimension(700,700));
 		

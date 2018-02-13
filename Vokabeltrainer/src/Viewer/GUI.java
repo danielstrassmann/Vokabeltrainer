@@ -15,6 +15,7 @@ public class GUI {
 		gui.setSize();
 		gui.border();
 		gui.color();
+		gui.comboBox();
 
 //		gui.paintHauptmenu();
 	}
