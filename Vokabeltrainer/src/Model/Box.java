@@ -9,6 +9,8 @@ public class Box {
 	
 	public Box() {
 		
+		sammlung = new ArrayList<Karte>();
+		
 	}
 
 	public int getId() {
