@@ -5,25 +5,45 @@ import Model.Kartei;
 
 public class KarteiController {
 	
-	private Kartei kk;
-	private Karte k;
+	// zählt wie viele Karteien erstellt wurden und generiert die ID
+	private int karteiCounter;
+	
+	
+	
+	/** zählt wie viele Karteien erstellt wurden und generiert die ID
+	 * --> wird benötigt, da in ArrayList<Karte> eine Karte wieder gelöscht werden kann. 
+	 *     Man erhält also durch loopen durch ArrayList keine eindeutige ID.
+	 * 
+	 */
+	private int karteCounter;
 	
 	
 	public KarteiController() {
+		
+		karteiCounter = 0;
+		karteCounter = 0;
 	}
-	
 	
 	public void karteiErstellen(String frage, String antwort)
 	{
-		String f = frage;
-		String a = antwort;
-		kk = new Kartei(f, a);
+		Kartei k = new Kartei(frage, antwort);
+		k.setId(karteiCounter);
+		karteiCounter++;
 	}
 	
-	//Baustelle
+	
+	public void karteErstellen(String frage, String antwort)
+	{
+		Karte k = new Karte(frage, antwort);
+	}
+	
+	
+	//Ein Objekt Karte wird in eine Kartei abgelegt
 	public void karteInKarteiAblegen(Karte k, Kartei kk)
 	{
-		kk sammlung.add(k);
+		k.setId(karteCounter);
+		kk.karteHinzufuegen(k);
+		karteCounter++;
 	}
 
 }

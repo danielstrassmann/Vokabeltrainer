@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Kartei {
 
 	private int id;
-	private ArrayList<Karte> sammlung;
+	private ArrayList<Karte> kartensammlung;
 	private String frage;
 	private String antwort;
 
@@ -17,7 +17,7 @@ public class Kartei {
 	public Kartei(String frage, String antwort) {
 		this.frage = frage;
 		this.antwort = antwort;
-		sammlung = new ArrayList<Karte>();
+		kartensammlung = new ArrayList<Karte>();
 	}
 
 	public int getId() {
@@ -29,11 +29,12 @@ public class Kartei {
 	}
 
 	public ArrayList<Karte> getSammlung() {
-		return sammlung;
+		return kartensammlung;
 	}
 
-	public void setSammlung(ArrayList<Karte> sammlung) {
-		this.sammlung = sammlung;
+	public void karteHinzufuegen(Karte k)
+	{
+		kartensammlung.add(k);
 	}
 
 	public String getFrage() {
