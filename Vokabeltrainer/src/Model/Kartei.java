@@ -53,4 +53,9 @@ public class Kartei {
 		this.antwort = antwort;
 	}
 
+	public void add(Karte k1) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
