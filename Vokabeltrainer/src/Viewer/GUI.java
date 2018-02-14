@@ -1,5 +1,11 @@
 package Viewer;
 
+import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+
 public class GUI {
 
 
@@ -16,7 +22,9 @@ public class GUI {
 		gui.border();
 		gui.color();
 		gui.comboBox();
-
+		gui.tabs();
+		
+		
 //		gui.paintHauptmenu();
 	}
 	

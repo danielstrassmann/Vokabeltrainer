@@ -7,10 +7,14 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.JComboBox;
+import javax.swing.JTabbedPane;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 
-public class Hauptmenu {
+public class Hauptmenu extends JPanel{
 
 	private JFrame mainFrame;
 	
@@ -36,6 +40,11 @@ public class Hauptmenu {
 	private JButton key10;
 	private JButton key11;
 	private JButton key12;
+	
+	private JPanel lernenTab;
+	private JPanel statistikTab;
+	private JPanel karteiTab;
+	private JTabbedPane tabsMenu;
 	
 
 
@@ -63,6 +72,13 @@ public class Hauptmenu {
 		this.key10 = new JButton("10");
 		this.key11 = new JButton("11");
 		this.key12 = new JButton("12");
+		
+		// TABS
+		this.lernenTab = new JPanel();
+		this.statistikTab = new JPanel();
+		this.karteiTab = new JPanel();
+		this.tabsMenu = new JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT );
+				
 	}
 	
 	public void comboBox()
@@ -88,10 +104,27 @@ public class Hauptmenu {
   // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
 		
    		this.benutzersprache = comboLanguage;  
-		
-
-		
+				
 	}
+	
+	public void tabs()
+	{
+		
+		// Hintergrund definieren
+		lernenTab.setBackground(Color.RED);
+		statistikTab.setBackground(Color.BLUE);
+		karteiTab.setBackground(Color.GREEN);
+		
+        // Erzeugung eines JTabbedPane-Objektes
+
+        // Hier werden die JPanels als Registerkarten hinzugefügt
+        tabsMenu.addTab("Lernen", lernenTab);
+        tabsMenu.addTab("Statistik", statistikTab);
+        tabsMenu.addTab("Kartei", karteiTab);
+	
+	}
+	
+
 	
 	public void paint()
 	{
@@ -125,7 +158,8 @@ public class Hauptmenu {
 		mainFrame.add(linkeMenuZeile, BorderLayout.WEST);
 		mainFrame.add(rechteMenuZeile, BorderLayout.EAST);
 		mainFrame.add(obenMenuZeile, BorderLayout.NORTH);
-		mainFrame.add(actionFenster, BorderLayout.CENTER);
+//		mainFrame.add(actionFenster, BorderLayout.CENTER);
+		mainFrame.add(tabsMenu, BorderLayout.CENTER);
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
 		
 		obenMenuZeile.add(abmeldenButton);
@@ -142,9 +176,10 @@ public class Hauptmenu {
 		rechteMenuZeile.add(key8);
 		rechteMenuZeile.add(key9);
 		
-		actionFenster.add(key10);
-		actionFenster.add(key11);
-		actionFenster.add(key12);
+//		actionFenster.add(key10);
+//		actionFenster.add(key11);
+//		actionFenster.add(key12);
+//		actionFenster.add(tabsMenu);
 
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
