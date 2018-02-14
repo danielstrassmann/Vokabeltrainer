@@ -14,7 +14,7 @@ public class GUI {
 	{
 		Hauptmenu gui = new Hauptmenu();
 		
-
+		gui.tabKartei();
 		gui.paint();
 		gui.add();
 		gui.visible();
@@ -24,6 +24,7 @@ public class GUI {
 		gui.comboBox();
 		gui.tabs();
 		
+
 		
 //		gui.paintHauptmenu();
 	}

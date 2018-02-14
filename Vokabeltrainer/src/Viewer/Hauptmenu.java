@@ -1,17 +1,16 @@
 package Viewer;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
+import Model.Karte;
 
 
 public class Hauptmenu extends JPanel{
@@ -19,15 +18,18 @@ public class Hauptmenu extends JPanel{
 	private JFrame mainFrame;
 	
 
-	
+	//Panels Hauptmenu
 	private JPanel obenMenuZeile;
 	private JPanel linkeMenuZeile;
 	private JPanel rechteMenuZeile;
 	private JPanel untenMenuZeile;
 	private JPanel actionFenster;
 	
+	//ComboBox
 	private JComboBox benutzersprache;
 
+	
+	//Buttons
 	private JButton abmeldenButton;
 	private JButton key2;
 	private JButton key3;
@@ -41,12 +43,16 @@ public class Hauptmenu extends JPanel{
 	private JButton key11;
 	private JButton key12;
 	
+	//Tabs
 	private JPanel lernenTab;
 	private JPanel statistikTab;
 	private JPanel karteiTab;
 	private JTabbedPane tabsMenu;
 	
-
+	//Kartei Tab
+	private JPanel inhaltLernen;
+	private JPanel inhaltStatistik;
+	private JPanel inhaltKartei;
 
 	public Hauptmenu() 
 	{
@@ -78,53 +84,12 @@ public class Hauptmenu extends JPanel{
 		this.statistikTab = new JPanel();
 		this.karteiTab = new JPanel();
 		this.tabsMenu = new JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT );
-				
+		
+		//InhaltTab
+		this.inhaltLernen = new JPanel();
+		this.inhaltStatistik = new JPanel();
+		this.inhaltKartei = new JPanel();
 	}
-	
-	public void comboBox()
-	{
-		// create an empty combo box with items of type String
-		JComboBox<String> comboLanguage = new JComboBox<String>();
-		 
-		// add items to the combo box
-		comboLanguage.addItem("English");
-		comboLanguage.addItem("French");
-		comboLanguage.addItem("Spanish");
-		comboLanguage.addItem("Japanese");
-		comboLanguage.addItem("Chinese");
-		
-		String sprachenAuswahl[] = {
-        		"Baden-Württemberg", "Bayern",
-                "Berlin", "Brandenburg", "Bremen",
-                "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
-                "Niedersachsen", "Nordrhein-Wesdtfalen", "Rheinland-Pfalz",
-                "Saarland", "Sachsen", "Sachsen-Anhalt",
-                "Schleswig-Holstein", "Thürindddsfgeeneee"
-                };		
-  // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
-		
-   		this.benutzersprache = comboLanguage;  
-				
-	}
-	
-	public void tabs()
-	{
-		
-		// Hintergrund definieren
-		lernenTab.setBackground(Color.RED);
-		statistikTab.setBackground(Color.BLUE);
-		karteiTab.setBackground(Color.GREEN);
-		
-        // Erzeugung eines JTabbedPane-Objektes
-
-        // Hier werden die JPanels als Registerkarten hinzugefügt
-        tabsMenu.addTab("Lernen", lernenTab);
-        tabsMenu.addTab("Statistik", statistikTab);
-        tabsMenu.addTab("Kartei", karteiTab);
-	
-	}
-	
-
 	
 	public void paint()
 	{
@@ -161,6 +126,7 @@ public class Hauptmenu extends JPanel{
 //		mainFrame.add(actionFenster, BorderLayout.CENTER);
 		mainFrame.add(tabsMenu, BorderLayout.CENTER);
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
+
 		
 		obenMenuZeile.add(abmeldenButton);
 		obenMenuZeile.add(key2);
@@ -226,6 +192,31 @@ public class Hauptmenu extends JPanel{
 		key6.setMaximumSize(new Dimension(100,100));
 	}
 	
+	public void comboBox()
+	{
+		// create an empty combo box with items of type String
+		JComboBox<String> comboLanguage = new JComboBox<String>();
+		 
+		// add items to the combo box
+		comboLanguage.addItem("English");
+		comboLanguage.addItem("French");
+		comboLanguage.addItem("Spanish");
+		comboLanguage.addItem("Japanese");
+		comboLanguage.addItem("Chinese");
+		
+		String sprachenAuswahl[] = {
+        		"Baden-Württemberg", "Bayern",
+                "Berlin", "Brandenburg", "Bremen",
+                "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+                "Niedersachsen", "Nordrhein-Wesdtfalen", "Rheinland-Pfalz",
+                "Saarland", "Sachsen", "Sachsen-Anhalt",
+                "Schleswig-Holstein", "Thürindddsfgeeneee"
+                };		
+  // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
+		
+   		this.benutzersprache = comboLanguage;  	
+	}
+	
 	public void color()
 	{
 
@@ -233,5 +224,175 @@ public class Hauptmenu extends JPanel{
 //		key1.setBackground(Color.RED);
 	}
 	
+	public void tabs() //https://www.java-tutorial.org/JTabbedPane.html
+	{
+		// Hintergrund definieren
+		lernenTab.setBackground(Color.RED);
+		statistikTab.setBackground(Color.BLUE);
+		karteiTab.setBackground(Color.GREEN);
+		
+        // Erzeugung eines JTabbedPane-Objektes
+        
+		lernenTab.add(inhaltLernen,BorderLayout.CENTER);
+		statistikTab.add(inhaltStatistik);
+		karteiTab.add(inhaltKartei,BorderLayout.CENTER);
+		
+		// Hier werden die JPanels als Registerkarten hinzugefügt
+        tabsMenu.addTab("Lernen", lernenTab);
+        tabsMenu.addTab("Statistik", statistikTab);
+        tabsMenu.addTab("Kartei", karteiTab);
+	}
+
+	public void tabLernen()
+	{
+		
+	}
+	
+	public void tabStatistik()
+	{
+		
+	}
+	
+	public void tabKartei()
+	{
+		//		Hauptmenu gui = new Hauptmenu();
+		Test_TabKartei testTabKartei = new Test_TabKartei();
+		
+		testTabKartei.ListKarte();
+
+		
+		
+		
+		// erstelle JFrame and JTable
+		JTable table = new JTable();
+
+		// erstelle tablemodel DefaultTableModel für Array und definiere Spalten
+		Object[] columns = { "Frage", "Antwort" };
+		DefaultTableModel model = new DefaultTableModel();
+		model.setColumnIdentifiers(columns);
+
+		// setze das Model
+		table.setModel(model);
+
+		// Change A JTable Background Color, Font Size, Font Color, Row Height
+		// table.setBackground(Color.LIGHT_GRAY);
+		// table.setForeground(Color.black);
+		// Font font = new Font("",1,22);
+		// table.setFont(font);
+		// table.setRowHeight(30);
+
+		// erstelle JTextFields
+		JTextField textFrage = new JTextField();
+		JTextField textAntwort = new JTextField();
+
+
+		// erstelle JButtons
+		JButton btnAdd = new JButton("Neu");
+		JButton btnDelete = new JButton("Löschen");
+		JButton btnUpdate = new JButton("Ändern");
+
+		textFrage.setBounds(20, 220, 100, 25);
+		textAntwort.setBounds(20, 250, 100, 25);
+
+		btnAdd.setBounds(150, 220, 100, 25);
+		btnUpdate.setBounds(150, 265, 100, 25);
+		btnDelete.setBounds(150, 310, 100, 25);
+
+		// erstelle JScrollPane
+		JScrollPane pane = new JScrollPane(table);
+		pane.setBounds(0, 0, 880, 200);
+
+		inhaltKartei.setLayout(null);
+
+		inhaltKartei.add(pane);
+
+		// füge JTextFields auf dem jframe hinzu
+		inhaltKartei.add(textFrage);
+		inhaltKartei.add(textAntwort);
+
+		// füge JButtons auf dem jframe hinzu
+		inhaltKartei.add(btnAdd);
+		inhaltKartei.add(btnDelete);
+		inhaltKartei.add(btnUpdate);
+
+		// fügt ArrayList Karten hinzu
+		ArrayList<Karte> kartenliste = Test_TabKartei.ListKarte();
+		Object rowData[] = new Object[2];
+		for (int i = 0; i < kartenliste.size(); i++) {
+			rowData[0] = kartenliste.get(i).getFrage();
+			rowData[1] = kartenliste.get(i).getAntwort();
+			model.addRow(rowData);}
+
+			// erstelle eine Array und fügt es dem Model hinzu
+			Object[] row = new Object[2];
+
+			// button add row --> Button Neu
+			btnAdd.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					row[0] = textFrage.getText();
+					row[1] = textAntwort.getText();
+
+					// fügt neue Karte im Model hinzu
+					model.addRow(row);
+				}
+			});
+
+			// button remove row --> Button löschen
+			btnDelete.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					// i = der Index von der selektierten row
+					int i = table.getSelectedRow();
+					if (i >= 0) {
+						// lösche eine row vom jtable
+						model.removeRow(i);
+					} else {
+						System.out.println("Delete Error");
+					}
+				}
+			});
+
+			// übertrage Felder vom selektierten row in die JTextFields
+			table.addMouseListener(new MouseAdapter() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+
+					// i = der Index von der selektierten row
+					int i = table.getSelectedRow();
+
+					textFrage.setText(model.getValueAt(i, 0).toString());
+					textAntwort.setText(model.getValueAt(i, 1).toString());
+				}
+			});
+
+			// button update row --> Button Ändern
+			btnUpdate.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					// i = der Index von der selektierten row
+					int i = table.getSelectedRow();
+
+					if (i >= 0) {
+						model.setValueAt(textFrage.getText(), i, 0);
+						model.setValueAt(textAntwort.getText(), i, 1);
+
+					} else {
+						System.out.println("Update Error");
+					}
+				}
+			});
+
+			inhaltKartei.setSize(900, 400);
+
+	}
+
 
 }
