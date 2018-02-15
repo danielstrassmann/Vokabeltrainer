@@ -133,6 +133,12 @@ public class Hauptmenu extends JPanel{
 		
 	}
 	
+	class KeyListener2 implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String ziffer = e.getActionCommand();
+	//		displayTextfield.setText(displayTextfield.getText() + ziffer);
+		}
+	}
 	
 	public void paint()
 	{
