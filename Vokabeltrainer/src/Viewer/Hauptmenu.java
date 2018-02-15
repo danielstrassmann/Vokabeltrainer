@@ -26,7 +26,8 @@ public class Hauptmenu extends JPanel{
 	private JPanel actionFenster;
 	
 	//ComboBox
-	private JComboBox benutzersprache;
+	private JComboBox spracheAuswahl;
+	private JComboBox karteiAuswahl;
 
 	
 	//Buttons
@@ -63,8 +64,11 @@ public class Hauptmenu extends JPanel{
 		this.rechteMenuZeile = new JPanel();
 		this.actionFenster = new JPanel();
 		this.untenMenuZeile = new JPanel();
-				
-		this.benutzersprache = new JComboBox();
+		
+		//Dropdown
+//		this.benutzersprache = new JComboBox();
+//		this.karteiAuswahl = new JComboBox();
+		
 		
 		this.abmeldenButton = new JButton("abmelden");
 		this.key2 = new JButton("2");
@@ -89,6 +93,36 @@ public class Hauptmenu extends JPanel{
 		this.inhaltLernen = new JPanel();
 		this.inhaltStatistik = new JPanel();
 		this.inhaltKartei = new JPanel();
+	}
+	
+	// Dropdownmenu für die Auswahl der Kartei
+	public void karteiAuswahl()
+	{
+		JPanel karteiAuswahlPanel = new JPanel();
+		
+		String karteiAuswahlListe[] = {
+				"Deutsch-Englisch", "Französisch-Spanisch", "Englisch-Französisch", 
+				"Mathe-Mathe"};
+		
+
+		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
+		karteiAuswahlPanel.add(karteiAuswahl);
+		obenMenuZeile.add(karteiAuswahlPanel,BorderLayout.EAST);
+	}
+	
+	// Dropdownmenu für die Auswahl der Benutzersprache
+	public void spracheAuswahl()
+	{
+		JPanel spracheAuswahlPanel = new JPanel();
+		
+		String spracheAuswahlListe[] = {
+				"Deutsch", "français", "english", 
+				"español"};
+		
+
+		this.spracheAuswahl = new JComboBox(spracheAuswahlListe);
+		spracheAuswahlPanel.add(spracheAuswahl);
+		obenMenuZeile.add(spracheAuswahlPanel, BorderLayout.WEST);
 	}
 	
 	public void paint()
@@ -128,10 +162,11 @@ public class Hauptmenu extends JPanel{
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
 
 		
-		obenMenuZeile.add(abmeldenButton);
-		obenMenuZeile.add(key2);
-		obenMenuZeile.add(key3);
-		obenMenuZeile.add(benutzersprache);
+//		obenMenuZeile.add(abmeldenButton);
+//		obenMenuZeile.add(key2);
+//		obenMenuZeile.add(key3);
+//		obenMenuZeile.add(karteiAuswahlPanel);
+//		obenMenuZeile.add(benutzersprache);
 //		obenMenuZeile.add(comboLanguage);
 		
 		linkeMenuZeile.add(key4);
@@ -192,30 +227,7 @@ public class Hauptmenu extends JPanel{
 		key6.setMaximumSize(new Dimension(100,100));
 	}
 	
-	public void comboBox()
-	{
-		// create an empty combo box with items of type String
-		JComboBox<String> comboLanguage = new JComboBox<String>();
-		 
-		// add items to the combo box
-		comboLanguage.addItem("English");
-		comboLanguage.addItem("French");
-		comboLanguage.addItem("Spanish");
-		comboLanguage.addItem("Japanese");
-		comboLanguage.addItem("Chinese");
-		
-		String sprachenAuswahl[] = {
-        		"Baden-Württemberg", "Bayern",
-                "Berlin", "Brandenburg", "Bremen",
-                "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
-                "Niedersachsen", "Nordrhein-Wesdtfalen", "Rheinland-Pfalz",
-                "Saarland", "Sachsen", "Sachsen-Anhalt",
-                "Schleswig-Holstein", "Thürindddsfgeeneee"
-                };		
-  // 		JComboBox<String> jComboBox = new JComboBox<String>(sprachenAuswahl);;
-		
-   		this.benutzersprache = comboLanguage;  	
-	}
+
 	
 	public void color()
 	{

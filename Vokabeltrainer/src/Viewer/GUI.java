@@ -21,7 +21,8 @@ public class GUI {
 		gui.setSize();
 		gui.border();
 		gui.color();
-		gui.comboBox();
+		gui.karteiAuswahl();
+		gui.spracheAuswahl();
 		gui.tabs();
 		
 
