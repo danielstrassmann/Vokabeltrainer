@@ -24,9 +24,9 @@ public class KarteiController {
 		karteCounter = 0;
 	}
 	
-	public void karteiErstellen(String frage, String antwort)
+	public void karteiErstellen(int id, String frage, String antwort)
 	{
-		Kartei k = new Kartei(frage, antwort);
+		Kartei k = new Kartei(id, frage, antwort);
 		k.setId(karteiCounter);
 		karteiCounter++;
 	}

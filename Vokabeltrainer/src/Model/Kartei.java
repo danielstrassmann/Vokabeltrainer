@@ -14,7 +14,8 @@ public class Kartei {
 	}
 	
 	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können
-	public Kartei(String frage, String antwort) {
+	public Kartei(int id, String frage, String antwort) {
+		this.id = id;
 		this.frage = frage;
 		this.antwort = antwort;
 		kartensammlung = new ArrayList<Karte>();

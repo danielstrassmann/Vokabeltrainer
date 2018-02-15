@@ -10,7 +10,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
 
-	private ArrayList<String> userliste;
+	
+	private ArrayList<Kartei> userKarteien;
 
 	public String benutzername;
 
@@ -26,9 +27,10 @@ public class User {
 
 		benutzername = username;
 		passwort = userpasswort;
-		benutzersprache = lang;
 		/// generiert neuen User sprache nur provisorisch
-		ArrayList<User> userliste = new ArrayList<User>();
+		benutzersprache = lang;		
+		userKarteien = new ArrayList<>();
+		
 
 	}
 	@XmlElement
@@ -56,14 +58,11 @@ public class User {
 		this.benutzersprache = benutzersprache;
 	}
 
-	public ArrayList<String> getUserliste() {
-		return userliste;
-	}
 
-	public void setUserliste(ArrayList<String> userliste) {
-		this.userliste = userliste;
+	public int getNextKarteiId() {
+		return 0; //todo letztes element von liste + 1 oder wenn liste leer 1
 	}
-
+	
 	public String toString() {
 		return benutzername + ", " + passwort + ", " + benutzersprache;
 

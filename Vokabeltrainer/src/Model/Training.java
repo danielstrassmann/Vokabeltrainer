@@ -3,7 +3,6 @@ package Model;
 public class Training {
 	
 	private Kartei k;
-	private Box[] sammlungBoxen;
 	private int antwortenKorrekt;
 	private int antwortenFalsch;
 	private int antwortenTotal;
@@ -11,8 +10,6 @@ public class Training {
 	
 	public Training(Kartei k) {
 		this.k = k;
-		sammlungBoxen = new Box[5];
-		// Wie wird der Inhalt der Boxen geladen?
 		setAntwortenKorrekt(0);
 		setAntwortenFalsch(0);
 		setAntwortenTotal(0);

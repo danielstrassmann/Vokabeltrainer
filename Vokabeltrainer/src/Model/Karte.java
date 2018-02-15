@@ -13,6 +13,8 @@ public class Karte {
 	private int id;
 	private String frage;
 	private String antwort;
+	// gibt an, in welcher Box die Karte liegt
+	private int box;
 	
 	public Karte() {
 		
@@ -23,6 +25,7 @@ public class Karte {
 		// die ID wird erst gesetzt, wenn die Karte in die ArrayList der Kartei abgelegt wird
 		this.frage = frage;
 		this.antwort = antwort;
+		box = 1;
 
 	}
 
@@ -48,6 +51,16 @@ public class Karte {
 
 	public void setFrage(String frage) {
 		this.frage = frage;
+	}
+
+
+	public int getBox() {
+		return box;
+	}
+
+
+	public void setBox(int box) {
+		this.box = box;
 	}
 
 
