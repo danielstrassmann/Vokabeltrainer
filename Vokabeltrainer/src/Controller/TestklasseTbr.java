@@ -60,9 +60,9 @@ public class TestklasseTbr {
 		// TEST FÜR KARTEN: Attribute von Objekten ausgeben und prüfen, ob alles klappt
 		System.out.println("TEST für Karten:");
 		System.out.println("-----------------");
-		System.out.println("Die Karte mit der Id " + k1.getId() + " hat die Antwort [" + k1.getFrage() + "] und die Antwort [" + k1.getAntwort() + "]");
-		System.out.println("Die Karte mit der Id " + k2.getId() + " hat die Antwort [" + k2.getFrage() + "] und die Antwort [" + k2.getAntwort() + "]");
-		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Antwort [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
+		System.out.println("Die Karte mit der Id " + k1.getId() + " hat die Frage [" + k1.getFrage() + "] und die Antwort [" + k1.getAntwort() + "]");
+		System.out.println("Die Karte mit der Id " + k2.getId() + " hat die Frage [" + k2.getFrage() + "] und die Antwort [" + k2.getAntwort() + "]");
+		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Frage [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
 		
 		
 
