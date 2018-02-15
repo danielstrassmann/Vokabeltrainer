@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
@@ -27,9 +26,9 @@ public class User {
 
 		benutzername = username;
 		passwort = userpasswort;
-		/// generiert neuen User sprache nur provisorisch
-		benutzersprache = lang;		
-		userKarteien = new ArrayList<>();
+		/// generiert neue Usersprache nur provisorisch
+		benutzersprache = lang;	
+		userKarteien = new ArrayList<Kartei>();
 		
 
 	}
@@ -68,4 +67,24 @@ public class User {
 
 	}
 
-}
+	public ArrayList<Kartei> getUserKarteien() {
+		return userKarteien;
+	}
+
+	public void setUserKarteien(ArrayList<Kartei> userKarteien) {
+		this.userKarteien = userKarteien;
+	}
+
+	public void karteiInSammlung(Kartei kk)
+	{
+		userKarteien.add(kk);
+	}
+	
+	public int getAnzahlKarteienInSammlung()
+	{
+		int anzahlKarteien = userKarteien.size();
+		return anzahlKarteien;		
+	}
+	
+	}
+

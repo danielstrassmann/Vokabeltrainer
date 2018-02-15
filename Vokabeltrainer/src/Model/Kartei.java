@@ -14,8 +14,8 @@ public class Kartei {
 	}
 	
 	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können
-	public Kartei(int id, String frage, String antwort) {
-		this.id = id;
+	// Die ID wird bei erst beim Ablegen der Kartei in die Sammlung des Users erzeugt
+	public Kartei(String frage, String antwort) {
 		this.frage = frage;
 		this.antwort = antwort;
 		kartensammlung = new ArrayList<Karte>();
@@ -38,6 +38,12 @@ public class Kartei {
 		kartensammlung.add(k);
 	}
 
+	public int getAnzahlKartenInSammlung()
+	{
+		int anzahlKarten = kartensammlung.size();
+		return anzahlKarten;
+	}
+	
 	public String getFrage() {
 		return frage;
 	}
