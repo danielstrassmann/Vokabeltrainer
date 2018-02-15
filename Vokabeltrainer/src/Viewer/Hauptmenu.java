@@ -73,7 +73,7 @@ public class Hauptmenu extends JPanel{
 //		this.karteiAuswahl = new JComboBox();
 		
 		
-		this.abmeldenButton = new JButton("abmelden");
+
 		this.key2 = new JButton("2");
 		this.key3 = new JButton("3");
 		this.key4 = new JButton("4");
@@ -106,8 +106,6 @@ public class Hauptmenu extends JPanel{
 		String karteiAuswahlListe[] = {
 				"Deutsch-Englisch", "Französisch-Spanisch", "Englisch-Französisch", 
 				"Mathe-Mathe"};
-		
-
 		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
 		karteiAuswahlPanel.add(karteiAuswahl);
 		obenMenuZeile.add(karteiAuswahlPanel,BorderLayout.EAST);
@@ -121,8 +119,6 @@ public class Hauptmenu extends JPanel{
 		String spracheAuswahlListe[] = {
 				"Deutsch", "français", "english", 
 				"español"};
-		
-
 		this.spracheAuswahl = new JComboBox(spracheAuswahlListe);
 		spracheAuswahlPanel.add(spracheAuswahl);
 		obenMenuZeile.add(spracheAuswahlPanel, BorderLayout.WEST);
@@ -130,13 +126,26 @@ public class Hauptmenu extends JPanel{
 	
 	public void abmeldeButton()
 	{
-		
+		this.abmeldenButton = new JButton("abmelden");	
+		abmeldenButton.setBackground(Color.RED);
+		obenMenuZeile.add(abmeldenButton, BorderLayout.CENTER);
+		this.abmeldenButton.addActionListener(new KeyListener2());
 	}
 	
+	
+    public void actionPerformed (ActionEvent ae)
+    {
+	    	  
+    }
 	class KeyListener2 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			String ziffer = e.getActionCommand();
-	//		displayTextfield.setText(displayTextfield.getText() + ziffer);
+			abmeldenButton.setFont(Font.getFont("SanSerif"));
+			JFrame anmeldeFenster = new JFrame("Anmeldefenster für Karteilösung");
+			anmeldeFenster.setVisible(true);
+			anmeldeFenster.setSize(500,500);
+			mainFrame.dispose();
+
+
 		}
 	}
 	
@@ -175,9 +184,9 @@ public class Hauptmenu extends JPanel{
 //		mainFrame.add(actionFenster, BorderLayout.CENTER);
 		mainFrame.add(tabsMenu, BorderLayout.CENTER);
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
-
 		
-//		obenMenuZeile.add(abmeldenButton);
+		
+//		obenMenuZeile.add(this.abmeldenButton, BorderLayout.CENTER);
 //		obenMenuZeile.add(key2);
 //		obenMenuZeile.add(key3);
 //		obenMenuZeile.add(karteiAuswahlPanel);

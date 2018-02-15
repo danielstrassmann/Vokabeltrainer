@@ -24,7 +24,7 @@ public class GUI {
 		gui.karteiAuswahl();
 		gui.spracheAuswahl();
 		gui.tabs();
-		
+		gui.abmeldeButton();
 
 		
 //		gui.paintHauptmenu();
