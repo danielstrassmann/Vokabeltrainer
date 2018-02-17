@@ -281,7 +281,7 @@ public class Hauptmenu extends JPanel{
 
 	public void tabLernen()
 	{
-		
+
 	}
 	
 	public void tabStatistik()
