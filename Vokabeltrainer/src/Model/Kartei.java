@@ -12,9 +12,10 @@ public class Kartei {
 	// Standardkonstruktor
 	public Kartei() {
 	}
-	
+
 	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können
-	// Die ID wird bei erst beim Ablegen der Kartei in die Sammlung des Users erzeugt
+	// Die ID wird bei erst beim Ablegen der Kartei in die Sammlung des Users
+	// erzeugt
 	public Kartei(String frage, String antwort) {
 		this.frage = frage;
 		this.antwort = antwort;
@@ -33,17 +34,15 @@ public class Kartei {
 		return kartensammlung;
 	}
 
-	public void karteInSammlung(Karte k)
-	{
+	public void karteInSammlung(Karte k) {
 		kartensammlung.add(k);
 	}
 
-	public int getAnzahlKartenInSammlung()
-	{
+	public int getAnzahlKartenInSammlung() {
 		int anzahlKarten = kartensammlung.size();
 		return anzahlKarten;
 	}
-	
+
 	public String getFrage() {
 		return frage;
 	}
@@ -62,7 +61,11 @@ public class Kartei {
 
 	public void add(Karte k1) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	public Kartei getIndex(int i) {
+		return null;
 	}
 
 }

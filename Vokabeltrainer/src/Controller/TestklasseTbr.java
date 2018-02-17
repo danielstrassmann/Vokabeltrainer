@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
+import Viewer.TabKartei;
 
 public class TestklasseTbr {
 
@@ -26,7 +27,7 @@ public class TestklasseTbr {
 		Kartei kk = new Kartei();
 		kk = karteiliste.get(0);
 
-		
+
 		
 		// TEST FÜR KARTEI: Attribute vom Objekt ausgeben um zu prüfen, ob alles klappt
 		System.out.println("TEST für Kartei:");
@@ -64,7 +65,7 @@ public class TestklasseTbr {
 		System.out.println("Die Karte mit der Id " + k2.getId() + " hat die Frage [" + k2.getFrage() + "] und die Antwort [" + k2.getAntwort() + "]");
 		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Frage [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
 		
-		
+		TabKartei tb = new TabKartei();
 
 	}
 
