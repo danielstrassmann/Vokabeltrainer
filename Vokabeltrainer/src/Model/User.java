@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
 
-	private ArrayList<String> userliste;
+	
+	private ArrayList<Kartei> userKarteien;
 
 	public String benutzername;
 
@@ -26,9 +26,10 @@ public class User {
 
 		benutzername = username;
 		passwort = userpasswort;
-		benutzersprache = lang;
-		/// generiert neuen User sprache nur provisorisch
-		ArrayList<User> userliste = new ArrayList<User>();
+		/// generiert neue Usersprache nur provisorisch
+		benutzersprache = lang;	
+		userKarteien = new ArrayList<Kartei>();
+		
 
 	}
 	@XmlElement
@@ -56,17 +57,34 @@ public class User {
 		this.benutzersprache = benutzersprache;
 	}
 
-	public ArrayList<String> getUserliste() {
-		return userliste;
-	}
 
-	public void setUserliste(ArrayList<String> userliste) {
-		this.userliste = userliste;
+	public int getNextKarteiId() {
+		return 0; //todo letztes element von liste + 1 oder wenn liste leer 1
 	}
-
+	
 	public String toString() {
 		return benutzername + ", " + passwort + ", " + benutzersprache;
 
 	}
 
-}
+	public ArrayList<Kartei> getUserKarteien() {
+		return userKarteien;
+	}
+
+	public void setUserKarteien(ArrayList<Kartei> userKarteien) {
+		this.userKarteien = userKarteien;
+	}
+
+	public void karteiInSammlung(Kartei kk)
+	{
+		userKarteien.add(kk);
+	}
+	
+	public int getAnzahlKarteienInSammlung()
+	{
+		int anzahlKarteien = userKarteien.size();
+		return anzahlKarteien;		
+	}
+	
+	}
+
