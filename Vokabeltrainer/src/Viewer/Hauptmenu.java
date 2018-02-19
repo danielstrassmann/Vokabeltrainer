@@ -20,7 +20,7 @@ public class Hauptmenu extends JPanel{
 
 	private JFrame mainFrame;
 	
-
+ 
 	//Panels Hauptmenu
 	private JPanel obenMenuZeile;
 	private JPanel linkeMenuZeile;
