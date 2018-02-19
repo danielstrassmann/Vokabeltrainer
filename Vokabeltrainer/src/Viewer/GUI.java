@@ -14,7 +14,7 @@ public class GUI {
 	{
 		Hauptmenu gui = new Hauptmenu();
 		
-		gui.tabKartei();
+
 		gui.paint();
 		gui.add();
 		gui.visible();
@@ -26,6 +26,10 @@ public class GUI {
 		gui.spracheAuswahl();
 		gui.tabs();
 		gui.abmeldeButton();
+		
+		gui.tabKartei();
+		gui.tabLernen();
+		gui.tabStatistik();
 
 
 		
