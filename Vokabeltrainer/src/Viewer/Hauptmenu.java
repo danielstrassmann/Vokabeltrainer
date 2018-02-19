@@ -90,7 +90,7 @@ public class Hauptmenu extends JPanel{
 		this.lernenTab = new JPanel();
 		this.statistikTab = new JPanel();
 		this.karteiTab = new JPanel();
-		this.tabsMenu = new JTabbedPane(JTabbedPane.TOP,JTabbedPane.SCROLL_TAB_LAYOUT );
+		this.tabsMenu = new JTabbedPane(JTabbedPane.LEFT,JTabbedPane.SCROLL_TAB_LAYOUT );
 		
 		//InhaltTab
 		this.inhaltLernen = new JPanel();
@@ -262,8 +262,6 @@ public class Hauptmenu extends JPanel{
 		key6.setMaximumSize(new Dimension(100,100));
 	}
 	
-
-	
 	public void color()
 	{
 
@@ -280,12 +278,12 @@ public class Hauptmenu extends JPanel{
 		
         // Erzeugung eines JTabbedPane-Objektes
         
-
-		
 		// Hier werden die JPanels als Registerkarten hinzugefügt
         tabsMenu.addTab("Lernen", lernenTab);
         tabsMenu.addTab("Statistik", statistikTab);
         tabsMenu.addTab("Kartei", karteiTab);
+        
+        
 	}
 
 	public void tabLernen()
@@ -310,23 +308,12 @@ public class Hauptmenu extends JPanel{
 		boxLabel4.setBorder(new CompoundBorder(border, margin));
 		boxLabel5.setBorder(new CompoundBorder(border, margin));
 		
-/*		box1.setPreferredSize(new Dimension(200,200));
-		box2.setPreferredSize(new Dimension(200,200));
-		box3.setPreferredSize(new Dimension(200,200));
-		box4.setPreferredSize(new Dimension(200,200));
-		box5.setPreferredSize(new Dimension(200,200));
-		
-		inhaltLernen.add(box1, BorderLayout.CENTER);
-		inhaltLernen.add(box2);
-		inhaltLernen.add(box3);
-		inhaltLernen.add(box4);
-		inhaltLernen.add(box5);
-*/		
-		boxLabel1.setPreferredSize(new Dimension(100,100));
-		boxLabel2.setPreferredSize(new Dimension(100,100));
-		boxLabel3.setPreferredSize(new Dimension(100,100));
-		boxLabel4.setPreferredSize(new Dimension(100,100));
-		boxLabel5.setPreferredSize(new Dimension(100,100));
+
+		boxLabel1.setPreferredSize(new Dimension(100,200));
+		boxLabel2.setPreferredSize(new Dimension(100,200));
+		boxLabel3.setPreferredSize(new Dimension(100,200));
+		boxLabel4.setPreferredSize(new Dimension(100,200));
+		boxLabel5.setPreferredSize(new Dimension(100,200));
 		
 		inhaltLernen.add(boxLabel1);
 		inhaltLernen.add(boxLabel2);
@@ -334,32 +321,19 @@ public class Hauptmenu extends JPanel{
 		inhaltLernen.add(boxLabel4);
 		inhaltLernen.add(boxLabel5);
 	
-		lernenTab.setSize(200,200);
-		inhaltLernen.setPreferredSize(new Dimension(800,800));
+//		lernenTab.setSize(200,200);
+//		inhaltLernen.setPreferredSize(new Dimension(800,800));
 		
 		lernenTab.add(inhaltLernen,BorderLayout.CENTER);
 		
-		
-//		box1.addActionListener(new boxKlickListener());
-
 		boxLabel1.addMouseListener(new boxMausKlick());
 		boxLabel2.addMouseListener(new boxMausKlick());	
 		boxLabel3.addMouseListener(new boxMausKlick());	
 		boxLabel4.addMouseListener(new boxMausKlick());	
 		boxLabel5.addMouseListener(new boxMausKlick());	
 		
-		
 	}
-	
-/*	class boxKlickListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			karteiErstellenButton.setFont(Font.getFont("SanSerif"));
-			JFrame lernenFennster = new JFrame("LernenFenster");
-			lernenFennster.setVisible(true);
-			lernenFennster.setSize(500,500);
-		}
-	}
-*/
+
 	 class boxMausKlick implements MouseListener 
 	{
 		public void mouseClicked(MouseEvent s) 
@@ -368,31 +342,26 @@ public class Hauptmenu extends JPanel{
 			JFrame lernenFennster2 = new JFrame("LernenFenster");
 			lernenFennster2.setVisible(true);
 			lernenFennster2.setSize(500,500);
-			boxLabel1.setVisible(false);
-		}
 
+		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 	}
 	
