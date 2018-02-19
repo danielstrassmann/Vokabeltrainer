@@ -22,9 +22,11 @@ public class GUI {
 		gui.border();
 		gui.color();
 		gui.karteiAuswahl();
+		gui.karteiErstellen();
 		gui.spracheAuswahl();
 		gui.tabs();
 		gui.abmeldeButton();
+
 
 		
 //		gui.paintHauptmenu();

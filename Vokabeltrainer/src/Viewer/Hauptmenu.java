@@ -35,6 +35,7 @@ public class Hauptmenu extends JPanel{
 	
 	//Buttons
 	private JButton abmeldenButton;
+	private JButton karteiErstellenButton;
 	private JButton key2;
 	private JButton key3;
 	private JButton key4;
@@ -129,21 +130,46 @@ public class Hauptmenu extends JPanel{
 		this.abmeldenButton = new JButton("abmelden");	
 		abmeldenButton.setBackground(Color.RED);
 		obenMenuZeile.add(abmeldenButton, BorderLayout.CENTER);
-		this.abmeldenButton.addActionListener(new KeyListener2());
+		this.abmeldenButton.addActionListener(new KeyListener1());
 	}
 	
 	
-    public void actionPerformed (ActionEvent ae)
+/*    public void actionPerformed (ActionEvent ae)
     {
 	    	  
     }
-	class KeyListener2 implements ActionListener {
+*/	class KeyListener1 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			abmeldenButton.setFont(Font.getFont("SanSerif"));
 			JFrame anmeldeFenster = new JFrame("Anmeldefenster für Karteilösung");
 			anmeldeFenster.setVisible(true);
 			anmeldeFenster.setSize(500,500);
 			mainFrame.dispose();
+
+
+		}
+	}
+	
+	public void karteiErstellen()
+	{
+		this.karteiErstellenButton = new JButton("Kartei erstellen");	
+		karteiErstellenButton.setBackground(Color.GREEN);
+		obenMenuZeile.add(karteiErstellenButton, BorderLayout.SOUTH);
+		this.karteiErstellenButton.addActionListener(new KeyListener2());
+	}
+	
+	
+/*    public void  (ActionEvent ae)
+    {
+	    	  
+    }
+*/	
+	class KeyListener2 implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			karteiErstellenButton.setFont(Font.getFont("SanSerif"));
+			JFrame karteiErstellenFenster = new JFrame("Fenster zum Erstellen einer Kartei");
+			karteiErstellenFenster.setVisible(true);
+			karteiErstellenFenster.setSize(500,500);
 
 
 		}
