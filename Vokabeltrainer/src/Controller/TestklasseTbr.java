@@ -66,6 +66,7 @@ public class TestklasseTbr {
 		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Frage [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
 		
 		TabKartei tb = new TabKartei();
+		tb.tableKarteiabfuellen(kk);
 
 	}
 

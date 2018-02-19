@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.KarteiController;
+import Model.Karte;
 import Model.Kartei;
 
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
@@ -41,7 +43,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		initComponents();
 		initGui();
 		bindListener();
-		tableKarteiabfuellen(null);
+		//tableKarteiabfuellen(null);
 	}
 
 	public void initComponents() {
@@ -82,7 +84,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 		scrollPaneKartei.setBounds(0, 0, 880, 200);
 
-		panelKartei.setLayout(null);
+		panelKartei.setBounds(0,0,1200,200);
 
 		panelKartei.add(tableKartei);
 
@@ -100,10 +102,14 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void tableKarteiabfuellen(Kartei kk) {
+		ArrayList<Karte> kartenSammlung = kk.getSammlung();
 		Object kartenInTable[] = new Object[2];
-		for (int i = 0; i < kk.getAnzahlKartenInSammlung(); i++) {
-			kartenInTable[0] = kk.getIndex(i).getFrage();
-			kartenInTable[1] = kk.getIndex(i).getAntwort();
+		for (int i = 0; i < kartenSammlung.size(); i++) {
+			Karte k = kartenSammlung.get(i);
+			kartenInTable[0] = k.getFrage();
+			kartenInTable[1] = k.getAntwort();
+			// kartenInTable[0] = kartenSammlung.getFrage(i);
+			// kartenInTable[1] = kk.getIndex(i).getAntwort();
 			modelKartei.addRow(kartenInTable);
 		}
 	}
