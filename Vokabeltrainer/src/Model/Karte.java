@@ -63,16 +63,25 @@ public class Karte {
 		this.box = box;
 	}
 
-	public void antwortFalsch() {
+	public void karteInErsteBox() {
 		box = 1;
 	}
 
-	public void antwortRichtig() {
+	public void karteInNaechsteBox() {
 
 		if (box < 5) {
 			box++;
 		}
 
+	}
+	
+	public void frageModifizieren(String frageNeu) {
+		frage = frageNeu;
+	}
+	
+	
+	public void antwortModifizieren(String antwortNeu) {
+		antwort = antwortNeu;
 	}
 
 }

@@ -2,14 +2,20 @@ package Model;
 
 public class Training {
 	
-	private Kartei k;
+	private Kartei kk;
 	private int antwortenKorrekt;
 	private int antwortenFalsch;
 	private int antwortenTotal;
 	// Attribut definieren für Zeit, die man Spielt? Wie macht mann das?
 	
-	public Training(Kartei k) {
-		this.k = k;
+	
+	// Standardkonstruktor
+	public Training () {
+	}
+	
+	
+	public Training(Kartei kk) {
+		this.kk = kk;
 		setAntwortenKorrekt(0);
 		setAntwortenFalsch(0);
 		setAntwortenTotal(0);

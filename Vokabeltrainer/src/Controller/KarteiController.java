@@ -7,7 +7,7 @@ import Model.User;
 public class KarteiController {
 	
 	
-	// Standardkonstruktor, wird nicht benötigt
+	// Standardkonstruktor
 	public KarteiController() {
 		
 		}
