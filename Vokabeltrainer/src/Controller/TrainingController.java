@@ -11,10 +11,11 @@ import Model.User;
 
 public class TrainingController {
 
-	// TODO: Attribut User ist nur ein Platzhalter. Im Konstruktor Training(u) muss
-	// ich den angemeldeten User übergeben können --> siehe Methoden trainingBox()
+	/*
+	 * TODO: Attribut User ist nur ein Platzhalter. Im Konstruktor Training(u) muss
+	 * ich den angemeldeten User übergeben können --> siehe Methoden trainingBox()
+	 */
 	private User u;
-	private ArrayList<Karte> sammlungBox;
 
 	// Standardkonstruktor
 	public TrainingController() {
@@ -33,24 +34,34 @@ public class TrainingController {
 		ArrayList<Karte> kartenliste;
 		kartenliste = kk.getSammlung();
 
-		
+		// Boxsammlung instanzieren
+		ArrayList<Karte> boxSammlung;
+		boxSammlung = t.getSammlungBox();
+
 		// Karten mit Box abfüllen
 		for (Karte k : kartenliste) {
 
 			if (k.getId() == boxNummer) {
-				sammlungBox.add(k);
+				boxSammlung.add(k);
 			}
 
 		}
+
+		// Abgefüllte Box zurückschreiben
+		t.setSammlungBox(boxSammlung);
 	}
-	
-	
+
 	public void boxSpielen() {
+
+		Training t = new Training(u);
+		ArrayList<Karte> boxSammlung;
+		boxSammlung = t.getSammlungBox();
 		
-		// Zufälliges Karte wird aus Sammlung ausgegeben
+		
+		// Zufällige Karte wird aus Sammlung ausgegeben
 		Random r = new Random();
 		Karte result = null;
-		result = sammlungBox.get(r.nextInt(sammlungBox.size()));
+		result = boxSammlung.get(r.nextInt(boxSammlung.size()));
 
 	}
 

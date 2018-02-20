@@ -6,6 +6,7 @@ public class Training {
 
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
+	private ArrayList<Karte> sammlungBox;
 
 	// Konstruktor instanziert Training mit Userdaten
 	public Training(User u) {
@@ -19,8 +20,11 @@ public class Training {
 		int id = 0;
 		trainingsKartei = karteiliste.get(id);
 
-		// Instanziert Daten neue Statistikdaten mit Wert 0 für neues Training
+		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
+		
+		// Instanziert neue Boxsammlung
+		sammlungBox = new ArrayList<Karte>();
 
 	}
 
@@ -46,6 +50,14 @@ public class Training {
 
 	public void setTrainingsDaten(Daten trainingsDaten) {
 		this.trainingsDaten = trainingsDaten;
+	}
+
+	public ArrayList<Karte> getSammlungBox() {
+		return sammlungBox;
+	}
+
+	public void setSammlungBox(ArrayList<Karte> sammlungBox) {
+		this.sammlungBox = sammlungBox;
 	}
 
 }
