@@ -1,50 +1,34 @@
 package Model;
 
 public class Training {
-	
-	private Kartei kk;
-	private int antwortenKorrekt;
-	private int antwortenFalsch;
-	private int antwortenTotal;
-	// Attribut definieren für Zeit, die man Spielt? Wie macht mann das?
-	
-	
+
+	private Kartei trainingsKartei;
+	private Daten trainingsDaten;
+
 	// Standardkonstruktor
-	public Training () {
-	}
-	
-	
-	public Training(Kartei kk) {
-		this.kk = kk;
-		setAntwortenKorrekt(0);
-		setAntwortenFalsch(0);
-		setAntwortenTotal(0);
+	public Training() {
 	}
 
-	public int getAntwortenKorrekt() {
-		return antwortenKorrekt;
+	public Training(Kartei kk, Daten d) {
+		this.setTrainingsKartei(kk);
+		this.setTrainingsDaten(d);
+
 	}
 
-	public void setAntwortenKorrekt(int antwortenKorrekt) {
-		this.antwortenKorrekt = antwortenKorrekt;
+	public Kartei getTrainingsKartei() {
+		return trainingsKartei;
 	}
 
-	public int getAntwortenFalsch() {
-		return antwortenFalsch;
+	public void setTrainingsKartei(Kartei trainingsKartei) {
+		this.trainingsKartei = trainingsKartei;
 	}
 
-	public void setAntwortenFalsch(int antwortenFalsch) {
-		this.antwortenFalsch = antwortenFalsch;
+	public Daten getTrainingsDaten() {
+		return trainingsDaten;
 	}
 
-	public int getAntwortenTotal() {
-		return antwortenTotal;
+	public void setTrainingsDaten(Daten trainingsDaten) {
+		this.trainingsDaten = trainingsDaten;
 	}
-
-	public void setAntwortenTotal(int antwortenTotal) {
-		this.antwortenTotal = antwortenTotal;
-	}
-
-
 
 }
