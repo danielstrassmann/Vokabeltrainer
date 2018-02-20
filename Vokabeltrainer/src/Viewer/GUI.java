@@ -24,9 +24,9 @@ public class GUI {
 		gui.karteiAuswahl();
 		gui.karteiErstellen();
 		gui.spracheAuswahl();
-		gui.tabs();
+
 		gui.abmeldeButton();
-		
+		gui.tabs();	
 		gui.tabKartei();
 		gui.tabLernen();
 		gui.tabStatistik();

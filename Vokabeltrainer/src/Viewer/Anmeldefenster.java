@@ -125,6 +125,6 @@ public Anmeldefenster()
 	{
 		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint(); 
-}
+	}
 
 }		

@@ -15,7 +15,7 @@ import java.awt.event.*;
 import Model.Karte;
 
 
-public class Hauptmenu extends JPanel{
+public class GUI_Hauptmenu_MBR_21_02 extends JPanel{
 
 	private JFrame mainFrame;
 	
@@ -58,7 +58,7 @@ public class Hauptmenu extends JPanel{
 	private JPanel inhaltStatistik;
 	private JPanel inhaltKartei;
 
-	public Hauptmenu() 
+	public GUI_Hauptmenu_MBR_21_02() 
 	{
 		this.mainFrame = new JFrame("Vokabeltrainer");
 
@@ -164,7 +164,7 @@ public class Hauptmenu extends JPanel{
 	{
 
 		mainFrame.setResizable(false);
-		mainFrame.setLayout(new BorderLayout(20, 20));
+		mainFrame.setLayout(new BorderLayout(200, 200));
 
 		
 		obenMenuZeile.setLayout(new FlowLayout());
@@ -172,8 +172,6 @@ public class Hauptmenu extends JPanel{
 		linkeMenuZeile.setLayout(new BoxLayout(linkeMenuZeile, BoxLayout.PAGE_AXIS));
 		rechteMenuZeile.setLayout(new BoxLayout(rechteMenuZeile, BoxLayout.PAGE_AXIS));
 		actionFenster.setLayout(new GridBagLayout());
-		
-//		tabsMenu.setLayout(new BorderLayout(20,20));
 
 	}
 
@@ -197,8 +195,6 @@ public class Hauptmenu extends JPanel{
 //		mainFrame.add(actionFenster, BorderLayout.CENTER);
 		mainFrame.add(tabsMenu, BorderLayout.CENTER);
 		mainFrame.add(untenMenuZeile, BorderLayout.SOUTH);
-		
-
 		
 		
 //		obenMenuZeile.add(this.abmeldenButton, BorderLayout.CENTER);
