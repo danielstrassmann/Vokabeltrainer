@@ -80,6 +80,7 @@ public class TestklasseTbr {
 		frame.setVisible(true);
 		frame.add(tb);
 		tb.tableKarteiabfuellen(kk);
+		tb.actionPerformed( ActionEvent, kk);
 
 
 	}

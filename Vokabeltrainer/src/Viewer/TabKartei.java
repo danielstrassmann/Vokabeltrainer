@@ -133,9 +133,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void actionPerformed(ActionEvent e, Kartei kk) {
-//
+
 		if (e.getSource() == this.buttonNeu) {
-			ArrayList<Karte> kartenSammlung = kk.getSammlung();
+			//ArrayList<Karte> kartenSammlung = kk.getSammlung();
 			String frageHinzu = textFrage.getText();
 			String antwortHinzu = textAntwort.getText();
 			Karte k = new Karte(frageHinzu, antwortHinzu);
@@ -185,11 +185,17 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*@Override
+	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.buttonNeu) {
-			System.out.println("Karte erzeugt");
+			System.out.println("Karte erzeugt hier unten ausgeführt");
 			
 		}
 		
-	}
+	}*/
 
 }
