@@ -133,7 +133,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void actionPerformed(ActionEvent e, Kartei kk) {
-
+//
 		if (e.getSource() == this.buttonNeu) {
 			ArrayList<Karte> kartenSammlung = kk.getSammlung();
 			String frageHinzu = textFrage.getText();
