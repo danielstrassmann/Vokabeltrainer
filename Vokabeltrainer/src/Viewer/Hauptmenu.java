@@ -184,7 +184,7 @@ public class Hauptmenu extends JPanel{
 
 	public void setSize()
 	{
-		mainFrame.setSize(800, 800);
+		mainFrame.setSize(1200, 1000);
 		mainFrame.setResizable(true);
 		mainFrame.setMinimumSize(new Dimension(800,800));
 		
