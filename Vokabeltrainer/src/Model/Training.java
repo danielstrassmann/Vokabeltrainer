@@ -25,6 +25,9 @@ public class Training {
 
 	public Daten getTrainingsDaten() {
 		return trainingsDaten;
+		
+		
+		
 	}
 
 	public void setTrainingsDaten(Daten trainingsDaten) {

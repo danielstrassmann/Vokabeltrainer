@@ -28,6 +28,8 @@ public class TrainingController {
 		// Holt & instanziert Daten vom User
 		Daten d = new Daten();
 		d = u.getUserDaten();
+		
+		// Trainingssession wird gestartet
 		Training t = new Training(kk, d);
 	}
 
