@@ -8,6 +8,9 @@ public class Daten {
 	// Attribut definieren für Zeit, die man Spielt? Wie macht mann das?
 
 	public Daten() {
+		antwortenKorrekt = 0;
+		antwortenFalsch = 0;
+		antwortenTotal = 0;
 	}
 
 	public int getAntwortenKorrekt() {

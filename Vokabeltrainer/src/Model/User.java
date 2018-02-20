@@ -11,6 +11,8 @@ public class User {
 
 	
 	private ArrayList<Kartei> userKarteien;
+	
+	private Daten userDaten;
 
 	public String benutzername;
 
@@ -29,6 +31,8 @@ public class User {
 		/// generiert neue Usersprache nur provisorisch
 		benutzersprache = lang;	
 		userKarteien = new ArrayList<Kartei>();
+		userDaten = new Daten();
+		
 		
 
 	}
@@ -84,6 +88,14 @@ public class User {
 	{
 		int anzahlKarteien = userKarteien.size();
 		return anzahlKarteien;		
+	}
+
+	public Daten getUserDaten() {
+		return userDaten;
+	}
+
+	public void setUserDaten(Daten userDaten) {
+		this.userDaten = userDaten;
 	}
 	
 	}
