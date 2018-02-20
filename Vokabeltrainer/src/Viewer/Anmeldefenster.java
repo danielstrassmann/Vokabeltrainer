@@ -127,7 +127,7 @@ public Anmeldefenster()
 	
 	public static void main(String[] args) 
 	{
-		Anmeldefenster2 gui = new Anmeldefenster2();
+		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint(); 
 	}
 
