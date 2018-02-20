@@ -79,7 +79,7 @@ public class TestklasseTbr {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.add(tb);
-	//	tb.tableKarteiabfuellen(kk);
+		tb.tableKarteiabfuellen(kk);
 
 
 	}

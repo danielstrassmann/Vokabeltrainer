@@ -95,7 +95,7 @@ public class Hauptmenu extends JPanel{
 		//InhaltTab
 		this.inhaltLernen = new JPanel();
 		this.inhaltStatistik = new JPanel();
-		this.inhaltKartei = new JPanel();
+		//this.inhaltKartei = new JPanel();
 	}
 	
 	// Dropdownmenu für die Auswahl der Kartei
@@ -285,12 +285,12 @@ public class Hauptmenu extends JPanel{
 		karteiTab.setBackground(Color.GREEN);
 		
         // Erzeugung eines JTabbedPane-Objektes
-        
+		TabKartei tb = new TabKartei();
 		// Hier werden die JPanels als Registerkarten hinzugefügt
         tabsMenu.addTab("Lernen", lernenTab);
         tabsMenu.addTab("Statistik", statistikTab);
-        tabsMenu.addTab("Kartei", karteiTab);
-        
+        tabsMenu.addTab("Kartei", tb);
+        tabsMenu.setSize(800,400);
         
 	}
 

@@ -119,12 +119,12 @@ public class Gui_Tab_Kartei {
 		frame.add(btnUpdate);
 
 		// fügt ArrayList Karten hinzu
-	/*	ArrayList<Karte> kartenliste = ListKarte();
+	ArrayList<Karte> kartenliste = ListKarte();
 		Object rowData[] = new Object[2];
 		for (int i = 0; i < kartenliste.size(); i++) {
 			rowData[0] = kartenliste.get(i).getFrage();
 			rowData[1] = kartenliste.get(i).getAntwort();
-			model.addRow(rowData);}*/
+			model.addRow(rowData);}
 
 			// erstelle eine Array und fügt es dem Model hinzu
 			Object[] row = new Object[2];
