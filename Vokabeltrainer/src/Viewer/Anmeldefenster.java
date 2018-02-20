@@ -67,43 +67,47 @@ public Anmeldefenster()
 	this.titelframe = new JPanel();
 	this.buttonBereich = new JPanel();
 	this.loginBereich = new JPanel();
+	
+	//Paint Paint Paint
+	
+	//login_Fenster_Zeichnen
+	loginfenster.setResizable(false);
+	loginfenster.setLayout(new BorderLayout(10,10));
+	//
+	loginUsername.setEditable(true);
+	loginPassword.setEditable(true);
+	
+	 
+	//layout_für_Panels
+	titelframe.setBounds(250,1, 86, 20);
+	userpw.setLayout(new GridLayout(2,2,30,20));
+
+	//ButtonPanel
+	buttonBereich.add(anmeldeButton);
+	buttonBereich.add(registrieren);
+	buttonBereich.add(exitButton);		
+	//titel
+	titelframe.add(frameTitle);
+	//Add von_loginbemerkung
+	userpw.add(usernameid);
+	userpw.add(loginUsername);
+	userpw.add(userpassword);
+	userpw.add(loginPassword);
+	
+	//Gestaltung_loginfenster
+	loginBereich.add(userpw);
+	//
+	loginfenster.add(titelframe,BorderLayout.NORTH);
+	loginfenster.add(buttonBereich,BorderLayout.SOUTH);
+	loginfenster.add(loginBereich,BorderLayout.CENTER);
+	//
+	loginfenster.setSize(500, 200);
+	loginfenster.setVisible(true);
+	//
 	}
 
 	public  void paint() {
-		//login_Fenster_Zeichnen
-		loginfenster.setResizable(false);
-		loginfenster.setLayout(new BorderLayout(10,10));
-		//
-		loginUsername.setEditable(true);
-		loginPassword.setEditable(true);
-		
-		 
-		//layout_für_Panels
-		titelframe.setBounds(250,1, 86, 20);
-		userpw.setLayout(new GridLayout(2,2,30,20));
 
-		//ButtonPanel
-		buttonBereich.add(anmeldeButton);
-		buttonBereich.add(registrieren);
-		buttonBereich.add(exitButton);		
-		//titel
-		titelframe.add(frameTitle);
-		//Add von_loginbemerkung
-		userpw.add(usernameid);
-		userpw.add(loginUsername);
-		userpw.add(userpassword);
-		userpw.add(loginPassword);
-		
-		//Gestaltung_loginfenster
-		loginBereich.add(userpw);
-		//
-		loginfenster.add(titelframe,BorderLayout.NORTH);
-		loginfenster.add(buttonBereich,BorderLayout.SOUTH);
-		loginfenster.add(loginBereich,BorderLayout.CENTER);
-		//
-		loginfenster.setSize(500, 200);
-		loginfenster.setVisible(true);
-		//
 			         
 	}
 	class exitbtn implements ActionListener {
@@ -123,7 +127,7 @@ public Anmeldefenster()
 	
 	public static void main(String[] args) 
 	{
-		Anmeldefenster gui = new Anmeldefenster();
+		Anmeldefenster2 gui = new Anmeldefenster2();
 		gui.paint(); 
 	}
 
