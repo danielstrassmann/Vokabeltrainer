@@ -127,7 +127,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		buttonAendern.addActionListener(this);
 		buttonLoeschen.addActionListener(this);
 		tableKartei.addMouseListener(this);
-
+//
 	}
 
 	@Override
