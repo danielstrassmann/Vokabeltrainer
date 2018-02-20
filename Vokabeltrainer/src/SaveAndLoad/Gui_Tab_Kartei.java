@@ -28,13 +28,29 @@ public class Gui_Tab_Kartei {
 		Karte k3 = new Karte("Katze", "cat");
 		Karte k4 = new Karte("Maus", "mouse");
 		Karte k5 = new Karte("eins", "one");
-		Karte k6 = new Karte("Ficken", "föck");
+		Karte k6 = new Karte("Baum", "tree");
+		Karte k7 = new Karte("tisch", "tisch");
+		Karte k8 = new Karte("Hallo", "hello");
+		Karte k9 = new Karte("Hund", "dog");
+		Karte k10 = new Karte("Katze", "cat");
+		Karte k11 = new Karte("Maus", "mouse");
+		Karte k12 = new Karte("eins", "one");
+		Karte k13 = new Karte("Baum", "tree");
+		Karte k14 = new Karte("tisch", "tisch");
 		kartenliste.add(k1);
 		kartenliste.add(k2);
 		kartenliste.add(k3);
 		kartenliste.add(k4);
 		kartenliste.add(k5);
 		kartenliste.add(k6);
+		kartenliste.add(k7);
+		kartenliste.add(k8);
+		kartenliste.add(k9);
+		kartenliste.add(k10);
+		kartenliste.add(k11);
+		kartenliste.add(k12);
+		kartenliste.add(k13);
+		kartenliste.add(k14);
 		return kartenliste;
 
 	}
@@ -103,12 +119,12 @@ public class Gui_Tab_Kartei {
 		frame.add(btnUpdate);
 
 		// fügt ArrayList Karten hinzu
-		ArrayList<Karte> kartenliste = ListKarte();
+	/*	ArrayList<Karte> kartenliste = ListKarte();
 		Object rowData[] = new Object[2];
 		for (int i = 0; i < kartenliste.size(); i++) {
 			rowData[0] = kartenliste.get(i).getFrage();
 			rowData[1] = kartenliste.get(i).getAntwort();
-			model.addRow(rowData);}
+			model.addRow(rowData);}*/
 
 			// erstelle eine Array und fügt es dem Model hinzu
 			Object[] row = new Object[2];

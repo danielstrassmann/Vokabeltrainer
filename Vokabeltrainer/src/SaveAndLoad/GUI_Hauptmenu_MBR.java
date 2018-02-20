@@ -10,9 +10,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import Model.Karte;
 
 
@@ -109,6 +106,14 @@ public class GUI_Hauptmenu_MBR extends JPanel{
 				"Mathe-Mathe"};
 		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
 		karteiAuswahlPanel.add(karteiAuswahl);
+		karteiAuswahl.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				System.out.println("");
+				
+			}
+		});
 		obenMenuZeile.add(karteiAuswahlPanel,BorderLayout.EAST);
 	}
 	

@@ -1,5 +1,8 @@
 package Viewer;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.KarteiController;
@@ -20,7 +24,7 @@ import Model.Kartei;
 
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
-	private JPanel panelKartei;
+	// private JPanel panelKartei;
 
 	private JTable tableKartei;
 
@@ -43,7 +47,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		initComponents();
 		initGui();
 		bindListener();
-		//tableKarteiabfuellen(null);
+		// tableKarteiabfuellen(null);
 	}
 
 	public void initComponents() {
@@ -59,45 +63,49 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelFrage = new JLabel("Frage eingeben oder ändern");
 		this.labelAntwort = new JLabel("Antwort eingeben oder ändern");
 
-		textFrage.setBounds(20, 220, 100, 25);
-		textAntwort.setBounds(20, 250, 100, 25);
+		textFrage.setBounds(20, 420, 100, 25);
+		textAntwort.setBounds(20, 450, 100, 25);
 
-		buttonNeu.setBounds(150, 220, 100, 25);
-		buttonAendern.setBounds(150, 265, 100, 25);
+		buttonNeu.setBounds(250, 240, 100, 25);
+		buttonAendern.setBounds(250, 265, 100, 25);
 		buttonLoeschen.setBounds(150, 310, 100, 25);
 
-		labelTitel.setBounds(20, 0, 100, 25);
-		labelFrage.setBounds(20, 205, 100, 25);
-		labelAntwort.setBounds(20, 245, 100, 25);
+		labelTitel.setBounds(20, 0, 400, 25);
+		labelFrage.setBounds(20, 240, 400, 25);
+		labelAntwort.setBounds(20, 280, 400, 25);
 	}
 
-	private void initGui() {
-		this.panelKartei = new JPanel();
+	public void initGui() {
+		//BorderLayout layout = new BorderLayout();
+		setLayout(null);
+		
+		// this.panelKartei = new JPanel();
 		this.tableKartei = new JTable();
-		this.scrollPaneKartei = new JScrollPane(tableKartei);
-		this.modelKartei = new DefaultTableModel();
+		this.scrollPaneKartei = new JScrollPane(tableKartei, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		Object[] spalten = { "Frage", "Antwort" };
+		this.modelKartei = new DefaultTableModel();
 
 		modelKartei.setColumnIdentifiers(spalten);
 
 		tableKartei.setModel(modelKartei);
 
-		scrollPaneKartei.setBounds(0, 0, 880, 200);
+		scrollPaneKartei.setBounds(0, 30, 880, 200);
 
-		panelKartei.setBounds(0,0,1200,200);
+		//setSize(1200, 300);
 
-		panelKartei.add(tableKartei);
+		add(scrollPaneKartei);
 
-		panelKartei.add(textFrage);
-		panelKartei.add(textAntwort);
+		add(textFrage);
+		add(textAntwort);
 
-		panelKartei.add(buttonNeu);
-		panelKartei.add(buttonAendern);
-		panelKartei.add(buttonLoeschen);
+		add(buttonNeu);
+		add(buttonAendern);
+		add(buttonLoeschen);
 
-		panelKartei.add(labelTitel);
-		panelKartei.add(labelFrage);
-		panelKartei.add(labelAntwort);
+		add(labelTitel);
+		add(labelFrage);
+		add(labelAntwort);
 
 	}
 
@@ -175,7 +183,5 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
-
 
 }

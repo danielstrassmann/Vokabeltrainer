@@ -1,11 +1,17 @@
 package Controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
 import Viewer.TabKartei;
+
 
 public class TestklasseTbr {
 
@@ -65,8 +71,16 @@ public class TestklasseTbr {
 		System.out.println("Die Karte mit der Id " + k2.getId() + " hat die Frage [" + k2.getFrage() + "] und die Antwort [" + k2.getAntwort() + "]");
 		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Frage [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
 		
+		JFrame frame = new JFrame();
+		//JPanel panel = new JPanel();
 		TabKartei tb = new TabKartei();
-		tb.tableKarteiabfuellen(kk);
+	//	panel.setBackground(Color.red);
+		frame.setSize(900, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.add(tb);
+	//	tb.tableKarteiabfuellen(kk);
+
 
 	}
 

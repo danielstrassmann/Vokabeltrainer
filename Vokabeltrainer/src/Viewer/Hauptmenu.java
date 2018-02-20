@@ -108,6 +108,14 @@ public class Hauptmenu extends JPanel{
 				"Mathe-Mathe"};
 		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
 		karteiAuswahlPanel.add(karteiAuswahl);
+		karteiAuswahl.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				System.out.println("");
+				
+			}
+		});
 		obenMenuZeile.add(karteiAuswahlPanel,BorderLayout.EAST);
 	}
 	
