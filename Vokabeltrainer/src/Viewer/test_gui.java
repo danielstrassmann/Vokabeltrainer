@@ -1,4 +1,4 @@
-package SaveAndLoad;
+package Viewer;
 
 import java.awt.Color;
 import java.awt.Font;

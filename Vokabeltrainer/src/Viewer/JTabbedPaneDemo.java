@@ -1,4 +1,4 @@
-package SaveAndLoad;
+package Viewer;
 import javax.swing.JTabbedPane;
 import javax.swing.plaf.TextUI;
 import javax.swing.ImageIcon;
