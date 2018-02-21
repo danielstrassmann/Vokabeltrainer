@@ -9,51 +9,24 @@ import Model.Kartei;
 import Model.Training;
 import Model.User;
 
+
+// wird vermutlich nicht benötigt
 public class TrainingController {
 
-	/*
-	 * TODO: Attribut User ist nur ein Platzhalter. Im Konstruktor Training(u) muss
-	 * ich den angemeldeten User übergeben können --> siehe Methoden trainingBox()
-	 */
-	private User u;
 
+	private Training t;
+	
+	
 	// Standardkonstruktor
 	public TrainingController() {
 
 	}
 
-	// Training für Box, Nummer für zu wählende Box mitgeben
-	public void boxLaden(int boxNummer) {
-		// neues Training instanzieren
-		Training t = new Training(u);
-		// Daten laden, damit diese später verändert werden können
-		Daten d = t.getTrainingsDaten();
 
-		// Kartensammlung laden
-		Kartei kk = t.getTrainingsKartei();
-		ArrayList<Karte> kartenliste;
-		kartenliste = kk.getSammlung();
-
-		// Boxsammlung instanzieren
-		ArrayList<Karte> boxSammlung;
-		boxSammlung = t.getSammlungBox();
-
-		// Karten mit Box abfüllen
-		for (Karte k : kartenliste) {
-
-			if (k.getId() == boxNummer) {
-				boxSammlung.add(k);
-			}
-
-		}
-
-		// Abgefüllte Box zurückschreiben
-		t.setSammlungBox(boxSammlung);
-	}
-
-	public void boxSpielen() {
-
-		Training t = new Training(u);
+	public void naechsteFrage(User u, int boxNummer) {
+		
+				
+		Training t = new Training(u, boxNummer);
 		ArrayList<Karte> boxSammlung;
 		boxSammlung = t.getSammlungBox();
 		
