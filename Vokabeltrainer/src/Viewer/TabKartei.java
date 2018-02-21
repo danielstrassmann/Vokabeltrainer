@@ -138,7 +138,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		textAntwort.setText(modelKartei.getValueAt(selectedRow, 1).toString());
 
 	}
-
+//
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == this.buttonNeu) {
