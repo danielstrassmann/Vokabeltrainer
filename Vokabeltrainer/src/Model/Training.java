@@ -8,6 +8,7 @@ public class Training {
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
+	private int boxNummer;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
 	public Training(User u, int boxNummer) {
@@ -41,6 +42,9 @@ public class Training {
 			}
 
 		}
+
+		// Test für Methode gibZufallsKarteAusBox
+		this.boxNummer = boxNummer;
 
 	}
 
@@ -77,41 +81,53 @@ public class Training {
 	}
 
 	
+	// Was zurückgeben, wenn es keine Karten mehr in der Box gibt?
 	public Karte gibZufallsKarteAusBox() {
-		
+
 		// Zufällige Karte wird aus Sammlung ausgegeben
 		Random r = new Random();
 		Karte result = null;
 		result = sammlungBox.get(r.nextInt(sammlungBox.size()));
-		
-		return result;
+
+		// Checkt, ob es noch Karten in der Box hat
+		if (result != null) {
+
+			sammlungBox.remove(result);
+			return result;
+
+		}
+
+		else {
+			System.out.println("Es hat keine Karten mehr in der Box!");
+		}
 
 	}
+
 	// Daten vom Training werden an User übertagen
 	public void trainingsDatenAnUserdaten(User u) {
-		
+
 		// Statistikdaten des aktuellen Training auslesen
 		int at1 = trainingsDaten.getAntwortenFalsch();
 		int at2 = trainingsDaten.getAntwortenKorrekt();
 		int at3 = trainingsDaten.getAntwortenTotal();
-		
+
 		// Statistikdaten auf User auslesen
 		Daten d = u.getUserDaten();
 		int au1 = d.getAntwortenFalsch();
 		int au2 = d.getAntwortenKorrekt();
 		int au3 = d.getAntwortenTotal();
-		
+
 		// Statistikdaten addieren
 		int antwortenFalschNeu = at1 + au1;
 		int antwortenKorrektNeu = at2 + au2;
 		int antwortenTotalNeu = at3 + au3;
-		
+
 		// Daten neu auf User speichern
 		d.setAntwortenFalsch(antwortenFalschNeu);
 		d.setAntwortenKorrekt(antwortenKorrektNeu);
 		d.setAntwortenTotal(antwortenTotalNeu);
 		u.setUserDaten(d);
-		
+
 	}
-	
+
 }
