@@ -64,8 +64,8 @@ public class Kartei {
 
 	}
 
-	public Kartei getIndex(int i) {
-		return null;
+	public Karte getIndex(int i) {
+		return kartensammlung.get(i);
 	}
 
 }

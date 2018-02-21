@@ -40,6 +40,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private JLabel labelTitel;
 	private JLabel labelFrage;
 	private JLabel labelAntwort;
+	
+	private int selectedRow;
+	private Kartei kk;
 
 	public TabKartei() {
 		initComponents();
@@ -105,6 +108,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void tableKarteiabfuellen(Kartei kk) {
+		this.kk = kk;
+		modelKartei.setRowCount(0);
+		
+		//modelKartei.remo
 		ArrayList<Karte> kartenSammlung = kk.getSammlung();
 		Object kartenInTable[] = new Object[2];
 		for (int i = 0; i < kartenSammlung.size(); i++) {
@@ -125,29 +132,31 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int i = tableKartei.getSelectedRow();
+		selectedRow = tableKartei.getSelectedRow();
 
-		textFrage.setText(modelKartei.getValueAt(i, 0).toString());
-		textAntwort.setText(modelKartei.getValueAt(i, 1).toString());
+		textFrage.setText(modelKartei.getValueAt(selectedRow, 0).toString());
+		textAntwort.setText(modelKartei.getValueAt(selectedRow, 1).toString());
 
 	}
 
-	public void actionPerformed(ActionEvent e, Kartei kk) {
+	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == this.buttonNeu) {
-			//ArrayList<Karte> kartenSammlung = kk.getSammlung();
 			String frageHinzu = textFrage.getText();
 			String antwortHinzu = textAntwort.getText();
 			Karte k = new Karte(frageHinzu, antwortHinzu);
-			kk.karteInSammlung(k);
-			modelKartei.setRowCount(0);
+			kk.karteInSammlung(k);		
 			tableKarteiabfuellen(kk);
 			
 
 			System.out.println("Karte erzeugt");
 		} else if (e.getSource() == this.buttonAendern) {
 			// todo Karte überschreiben
-			tableKarteiabfuellen(null);
+			Karte karte = kk.getIndex(selectedRow);
+			karte.setFrage(textFrage.getText());
+			karte.setAntwort(textAntwort.getText());
+			
+			tableKarteiabfuellen(kk);
 			System.out.println("Karte geändert");
 		}
 
@@ -181,12 +190,6 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/*@Override
