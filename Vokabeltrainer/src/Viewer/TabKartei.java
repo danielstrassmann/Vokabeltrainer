@@ -40,8 +40,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private JLabel labelTitel;
 	private JLabel labelFrage;
 	private JLabel labelAntwort;
-	
-	private int selectedRow;
+
+	private int selektierteRow;
 	private Kartei kk;
 
 	public TabKartei() {
@@ -51,6 +51,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	// Initaliziere Komponenten und setze Grössen und Positionen
 	private void initComponents() {
 
 		this.textFrage = new JTextField();
@@ -76,6 +77,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		labelAntwort.setBounds(20, 300, 200, 25);
 	}
 
+	// Initaliziere Table und setze DefaultTablemodel. Komponenten auf Panel
+	// hinzufügen
 	private void initGui() {
 
 		setLayout(null);
@@ -107,11 +110,19 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	// Listeners den Buttons und Table hinzufügen
+	private void bindListener() {
+		buttonNeu.addActionListener(this);
+		buttonAendern.addActionListener(this);
+		buttonLoeschen.addActionListener(this);
+		tableKartei.addMouseListener(this);
+
+	}
+
+	// selektierte Kartei in Table abfüllen
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
-		
-		//modelKartei.remo
 		ArrayList<Karte> kartenSammlung = kk.getSammlung();
 		Object kartenInTable[] = new Object[2];
 		for (int i = 0; i < kartenSammlung.size(); i++) {
@@ -122,44 +133,37 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		}
 	}
 
-	private void bindListener() {
-		buttonNeu.addActionListener(this);
-		buttonAendern.addActionListener(this);
-		buttonLoeschen.addActionListener(this);
-		tableKartei.addMouseListener(this);
-		//
-	}
-
+	// MouseListener. fügt gewählte Row in Textfields Frage und Antwort ab
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		selectedRow = tableKartei.getSelectedRow();
+		selektierteRow = tableKartei.getSelectedRow();
 
-		textFrage.setText(modelKartei.getValueAt(selectedRow, 0).toString());
-		textAntwort.setText(modelKartei.getValueAt(selectedRow, 1).toString());
+		textFrage.setText(modelKartei.getValueAt(selektierteRow, 0).toString());
+		textAntwort.setText(modelKartei.getValueAt(selektierteRow, 1).toString());
 
 	}
-//
-	public void actionPerformed(ActionEvent e) {
 
+	// ActionListener. Fügt neue Karten hinzu, Ändert gewählte Karte, löscht
+	// gewählte Karte
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// neue Karte hinzufügen
 		if (e.getSource() == this.buttonNeu) {
 			String frageHinzu = textFrage.getText();
 			String antwortHinzu = textAntwort.getText();
 			Karte k = new Karte(frageHinzu, antwortHinzu);
-			kk.karteInSammlung(k);		
+			kk.karteInSammlung(k);
 			tableKarteiabfuellen(kk);
-			
-
 			System.out.println("Karte erzeugt");
+			// Karte ändern
 		} else if (e.getSource() == this.buttonAendern) {
-			// todo Karte überschreiben
-			Karte karte = kk.getIndex(selectedRow);
+			Karte karte = kk.getIndex(selektierteRow);
 			karte.setFrage(textFrage.getText());
 			karte.setAntwort(textAntwort.getText());
-			
 			tableKarteiabfuellen(kk);
 			System.out.println("Karte geändert");
 		}
-
+		// Karte löschen
 		else if (e.getSource() == this.buttonLoeschen) {
 			// todo Karte aus ArrayList löschen
 			tableKarteiabfuellen(null);
@@ -191,14 +195,5 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
-	/*@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.buttonNeu) {
-			System.out.println("Karte erzeugt hier unten ausgeführt");
-			
-		}
-		
-	}*/
 
 }
