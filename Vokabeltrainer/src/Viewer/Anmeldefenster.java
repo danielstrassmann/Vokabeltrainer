@@ -45,16 +45,8 @@ public Anmeldefenster()
 	this.registrieren = new JButton("Registrieren");
 	this.exitButton = new JButton("Exit");
 	anmeldeButton.addActionListener(null);
-	registrieren.addActionListener(null);
-	exitButton.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent e) {
-		
-			frmLoginSystem = new JFrame("Exit");
-			if (JOptionPane.showConfirmDialog(frmLoginSystem, "Confirm if you want to exit" ,"Vokabeltrainer",JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
-		System.exit(0); 
-		}
-	}
-	});
+	registrieren.addActionListener(new regbtn());
+	exitButton.addActionListener(new exitbtn());
 	
 	this.usernameid = new JLabel("Username");
 	this.userpassword = new JLabel("Password");
@@ -116,11 +108,21 @@ public Anmeldefenster()
 			
 		frmLoginSystem = new JFrame("Exit");
 		if (JOptionPane.showConfirmDialog
-			(frmLoginSystem, "Confirm if you want to exit" ,"Vokabeltrainer",JOptionPane.YES_NO_OPTION)== 
+			(frmLoginSystem,"Wirklich Schliessen?","Vokabeltrainer",JOptionPane.YES_NO_OPTION)== 
 			JOptionPane.YES_NO_OPTION) {
 		System.exit(0);
 		}
 	}
+	}
+	
+	class regbtn implements ActionListener {
+	    //
+		public void actionPerformed(ActionEvent e) {
+			
+		Registrierung gui = new Registrierung();
+		Registrierung.main(null);
+		
+		}
 	}
 	
 	
