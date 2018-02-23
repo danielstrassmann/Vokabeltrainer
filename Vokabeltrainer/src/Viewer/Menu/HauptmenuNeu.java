@@ -39,9 +39,10 @@ public class HauptmenuNeu {
 	{
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setVisible(true);	
-		mainFrame.setSize(1000,800);
-		mainFrame.setResizable(true);
+		mainFrame.setSize(1500,1000);
+		mainFrame.setResizable(false);
 		mainFrame.setMinimumSize(new Dimension(1000,800));
+		mainFrame.setLocationRelativeTo(null);
 		
 
 

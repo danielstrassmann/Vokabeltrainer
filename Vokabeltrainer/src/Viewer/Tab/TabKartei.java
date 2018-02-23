@@ -68,7 +68,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelMutation = new JLabel ("");
 
 		this.textFrage.setBounds(20, 265, 160, 25);
-		textAntwort.setBounds(20, 325, 160, 25);
+		this.textAntwort.setBounds(20, 325, 160, 25);
 
 		this.buttonNeu.setBounds(250, 245, 120, 25);
 		this.buttonAendern.setBounds(250, 285, 120, 25);
@@ -155,9 +155,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		// neue Karte hinzufügen
 		if (e.getSource() == this.buttonNeu) {
-			if (textFrage.getText().equals("")) {
-				labelMutation.setForeground(Color.red);
-				labelMutation.setText("Text eingeben");
+			if (textFrage.getText().equals("")||textAntwort.getText().equals("") ) {
+				this.labelMutation.setBounds(390, 245, 300,25);
+				this.labelMutation.setForeground(Color.red);
+				this.labelMutation.setText("Zuerst Frage und Antwort eintragen");
 			} else {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
@@ -165,30 +166,41 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				kk.karteInSammlung(k);
 				tableKarteiabfuellen(kk);
 				System.out.println("Karte erzeugt");
-				labelMutation.setForeground(new Color (0,102,0));
-				labelMutation.setText("Karte erfolgreich angelegt");
+				this.labelMutation.setBounds(390, 245, 300,25);
+				this.labelMutation.setForeground(new Color (0,102,0));
+				this.labelMutation.setText("Karte erfolgreich angelegt");
 			}
 			// Karte ändern
 		} else if (e.getSource() == this.buttonAendern) {
 			if (textFrage.getText().equals("")) {
 				System.out.println("Karte selektieren");
+				this.labelMutation.setBounds(390, 285, 300,25);
+				this.labelMutation.setForeground(Color.red);
+				this.labelMutation.setText("Zuerst eine Karte wählen");
 			} else {
 				Karte karte = kk.getIndex(selektierteRow);
 				karte.setFrage(textFrage.getText());
 				karte.setAntwort(textAntwort.getText());
 				tableKarteiabfuellen(kk);
-				System.out.println("Karte geändert");
+				this.labelMutation.setBounds(390, 285, 300,25);
+				this.labelMutation.setForeground(new Color (0,102,0));
+				this.labelMutation.setText("Karte erfolgreich geändert");
 			}
 		}
 
 		// Karte löschen
 		else if (e.getSource() == this.buttonLoeschen) {
 			if (textFrage.getText().equals("")) {
-				System.out.println("Karte selektieren");
+				this.labelMutation.setBounds(390, 325, 300,25);
+				this.labelMutation.setForeground(Color.red);
+				this.labelMutation.setText("Zuerst eine Karte wählen");
 			} else {
 				Karte karte = kk.remove(selektierteRow);
 				tableKarteiabfuellen(kk);
-				System.out.println("Karte gelöscht");
+				this.labelMutation.setBounds(390, 325, 300,25);
+				this.labelMutation.setForeground(new Color (0,102,0));
+				this.labelMutation.setText("Karte erfolgreich gelöscht");
+				
 
 			}
 		}

@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import Viewer.KarteiErstellen;
+
 public class KarteiButton extends JButton {
 
 	public KarteiButton() {
@@ -21,9 +23,11 @@ public class KarteiButton extends JButton {
 
 	class karteiButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JFrame karteiErstellenFenster = new JFrame("Fenster zum Erstellen einer Kartei");
-			karteiErstellenFenster.setVisible(true);
-			karteiErstellenFenster.setSize(500, 500);
+			KarteiErstellen ke = new KarteiErstellen();
+			ke.initComponents();
+			ke.initGui();
+			
+			
 		}
 	}
 
