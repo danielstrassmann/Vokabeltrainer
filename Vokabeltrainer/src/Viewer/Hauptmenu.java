@@ -14,6 +14,8 @@ import java.awt.event.*;
 
 import Model.Karte;
 
+import Viewer.Tab.*;
+import Viewer.Anmeldung.*;
 
 public class Hauptmenu extends JPanel{
 

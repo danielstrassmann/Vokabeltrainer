@@ -1,4 +1,4 @@
-package Viewer.Tabs;
+package Viewer.Tab;
 
 public class TabStatistik {
 

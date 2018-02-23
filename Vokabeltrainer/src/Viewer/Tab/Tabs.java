@@ -1,4 +1,4 @@
-package Viewer;
+package Viewer.Tab;
 
 public class Tabs {
 

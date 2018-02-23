@@ -1,4 +1,4 @@
-package Viewer;
+package Viewer.Buttons;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

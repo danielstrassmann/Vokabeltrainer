@@ -1,4 +1,6 @@
-package Viewer;
+package Viewer.GuiMain;
+
+import Viewer.Menu.*;
 
 public class GUI_Neu {
 

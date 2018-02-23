@@ -1,9 +1,12 @@
-package Viewer;
+package Viewer.Buttons;
 
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+
+import Viewer.Anmeldung.*;
+import Viewer.Menu.*;
 
 
 public class AbmeldeButton extends JPanel{

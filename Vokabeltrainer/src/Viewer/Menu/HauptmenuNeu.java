@@ -1,4 +1,5 @@
-package Viewer;
+package Viewer.Menu;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -12,10 +13,12 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.*;
 
+import Viewer.Menuleisten.*;
+
 
 public class HauptmenuNeu {
 
-	static JFrame mainFrame;
+	public static JFrame mainFrame;
 	private JPanel hauptPanel;
 	
 
