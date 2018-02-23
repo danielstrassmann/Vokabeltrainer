@@ -6,38 +6,25 @@ import java.awt.Dimension;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-public class KarteiAuswahlButton extends JPanel
+public class KarteiAuswahlButton extends JComboBox
 {
-	
-private JPanel karteiAuswahlPanel;
-private JComboBox karteiAuswahl;
-
-
-	public KarteiAuswahlButton()
+		public KarteiAuswahlButton()
 	{
-		karteiAuswahlButton();
-		initGui();
-		
+		karteiAuswahlButton();		
 	}
 	
 	public void karteiAuswahlButton()
 	{
-		this.karteiAuswahlPanel = new JPanel();
-		
-		String karteiAuswahlListe[] = {
-				"Deutsch-Englisch", "Französisch-Spanisch", "Englisch-Französisch", 
-				"Mathe-Mathe "};
-		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
 
+		addItem("Deutsch-Englisch");
+		addItem("Französisch-Spanisch");
+		addItem("Englisch-Französisch");
+		addItem("Mathe-Mathe2");
+		
+		setVisible(true);
 
 	}
 	
-	private void initGui()
-	{
-		karteiAuswahlPanel.add(karteiAuswahl);
-		add(karteiAuswahlPanel);
-	}
-
 }
 
 

@@ -16,6 +16,7 @@ import java.awt.event.*;
 import Viewer.Menuleisten.*;
 
 
+
 public class HauptmenuNeu {
 
 	public static JFrame mainFrame;
@@ -60,6 +61,10 @@ public class HauptmenuNeu {
 		
 		MenuleisteOben mlo = new MenuleisteOben();
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
+		
+		Tabs tab = new Tabs();
+		hauptPanel.add(tab, BorderLayout.CENTER);
+		
 
 /*		
 		BenutzerspracheButton bsb = new BenutzerspracheButton();

@@ -9,32 +9,22 @@ import Viewer.Anmeldung.*;
 import Viewer.Menu.*;
 
 
-public class AbmeldeButton extends JPanel{
-
-//private JPanel abmeldeButtonPanel;	
-private JButton abmeldeButton;
+public class AbmeldeButton extends JButton{
 
 	public AbmeldeButton()
 	{
-		this.abmeldeButton = new JButton("Abmelden ");
-
 		abmeldeButton();
-		initGui();
 	}
 
 	public void abmeldeButton()
 	{
-	//	abmeldeButton.setBackground(Color.RED);
-		abmeldeButton.setVisible(true);
-		abmeldeButton.setSize(200,200);
-		abmeldeButton.addActionListener(new abmeldeButtonListener());
+		setText("Abmelden");
+		setVisible(true);
+		setSize(200,200);
+		addActionListener(new abmeldeButtonListener());
+		setBackground(Color.RED);
 	}
 	
-	private void initGui() 
-	{
-		//setLayout(null);
-		add(abmeldeButton);
-	}
 	
 	class abmeldeButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

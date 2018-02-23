@@ -6,31 +6,22 @@ import java.awt.Dimension;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-public class BenutzerspracheButton extends JPanel{
+public class BenutzerspracheButton extends JComboBox
+{
+		public BenutzerspracheButton()
+		{
+			benutzerSprache();
+		}
+		
+		public void benutzerSprache()
+		{
+			addItem("Deutsch");
+			addItem("français");
+			addItem("english");
+			addItem("español");
 
-private JComboBox benutzerSprache;
-private JPanel spracheAuswahlPanel;
-	
-	public BenutzerspracheButton()
-	{
-		benutzerSprache();
-		initGui();
-	}
-	
-	public void benutzerSprache()
-	{
-		this.spracheAuswahlPanel = new JPanel();
-		String spracheAuswahlListe[] = {
-		"Deutsch", "français", "english", 
-		"español "};
-		this.benutzerSprache = new JComboBox(spracheAuswahlListe);
+			setVisible(true);
+			setSize(200,200);
+		}
 
-
-	}
-
-	private void initGui()
-	{
-		spracheAuswahlPanel.add(benutzerSprache);
-		add(spracheAuswahlPanel, BorderLayout.WEST);
-	}
 }

@@ -20,28 +20,14 @@ public class MenuleisteOben extends JPanel {
 		menuleisteOben();
 	}
 
-	/*
-	 * private void menuleisteOben() { setLayout(new BorderLayout());
-	 * setVisible(true);
-	 * 
-	 * KarteiButton kb = new KarteiButton(); add(kb);
-	 * 
-	 * 
-	 * 
-	 * BenutzerspracheButton bsb = new BenutzerspracheButton(); add(bsb,
-	 * BorderLayout.CENTER);
-	 * 
-	 * KarteiAuswahlButton kab = new KarteiAuswahlButton(); add(kab,
-	 * BorderLayout.CENTER);
-	 * 
-	 * AbmeldeButton ab = new AbmeldeButton(); add(ab,BorderLayout.CENTER); }
-	 */
-
-	private void menuleisteOben() {
+	private void menuleisteOben() 
+	{
 		setLayout(new BorderLayout(10, 10));
 		setVisible(true);
 
+
 		this.willkommen = new JLabel();
+
 		this.willkommen.setText("Willkommen Benutzer");
 		add(this.willkommen, BorderLayout.LINE_START);
 		
@@ -67,5 +53,9 @@ public class MenuleisteOben extends JPanel {
 
 		add(subPanelBenutzer, BorderLayout.LINE_END);
 
+		setBackground(Color.LIGHT_GRAY);
+		subPanelKartei.setBackground(Color.LIGHT_GRAY);
+		subPanelBenutzer.setBackground(Color.LIGHT_GRAY);
+		
 	}
 }
