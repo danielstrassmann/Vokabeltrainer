@@ -48,7 +48,7 @@ public Anmeldefenster()
 	registrieren.addActionListener(new regbtn());
 	exitButton.addActionListener(new exitbtn());
 	
-	this.usernameid = new JLabel("Username");
+	this.usernameid = new JLabel("Username ");
 	this.userpassword = new JLabel("Password");
 	this.frameTitle = new JLabel("Login Credentials");
 	

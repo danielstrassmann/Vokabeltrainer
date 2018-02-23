@@ -16,7 +16,7 @@ private JButton abmeldeButton;
 
 	public AbmeldeButton()
 	{
-		this.abmeldeButton = new JButton("Abmelden");
+		this.abmeldeButton = new JButton("Abmelden ");
 
 		abmeldeButton();
 		initGui();

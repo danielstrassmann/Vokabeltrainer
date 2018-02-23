@@ -22,7 +22,7 @@ private JPanel spracheAuswahlPanel;
 		this.spracheAuswahlPanel = new JPanel();
 		String spracheAuswahlListe[] = {
 		"Deutsch", "français", "english", 
-		"español"};
+		"español "};
 		this.benutzerSprache = new JComboBox(spracheAuswahlListe);
 
 

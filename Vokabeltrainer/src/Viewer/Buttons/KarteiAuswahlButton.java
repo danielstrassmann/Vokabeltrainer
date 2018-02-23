@@ -26,7 +26,7 @@ private JComboBox karteiAuswahl;
 		
 		String karteiAuswahlListe[] = {
 				"Deutsch-Englisch", "Französisch-Spanisch", "Englisch-Französisch", 
-				"Mathe-Mathe"};
+				"Mathe-Mathe "};
 		this.karteiAuswahl = new JComboBox(karteiAuswahlListe);
 
 

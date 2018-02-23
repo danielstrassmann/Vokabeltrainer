@@ -57,7 +57,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.textFrage = new JTextField();
 		this.textAntwort = new JTextField();
 
-		this.buttonNeu = new JButton("neue Karte");
+		this.buttonNeu = new JButton("neue Karte ");
 		this.buttonAendern = new JButton("Karte ändern");
 		this.buttonLoeschen = new JButton("Karte löschen");
 

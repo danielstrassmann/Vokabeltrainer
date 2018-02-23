@@ -12,7 +12,7 @@ private JButton karteiButton;
 
 	public KarteiButton()
 	{
-		this.karteiButton = new JButton("Kartei erstellen");
+		this.karteiButton = new JButton("Kartei erstellen ");
 		
 		initGui();
 		karteiButton();

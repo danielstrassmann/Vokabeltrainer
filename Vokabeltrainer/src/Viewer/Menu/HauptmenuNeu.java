@@ -26,7 +26,7 @@ public class HauptmenuNeu {
 	
 	public HauptmenuNeu()
 	{
-		this.mainFrame = new JFrame("Vokabeltrainer Optimus");
+		this.mainFrame = new JFrame("Vokabeltrainer Optimus ");
 		this.hauptPanel = new JPanel();
 
 		hauptPanel();		

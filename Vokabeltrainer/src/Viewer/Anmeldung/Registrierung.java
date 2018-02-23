@@ -36,7 +36,7 @@ public class Registrierung {
 	
 	public Registrierung() {
 		
-		this.registrierungsfenster = new JFrame("Registrieren");
+		this.registrierungsfenster = new JFrame("Registrieren ");
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.linkeseite = new JPanel();
 		this.rechteseite = new JPanel();
