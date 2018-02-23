@@ -24,7 +24,7 @@ private JButton abmeldeButton;
 
 	public void abmeldeButton()
 	{
-		abmeldeButton.setBackground(Color.RED);
+	//	abmeldeButton.setBackground(Color.RED);
 		abmeldeButton.setVisible(true);
 		abmeldeButton.setSize(200,200);
 		abmeldeButton.addActionListener(new abmeldeButtonListener());
