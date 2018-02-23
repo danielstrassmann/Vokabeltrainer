@@ -1,5 +1,6 @@
 package Viewer.Tab;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -66,10 +67,7 @@ public class TabLernen extends JPanel implements ActionListener
 		boxLabel3.setBackground(Color.BLUE);
 		boxLabel4.setBackground(Color.BLUE);
 		boxLabel5.setBackground(Color.BLUE);
-				
-	
-		
-		
+					
 		add(boxLabel1);
 		add(boxLabel2);
 		add(boxLabel3);

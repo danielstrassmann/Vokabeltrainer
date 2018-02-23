@@ -28,7 +28,10 @@ private JTabbedPane tabsMenu ;
 		
 		TabLernen tle = new TabLernen();
 		tabsMenu.addTab("Lernen", tle);
-//		tabsMenu.addTab("Statistik", component);
+		
+		TabStatistik tst = new TabStatistik();
+		tabsMenu.addTab("Statistik", tst);
+
 		TabKartei tka = new TabKartei();
 		tabsMenu.addTab("Kartei", tka);
 				

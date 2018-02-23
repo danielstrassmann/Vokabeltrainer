@@ -1,39 +1,27 @@
 package Viewer.Menu;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Vector;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import java.awt.event.*;
-
-import Viewer.Menuleisten.*;
-
-
+import Viewer.Menuleisten.MenuleisteOben;
+import Viewer.Menuleisten.Tabs;
 
 public class HauptmenuNeu {
 
 	public static JFrame mainFrame;
 	private JPanel hauptPanel;
 	
-
-
-	
 	public HauptmenuNeu()
 	{
-		this.mainFrame = new JFrame("Vokabeltrainer Optimus ");
+		this.mainFrame = new JFrame("Vokabeltrainer Optimus");
 		this.hauptPanel = new JPanel();
 
 		hauptPanel();		
 		mainFrame();
-
-
 	}
 	
 	public void mainFrame()
@@ -45,8 +33,6 @@ public class HauptmenuNeu {
 		mainFrame.setMinimumSize(new Dimension(1000,800));
 		mainFrame.setLocationRelativeTo(null);
 		
-
-
 		mainFrame.add(hauptPanel);
 	}
 	
@@ -66,19 +52,6 @@ public class HauptmenuNeu {
 		hauptPanel.add(tab, BorderLayout.CENTER);
 		
 
-/*		
-		BenutzerspracheButton bsb = new BenutzerspracheButton();
-		hauptPanel.add(bsb, BorderLayout.CENTER);
-				
-		KarteiButton kb = new KarteiButton();
-		hauptPanel.add(kb, BorderLayout.CENTER);
-		
-		AbmeldeButton ab = new AbmeldeButton();
-		hauptPanel.add(ab, BorderLayout.CENTER);
-*/		
-
-		
-		
 	}
 	
 
