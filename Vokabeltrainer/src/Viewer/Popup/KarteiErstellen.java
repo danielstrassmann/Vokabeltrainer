@@ -1,5 +1,6 @@
 package Viewer.Popup;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,7 +9,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class KarteiErstellen extends JDialog implements ActionListener {
+public class KarteiErstellen extends JDialog // implements ActionListener 
+{
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
@@ -37,12 +39,11 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 		this.buttonAnlegen = new JButton("Anlegen");
 		this.buttonAbbrechen = new JButton("Abbrechen");
-
 	}
 
 	public void bindListener() {
-		buttonAnlegen.addActionListener(this);
-		buttonAbbrechen.addActionListener(this);
+		buttonAnlegen.addActionListener(new anlegenButtonListener());
+		buttonAbbrechen.addActionListener(new abbrechenButtonListener());
 	}
 
 	public void initGui() {
@@ -75,8 +76,22 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	class anlegenButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+				System.out.println("kartei anlegen");
+		}
+	}
+	class abbrechenButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+				System.out.println("abbrechen button gedrückt");
+		}
+	}
+//	@Override
+/*	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.buttonAnlegen) {
 			System.out.println("kartei anlegen");
 			// TODO implementierung Kartei anlegen. auch prüfen, ob Kartei schon vorhanden?
@@ -86,5 +101,7 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 		}
 	}
-	
+*/
+
+
 }
