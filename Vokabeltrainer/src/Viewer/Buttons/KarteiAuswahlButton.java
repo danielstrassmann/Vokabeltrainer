@@ -15,14 +15,12 @@ public class KarteiAuswahlButton extends JComboBox
 	
 	public void karteiAuswahlButton()
 	{
-
 		addItem("Deutsch-Englisch");
 		addItem("Französisch-Spanisch");
 		addItem("Englisch-Französisch");
 		addItem("Mathe-Mathe2");
 		
 		setVisible(true);
-
 	}
 	
 }

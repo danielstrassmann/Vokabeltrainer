@@ -264,7 +264,7 @@ public class Hauptmenu extends JPanel{
 		
 	}
 
-	 class boxMausKlick implements MouseListener 
+	 public class boxMausKlick implements MouseListener 
 	{
 		public void mouseClicked(MouseEvent s) 
 		{

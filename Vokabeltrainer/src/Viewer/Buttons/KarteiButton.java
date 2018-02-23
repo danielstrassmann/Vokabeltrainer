@@ -31,5 +31,4 @@ public class KarteiButton extends JButton {
 			ke.initGui();
 		}
 	}
-
 }

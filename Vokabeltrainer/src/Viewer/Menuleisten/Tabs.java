@@ -26,14 +26,12 @@ private JTabbedPane tabsMenu ;
 		add(tabsMenu);
 		
 		
-		
-//		tabsMenu.addTab("Lernen", component);
+		TabLernen tle = new TabLernen();
+		tabsMenu.addTab("Lernen", tle);
 //		tabsMenu.addTab("Statistik", component);
 		TabKartei tka = new TabKartei();
 		tabsMenu.addTab("Kartei", tka);
-		
-		
-		
+				
 	}
 
 }
