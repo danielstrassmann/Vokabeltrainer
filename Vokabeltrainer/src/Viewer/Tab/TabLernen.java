@@ -13,6 +13,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
+import Viewer.Popup.Lernen;
+
 
 public class TabLernen extends JPanel implements ActionListener
 {
@@ -83,9 +85,9 @@ public class TabLernen extends JPanel implements ActionListener
 		{
 			public void mouseClicked(MouseEvent s) 
 			{
-				JFrame lernenFennster = new JFrame("LernenFenster");
-				lernenFennster.setVisible(true);
-				lernenFennster.setSize(500,500);
+				Lernen lernenFennster = new Lernen();
+//				lernenFennster.setVisible(true);
+//				lernenFennster.setSize(500,500);
 
 			}
 			@Override

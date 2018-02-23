@@ -1,4 +1,4 @@
-package Viewer;
+package Viewer.Popup;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,8 +29,8 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 	public void initComponents() {
 		this.labelTitelKartei = new JLabel("Bitte erstellen Sie eine neue Kartei");
-		this.labelBezFrage = new JLabel("Bezeichnung der Frage eingeben");
-		this.labelBezAntwort = new JLabel("Bezeichnung der Antwort eingeben");
+		this.labelBezFrage = new JLabel("Bezeichnung der Quelle eingeben");
+		this.labelBezAntwort = new JLabel("Bezeichnung der Übersetzung eingeben");
 
 		this.textEingabeFrage = new JTextField();
 		this.textEingabeAntwort = new JTextField();
@@ -53,15 +53,15 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 		setVisible(true);
 		setLocationRelativeTo(null);
 
-		this.labelTitelKartei.setBounds(10, 1, 200, 30);
-		this.labelBezFrage.setBounds(10, 60, 200, 25);
-		this.labelBezAntwort.setBounds(10, 100, 200, 25);
+		this.labelTitelKartei.setBounds		(10, 1, 200, 30);
+		this.labelBezFrage.setBounds		(10, 60, 200, 25);
+		this.labelBezAntwort.setBounds		(10, 100, 200, 25);
 
-		this.textEingabeFrage.setBounds(250, 60, 250, 25);
-		this.textEingabeAntwort.setBounds(250, 100, 250, 25);
+		this.textEingabeFrage.setBounds		(250, 60, 250, 25);
+		this.textEingabeAntwort.setBounds	(250, 100, 250, 25);
 
-		this.buttonAnlegen.setBounds(250, 200, 120, 25);
-		this.buttonAbbrechen.setBounds(380, 200, 120, 25);
+		this.buttonAnlegen.setBounds		(250, 200, 120, 25);
+		this.buttonAbbrechen.setBounds		(380, 200, 120, 25);
 
 		add(labelTitelKartei);
 		add(labelBezFrage);

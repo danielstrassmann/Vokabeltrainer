@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import Viewer.KarteiErstellen;
+import Viewer.Popup.KarteiErstellen;
 
 public class KarteiButton extends JButton {
 

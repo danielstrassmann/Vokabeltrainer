@@ -1,6 +1,6 @@
 package Viewer.GuiMain;
 
-import Viewer.Anmeldung.Anmeldefenster;
+import Viewer.Anmeldung.*;
 import javax.swing.*;
 
 public class GUI_Komplett {
