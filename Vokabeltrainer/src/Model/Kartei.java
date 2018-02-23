@@ -68,4 +68,7 @@ public class Kartei {
 		return kartensammlung.get(i);
 	}
 
+	public Karte remove(int i) {
+		return kartensammlung.remove(i);
+	}
 }

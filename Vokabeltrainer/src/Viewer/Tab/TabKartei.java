@@ -40,6 +40,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private JLabel labelTitel;
 	private JLabel labelFrage;
 	private JLabel labelAntwort;
+	private JLabel labelMutation;
 
 	private int selektierteRow;
 	private Kartei kk;
@@ -64,17 +65,19 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelTitel = new JLabel("Alle Karten der Kartei");
 		this.labelFrage = new JLabel("Frage eingeben oder ändern");
 		this.labelAntwort = new JLabel("Antwort eingeben oder ändern");
+		this.labelMutation = new JLabel ("");
 
-		textFrage.setBounds(20, 265, 160, 25);
+		this.textFrage.setBounds(20, 265, 160, 25);
 		textAntwort.setBounds(20, 325, 160, 25);
 
-		buttonNeu.setBounds(250, 245, 120, 25);
-		buttonAendern.setBounds(250, 285, 120, 25);
-		buttonLoeschen.setBounds(250, 325, 120, 25);
-
-		labelTitel.setBounds(20, 0, 250, 25);
-		labelFrage.setBounds(20, 240, 200, 25);
-		labelAntwort.setBounds(20, 300, 200, 25);
+		this.buttonNeu.setBounds(250, 245, 120, 25);
+		this.buttonAendern.setBounds(250, 285, 120, 25);
+		this.buttonLoeschen.setBounds(250, 325, 120, 25);
+        
+		this.labelTitel.setBounds(20, 0, 250, 25);
+		this.labelFrage.setBounds(20, 240, 200, 25);
+		this.labelAntwort.setBounds(20, 300, 200, 25);
+		this.labelMutation.setBounds(390, 245, 200,25);
 	}
 
 	// Initaliziere Table und setze DefaultTablemodel. Komponenten auf Panel
@@ -89,24 +92,25 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		Object[] spalten = { "Frage", "Antwort" };
 		this.modelKartei = new DefaultTableModel();
 
-		modelKartei.setColumnIdentifiers(spalten);
+		this.modelKartei.setColumnIdentifiers(spalten);
 
-		tableKartei.setModel(modelKartei);
+		this.tableKartei.setModel(modelKartei);
 
-		scrollPaneKartei.setBounds(20, 30, 880, 200);
+		this.scrollPaneKartei.setBounds(20, 30, 880, 200);
 
-		add(scrollPaneKartei);
+		add(this.scrollPaneKartei);
 
-		add(textFrage);
-		add(textAntwort);
-
-		add(buttonNeu);
-		add(buttonAendern);
-		add(buttonLoeschen);
-
-		add(labelTitel);
-		add(labelFrage);
-		add(labelAntwort);
+		add(this.textFrage);
+		add(this.textAntwort);
+            
+		add(this.buttonNeu);
+		add(this.buttonAendern);
+		add(this.buttonLoeschen);
+            
+		add(this.labelTitel);
+		add(this.labelFrage);
+		add(this.labelAntwort);
+		add(this.labelMutation);
 
 	}
 
@@ -123,8 +127,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
-		textFrage.setText(null);
-		textAntwort.setText(null);
+		textFrage.setText("");
+		textAntwort.setText("");
 		ArrayList<Karte> kartenSammlung = kk.getSammlung();
 		Object kartenInTable[] = new Object[2];
 		for (int i = 0; i < kartenSammlung.size(); i++) {
@@ -151,26 +155,42 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		// neue Karte hinzufügen
 		if (e.getSource() == this.buttonNeu) {
-			String frageHinzu = textFrage.getText();
-			String antwortHinzu = textAntwort.getText();
-			Karte k = new Karte(frageHinzu, antwortHinzu);
-			kk.karteInSammlung(k);
-			tableKarteiabfuellen(kk);
-			System.out.println("Karte erzeugt");
+			if (textFrage.getText().equals("")) {
+				labelMutation.setForeground(Color.red);
+				labelMutation.setText("Text eingeben");
+			} else {
+				String frageHinzu = textFrage.getText();
+				String antwortHinzu = textAntwort.getText();
+				Karte k = new Karte(frageHinzu, antwortHinzu);
+				kk.karteInSammlung(k);
+				tableKarteiabfuellen(kk);
+				System.out.println("Karte erzeugt");
+				labelMutation.setForeground(new Color (0,102,0));
+				labelMutation.setText("Karte erfolgreich angelegt");
+			}
 			// Karte ändern
 		} else if (e.getSource() == this.buttonAendern) {
-			Karte karte = kk.getIndex(selektierteRow);
-			karte.setFrage(textFrage.getText());
-			karte.setAntwort(textAntwort.getText());
-			tableKarteiabfuellen(kk);
-			System.out.println("Karte geändert");
+			if (textFrage.getText().equals("")) {
+				System.out.println("Karte selektieren");
+			} else {
+				Karte karte = kk.getIndex(selektierteRow);
+				karte.setFrage(textFrage.getText());
+				karte.setAntwort(textAntwort.getText());
+				tableKarteiabfuellen(kk);
+				System.out.println("Karte geändert");
+			}
 		}
+
 		// Karte löschen
 		else if (e.getSource() == this.buttonLoeschen) {
-			// todo Karte aus ArrayList löschen
-			tableKarteiabfuellen(null);
-			System.out.println("Karte gelöscht");
+			if (textFrage.getText().equals("")) {
+				System.out.println("Karte selektieren");
+			} else {
+				Karte karte = kk.remove(selektierteRow);
+				tableKarteiabfuellen(kk);
+				System.out.println("Karte gelöscht");
 
+			}
 		}
 	}
 
