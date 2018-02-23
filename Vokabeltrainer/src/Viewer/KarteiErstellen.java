@@ -1,16 +1,14 @@
 package Viewer;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class KarteiErstellen extends JDialog {
+public class KarteiErstellen extends JDialog implements ActionListener {
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
@@ -24,7 +22,9 @@ public class KarteiErstellen extends JDialog {
 
 	public KarteiErstellen() {
 		initComponents();
+		bindListener();
 		initGui();
+
 	}
 
 	public void initComponents() {
@@ -38,6 +38,11 @@ public class KarteiErstellen extends JDialog {
 		this.buttonAnlegen = new JButton("Anlegen");
 		this.buttonAbbrechen = new JButton("Abbrechen");
 
+	}
+
+	public void bindListener() {
+		buttonAnlegen.addActionListener(this);
+		buttonAbbrechen.addActionListener(this);
 	}
 
 	public void initGui() {
@@ -69,4 +74,17 @@ public class KarteiErstellen extends JDialog {
 		add(buttonAbbrechen);
 
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.buttonAnlegen) {
+			System.out.println("kartei anlegen");
+			// TODO implementierung Kartei anlegen. auch prüfen, ob Kartei schon vorhanden?
+		} else if (e.getSource() == this.buttonAbbrechen) {
+			System.out.println("test");
+			// dispose();
+
+		}
+	}
+	
 }
