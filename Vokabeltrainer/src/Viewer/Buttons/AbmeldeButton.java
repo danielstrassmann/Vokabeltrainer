@@ -32,7 +32,7 @@ private JButton abmeldeButton;
 	
 	private void initGui() 
 	{
-		setLayout(null);
+		//setLayout(null);
 		add(abmeldeButton);
 	}
 	

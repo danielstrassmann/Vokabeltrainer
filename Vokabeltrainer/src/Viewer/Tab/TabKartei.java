@@ -123,6 +123,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
+		textFrage.setText(null);
+		textAntwort.setText(null);
 		ArrayList<Karte> kartenSammlung = kk.getSammlung();
 		Object kartenInTable[] = new Object[2];
 		for (int i = 0; i < kartenSammlung.size(); i++) {

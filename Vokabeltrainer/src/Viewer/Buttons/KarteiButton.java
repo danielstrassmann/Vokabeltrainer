@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class KarteiButton extends JPanel {
+public class KarteiButton extends JButton {
 
 	
 private JButton karteiButton;
@@ -28,7 +28,7 @@ private JButton karteiButton;
 	
 	private void initGui() 
 	{
-		setLayout(null);
+		//setLayout(null);
 		add(karteiButton);
 	}
 	

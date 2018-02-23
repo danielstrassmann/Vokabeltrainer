@@ -58,7 +58,7 @@ public class HauptmenuNeu {
 		hauptPanel.setSize(300,300);
 		
 		MenuleisteOben mlo = new MenuleisteOben();
-		hauptPanel.add(mlo, BorderLayout.CENTER);
+		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 
 /*		
 		BenutzerspracheButton bsb = new BenutzerspracheButton();

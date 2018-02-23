@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
-import Viewer.TabKartei;
+import Viewer.Tab.TabKartei;
 
 
 public class TestklasseTbr {

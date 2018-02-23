@@ -35,7 +35,9 @@ private JComboBox karteiAuswahl;
 	private void initGui()
 	{
 		karteiAuswahlPanel.add(karteiAuswahl);
-		add(karteiAuswahlPanel,BorderLayout.EAST);
+		add(karteiAuswahlPanel);
 	}
 
 }
+
+
