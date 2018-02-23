@@ -10,8 +10,7 @@ public class GUI_Neu {
 	{
 		
 		HauptmenuNeu guiNeu = new HauptmenuNeu();
-//		guiNeu.mainFrame();
-//		guiNeu.hauptPanel();
+
 		
 	}
 }

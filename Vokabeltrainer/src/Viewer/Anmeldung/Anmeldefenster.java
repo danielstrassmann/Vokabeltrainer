@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Viewer.Menu.HauptmenuNeu;
+
 import javax.swing.JPasswordField;
 
 public class Anmeldefenster{
@@ -44,7 +47,7 @@ public Anmeldefenster()
 	this.anmeldeButton = new JButton("Anmelden");
 	this.registrieren = new JButton("Registrieren");
 	this.exitButton = new JButton("Exit");
-	anmeldeButton.addActionListener(null);
+	anmeldeButton.addActionListener(new anmbtn());
 	registrieren.addActionListener(new regbtn());
 	exitButton.addActionListener(new exitbtn());
 	
@@ -121,6 +124,16 @@ public Anmeldefenster()
 			
 		Registrierung gui = new Registrierung();
 		Registrierung.main(null);
+		
+		}
+	}
+	
+	class anmbtn implements ActionListener {
+	    //
+		public void actionPerformed(ActionEvent e) {
+			
+		HauptmenuNeu guiNeu = new HauptmenuNeu();
+		loginfenster.dispose();
 		
 		}
 	}
