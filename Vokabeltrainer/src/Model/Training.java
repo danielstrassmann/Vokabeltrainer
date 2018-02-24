@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Training {
-
+// test
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
