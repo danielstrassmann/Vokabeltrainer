@@ -18,7 +18,7 @@ public class BenutzerspracheButton extends JComboBox
 			addItem("Deutsch");
 			addItem("français");
 			addItem("english");
-			addItem("español");
+			addItem("italiano");
 
 			setVisible(true);
 			setSize(200,200);
