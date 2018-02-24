@@ -17,7 +17,7 @@ import Model.User;
 import Viewer.Buttons.KarteiButton.karteiButtonListener;
 import Viewer.Tab.TabKartei;
 
-public class KarteiAuswahlButton extends JComboBox {
+public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	private Kartei kk;
 	TabKartei tb = new TabKartei();
 
@@ -32,8 +32,8 @@ public class KarteiAuswahlButton extends JComboBox {
 	public void comboboxKarteiAbfuellen(User u) {
 		ArrayList<Kartei> karteiliste = u.getUserKarteien();
 		for (int i = 0; i < karteiliste.size(); i++) {
-			Kartei kk = karteiliste.get(i);
-			addItem(kk);
+			Kartei klk = karteiliste.get(i);
+			addItem(klk);
 		}
 	}
 
@@ -42,8 +42,10 @@ public class KarteiAuswahlButton extends JComboBox {
 		@Override
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
-				  Object selectedItem = event.getItem();
-				System.out.println(selectedItem);
+				  kk =  (Kartei) getSelectedItem();
+				System.out.println(kk);
+				
+				tb.tableKarteiabfuellen(kk);
 
 			}
 

@@ -80,7 +80,7 @@ public class TestklasseTbr {
 		TabKartei tb = new TabKartei();
 	//	panel.setBackground(Color.red);
 		frame.setSize(900, 900);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		//frame.add(tb);
 		frame.setLayout(new BorderLayout(10,10));
