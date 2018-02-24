@@ -11,15 +11,17 @@ import javax.swing.JTextField;
 
 import Controller.KarteiController;
 import Model.User;
+import Viewer.Buttons.KarteiAuswahlButton;
 
-public class KarteiErstellen extends JDialog 
-{
+public class KarteiErstellen extends JDialog {
 	KarteiController kc = new KarteiController();
 	User u = new User();
+	KarteiAuswahlButton kab = new KarteiAuswahlButton();
+
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
 	private JLabel labelBezAntwort;
-	private JLabel labelFehler;
+	private JLabel labelNachricht;
 
 	private JTextField textEingabeFrage;
 	private JTextField textEingabeAntwort;
@@ -38,8 +40,7 @@ public class KarteiErstellen extends JDialog
 		this.labelTitelKartei = new JLabel("Bitte erstellen Sie eine neue Kartei");
 		this.labelBezFrage = new JLabel("Bezeichnung der Quelle eingeben");
 		this.labelBezAntwort = new JLabel("Bezeichnung der Übersetzung eingeben");
-		this.labelFehler = new JLabel ("");
-		
+		this.labelNachricht = new JLabel("");
 
 		this.textEingabeFrage = new JTextField();
 		this.textEingabeAntwort = new JTextField();
@@ -64,8 +65,7 @@ public class KarteiErstellen extends JDialog
 		this.labelTitelKartei.setBounds(20, 1, 200, 30);
 		this.labelBezFrage.setBounds(20, 40, 350, 25);
 		this.labelBezAntwort.setBounds(20, 100, 350, 25);
-		this.labelFehler.setBounds(20, 160, 350, 25);
-		this.labelFehler.setForeground(Color.red);
+		this.labelNachricht.setBounds(20, 160, 350, 25);
 
 		this.textEingabeFrage.setBounds(20, 65, 250, 25);
 		this.textEingabeAntwort.setBounds(20, 125, 250, 25);
@@ -76,7 +76,7 @@ public class KarteiErstellen extends JDialog
 		add(labelTitelKartei);
 		add(labelBezFrage);
 		add(labelBezAntwort);
-		add(labelFehler);
+		add(labelNachricht);
 
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
@@ -92,17 +92,20 @@ public class KarteiErstellen extends JDialog
 				String frageKarteiHinzu = textEingabeFrage.getText();
 				String antwortKarteihinzu = textEingabeAntwort.getText();
 				kc.karteiErstellen(frageKarteiHinzu, antwortKarteihinzu, u);
-
-				System.out.println("kartei anlegen");
+				labelNachricht.setForeground(new Color(0, 102, 0));
+				labelNachricht.setText("Kartei erfolgreich angelegt");
+				textEingabeFrage.setText(null);
+				textEingabeAntwort.setText(null);
+				kab.comboboxKarteiAbfuellen(u);
 			} else {
-				labelFehler.setText("Bitte Quelle und Übersetzung eingeben");
+				labelNachricht.setForeground(Color.red);
+				labelNachricht.setText("Bitte Quelle und Übersetzung eingeben");
 			}
 		}
 	}
 
 	class abbrechenButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("abbrechen button gedrückt");
 			System.exit(0);
 		}
 
