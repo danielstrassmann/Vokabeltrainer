@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
+import Viewer.Buttons.KarteiAuswahlButton;
+import Viewer.Menu.HauptmenuNeu;
 import Viewer.Tab.TabKartei;
 
 
@@ -24,6 +27,7 @@ public class TestklasseTbr {
 		// Neue Kartei erstellen mittels Methode vom KarteiController
 		KarteiController test = new KarteiController();
 		test.karteiErstellen("Deutsch", "Englisch", u);
+		test.karteiErstellen("Franz", "Englisch", u);
 
 		// Get ArrayList vom zuvor instanzierten User
 		ArrayList<Kartei> karteiliste;
@@ -72,16 +76,28 @@ public class TestklasseTbr {
 		System.out.println("Die Karte mit der Id " + k3.getId() + " hat die Frage [" + k3.getFrage() + "] und die Antwort [" + k3.getAntwort() + "]");
 		
 		JFrame frame = new JFrame();
-		//JPanel panel = new JPanel();
+		
 		TabKartei tb = new TabKartei();
 	//	panel.setBackground(Color.red);
-		frame.setSize(900, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(900, 900);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.add(tb);
-		tb.tableKarteiabfuellen(kk);
+		//frame.add(tb);
+		frame.setLayout(new BorderLayout(10,10));
+	
+		//HauptmenuNeu guiNeu = new HauptmenuNeu();
+		KarteiAuswahlButton kab = new KarteiAuswahlButton();
+		JPanel panel = new JPanel();
+		JPanel panel1 = new JPanel();
+		panel.setBounds(20, 450, 400, 40);
+		panel.add(kab,BorderLayout.PAGE_START);
 		
-
+		
+		frame.add(panel);
+		frame.add(tb);
+		
+kab.comboboxKarteiAbfuellen(u);
+//tb.tableKarteiabfuellen(kk);
 
 	}
 

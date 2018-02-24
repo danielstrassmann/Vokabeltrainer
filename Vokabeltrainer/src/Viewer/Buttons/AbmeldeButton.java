@@ -20,9 +20,9 @@ public class AbmeldeButton extends JButton{
 	{
 		setText("Abmelden");
 		setVisible(true);
-		setSize(200,200);
+		
 		addActionListener(new abmeldeButtonListener());
-		setBackground(Color.RED);
+		
 	}
 	
 	

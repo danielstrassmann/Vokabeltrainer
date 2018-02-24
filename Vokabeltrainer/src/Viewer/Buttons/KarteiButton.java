@@ -16,10 +16,10 @@ public class KarteiButton extends JButton {
 
 	public void karteiButton() 
 	{
-		setSize(200, 200);
+		
 		addActionListener(new karteiButtonListener());
 		setText("Kartei erstellen");
-		setBackground(Color.GREEN);
+		
 	}
 
 	class karteiButtonListener implements ActionListener 

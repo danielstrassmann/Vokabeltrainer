@@ -71,4 +71,7 @@ public class Kartei {
 	public Karte remove(int i) {
 		return kartensammlung.remove(i);
 	}
+	public String toString() {
+		return (frageKartei +" - " + antwortKartei);
+	}
 }
