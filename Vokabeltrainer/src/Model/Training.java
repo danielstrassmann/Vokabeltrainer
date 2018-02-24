@@ -9,8 +9,6 @@ public class Training {
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
 	private int boxNummer;
-	private String eingabeWert;
-	private String kartenAntwort;
 	private Karte aktiveKarte;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
