@@ -12,11 +12,13 @@ import javax.swing.JTextField;
 import Controller.KarteiController;
 import Model.User;
 import Viewer.Buttons.KarteiAuswahlButton;
+import Viewer.Menu.HauptmenuNeu;
 
 public class KarteiErstellen extends JDialog {
-	KarteiController kc = new KarteiController();
-	User u = new User();
-	KarteiAuswahlButton kab = new KarteiAuswahlButton();
+	private KarteiController kc = new KarteiController();
+	private User u = new User();
+	private KarteiAuswahlButton kab = new KarteiAuswahlButton();
+
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
@@ -54,6 +56,7 @@ public class KarteiErstellen extends JDialog {
 		buttonAbbrechen.addActionListener(new abbrechenButtonListener());
 	}
 
+
 	public void initGui() {
 		setLayout(null);
 		setSize(310, 280);
@@ -61,6 +64,8 @@ public class KarteiErstellen extends JDialog {
 		setTitle("Kartei anlegen");
 		setVisible(true);
 		setLocationRelativeTo(null);
+		//setModalityType(DEFAULT_MODALITY_TYPE);
+		setAlwaysOnTop(true);
 
 		this.labelTitelKartei.setBounds(20, 1, 200, 30);
 		this.labelBezFrage.setBounds(20, 40, 350, 25);
