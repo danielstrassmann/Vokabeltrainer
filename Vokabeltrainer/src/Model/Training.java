@@ -9,6 +9,9 @@ public class Training {
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
 	private int boxNummer;
+	private String eingabeWert;
+	private String kartenAntwort;
+	private Karte aktiveKarte;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
 	public Training(User u, int boxNummer) {
@@ -80,7 +83,11 @@ public class Training {
 		this.sammlungBox = sammlungBox;
 	}
 
-	
+	public int getAnzahlKartenInBox() {
+		int anzahlKartenInBox = sammlungBox.size();
+		return anzahlKartenInBox;
+	}
+
 	// Was zurückgeben, wenn es keine Karten mehr in der Box gibt?
 	public Karte gibZufallsKarteAusBox() {
 
@@ -99,6 +106,9 @@ public class Training {
 
 		else {
 			System.out.println("Es hat keine Karten mehr in der Box!");
+			Karte k = new Karte();
+			// Objekt k ist null, da keine Karten mehr in der Box sind
+			return k;
 		}
 
 	}

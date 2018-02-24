@@ -6,8 +6,8 @@ public class Kartei {
 
 	private int id;
 	private ArrayList<Karte> kartensammlung;
-	private String frage;
-	private String antwort;
+	private String frageKartei;
+	private String antwortKartei;
 
 	// Standardkonstruktor
 	public Kartei() {
@@ -17,8 +17,8 @@ public class Kartei {
 	// Die ID wird bei erst beim Ablegen der Kartei in die Sammlung des Users
 	// erzeugt
 	public Kartei(String frage, String antwort) {
-		this.frage = frage;
-		this.antwort = antwort;
+		this.frageKartei = frage;
+		this.antwortKartei = antwort;
 		kartensammlung = new ArrayList<Karte>();
 	}
 
@@ -44,19 +44,19 @@ public class Kartei {
 	}
 
 	public String getFrage() {
-		return frage;
+		return frageKartei;
 	}
 
 	public void setFrage(String frage) {
-		this.frage = frage;
+		this.frageKartei = frage;
 	}
 
 	public String getAntwort() {
-		return antwort;
+		return antwortKartei;
 	}
 
 	public void setAntwort(String antwort) {
-		this.antwort = antwort;
+		this.antwortKartei = antwort;
 	}
 
 	public void add(Karte k1) {
