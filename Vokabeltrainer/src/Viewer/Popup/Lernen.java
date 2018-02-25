@@ -73,5 +73,8 @@ public class Lernen extends JFrame{
 		add(buttonAnlegen);
 		add(buttonAbbrechen);
 	}
+	
+	
+	
 
 }
