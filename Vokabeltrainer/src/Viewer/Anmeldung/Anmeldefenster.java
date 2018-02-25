@@ -16,6 +16,8 @@ import Viewer.Menu.HauptmenuNeu;
 
 import javax.swing.JPasswordField;
 
+import Viewer.Buttons.*;
+
 public class Anmeldefenster{
 	
 	//Frame
@@ -37,12 +39,15 @@ public class Anmeldefenster{
 	private JPanel titelframe;
 	private JPanel buttonBereich;
 	private JPanel loginBereich;
+	
+	private JLabel spracheBez;
  		
 public Anmeldefenster() 
 {
 	//GUI-Elements
 	this.loginfenster = new JFrame("Vokabeltrainer");
 	loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	loginfenster.setLocationRelativeTo(null);
 	
 	this.anmeldeButton = new JButton("Anmelden");
 	this.registrieren = new JButton("Registrieren");
@@ -63,6 +68,12 @@ public Anmeldefenster()
 	this.buttonBereich = new JPanel();
 	this.loginBereich = new JPanel();
 	
+	BenutzerspracheButton bsb = new BenutzerspracheButton();
+	
+	this.spracheBez = new JLabel();
+	this.spracheBez.setText("Benutzersprache");
+	
+	
 	//Paint Paint Paint
 	
 	//login_Fenster_Zeichnen
@@ -78,11 +89,15 @@ public Anmeldefenster()
 	userpw.setLayout(new GridLayout(2,2,30,20));
 
 	//ButtonPanel
+
 	buttonBereich.add(anmeldeButton);
 	buttonBereich.add(registrieren);
-	buttonBereich.add(exitButton);		
+	buttonBereich.add(exitButton);	
+
 	//titel
 	titelframe.add(frameTitle);
+	titelframe.add(spracheBez);
+	titelframe.add(bsb, BorderLayout.PAGE_END);	
 	//Add von_loginbemerkung
 	userpw.add(usernameid);
 	userpw.add(loginUsername);
@@ -95,6 +110,7 @@ public Anmeldefenster()
 	loginfenster.add(titelframe,BorderLayout.NORTH);
 	loginfenster.add(buttonBereich,BorderLayout.SOUTH);
 	loginfenster.add(loginBereich,BorderLayout.CENTER);
+
 	//
 	loginfenster.setSize(500, 200);
 	loginfenster.setVisible(true);
