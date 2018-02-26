@@ -86,6 +86,7 @@ public class TabLernen extends JPanel implements ActionListener
 			public void mouseClicked(MouseEvent s) 
 			{
 				Lernen lernenFennster = new Lernen();
+				
 //				lernenFennster.setVisible(true);
 //				lernenFennster.setSize(500,500);
 
