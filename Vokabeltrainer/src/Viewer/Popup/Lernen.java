@@ -66,7 +66,7 @@ public class Lernen extends JFrame{
 		this.labelQuellName.setBounds		(10, 100, 300, 25);
 		this.labelUbersetzungName.setBounds	(10, 150, 300, 25);
 		this.labelUbersichtKarten.setBounds	(10, 400, 300 , 25);
-		this.labelRueckmeldung.setBounds	(10, 230, 300 , 25);
+		this.labelRueckmeldung.setBounds	(10, 230, 500 , 25);
 		
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
@@ -127,6 +127,7 @@ public class Lernen extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			buttonNaechsteKarte.setVisible(false);
 			buttonKontrollieren.setEnabled(true);
+			labelRueckmeldung.setText("");
 		}
 	}
 	
