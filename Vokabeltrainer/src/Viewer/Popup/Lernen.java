@@ -17,8 +17,9 @@ public class Lernen extends JFrame{
 	private JTextField textEingabeFrage;
 	private JTextField textEingabeAntwort;
 
-	private JButton buttonAnlegen;
+	private JButton buttonKontrollieren;
 	private JButton buttonAbbrechen;
+	private JButton buttonNaechsteKarte;
 	
 	public Lernen()
 	{
@@ -37,9 +38,9 @@ public class Lernen extends JFrame{
 		this.textEingabeFrage = new JTextField();
 		this.textEingabeAntwort = new JTextField();
 
-		this.buttonAnlegen = new JButton("Kontrollieren");
+		this.buttonKontrollieren = new JButton("Kontrollieren");
 		this.buttonAbbrechen = new JButton("Abbrechen");
-	
+		this.buttonNaechsteKarte = new JButton("nächste Karte");
 	}
 	
 	private void initGui()
@@ -59,8 +60,10 @@ public class Lernen extends JFrame{
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
 
-		this.buttonAnlegen.setBounds		(310, 300, 120, 25);
+		this.buttonNaechsteKarte.setBounds	(10, 300, 200, 25);
+		this.buttonKontrollieren.setBounds	(310, 300, 120, 25);
 		this.buttonAbbrechen.setBounds		(450, 300, 120, 25);
+
 
 		add(labelTitelLerner);
 		add(labelQuellName);
@@ -70,8 +73,28 @@ public class Lernen extends JFrame{
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
 
-		add(buttonAnlegen);
+		add(buttonNaechsteKarte);
+		add(buttonKontrollieren);
 		add(buttonAbbrechen);
+		
+		this.buttonNaechsteKarte.setVisible(false);
+		
+		this.buttonKontrollieren.addActionListener(new kontrollierenButton());
+		this.buttonNaechsteKarte.addActionListener(new naechsteKarteButton());
+		
+
+	}
+	
+	class kontrollierenButton implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			buttonNaechsteKarte.setVisible(true);
+		}
+	}
+	
+	class naechsteKarteButton implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			buttonNaechsteKarte.setVisible(false);
+		}
 	}
 	
 	
