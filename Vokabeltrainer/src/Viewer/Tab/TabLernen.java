@@ -31,6 +31,8 @@ public class TabLernen extends JPanel implements ActionListener
 	Border margin3;
 	Border margin4;
 	Border margin5;
+	Border marginRed;
+	Border border;
 	
 	private BoxLabel boxLabel1;
 	private BoxLabel boxLabel2;
@@ -80,7 +82,7 @@ public class TabLernen extends JPanel implements ActionListener
 		boxLabel2.addMouseListener(new boxMausKlick());	
 		boxLabel3.addMouseListener(new boxMausKlick());	
 		boxLabel4.addMouseListener(new boxMausKlick());	
-		boxLabel5.addMouseListener(new boxMausKlick5());
+		boxLabel5.addMouseListener(new boxMausKlick());
 	}
 	
 	
@@ -92,6 +94,8 @@ public class TabLernen extends JPanel implements ActionListener
 		margin3 = new LineBorder(new Color(100,140,100),15);
 		margin4 = new LineBorder(new Color(100,160,100),15);
 		margin5 = new LineBorder(new Color(100,180,100),15);
+		marginRed = new LineBorder(new Color(100,50,50),15);
+
 	
 		
 		boxLabel1.setBorder(new CompoundBorder(border, margin1));
@@ -154,16 +158,29 @@ public class TabLernen extends JPanel implements ActionListener
 	{
 		public void mouseClicked(MouseEvent s) 
 		{
-
 			BoxLabel source = (BoxLabel) s.getSource();
-			
 			Lernen lernenFenster = new Lernen(parent,source.getId());
-//			parent.setEnabled(false);
+			parent.setEnabled(false);
 			lernenFenster.setAlwaysOnTop(true);
 			
-			System.out.println(source.getId());
-			
-			
+			if(source.getId() == 1) {
+				boxLabel1.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 2) {
+				boxLabel2.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 3) {
+				boxLabel3.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 4) {
+				boxLabel4.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 5) {
+				boxLabel5.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			else {
+				
+			}
 			
 			lernenFenster.addWindowListener(new WindowAdapter() {
 	            public void windowClosing(WindowEvent evt) {
@@ -172,10 +189,13 @@ public class TabLernen extends JPanel implements ActionListener
 	        });
 		}
 		private void exitForm(WindowEvent evt) {
-			Border border = getBorder();
-			Border margin1 = new LineBorder(new Color(100,100,100),15);
 			boxLabel1.setBorder(new CompoundBorder(border, margin1));
-//			parent.setEnabled(true);
+			boxLabel2.setBorder(new CompoundBorder(border, margin2));
+			boxLabel3.setBorder(new CompoundBorder(border, margin3));
+			boxLabel4.setBorder(new CompoundBorder(border, margin4));
+			boxLabel5.setBorder(new CompoundBorder(border, margin5));
+			
+			parent.setEnabled(true);
 		}
 		
 		@Override
@@ -198,214 +218,6 @@ public class TabLernen extends JPanel implements ActionListener
 	}
 	
 	
-	class boxMausKlick1 implements MouseListener 
-		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				parent.setEnabled(false);
-
-				Lernen lernenFenster = new Lernen(parent);
-				lernenFenster.setModal(false);
-				lernenFenster.setAlwaysOnTop(true);
-				
-				Border border = getBorder();
-				Border marginRed = new LineBorder(new Color(100,50,50),15);
-				boxLabel1.setBorder(new CompoundBorder(border, marginRed));	
-				
-				lernenFenster.addWindowListener(new WindowAdapter() {
-		            public void windowClosing(WindowEvent evt) {
-		                exitForm(evt);
-		            }
-		        });
-			}
-			private void exitForm(WindowEvent evt) {
-				Border border = getBorder();
-				Border margin1 = new LineBorder(new Color(100,100,100),15);
-				boxLabel1.setBorder(new CompoundBorder(border, margin1));
-				parent.setEnabled(true);
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub			
-			}
-	}
-	 class boxMausKlick2 implements MouseListener 
-		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				Lernen lernenFenster = new Lernen(parent);
-				lernenFenster.setModal(true);
-				lernenFenster.setAlwaysOnTop(true);
-				Border border = getBorder();
-				Border marginRed = new LineBorder(new Color(100,50,50),15);
-				boxLabel2.setBorder(new CompoundBorder(border, marginRed));	
-				
-				lernenFenster.addWindowListener(new WindowAdapter() {
-		            public void windowClosing(WindowEvent evt) {
-		                exitForm(evt);
-		            }
-		        });
-			}
-			private void exitForm(WindowEvent evt) {
-				Border border = getBorder();
-				Border margin2 = new LineBorder(new Color(100,120,100),15);
-				boxLabel2.setBorder(new CompoundBorder(border, margin2));
-			}
-			
-			
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-		}
-
-		class boxMausKlick3 implements MouseListener 
-		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				Lernen lernenFenster = new Lernen(parent);
-				lernenFenster.setAlwaysOnTop(true);
-				Border border = getBorder();
-				Border marginRed = new LineBorder(new Color(100,50,50),15);
-				boxLabel3.setBorder(new CompoundBorder(border, marginRed));	
-				
-				lernenFenster.addWindowListener(new WindowAdapter() {
-		            public void windowClosing(WindowEvent evt) {
-		                exitForm(evt);
-		            }
-		        });
-			}
-			private void exitForm(WindowEvent evt) {
-				Border border = getBorder();
-				Border margin3 = new LineBorder(new Color(100,140,100),15);
-				boxLabel3.setBorder(new CompoundBorder(border, margin3));
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub			
-			}
-	}
-		
-		class boxMausKlick4 implements MouseListener 
-		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				Lernen lernenFenster = new Lernen(parent);
-				lernenFenster.setAlwaysOnTop(true);
-				Border border = getBorder();
-				Border marginRed = new LineBorder(new Color(100,50,50),15);
-				boxLabel4.setBorder(new CompoundBorder(border, marginRed));	
-				
-				lernenFenster.addWindowListener(new WindowAdapter() {
-		            public void windowClosing(WindowEvent evt) {
-		                exitForm(evt);
-		            }
-		        });
-			}
-			private void exitForm(WindowEvent evt) {
-				Border border = getBorder();
-				Border margin4 = new LineBorder(new Color(100,160,100),15);
-				boxLabel4.setBorder(new CompoundBorder(border, margin4));
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub			
-			}
-	}
-		class boxMausKlick5 implements MouseListener 
-		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				Lernen lernenFenster = new Lernen(parent);
-				lernenFenster.setAlwaysOnTop(true);
-				Border border = getBorder();
-				Border marginRed = new LineBorder(new Color(100,50,50),15);
-				boxLabel5.setBorder(new CompoundBorder(border, marginRed));	
-				
-				lernenFenster.addWindowListener(new WindowAdapter() {
-		            public void windowClosing(WindowEvent evt) {
-		                exitForm(evt);
-		            }
-		        });
-			}
-			private void exitForm(WindowEvent evt) {
-				Border border = getBorder();
-				Border margin5 = new LineBorder(new Color(100,180,100),15);
-				boxLabel5.setBorder(new CompoundBorder(border, margin5));
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub			
-			}
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

@@ -71,6 +71,7 @@ public class Lernen extends JDialog{
 		setLocationRelativeTo(null);
 		this.textKontrolleBox.setText("" + this.aktuelleBox);
 
+		// Location auf dem Fenster Lernen setzten
 		this.labelTitelLerner.setBounds		(10, 1, 300, 25);
 		this.labelQuellName.setBounds		(10, 100, 300, 25);
 		this.labelUbersetzungName.setBounds	(10, 150, 300, 25);
@@ -80,13 +81,14 @@ public class Lernen extends JDialog{
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
 		
-		this.textKontrolleBox.setBounds		(310, 190, 60, 25);
+		this.textKontrolleBox.setBounds		(410, 190, 60, 25);
 
 		this.buttonNaechsteKarte.setBounds	(10, 300, 200, 25);
 		this.buttonKontrollieren.setBounds	(310, 300, 120, 25);
 		this.buttonAbbrechen.setBounds		(450, 300, 120, 25);
 		this.buttonSwitch.setBounds			(595, 125, 90, 25);
 		
+		// Hinzufügen zum Fenster Lernen
 		add(labelTitelLerner);
 		add(labelQuellName);
 		add(labelUbersetzungName);
@@ -143,6 +145,7 @@ public class Lernen extends JDialog{
 		}
 	}
 	
+	// Wechselt die Abfragemöglichkeit vom Quell zum Zielwort
 	class switchButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (textKontrolleSwitch.getText().equals("1")) {
@@ -167,8 +170,4 @@ public class Lernen extends JDialog{
 			}
 		}
 	}
-	
-	
-	
-
 }
