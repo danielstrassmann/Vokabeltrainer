@@ -142,7 +142,7 @@ public class Lernen extends JDialog{
 		}
 		else {
 			labelRueckmeldung.setForeground(Color.RED);
-			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box");
+			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box ");
 		}
 	}
 	
