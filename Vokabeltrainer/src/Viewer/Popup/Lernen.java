@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import Viewer.Tab.*;
 
 
-public class Lernen extends JFrame{
+public class Lernen extends JDialog{
 	
 	private JLabel labelTitelLerner;
 	private JLabel labelQuellName;
@@ -28,8 +28,12 @@ public class Lernen extends JFrame{
 	private JButton buttonNaechsteKarte;
 	private JButton buttonSwitch;
 	
-	public Lernen()
+	private int aktuelleBox;
+	
+	public Lernen(JFrame owner, int aktuelleBox)
 	{
+		super(owner);
+		this.aktuelleBox = aktuelleBox;
 		lernen();
 		initGui();
 	}
@@ -55,8 +59,6 @@ public class Lernen extends JFrame{
 		
 		this.textKontrolleSwitch = new JTextField("1");
 		this.textKontrolleBox = new JTextField();
-		
-		
 	}
 	
 	private void initGui()
@@ -67,6 +69,7 @@ public class Lernen extends JFrame{
 		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);
+		this.textKontrolleBox.setText("" + this.aktuelleBox);
 
 		this.labelTitelLerner.setBounds		(10, 1, 300, 25);
 		this.labelQuellName.setBounds		(10, 100, 300, 25);
@@ -76,6 +79,8 @@ public class Lernen extends JFrame{
 		
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
+		
+		this.textKontrolleBox.setBounds		(310, 190, 60, 25);
 
 		this.buttonNaechsteKarte.setBounds	(10, 300, 200, 25);
 		this.buttonKontrollieren.setBounds	(310, 300, 120, 25);
@@ -90,6 +95,7 @@ public class Lernen extends JFrame{
 
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
+		add(textKontrolleBox);
 
 		add(buttonNaechsteKarte);
 		add(buttonKontrollieren);

@@ -8,12 +8,14 @@ import Viewer.Tab.*;
 
 public class Tabs extends JPanel{
 	
-private JTabbedPane tabsMenu ;	
+private JTabbedPane tabsMenu ;
+private JFrame parent;
 	
 private MenuleisteOben mlo;
 	
-	public Tabs(MenuleisteOben mlo)
+	public Tabs(MenuleisteOben mlo, JFrame parent)
 	{
+		this.parent = parent;
 	this.mlo = mlo;
 		tabs();
 			
@@ -28,7 +30,7 @@ private MenuleisteOben mlo;
 		add(tabsMenu);
 		
 		
-		TabLernen tle = new TabLernen(mlo);
+		TabLernen tle = new TabLernen(mlo, parent);
 		tabsMenu.addTab("Lernen", tle);
 		
 		TabStatistik tst = new TabStatistik();
