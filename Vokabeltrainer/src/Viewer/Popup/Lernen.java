@@ -115,8 +115,7 @@ public class Lernen extends JDialog{
 		//Kontrolle welche Box
 		this.textKontrolleBox.setBounds		(595, 190, 60, 25);
 		this.textKontrolleBox.setBackground(Color.BLUE);
-		
-		//Switchfunktion
+		//Kontrolled Switchfunktion 
 		this.textKontrolleSwitch.setBounds 	(595, 350, 50, 25);
 		textKontrolleSwitch.setBackground(Color.RED);
 		add(textKontrolleSwitch);
@@ -168,6 +167,7 @@ public class Lernen extends JDialog{
 			textEingabeFrage.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		}
+		karteWechseln();
 	}
 	
 	class kontrollierenButton implements ActionListener {
