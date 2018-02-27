@@ -20,14 +20,14 @@ public class AbspeichernLaden {
 
 	public File karteSpeichern(Karte karte) {
 		try {
-			File xmlfile = new File("karte.xml");
+			File karteXmlFile = new File("karte.xml");
 			JAXBContext jaxbContext = JAXBContext.newInstance(Karte.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.marshal(karte, xmlfile);
+			jaxbMarshaller.marshal(karte, karteXmlFile);
 
-			return xmlfile;
+			return karteXmlFile;
 
 		} catch (JAXBException ex) {
 			System.out.println(ex);
@@ -36,12 +36,12 @@ public class AbspeichernLaden {
 
 	}
 
-	public Karte karteLaden(File xmlFile) {
+	public Karte karteLaden(File karteXmlFile) {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Karte.class);
 			Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
 
-			Karte gelesen = (Karte) jaxbMarshaller.unmarshal(xmlFile);
+			Karte gelesen = (Karte) jaxbMarshaller.unmarshal(karteXmlFile);
 
 			return gelesen;
 
@@ -53,14 +53,14 @@ public class AbspeichernLaden {
 
 	public File userSpeichern(UserSammlung userliste) {
 		try {
-			File xmlfile = new File("User.xml");
+			File userXmlFile = new File("users.xml");
 			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			jaxbMarshaller.marshal(userliste, xmlfile);
+			jaxbMarshaller.marshal(userliste, userXmlFile);
 
-			return xmlfile;
+			return userXmlFile;
 
 		} catch (JAXBException ex) {
 			System.out.println(ex);
@@ -69,12 +69,12 @@ public class AbspeichernLaden {
 		}
 	}
 
-	public UserSammlung userLaden(File xmlFile) {
+	public UserSammlung userLaden(File userXmlFile) {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
 			Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
 
-			UserSammlung gelesen = (UserSammlung) jaxbMarshaller.unmarshal(xmlFile);
+			UserSammlung gelesen = (UserSammlung) jaxbMarshaller.unmarshal(userXmlFile);
 
 			return gelesen;
 
