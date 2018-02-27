@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Viewer.Tab.*;
+
 
 public class Lernen extends JFrame{
 	
@@ -17,7 +19,9 @@ public class Lernen extends JFrame{
 
 	private JTextField textEingabeFrage;
 	private JTextField textEingabeAntwort;
+	
 	private JTextField textKontrolleSwitch;
+	private JTextField textKontrolleBox;
 
 	private JButton buttonKontrollieren;
 	private JButton buttonAbbrechen;
@@ -28,7 +32,6 @@ public class Lernen extends JFrame{
 	{
 		lernen();
 		initGui();
-		
 	}
 	
 	private void lernen()
@@ -49,7 +52,10 @@ public class Lernen extends JFrame{
 		this.buttonNaechsteKarte = new JButton("nächste Karte");
 		
 		this.buttonSwitch = new JButton("SWITCH");
+		
 		this.textKontrolleSwitch = new JTextField("1");
+		this.textKontrolleBox = new JTextField();
+		
 		
 	}
 	
