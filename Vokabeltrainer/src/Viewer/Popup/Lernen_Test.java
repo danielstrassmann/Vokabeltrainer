@@ -14,7 +14,7 @@ import Viewer.Tab.*;
 
 import Model.*;
 
-public class Lernen extends JDialog {
+public class Lernen_Test extends JDialog {
 
 	private JLabel labelTitelLerner;
 	private JLabel labelQuellName;
@@ -41,8 +41,8 @@ public class Lernen extends JDialog {
 	// TESTING, bis Duc Mehtode liefert
 	private User u;
 
-	public Lernen(JFrame owner, int aktuelleBox) {
-		super(owner);
+	public Lernen_Test(User u, int aktuelleBox) {
+
 		this.aktuelleBox = aktuelleBox;
 		Training t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();

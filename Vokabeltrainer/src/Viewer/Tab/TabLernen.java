@@ -17,6 +17,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
+import Model.Training;
+import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Popup.Lernen;
 
@@ -45,6 +47,7 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	private MenuleisteOben mlo;
 	private JFrame parent;
+	
 
 	public TabLernen(MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -77,6 +80,9 @@ public class TabLernen extends JPanel implements ActionListener {
 		boxLabel3.addMouseListener(new boxMausKlick());
 		boxLabel4.addMouseListener(new boxMausKlick());
 		boxLabel5.addMouseListener(new boxMausKlick());
+		
+		
+
 	}
 
 	private void initGui() {
@@ -191,6 +197,8 @@ public class TabLernen extends JPanel implements ActionListener {
 			boxLabel5.setBorder(new CompoundBorder(border, margin5));
 
 			parent.setEnabled(true);
+			
+
 		}
 
 		@Override

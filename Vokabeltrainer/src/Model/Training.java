@@ -76,6 +76,10 @@ public class Training {
 	public void setSammlungBox(ArrayList<Karte> sammlungBox) {
 		this.sammlungBox = sammlungBox;
 	}
+	
+	public Karte getAktiveKarte() {
+		return aktiveKarte;
+	}
 
 	public int getAnzahlKartenInBox() {
 		int anzahlKartenInBox = sammlungBox.size();
@@ -104,7 +108,8 @@ public class Training {
 			Karte k = new Karte();
 			// Objekt k ist null, da keine Karten mehr in der Box sind
 			// Muss Marius im UI abfangen!!!
-			return k;
+			aktiveKarte = k;
+			return aktiveKarte;
 		}
 
 	}
