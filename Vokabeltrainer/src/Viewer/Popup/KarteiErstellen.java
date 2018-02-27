@@ -111,7 +111,7 @@ public class KarteiErstellen extends JDialog {
 
 	class abbrechenButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
+			dispose();
 		}
 
 	}
