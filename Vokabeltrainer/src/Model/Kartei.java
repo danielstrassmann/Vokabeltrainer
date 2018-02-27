@@ -33,6 +33,10 @@ public class Kartei {
 	public ArrayList<Karte> getSammlung() {
 		return kartensammlung;
 	}
+	
+	public void setSammlung(ArrayList<Karte> kartensammlung) {
+		this.kartensammlung = kartensammlung;
+	}
 
 	public void karteInSammlung(Karte k) {
 		kartensammlung.add(k);

@@ -36,5 +36,17 @@ public class Daten {
 	public void setAntwortenTotal(int antwortenTotal) {
 		this.antwortenTotal = antwortenTotal;
 	}
+	
+	public void antwortRichtig() {
+		this.antwortenKorrekt ++;
+		this.antwortenTotal ++;
+	}
+	
+	public void antwortFalsch() {
+		this.antwortenFalsch ++;
+		this.antwortenTotal++;
+		
+	}
+	
 
 }
