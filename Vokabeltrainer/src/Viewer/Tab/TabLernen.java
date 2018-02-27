@@ -8,10 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Viewer.Menuleisten.MenuleisteOben;
@@ -20,11 +24,21 @@ import Viewer.Popup.Lernen;
 
 public class TabLernen extends JPanel implements ActionListener
 {
-	private JLabel boxLabel1;
-	private JLabel boxLabel2;
-	private JLabel boxLabel3;
-	private JLabel boxLabel4;
-	private JLabel boxLabel5;
+	
+	Border margin;
+	Border margin1;
+	Border margin2;
+	Border margin3;
+	Border margin4;
+	Border margin5;
+	Border marginRed;
+	Border border;
+	
+	private BoxLabel boxLabel1;
+	private BoxLabel boxLabel2;
+	private BoxLabel boxLabel3;
+	private BoxLabel boxLabel4;
+	private BoxLabel boxLabel5;
 	
 	private JLabel box1;
 	private JLabel box2;
@@ -33,28 +47,35 @@ public class TabLernen extends JPanel implements ActionListener
 	private JLabel box5;
 	
 	private MenuleisteOben mlo;
+	private JFrame parent;
 	
-	public TabLernen(MenuleisteOben mlo)
+	public TabLernen(MenuleisteOben mlo, JFrame parent)
 	{
+		this.parent = parent;
 		this.mlo= mlo;
 		tabLernen();
 		initGui();
-	
 	}
 	
 	private void tabLernen()
 	{
-		this.boxLabel1 = new JLabel();
-		this.boxLabel2 = new JLabel();
-		this.boxLabel3 = new JLabel();
-		this.boxLabel4 = new JLabel();
-		this.boxLabel5 = new JLabel();
+		this.boxLabel1 = new BoxLabel();
+		this.boxLabel2 = new BoxLabel();
+		this.boxLabel3 = new BoxLabel();
+		this.boxLabel4 = new BoxLabel();
+		this.boxLabel5 = new BoxLabel();
 		
 		this.box1 = new JLabel("BOX 1");
 		this.box2 = new JLabel("BOX 2");
 		this.box3 = new JLabel("BOX 3");
 		this.box4 = new JLabel("BOX 4");
 		this.box5 = new JLabel("BOX 5");
+		
+		boxLabel1.setId(1);
+		boxLabel2.setId(2);
+		boxLabel3.setId(3);
+		boxLabel4.setId(4);
+		boxLabel5.setId(5);
 
 		
 		boxLabel1.addMouseListener(new boxMausKlick());
@@ -68,13 +89,20 @@ public class TabLernen extends JPanel implements ActionListener
 	private void initGui()
 	{
 		Border border = getBorder();
-		Border margin = new LineBorder(Color.lightGray,5);
+		margin1 = new LineBorder(new Color(100,100,100),15);
+		margin2 = new LineBorder(new Color(100,120,100),15);
+		margin3 = new LineBorder(new Color(100,140,100),15);
+		margin4 = new LineBorder(new Color(100,160,100),15);
+		margin5 = new LineBorder(new Color(100,180,100),15);
+		marginRed = new LineBorder(new Color(100,50,50),15);
+
+	
 		
-		boxLabel1.setBorder(new CompoundBorder(border, margin));
-		boxLabel2.setBorder(new CompoundBorder(border, margin));
-		boxLabel3.setBorder(new CompoundBorder(border, margin));
-		boxLabel4.setBorder(new CompoundBorder(border, margin));
-		boxLabel5.setBorder(new CompoundBorder(border, margin));
+		boxLabel1.setBorder(new CompoundBorder(border, margin1));
+		boxLabel2.setBorder(new CompoundBorder(border, margin2));
+		boxLabel3.setBorder(new CompoundBorder(border, margin3));
+		boxLabel4.setBorder(new CompoundBorder(border, margin4));
+		boxLabel5.setBorder(new CompoundBorder(border, margin5));
 		
 		boxLabel1.setPreferredSize(new Dimension(200,700));
 		boxLabel2.setPreferredSize(new Dimension(200,700));
@@ -82,8 +110,8 @@ public class TabLernen extends JPanel implements ActionListener
 		boxLabel4.setPreferredSize(new Dimension(200,700));
 		boxLabel5.setPreferredSize(new Dimension(200,700));
 		
-		boxLabel1.setLocation(10, 20);
 
+	//	boxLabel1.setBorder(new EmptyBorder(50, 50, 0, 0));
 
 		boxLabel1.setBackground(new Color(100, 120,100));
 		boxLabel1.setOpaque(true);
@@ -96,8 +124,6 @@ public class TabLernen extends JPanel implements ActionListener
 		boxLabel5.setBackground(new Color(100, 200, 100));
 		boxLabel5.setOpaque(true);
 		
-
-		
 		box1.setBounds(50, 350, 300, 25);
 		box2.setBounds(50, 350, 300, 25);
 		box3.setBounds(50, 350, 300, 25);
@@ -109,7 +135,6 @@ public class TabLernen extends JPanel implements ActionListener
 		box3.setFont(new Font( "Bradley Hand ITC", Font.BOLD, 34));
 		box4.setFont(new Font( "Bradley Hand ITC", Font.BOLD, 34));
 		box5.setFont(new Font( "Bradley Hand ITC", Font.BOLD, 34));
-
 		
 		boxLabel1.add(box1);
 		boxLabel2.add(box2);
@@ -127,38 +152,72 @@ public class TabLernen extends JPanel implements ActionListener
 		setBackground(Color.GRAY);
 		
 	}
+
 	
-	 class boxMausKlick implements MouseListener 
+	class boxMausKlick implements MouseListener 
+	{
+		public void mouseClicked(MouseEvent s) 
 		{
-			public void mouseClicked(MouseEvent s) 
-			{
-				Lernen lernenFennster = new Lernen();
+			BoxLabel source = (BoxLabel) s.getSource();
+			Lernen lernenFenster = new Lernen(parent,source.getId());
+			parent.setEnabled(false);
+			lernenFenster.setAlwaysOnTop(true);
+			
+			if(source.getId() == 1) {
+				boxLabel1.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 2) {
+				boxLabel2.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 3) {
+				boxLabel3.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 4) {
+				boxLabel4.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			if(source.getId() == 5) {
+				boxLabel5.setBorder(new CompoundBorder(border, marginRed));	
+			}
+			else {
 				
-//				lernenFennster.setVisible(true);
-//				lernenFennster.setSize(500,500);
-
 			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
+			
+			lernenFenster.addWindowListener(new WindowAdapter() {
+	            public void windowClosing(WindowEvent evt) {
+	                exitForm(evt);
+	            }
+	        });
 		}
-
+		private void exitForm(WindowEvent evt) {
+			boxLabel1.setBorder(new CompoundBorder(border, margin1));
+			boxLabel2.setBorder(new CompoundBorder(border, margin2));
+			boxLabel3.setBorder(new CompoundBorder(border, margin3));
+			boxLabel4.setBorder(new CompoundBorder(border, margin4));
+			boxLabel5.setBorder(new CompoundBorder(border, margin5));
+			
+			parent.setEnabled(true);
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub			
+		}
+		
+	}
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

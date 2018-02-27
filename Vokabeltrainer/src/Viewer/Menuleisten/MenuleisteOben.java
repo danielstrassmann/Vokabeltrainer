@@ -8,6 +8,8 @@ import javax.swing.*;
 import Viewer.Buttons.*;
 
 public class MenuleisteOben extends JPanel {
+	
+	private JFrame parentFrame;
 
 	private JLabel willkommen;
 	private JLabel karteiBez;

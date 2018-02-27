@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Viewer.Tab.*;
 
-public class Lernen extends JFrame{
+
+public class Lernen extends JDialog{
 	
 	private JLabel labelTitelLerner;
 	private JLabel labelQuellName;
@@ -17,18 +19,23 @@ public class Lernen extends JFrame{
 
 	private JTextField textEingabeFrage;
 	private JTextField textEingabeAntwort;
+	
 	private JTextField textKontrolleSwitch;
+	private JTextField textKontrolleBox;
 
 	private JButton buttonKontrollieren;
 	private JButton buttonAbbrechen;
 	private JButton buttonNaechsteKarte;
 	private JButton buttonSwitch;
 	
-	public Lernen()
+	private int aktuelleBox;
+	
+	public Lernen(JFrame owner, int aktuelleBox)
 	{
+		super(owner);
+		this.aktuelleBox = aktuelleBox;
 		lernen();
 		initGui();
-		
 	}
 	
 	private void lernen()
@@ -49,8 +56,9 @@ public class Lernen extends JFrame{
 		this.buttonNaechsteKarte = new JButton("nächste Karte");
 		
 		this.buttonSwitch = new JButton("SWITCH");
-		this.textKontrolleSwitch = new JTextField("1");
 		
+		this.textKontrolleSwitch = new JTextField("1");
+		this.textKontrolleBox = new JTextField();
 	}
 	
 	private void initGui()
@@ -61,7 +69,9 @@ public class Lernen extends JFrame{
 		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);
+		this.textKontrolleBox.setText("" + this.aktuelleBox);
 
+		// Location auf dem Fenster Lernen setzten
 		this.labelTitelLerner.setBounds		(10, 1, 300, 25);
 		this.labelQuellName.setBounds		(10, 100, 300, 25);
 		this.labelUbersetzungName.setBounds	(10, 150, 300, 25);
@@ -70,12 +80,15 @@ public class Lernen extends JFrame{
 		
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
+		
+		this.textKontrolleBox.setBounds		(410, 190, 60, 25);
 
 		this.buttonNaechsteKarte.setBounds	(10, 300, 200, 25);
 		this.buttonKontrollieren.setBounds	(310, 300, 120, 25);
 		this.buttonAbbrechen.setBounds		(450, 300, 120, 25);
 		this.buttonSwitch.setBounds			(595, 125, 90, 25);
 		
+		// Hinzufügen zum Fenster Lernen
 		add(labelTitelLerner);
 		add(labelQuellName);
 		add(labelUbersetzungName);
@@ -84,6 +97,7 @@ public class Lernen extends JFrame{
 
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
+		add(textKontrolleBox);
 
 		add(buttonNaechsteKarte);
 		add(buttonKontrollieren);
@@ -131,6 +145,7 @@ public class Lernen extends JFrame{
 		}
 	}
 	
+	// Wechselt die Abfragemöglichkeit vom Quell zum Zielwort
 	class switchButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (textKontrolleSwitch.getText().equals("1")) {
@@ -155,8 +170,4 @@ public class Lernen extends JFrame{
 			}
 		}
 	}
-	
-	
-	
-
 }
