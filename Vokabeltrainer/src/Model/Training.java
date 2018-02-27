@@ -8,7 +8,6 @@ public class Training {
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
-	private int boxNummer;
 	private Karte aktiveKarte;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
@@ -43,9 +42,6 @@ public class Training {
 			}
 
 		}
-
-		// Test für Methode gibZufallsKarteAusBox
-		this.boxNummer = boxNummer;
 
 	}
 
@@ -98,7 +94,8 @@ public class Training {
 		if (result != null) {
 
 			sammlungBox.remove(result);
-			return result;
+			this.aktiveKarte = result;
+			return aktiveKarte;
 
 		}
 
@@ -106,9 +103,54 @@ public class Training {
 			System.out.println("Es hat keine Karten mehr in der Box!");
 			Karte k = new Karte();
 			// Objekt k ist null, da keine Karten mehr in der Box sind
+			// Muss Marius im UI abfangen!!!
 			return k;
 		}
 
+	}
+
+	// Inputwerte brauche ich vom UI / Marius
+	public boolean antwortPruefen(String eingabeAntwort, String eingabeFrage) {
+		// Antwort & Frage wird von Karte ausgelesen, die mit Methode
+		// gibZufallsKarteAusBox() instanziert wurde
+		String frageKarte = aktiveKarte.getFrage();
+		String antwortKarte = aktiveKarte.getAntwort();
+
+		// Wert von Karte wird mit Eingabe in UI abgeglichen
+		if (frageKarte == eingabeFrage && antwortKarte == eingabeAntwort) {
+
+			// Karte wandert in nächste Box und wird neu in KartenSammlung in der Kartei
+			// abgelegt, Statistikdaten aktualisieren
+			aktiveKarte.karteInNaechsteBox();
+			trainingsDaten.antwortRichtig();
+
+			return true;
+		}
+
+		else {
+			// Karte wandert in erste Box und wird neu in KartenSammlung in der Kartei
+			// abgelegt, Statistikdaten aktualisieren
+			aktiveKarte.karteInErsteBox();
+			trainingsDaten.antwortFalsch();
+
+			return false;
+		}
+	}
+
+	public void aktiveKarteNeuInTrainingsKartei() {
+		int id = aktiveKarte.getId();
+		// Kartensammlung in Traingingskartei wird nach ausgelesener Karte durchsucht
+		// und ersetzt
+		ArrayList<Karte> listeNeu = trainingsKartei.getSammlung();
+		for (Karte k : listeNeu) {
+			if (k.getId() == id) {
+				k = aktiveKarte;
+
+			}
+
+			// KartenSammlung wird neu auf TrainingsKartei gesetzt
+			trainingsKartei.setSammlung(listeNeu);
+		}
 	}
 
 	// Daten vom Training werden an User übertagen
@@ -138,4 +180,20 @@ public class Training {
 
 	}
 
+	// Übergibt die Trainingskartei neu in die Userkarteiensammlung
+	public void karteiAnUser(User u) {
+		int id = trainingsKartei.getId();
+
+		ArrayList<Kartei> listeNeu = u.getUserKarteien();
+		// In Liste wird nach Kartei mit entsprechender ID gesucht und mit
+		// TrainingsKartei überschrieben
+		for (Kartei kk : listeNeu) {
+			if (kk.getId() == id) {
+				kk = trainingsKartei;
+			}
+		}
+		// KarteienSammlung auf User wird neu gesetzt
+		u.setUserKarteien(listeNeu);
+
+	}
 }
