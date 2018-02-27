@@ -9,7 +9,7 @@ public class Kartei {
 	private String frageKartei;
 	private String antwortKartei;
 
-	// Standardkonstruktor
+	// Standardkonstruktore
 	public Kartei() {
 	}
 
