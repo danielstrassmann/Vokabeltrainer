@@ -82,11 +82,11 @@ public class TestklasseTbr {
 		frame.setSize(900, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		//frame.add(tb);
+		frame.add(tb);
 		frame.setLayout(new BorderLayout(10,10));
 	
 		//HauptmenuNeu guiNeu = new HauptmenuNeu();
-		KarteiAuswahlButton kab = new KarteiAuswahlButton();
+		KarteiAuswahlButton kab = new KarteiAuswahlButton(tb);
 		JPanel panel = new JPanel();
 		JPanel panel1 = new JPanel();
 		panel.setBounds(20, 450, 400, 40);

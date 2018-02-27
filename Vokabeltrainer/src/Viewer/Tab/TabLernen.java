@@ -13,6 +13,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
+import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Popup.Lernen;
 
 
@@ -24,8 +25,11 @@ public class TabLernen extends JPanel implements ActionListener
 	private JLabel boxLabel4;
 	private JLabel boxLabel5;
 	
-	public TabLernen()
+	private MenuleisteOben mlo;
+	
+	public TabLernen(MenuleisteOben mlo)
 	{
+		this.mlo= mlo;
 		tabLernen();
 		initGui();
 	

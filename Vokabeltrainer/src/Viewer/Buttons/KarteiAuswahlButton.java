@@ -19,9 +19,14 @@ import Viewer.Tab.TabKartei;
 
 public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	private Kartei kk;
-	TabKartei tb = new TabKartei();
+	TabKartei tb;
 
 	public KarteiAuswahlButton() {
+		bindListener();
+	}	
+	
+	public KarteiAuswahlButton(TabKartei tb) {
+		this.tb = tb;
 		bindListener();
 	}
 

@@ -10,9 +10,11 @@ public class Tabs extends JPanel{
 	
 private JTabbedPane tabsMenu ;	
 	
+private MenuleisteOben mlo;
 	
-	public Tabs()
+	public Tabs(MenuleisteOben mlo)
 	{
+	this.mlo = mlo;
 		tabs();
 			
 	}
@@ -26,13 +28,13 @@ private JTabbedPane tabsMenu ;
 		add(tabsMenu);
 		
 		
-		TabLernen tle = new TabLernen();
+		TabLernen tle = new TabLernen(mlo);
 		tabsMenu.addTab("Lernen", tle);
 		
 		TabStatistik tst = new TabStatistik();
 		tabsMenu.addTab("Statistik", tst);
 
-		TabKartei tka = new TabKartei();
+		TabKartei tka = new TabKartei(mlo);
 		tabsMenu.addTab("Kartei", tka);
 				
 	}

@@ -48,7 +48,7 @@ public class HauptmenuNeu {
 		MenuleisteOben mlo = new MenuleisteOben();
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		
-		Tabs tab = new Tabs();
+		Tabs tab = new Tabs(mlo);
 		hauptPanel.add(tab, BorderLayout.CENTER);
 		
 

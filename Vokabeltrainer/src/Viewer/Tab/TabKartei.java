@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
+import Viewer.Menuleisten.MenuleisteOben;
 
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
@@ -44,8 +47,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	private int selektierteRow;
 	private Kartei kk;
+	
+	private MenuleisteOben mlo;
 
-	public TabKartei() {
+	public TabKartei(MenuleisteOben mlo) {
+		this.mlo = mlo;
 		initComponents();
 		initGui();
 		bindListener();
@@ -120,6 +126,20 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		buttonAendern.addActionListener(this);
 		buttonLoeschen.addActionListener(this);
 		tableKartei.addMouseListener(this);
+		mlo.addItemChangeListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent event) {
+				if (event.getStateChange() == ItemEvent.SELECTED) {
+					Kartei kk =  (Kartei) event.getItemSelectable().getSelectedObjects()[0];
+					System.out.println(kk);
+					
+					tableKarteiabfuellen(kk);
+
+				}
+				
+			}
+		});
 
 	}
 
@@ -136,6 +156,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 			kartenInTable[0] = k.getFrage();
 			kartenInTable[1] = k.getAntwort();
 			modelKartei.addRow(kartenInTable);
+			//tableKartei.setModel(modelKartei);
 		}
 	}
 

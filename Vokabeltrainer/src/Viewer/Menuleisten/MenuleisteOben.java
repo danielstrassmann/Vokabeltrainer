@@ -15,6 +15,7 @@ public class MenuleisteOben extends JPanel {
 	
 	private JPanel subPanelKartei;
 	private JPanel subPanelBenutzer;
+	private KarteiAuswahlButton kab;
 	
 	public MenuleisteOben() {
 		menuleisteOben();
@@ -34,7 +35,8 @@ public class MenuleisteOben extends JPanel {
 		this.karteiBez = new JLabel();
 		this.karteiBez.setText("Kartei");
 		this.subPanelKartei = new JPanel();
-		KarteiAuswahlButton kab = new KarteiAuswahlButton();
+		kab = new KarteiAuswahlButton();
+		
 		KarteiButton kb = new KarteiButton();
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
@@ -58,4 +60,9 @@ public class MenuleisteOben extends JPanel {
 		subPanelBenutzer.setBackground(Color.LIGHT_GRAY);
 		
 	}
+	
+	public void addItemChangeListener(ItemListener itemListener) {
+		kab.addItemListener(itemListener);
+	}
+	
 }
