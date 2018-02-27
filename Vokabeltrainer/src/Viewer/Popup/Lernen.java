@@ -5,6 +5,8 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import Viewer.Tab.*;
 
@@ -40,19 +42,17 @@ public class Lernen extends JDialog{
 	
 	private void lernen()
 	{
-		this.labelTitelLerner = new JLabel("Sie lernen aktuell in der Box XXYYXX");
+		this.labelTitelLerner = new JLabel("Sie lernen aktuell in der Box " + aktuelleBox);
 		this.labelQuellName = new JLabel("XXXX Quellkarteiname XXXX");
 		this.labelUbersetzungName = new JLabel("XXXX Übersetzungskarteiname XXXX");
-		this.labelUbersichtKarten = new JLabel("XXXX Es sind noch YY Karten in dieser Box XXXX");
+		this.labelUbersichtKarten = new JLabel("XXXX Es sind noch YY Karten in dieser Box " + aktuelleBox);
 		this.labelRueckmeldung = new JLabel();
 		
-
 		this.textEingabeFrage = new JTextField();
 		this.textEingabeAntwort = new JTextField();
 
-
 		this.buttonKontrollieren = new JButton("Kontrollieren");
-		this.buttonAbbrechen = new JButton("Abbrechen");
+		this.buttonAbbrechen = new JButton("Kartei wechseln");
 		this.buttonNaechsteKarte = new JButton("nächste Karte");
 		
 		this.buttonSwitch = new JButton("SWITCH");
@@ -81,11 +81,9 @@ public class Lernen extends JDialog{
 		this.textEingabeFrage.setBounds		(310, 100, 260, 25);
 		this.textEingabeAntwort.setBounds	(310, 150, 260, 25);
 		
-		this.textKontrolleBox.setBounds		(410, 190, 60, 25);
-
 		this.buttonNaechsteKarte.setBounds	(10, 300, 200, 25);
-		this.buttonKontrollieren.setBounds	(310, 300, 120, 25);
-		this.buttonAbbrechen.setBounds		(450, 300, 120, 25);
+		this.buttonKontrollieren.setBounds	(370, 300, 200, 25);
+		this.buttonAbbrechen.setBounds		(370, 400, 200, 25);
 		this.buttonSwitch.setBounds			(595, 125, 90, 25);
 		
 		// Hinzufügen zum Fenster Lernen
@@ -114,60 +112,81 @@ public class Lernen extends JDialog{
 		this.buttonNaechsteKarte.addActionListener(new naechsteKarteButton());
 		this.buttonSwitch.addActionListener(new switchButton());
 		
+		//Kontrolle welche Box
+		this.textKontrolleBox.setBounds		(595, 190, 60, 25);
+		this.textKontrolleBox.setBackground(Color.BLUE);
 		
 		//Switchfunktion
-		this.textKontrolleSwitch.setBounds 	(595, 400, 50, 25);
+		this.textKontrolleSwitch.setBounds 	(595, 350, 50, 25);
 		textKontrolleSwitch.setBackground(Color.RED);
 		add(textKontrolleSwitch);
 		
 	}
 	
+	// Kartei wechsel Button für WindowListener in TabLernen öffentlich machen
+	public JButton getButtonAbbrechen() {
+		return buttonAbbrechen;
+	}
+	
+	public void karteWechseln() {
+		buttonNaechsteKarte.setVisible(false);
+		buttonKontrollieren.setEnabled(true);
+		labelRueckmeldung.setText("");
+	}
+	
+	public void kontrolleEingabe() {
+		buttonNaechsteKarte.setVisible(true);
+		buttonKontrollieren.setEnabled(false);
+		if(textEingabeFrage.getText().equals(textEingabeAntwort.getText())) {
+			labelRueckmeldung.setForeground(new Color(0,102,0));
+			labelRueckmeldung.setText("Richtig, Team Optimus ist stolz auf dich");
+		}
+		else {
+			labelRueckmeldung.setForeground(Color.RED);
+			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box");
+		}
+	}
+	
+	public void switchen() {
+		if (textKontrolleSwitch.getText().equals("1")) {
+			textKontrolleSwitch.setText("2");
+			labelRueckmeldung.setText("");
+			buttonKontrollieren.setEnabled(true);
+			textEingabeFrage.setEditable(true);
+			textEingabeFrage.setText("");
+			textEingabeAntwort.setText("ANTWORT sollte hier stehen");
+			textEingabeAntwort.setEditable(false);
+			buttonNaechsteKarte.setVisible(false);
+		}
+		else {
+			textKontrolleSwitch.setText("1");
+			labelRueckmeldung.setText("");
+			buttonKontrollieren.setEnabled(true);
+			textEingabeAntwort.setEditable(true);
+			textEingabeAntwort.setText("");
+			textEingabeFrage.setText("FRAGE sollte hier stehen");
+			textEingabeFrage.setEditable(false);
+			buttonNaechsteKarte.setVisible(false);
+		}
+	}
+	
 	class kontrollierenButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			buttonNaechsteKarte.setVisible(true);
-			buttonKontrollieren.setEnabled(false);
-			if(textEingabeFrage.getText().equals(textEingabeAntwort.getText())) {
-				labelRueckmeldung.setForeground(new Color(0,102,0));
-				labelRueckmeldung.setText("Richtig, Team Optimus ist stolz auf dich");
-			}
-			else {
-				labelRueckmeldung.setForeground(Color.RED);
-				labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box");
-			}
+			kontrolleEingabe();
 		}
 	}
 	
 	class naechsteKarteButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			buttonNaechsteKarte.setVisible(false);
-			buttonKontrollieren.setEnabled(true);
-			labelRueckmeldung.setText("");
+			karteWechseln();
 		}
 	}
 	
 	// Wechselt die Abfragemöglichkeit vom Quell zum Zielwort
 	class switchButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (textKontrolleSwitch.getText().equals("1")) {
-				textKontrolleSwitch.setText("2");
-				labelRueckmeldung.setText("");
-				buttonKontrollieren.setEnabled(true);
-				textEingabeFrage.setEditable(true);
-				textEingabeFrage.setText("");
-				textEingabeAntwort.setText("ANTWORT sollte hier stehen");
-				textEingabeAntwort.setEditable(false);
-				buttonNaechsteKarte.setVisible(false);
-			}
-			else {
-				textKontrolleSwitch.setText("1");
-				labelRueckmeldung.setText("");
-				buttonKontrollieren.setEnabled(true);
-				textEingabeAntwort.setEditable(true);
-				textEingabeAntwort.setText("");
-				textEingabeFrage.setText("FRAGE sollte hier stehen");
-				textEingabeFrage.setEditable(false);
-				buttonNaechsteKarte.setVisible(false);
-			}
+			switchen();
 		}
 	}
+	
 }
