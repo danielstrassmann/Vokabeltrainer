@@ -155,7 +155,7 @@ public class Anmeldefenster {
 
 	class anmbtn implements ActionListener {
 	    //
-		public void actionPerformed(ActionEvent e) 
+		public void actionPerformed(ActionEvent e) { 
 	
 		
 		ArrayList<User> userliste;
@@ -180,6 +180,7 @@ public class Anmeldefenster {
 		loginfenster.dispose();
 		doLogin();
 		}
+	}
 
 	class keyList implements KeyListener {
 
