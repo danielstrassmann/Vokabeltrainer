@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.UserSammlung;
+import Model.User;
 import Viewer.Menu.HauptmenuNeu;
 
 import javax.swing.JPasswordField;
@@ -151,12 +154,32 @@ public class Anmeldefenster {
 	}
 
 	class anmbtn implements ActionListener {
-		//
-		public void actionPerformed(ActionEvent e) {
-			doLogin();
-		}
+	    //
+		public void actionPerformed(ActionEvent e) 
+	
+		
+		ArrayList<User> userliste;
+		UserSammlung ul = new UserSammlung();
+		userliste = ul.getUserliste();
+		System.out.println(userliste);
+		User user = new User();
+		user.getUserDaten();
+		user.getBenutzername();
+		user.getPasswort();
+		
+		
+		String inputUserName = loginUsername.getText();  //assign the user's input username
+		String inputPassword = loginPassword.getText();  //assign the user's input password
+		System.out.println(inputUserName);
+		System.out.println(inputPassword);
+		System.out.println(user.benutzername);
+		System.out.println(user.passwort);
+		System.out.println(user.userDaten);
 
-	}
+		HauptmenuNeu guiNeu = new HauptmenuNeu();
+		loginfenster.dispose();
+		doLogin();
+		}
 
 	class keyList implements KeyListener {
 
