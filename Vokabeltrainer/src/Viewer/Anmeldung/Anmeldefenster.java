@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -15,9 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import Controller.UserSammlung;
 import Model.User;
+import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menu.HauptmenuNeu;
 
 import javax.swing.JPasswordField;
@@ -27,6 +33,10 @@ import Viewer.Buttons.*;
 public class Anmeldefenster {
 
 	// Frame
+	private File f;
+	public String ub;
+	public String uc;
+	private AbspeichernLaden t; 
 	private JFrame loginfenster;
 	private JFrame frmLoginSystem;
 	// Labels
@@ -129,6 +139,7 @@ public class Anmeldefenster {
 	private void doLogin() {
 		HauptmenuNeu guiNeu = new HauptmenuNeu();
 		loginfenster.dispose();
+		
 	}
 
 	class exitbtn implements ActionListener {
@@ -152,32 +163,71 @@ public class Anmeldefenster {
 
 		}
 	}
+	public void userEinloggen(UserSammlung userliste) {
+		UserSammlung ul = new UserSammlung();
+		AbspeichernLaden al = new AbspeichernLaden();
+		System.out.println(al);
+		ArrayList<User> l = ul.getUserliste();
+		
+		//System.out.println(inputUserName);
+		//System.out.println(inputPassword);
+		//System.out.println(u.getBenutzername());
+		//System.out.println(u.getPasswort());
+		//System.out.println(u.getUserDaten());
+		System.out.println(ub);
+
+	}
+	
+	public void userLoading() {
+		//UserSammlung ul = new userLaden(userliste);
+		//ArrayList<User> l = ul.getUserliste();
+		ArrayList<User> Usersammlung;
+		//t = new AbspeichernLaden();
+		f = new File("User.xml");
+		//System.out.println(t);
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
+			Unmarshaller jaxUnmarshaller = jaxbContext.createUnmarshaller();
+
+			UserSammlung gelesen = (UserSammlung) jaxUnmarshaller.unmarshal(f);
+			int 
+				index = 0;
+			//
+			
+			//System.out.println(gelesen.getUserliste().get(0).getBenutzername());
+			User u = new User((gelesen.getUserliste().get(index).getBenutzername()),(gelesen.getUserliste().get(index).getPasswort()),(gelesen.getUserliste().get(index).getBenutzersprache()));
+			//u.getBenutzername((gelesen.getUserliste().get(0).getBenutzername()));
+			//u.getPasswort();
+			//u.getUserDaten();
+			//User u = new User();
+			String Ab = new String((gelesen.getUserliste().get(0).getBenutzername()));
+			System.out.println(Ab);
+			String Ac = new String((gelesen.getUserliste().get(0).getPasswort()));
+			Ab = ub;
+			Ac = uc;
+			System.out.println(u);
+			
+		} catch (JAXBException ex) {
+			System.out.println(ex);
+			ex.printStackTrace();
+		}
+
+		String inputUserName = loginUsername.getText();  //assign the user's input username
+		String inputPassword = loginPassword.getText();  //assign the user's input password
+		if((loginUsername.equals(ub)) && (loginPassword.equals(uc))){
+			doLogin();
+		}
+		else {
+			return;
+		}
+		
+	}
 
 	class anmbtn implements ActionListener {
 	    //
 		public void actionPerformed(ActionEvent e) { 
-	
-		
-		ArrayList<User> userliste;
-		UserSammlung ul = new UserSammlung();
-		userliste = ul.getUserliste();
-		System.out.println(userliste);
-		User user = new User();
-		user.getUserDaten();
-		user.getBenutzername();
-		user.getPasswort();
-		
-		
-		String inputUserName = loginUsername.getText();  //assign the user's input username
-		String inputPassword = loginPassword.getText();  //assign the user's input password
-		System.out.println(inputUserName);
-		System.out.println(inputPassword);
-		System.out.println(user.benutzername);
-		System.out.println(user.passwort);
-		System.out.println(user.userDaten);
-
-		HauptmenuNeu guiNeu = new HauptmenuNeu();
 		loginfenster.dispose();
+		userLoading();
 		doLogin();
 		}
 	}
