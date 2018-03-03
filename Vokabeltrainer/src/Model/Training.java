@@ -1,7 +1,11 @@
 package Model;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Viewer.Menuleisten.MenuleisteOben;
 
 public class Training {
 
@@ -10,20 +14,27 @@ public class Training {
 	private ArrayList<Karte> sammlungBox;
 	private Karte aktiveKarte;
 
+	// wird benötigt um im UI aktive Kartei durch Listener auszulesen
+	private MenuleisteOben mlo;
+
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
 	public Training(User u, int boxNummer) {
 
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
 
-		// Holt & instanziert aktive Kartei
-		ArrayList<Kartei> karteiliste;
-		karteiliste = u.getUserKarteien();
-		// TODO: korrekter Listener von Klasse Hauptmenü einbinden, damit richtige
-		// Kartei geladen werden kann
-		// provisorisch fix ID 0 --> ID muss aktive Kartei sein
-		int id = 0;
-		trainingsKartei = karteiliste.get(id);
+		// Karteiliste wird geladen, gemäss aktiver Kartei im UI (TabKartei)
+		// Listener übergibt Objekt KK
+		mlo.addItemChangeListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent event) {
+				if (event.getStateChange() == ItemEvent.SELECTED) {
+					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
+					trainingsKartei = kk;
+				}
+			}
+		});
 
 		// lädt Kartensammlung aus Kartei, damit die Karten nach Box gefiltert werden
 		// könnnen
@@ -46,11 +57,9 @@ public class Training {
 	}
 
 	// Alternativer Konstruktor - für Testzwecke
-	public Training(Kartei kk, Daten d) {
-		this.setTrainingsKartei(kk);
-		this.setTrainingsDaten(d);
-
+	public Training() {
 	}
+	
 
 	public Kartei getTrainingsKartei() {
 		return trainingsKartei;
@@ -76,7 +85,7 @@ public class Training {
 	public void setSammlungBox(ArrayList<Karte> sammlungBox) {
 		this.sammlungBox = sammlungBox;
 	}
-	
+
 	public Karte getAktiveKarte() {
 		return aktiveKarte;
 	}
