@@ -8,7 +8,17 @@ import Model.User;
 @XmlRootElement
 public class UserSammlung {
 
-	ArrayList<User> userliste = new ArrayList<User>();
+	public ArrayList<User> userliste = new ArrayList<User>();
+	public ArrayList<eingeloggterUser> eingeloggterUser = new ArrayList<>();
+	public User eingeloggterUser;
+	
+	
+	
+	public UserSammlung() {
+	}
+	
+
+	
 
 	public ArrayList<User> getUserliste() {
 		return userliste;
