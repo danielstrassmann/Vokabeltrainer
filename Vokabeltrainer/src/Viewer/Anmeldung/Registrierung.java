@@ -182,7 +182,7 @@ public class Registrierung extends UserSammlung {
 
 	public static void main(String[] args) {
 		
-		Registrierung gui = new Registrierung();
+		Registrierung gui = new Registrierung(userliste);
 		gui.paint();
 	}
 }

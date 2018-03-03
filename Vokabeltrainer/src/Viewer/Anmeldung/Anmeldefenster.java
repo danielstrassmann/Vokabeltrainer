@@ -68,10 +68,15 @@ public class Anmeldefenster extends UserSammlung
 	public Anmeldefenster() {
 		//ArrayListe
 		
-		this.userliste = new UserSammlung();
+		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
+		this.userliste = get.XML-UserSammlung;
 		l = userliste.getUserliste();
 		System.out.println(l);
 	
+	
+		User userTest = new User();
+		userTest = l.get(index).
+		
 		// GUI-Elements
 		this.loginfenster = new JFrame("Vokabeltrainer");
 		loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -172,16 +177,15 @@ public class Anmeldefenster extends UserSammlung
 		//
 		public void actionPerformed(ActionEvent e) {
 
-			Registrierung gui = new Registrierung(l);
+			Registrierung gui = new Registrierung();
 			Registrierung.main(null);
 
 		}
 	}
 
-	
 	public void userLoading(UserSammlung userliste) {
 		ArrayList<User> l ;
-	
+		
 		String ub = loginUsername.getText();
 		l = userliste.getUserliste();
 		System.out.println(l);
@@ -202,6 +206,8 @@ public class Anmeldefenster extends UserSammlung
 	        			&& (loginUsername.getText().equals(l.get(index).getBenutzername()) 
 	        			&& (loginPassword.getText().equals(l.get(index).getPasswort()))))))
 	        		{
+	        			u = l.get(index);
+	        			// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden kann
 	        			doLogin();
 	        			eingeloggterBenutzer();
 	        			return;
