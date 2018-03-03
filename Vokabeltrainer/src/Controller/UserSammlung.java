@@ -9,7 +9,7 @@ import Model.User;
 public class UserSammlung {
 
 	public ArrayList<User> userliste = new ArrayList<User>();
-	public ArrayList<eingeloggterUser> eingeloggterUser = new ArrayList<>();
+	// vielleicht hier der eingeloggte User speichern?
 	public User eingeloggterUser;
 	
 	
