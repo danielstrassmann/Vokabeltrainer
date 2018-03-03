@@ -4,11 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,10 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+
 
 import Controller.UserSammlung;
 import Model.User;
@@ -30,13 +28,17 @@ import javax.swing.JPasswordField;
 
 import Viewer.Buttons.*;
 
-public class Anmeldefenster {
+public class Anmeldefenster extends UserSammlung
+
+{
 
 	// Frame
 	private File f;
 	public String ub;
 	public String uc;
+	Integer index = null;
 	private AbspeichernLaden t; 
+	private Scanner input;
 	private JFrame loginfenster;
 	private JFrame frmLoginSystem;
 	// Labels
@@ -58,7 +60,18 @@ public class Anmeldefenster {
 
 	private JLabel spracheBez;
 
+	private User u;
+	ArrayList<User> l;
+	private UserSammlung userliste;
+	
+
 	public Anmeldefenster() {
+		//ArrayListe
+		
+		this.userliste = new UserSammlung();
+		l = userliste.getUserliste();
+		System.out.println(l);
+	
 		// GUI-Elements
 		this.loginfenster = new JFrame("Vokabeltrainer");
 		loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,9 +84,9 @@ public class Anmeldefenster {
 		registrieren.addActionListener(new regbtn());
 		exitButton.addActionListener(new exitbtn());
 
-		this.usernameid = new JLabel("Username ");
-		this.userpassword = new JLabel("Password");
-		this.frameTitle = new JLabel("Login Credentials");
+		this.usernameid = new JLabel("Benutzername       ");
+		this.userpassword = new JLabel("Password          ");
+		this.frameTitle = new JLabel("Login Credentials:                  ");
 
 		this.loginUsername = new JTextField();
 		this.loginPassword = new JPasswordField();
@@ -132,6 +145,7 @@ public class Anmeldefenster {
 		//
 	}
 
+
 	public void paint() {
 
 	}
@@ -158,77 +172,66 @@ public class Anmeldefenster {
 		//
 		public void actionPerformed(ActionEvent e) {
 
-			Registrierung gui = new Registrierung();
+			Registrierung gui = new Registrierung(l);
 			Registrierung.main(null);
 
 		}
 	}
-	public void userEinloggen(UserSammlung userliste) {
-		UserSammlung ul = new UserSammlung();
-		AbspeichernLaden al = new AbspeichernLaden();
-		System.out.println(al);
-		ArrayList<User> l = ul.getUserliste();
-		
-		//System.out.println(inputUserName);
-		//System.out.println(inputPassword);
-		//System.out.println(u.getBenutzername());
-		//System.out.println(u.getPasswort());
-		//System.out.println(u.getUserDaten());
-		System.out.println(ub);
 
-	}
 	
-	public void userLoading() {
-		//UserSammlung ul = new userLaden(userliste);
-		//ArrayList<User> l = ul.getUserliste();
-		ArrayList<User> Usersammlung;
-		//t = new AbspeichernLaden();
-		f = new File("User.xml");
-		//System.out.println(t);
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(UserSammlung.class);
-			Unmarshaller jaxUnmarshaller = jaxbContext.createUnmarshaller();
+	public void userLoading(UserSammlung userliste) {
+		ArrayList<User> l ;
+	
+		String ub = loginUsername.getText();
+		l = userliste.getUserliste();
+		System.out.println(l);
+		System.out.println("list size is: " + userliste.getUserliste().size());
+		for (int i = 0; i < l.size(); i++) {
+			if(l.get(i).benutzername.contentEquals(ub))
+				System.out.println("User auf platz: "+i);
+				index = i;
+				System.out.println("index zahl "+index);
+				
+			 }
+		
+	    if (l.get(index).getBenutzername().equals(loginUsername.getText()))
+	        System.out.println(index+ "ist der neue Index");
+	      	System.out.println("User u equals : "+u);
+	       	System.out.println("Typed: "+loginUsername.getText());
+	        	if  ((loginPassword.getText() != null && (loginUsername.getText() != null 
+	        			&& (loginUsername.getText().equals(l.get(index).getBenutzername()) 
+	        			&& (loginPassword.getText().equals(l.get(index).getPasswort()))))))
+	        		{
+	        			doLogin();
+	        			eingeloggterBenutzer();
+	        			return;
+	        		}
+	        		else 
+	        		{
+	        			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
+	        			JOptionPane.showConfirmDialog(frmLoginSystem,"Login Daten Falsch", "Vokabeltrainer",
+	        					JOptionPane.PLAIN_MESSAGE);
+	        			
+	        			return;
+	        		}
+	        	}
 
-			UserSammlung gelesen = (UserSammlung) jaxUnmarshaller.unmarshal(f);
-			int 
-				index = 0;
-			//
-			
-			//System.out.println(gelesen.getUserliste().get(0).getBenutzername());
-			User u = new User((gelesen.getUserliste().get(index).getBenutzername()),(gelesen.getUserliste().get(index).getPasswort()),(gelesen.getUserliste().get(index).getBenutzersprache()));
-			//u.getBenutzername((gelesen.getUserliste().get(0).getBenutzername()));
-			//u.getPasswort();
-			//u.getUserDaten();
-			//User u = new User();
-			String Ab = new String((gelesen.getUserliste().get(0).getBenutzername()));
-			System.out.println(Ab);
-			String Ac = new String((gelesen.getUserliste().get(0).getPasswort()));
-			Ab = ub;
-			Ac = uc;
-			System.out.println(u);
-			
-		} catch (JAXBException ex) {
-			System.out.println(ex);
-			ex.printStackTrace();
-		}
+	    
+	public void eingeloggterBenutzer() {
+		
+		
 
-		String inputUserName = loginUsername.getText();  //assign the user's input username
-		String inputPassword = loginPassword.getText();  //assign the user's input password
-		if((loginUsername.equals(ub)) && (loginPassword.equals(uc))){
-			doLogin();
-		}
-		else {
-			return;
-		}
+		System.out.println(u);
 		
 	}
 
 	class anmbtn implements ActionListener {
-	    //
+	    
 		public void actionPerformed(ActionEvent e) { 
-		loginfenster.dispose();
-		userLoading();
-		doLogin();
+		//loginfenster.dispose();
+		//userEinloggen();
+		userLoading(userliste);
+		//doLogin();
 		}
 	}
 
@@ -244,7 +247,9 @@ public class Anmeldefenster {
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				doLogin();
+				//doLogin();
+				//userEinloggen();
+				userLoading(userliste);
 			}
 		}
 
@@ -253,12 +258,13 @@ public class Anmeldefenster {
 			// TODO Auto-generated method stub
 
 		}
-
 	}
+	
 
 	public static void main(String[] args) {
 		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint();
+		
+	
 	}
-
 }
