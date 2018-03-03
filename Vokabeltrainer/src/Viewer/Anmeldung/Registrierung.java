@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 import Controller.UserSammlung;
 import Model.User;
@@ -47,10 +48,11 @@ public class Registrierung extends UserSammlung {
 
 	private JPanel spracheAuswahlPanel;
 
-	public Registrierung() {
+	public Registrierung(ArrayList<User> userliste) {
 		// Registrierungsfenster
 		this.registrierungsfenster = new JFrame("Registrieren ");
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		registrierungsfenster.setLocationRelativeTo(null);
 		this.linkeseite = new JPanel();
 		this.rechteseite = new JPanel();
 		this.buttons = new JPanel();
@@ -61,10 +63,11 @@ public class Registrierung extends UserSammlung {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				ArrayList<User> l;
 				AbspeichernLaden saveHandler = new AbspeichernLaden();
 				User user1 = new User(null, null, null);
 				UserSammlung userliste = new UserSammlung();
-				userliste.getUserliste();
+				l = userliste.getUserliste();
 				String a = new String(r_txtpasswort.getText());
 				String b = new String(r_txtpasswort2.getText());
 				// System.out.println(a);
@@ -79,7 +82,10 @@ public class Registrierung extends UserSammlung {
 					JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
 					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 					userliste.getUserliste().add(user1);
+					
+					
 					File savedUser = saveHandler.userSpeichern(userliste);
+					userliste.setUserliste(l);
 					// System.out.println(value);
 					registrierungsfenster.dispose();
 					return;
@@ -102,10 +108,10 @@ public class Registrierung extends UserSammlung {
 				System.exit(0);
 			}
 		});
-		this.r_lblname = new JLabel("Name");
-		this.r_lblpasswort = new JLabel("Passwort");
-		this.r_lblpasswort2 = new JLabel("Passwort bestätigen");
-		this.benutzersp = new JLabel("Sprache Auswählen");
+		this.r_lblname = new JLabel("   Name");
+		this.r_lblpasswort = new JLabel("   Passwort");
+		this.r_lblpasswort2 = new JLabel("   Passwort bestätigen");
+		this.benutzersp = new JLabel("   Sprache Auswählen");
 		this.r_txtname = new JTextField("Name");
 		this.r_txtpasswort = new JPasswordField("Passwort");
 		this.r_txtpasswort2 = new JPasswordField("Passwort");
@@ -163,7 +169,7 @@ public class Registrierung extends UserSammlung {
 		registrierungsfenster.add(buttons, BorderLayout.SOUTH);
 		registrierungsfenster.add(userinterface, BorderLayout.CENTER);
 		// r_txtname.setSize(10,5);
-		registrierungsfenster.setSize(1000, 500);
+		registrierungsfenster.setSize(500, 220);
 		registrierungsfenster.setVisible(true);
 		//
 
@@ -175,6 +181,7 @@ public class Registrierung extends UserSammlung {
 	}
 
 	public static void main(String[] args) {
+		
 		Registrierung gui = new Registrierung();
 		gui.paint();
 	}
