@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
+import Model.User;
 import Viewer.Tab.*;
 
 public class Tabs extends JPanel{
@@ -12,10 +13,12 @@ private JTabbedPane tabsMenu ;
 private JFrame parent;
 	
 private MenuleisteOben mlo;
+private User u;
 	
-	public Tabs(MenuleisteOben mlo, JFrame parent)
+	public Tabs(User u, MenuleisteOben mlo, JFrame parent)
 	{
 		this.parent = parent;
+		this.u = u;
 	this.mlo = mlo;
 		tabs();
 			
@@ -30,13 +33,13 @@ private MenuleisteOben mlo;
 		add(tabsMenu);
 		
 		
-		TabLernen tle = new TabLernen(mlo, parent);
+		TabLernen tle = new TabLernen(u, mlo, parent);
 		tabsMenu.addTab("Lernen", tle);
 		
 		TabStatistik tst = new TabStatistik();
 		tabsMenu.addTab("Statistik", tst);
 
-		TabKartei tka = new TabKartei(mlo);
+		TabKartei tka = new TabKartei(u,mlo);
 		tabsMenu.addTab("Kartei", tka);
 				
 	}
