@@ -69,13 +69,13 @@ public class Anmeldefenster extends UserSammlung
 		//ArrayListe
 		
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
-		this.userliste = get.XML-UserSammlung;
+		AbspeichernLaden saveHandler = new AbspeichernLaden();
+		this.userliste  = saveHandler.userLaden(new File("users.xml"));
 		l = userliste.getUserliste();
 		System.out.println(l);
 	
-	
 		User userTest = new User();
-		userTest = l.get(index).
+		userTest = l.get(index);
 		
 		// GUI-Elements
 		this.loginfenster = new JFrame("Vokabeltrainer");
@@ -268,9 +268,18 @@ public class Anmeldefenster extends UserSammlung
 	
 
 	public static void main(String[] args) {
-		Anmeldefenster gui = new Anmeldefenster();
-		gui.paint();
-		
-	
+
+		boolean exit = false;
+
+		while (!exit) {
+			Anmeldefenster gui = new Anmeldefenster();
+			gui.paint();
+
+			HauptmenuNeu menu = new HauptmenuNeu(gui.u);
+			menu.setVisible();
+			
+			exit = menu.exit;
+		}
+
 	}
 }
