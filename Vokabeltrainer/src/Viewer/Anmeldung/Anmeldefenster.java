@@ -71,12 +71,12 @@ public class Anmeldefenster extends UserSammlung
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		ArrayList<User> l = new ArrayList<User>();
-		this.l  = saveHandler.userLaden(new File("users.xml"));
+		this.userliste  = saveHandler.userLaden(new File("users.xml"));
 		
 		l = userliste.getUserliste();
 		System.out.println(l);
 	
-		User userTest = new User();
+	User userTest = new User();
 		userTest = l.get(index);
 		
 		// GUI-Elements
