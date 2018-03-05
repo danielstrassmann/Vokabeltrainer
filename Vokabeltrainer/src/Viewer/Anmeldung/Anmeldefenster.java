@@ -70,7 +70,9 @@ public class Anmeldefenster extends UserSammlung
 		
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		this.userliste  = saveHandler.userLaden(new File("users.xml"));
+		ArrayList<User> l = new ArrayList<User>();
+		this.l  = saveHandler.userLaden(new File("users.xml"));
+		
 		l = userliste.getUserliste();
 		System.out.println(l);
 	
@@ -156,7 +158,7 @@ public class Anmeldefenster extends UserSammlung
 	}
 
 	private void doLogin() {
-		HauptmenuNeu guiNeu = new HauptmenuNeu();
+		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
 		loginfenster.dispose();
 		
 	}
@@ -276,9 +278,9 @@ public class Anmeldefenster extends UserSammlung
 			gui.paint();
 
 			HauptmenuNeu menu = new HauptmenuNeu(gui.u);
-			menu.setVisible();
+		//	menu.setVisible();
 			
-			exit = menu.exit;
+			//exit = menu.exit;
 		}
 
 	}

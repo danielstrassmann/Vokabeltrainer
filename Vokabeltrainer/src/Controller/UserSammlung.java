@@ -5,20 +5,14 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import Model.User;
+
 @XmlRootElement
 public class UserSammlung {
 
 	public ArrayList<User> userliste = new ArrayList<User>();
-	// vielleicht hier der eingeloggte User speichern?
-	public User eingeloggterUser;
-	
-	
-	
+
 	public UserSammlung() {
 	}
-	
-
-	
 
 	public ArrayList<User> getUserliste() {
 		return userliste;
@@ -28,6 +22,4 @@ public class UserSammlung {
 		this.userliste = userliste;
 	}
 
-	
-	
 }
