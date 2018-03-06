@@ -90,7 +90,7 @@ public class TabStatistik extends JPanel
 	
 	{
 		JFrame jf = new JFrame();
-		TabStatistik stats = new TabStatistik();
+		TabStatistik stats = new TabStatistik(u);
 		jf.setTitle("Vokabeltrainer");
 		jf.setSize(600,200);
 		jf.setVisible(true);
