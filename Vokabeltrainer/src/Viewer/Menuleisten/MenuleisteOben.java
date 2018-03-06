@@ -43,7 +43,7 @@ public class MenuleisteOben extends JPanel {
 		this.subPanelKartei = new JPanel();
 		kab = new KarteiAuswahlButton();
 		
-		KarteiButton kb = new KarteiButton(u);
+		KarteiButton kb = new KarteiButton(u,kab);
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
 		this.subPanelKartei.add(kb);

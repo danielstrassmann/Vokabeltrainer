@@ -11,10 +11,12 @@ import Viewer.Popup.KarteiErstellen;
 public class KarteiButton extends JButton {
 	
 	private User u;
+	private KarteiAuswahlButton kab;
 
-	public KarteiButton(User u) 
+	public KarteiButton(User u, KarteiAuswahlButton kab) 
 	{
 		this.u = u;
+		this.kab = kab;
 		karteiButton();
 	}
 
@@ -30,9 +32,8 @@ public class KarteiButton extends JButton {
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			KarteiErstellen ke = new KarteiErstellen(u);
-			ke.initComponents();
-			ke.initGui();
+			KarteiErstellen ke = new KarteiErstellen(u,kab);
+
 		}
 	}
 }

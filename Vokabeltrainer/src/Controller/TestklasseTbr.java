@@ -13,6 +13,7 @@ import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Menu.HauptmenuNeu;
+import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Tab.TabKartei;
 
 
@@ -77,7 +78,8 @@ public class TestklasseTbr {
 		
 		JFrame frame = new JFrame();
 		
-		TabKartei tb = new TabKartei();
+		MenuleisteOben mlo;
+		TabKartei tb = new TabKartei(u, mlo);
 	//	panel.setBackground(Color.red);
 		frame.setSize(900, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

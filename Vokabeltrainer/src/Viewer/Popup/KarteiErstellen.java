@@ -14,11 +14,10 @@ import Model.User;
 import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Menu.HauptmenuNeu;
 
-public class KarteiErstellen extends JDialog {
+public class KarteiErstellen extends JDialog implements ActionListener {
 	private KarteiController kc = new KarteiController();
 	private User u;
-	private KarteiAuswahlButton kab = new KarteiAuswahlButton();
-
+	private KarteiAuswahlButton kab; //= new KarteiAuswahlButton();
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
@@ -31,11 +30,12 @@ public class KarteiErstellen extends JDialog {
 	private JButton buttonAnlegen;
 	private JButton buttonAbbrechen;
 
-	public KarteiErstellen(User u) {
+	public KarteiErstellen(User u,KarteiAuswahlButton kab ) {
+		this.kab = kab;
 		this.u = u;
 		initComponents();
-		bindListener();
 		initGui();
+		bindListener();
 
 	}
 
@@ -49,14 +49,8 @@ public class KarteiErstellen extends JDialog {
 		this.textEingabeAntwort = new JTextField();
 
 		this.buttonAnlegen = new JButton("Anlegen");
-		this.buttonAbbrechen = new JButton("Abbrechen");
+		this.buttonAbbrechen = new JButton("Schliessen");
 	}
-
-	public void bindListener() {
-		buttonAnlegen.addActionListener(new anlegenButtonListener());
-		buttonAbbrechen.addActionListener(new abbrechenButtonListener());
-	}
-
 
 	public void initGui() {
 		setLayout(null);
@@ -65,7 +59,7 @@ public class KarteiErstellen extends JDialog {
 		setTitle("Kartei anlegen");
 		setVisible(true);
 		setLocationRelativeTo(null);
-		//setModalityType(DEFAULT_MODALITY_TYPE);
+		// setModalityType(DEFAULT_MODALITY_TYPE);
 		setAlwaysOnTop(true);
 
 		this.labelTitelKartei.setBounds(20, 1, 200, 30);
@@ -89,12 +83,22 @@ public class KarteiErstellen extends JDialog {
 
 		add(buttonAnlegen);
 		add(buttonAbbrechen);
-
 	}
 
-	class anlegenButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+	public void bindListener() {
+		buttonAnlegen.addActionListener(this);
+		buttonAbbrechen.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.buttonAnlegen) {
 			if (textEingabeFrage.getText().equals("") || textEingabeAntwort.getText().equals("")) {
+
+				labelNachricht.setForeground(Color.red);
+				labelNachricht.setText("Bitte Quelle und Übersetzung eingeben");
+
+			} else {
 				String frageKarteiHinzu = textEingabeFrage.getText();
 				String antwortKarteihinzu = textEingabeAntwort.getText();
 				kc.karteiErstellen(frageKarteiHinzu, antwortKarteihinzu, u);
@@ -103,17 +107,12 @@ public class KarteiErstellen extends JDialog {
 				textEingabeFrage.setText(null);
 				textEingabeAntwort.setText(null);
 				kab.comboboxKarteiAbfuellen(u);
-			} else {
-				labelNachricht.setForeground(Color.red);
-				labelNachricht.setText("Bitte Quelle und Übersetzung eingeben");
 			}
-		}
-	}
-
-	class abbrechenButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		} else if (e.getSource() == this.buttonAbbrechen) {
+			
 			dispose();
 		}
 
 	}
+
 }
