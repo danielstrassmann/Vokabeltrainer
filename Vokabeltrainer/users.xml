@@ -5,4 +5,14 @@
         <benutzersprache>Deutsch</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>duc</benutzername>
+        <benutzersprache>Deutsch</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
+    <userliste>
+        <benutzername>dani</benutzername>
+        <benutzersprache>Deutsch</benutzersprache>
+        <passwort>passwort</passwort>
+    </userliste>
 </userSammlung>

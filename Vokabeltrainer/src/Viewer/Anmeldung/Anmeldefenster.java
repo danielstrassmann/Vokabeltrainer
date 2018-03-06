@@ -181,47 +181,47 @@ public class Anmeldefenster extends UserSammlung
 		//
 		public void actionPerformed(ActionEvent e) {
 
-			Registrierung gui = new Registrierung();
-			Registrierung.main(null);
+			Registrierung gui = new Registrierung(userliste);
+			gui.paint();
 
 		}
 	}
 
-	public void userLoading(UserSammlung userliste) {
-		ArrayList<User> l;
-
+	public void userLoading() {
 		String ub = loginUsername.getText();
-		l = userliste.getUserliste();
 		System.out.println(l);
 		System.out.println("list size is: " + userliste.getUserliste().size());
 		for (int i = 0; i < l.size(); i++) {
-			if (l.get(i).benutzername.contentEquals(ub))
+
+			if (l.get(i).benutzername.contentEquals(ub)) {
 				System.out.println("User auf platz: " + i);
-			index = i;
-			System.out.println("index zahl " + index);
+				int index = i;
+				System.out.println("index zahl " + index);
+			}
 
-		}
+			// if (l.get(index).getBenutzername().equals(loginUsername.getText()))
+			// System.out.println(index + " ist der neue Index");
+			// System.out.println("User u equals : " + u);
+			// System.out.println("Typed: " + loginUsername.getText());
 
-		if (l.get(index).getBenutzername().equals(loginUsername.getText()))
-			System.out.println(index + " ist der neue Index");
-		System.out.println("User u equals : " + u);
-		System.out.println("Typed: " + loginUsername.getText());
-		if ((loginPassword.getText() != null
-				&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(index).getBenutzername())
-						&& (loginPassword.getText().equals(l.get(index).getPasswort())))))) {
-			u = l.get(index);
-			// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden
-			// kann
-			doLogin();
-			eingeloggterBenutzer();
-			// return;
+			if ((loginPassword.getText() != null
+					&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(i).getBenutzername())
+							&& (loginPassword.getText().equals(l.get(i).getPasswort())))))) {
+				u = l.get(i);
+				// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden
+				// kann
+				doLogin();
+				System.out.println(u);
+				// eingeloggterBenutzer();
+				// return;
 
-		} else {
-			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
-			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
-					JOptionPane.PLAIN_MESSAGE);
+			} else {
+				frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
+				JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
+						JOptionPane.PLAIN_MESSAGE);
 
-			return;
+				return;
+			}
 		}
 	}
 
@@ -236,7 +236,7 @@ public class Anmeldefenster extends UserSammlung
 		public void actionPerformed(ActionEvent e) {
 			// loginfenster.dispose();
 			// userEinloggen();
-			userLoading(userliste);
+			userLoading();
 			// doLogin();
 		}
 	}
@@ -255,7 +255,7 @@ public class Anmeldefenster extends UserSammlung
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				// doLogin();
 				// userEinloggen();
-				userLoading(userliste);
+				userLoading();
 			}
 		}
 

@@ -47,7 +47,10 @@ public class Registrierung extends UserSammlung {
 
 	private JPanel spracheAuswahlPanel;
 
-	public Registrierung() {
+	private UserSammlung userliste;
+
+	public Registrierung(UserSammlung l) {
+		userliste = l;
 		// Registrierungsfenster
 		this.registrierungsfenster = new JFrame("Registrieren ");
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -65,7 +68,6 @@ public class Registrierung extends UserSammlung {
 				ArrayList<User> l;
 				AbspeichernLaden saveHandler = new AbspeichernLaden();
 				User user1 = new User(null, null, null);
-				UserSammlung userliste = new UserSammlung();
 				l = userliste.getUserliste();
 				String a = new String(r_txtpasswort.getText());
 				String b = new String(r_txtpasswort2.getText());
@@ -177,9 +179,4 @@ public class Registrierung extends UserSammlung {
 
 	}
 
-	public static void main(String[] args) {
-
-		Registrierung gui = new Registrierung();
-		gui.paint();
-	}
 }
