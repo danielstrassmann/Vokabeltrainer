@@ -191,14 +191,16 @@ public class Anmeldefenster extends UserSammlung
 		String ub = loginUsername.getText();
 		System.out.println(l);
 		System.out.println("list size is: " + l.size());
+		boolean erfolg = false;
+		
 		for (int i = 0; i < l.size(); i++) {
 			
 			index = i;
 
-			if (l.get(index).benutzername.contentEquals(ub)) {
-				System.out.println("User auf platz: " + i);
-				System.out.println("index zahl " + index);
-			}
+			// if (l.get(index).benutzername.contentEquals(ub)) {
+				// System.out.println("User auf platz: " + index);
+				// System.out.println("index zahl " + index);
+		//	}
 
 			// if (l.get(index).getBenutzername().equals(loginUsername.getText()))
 			// System.out.println(index + " ist der neue Index");
@@ -208,21 +210,27 @@ public class Anmeldefenster extends UserSammlung
 			if ((loginPassword.getText() != null
 					&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(index).getBenutzername())
 							&& (loginPassword.getText().equals(l.get(index).getPasswort())))))) {
-				u = l.get(i);
+				u = l.get(index);
 				// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden
 				// kann
 				doLogin();
 				System.out.println(u);
 				// eingeloggterBenutzer();
-				// return;
-
-			} else {
-				frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
-				JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
-						JOptionPane.PLAIN_MESSAGE);
+				
+				erfolg = true;
 
 				return;
+
+			} 
 			}
+		
+		if(erfolg == false) {
+			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
+			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
+					JOptionPane.PLAIN_MESSAGE);
+
+			return;
+		
 		}
 	}
 
