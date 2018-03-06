@@ -278,6 +278,7 @@ public class Anmeldefenster extends UserSammlung
 		// menu.setVisible();
 
 		// exit = menu.exit;
+		//text
 	}
 
 }
