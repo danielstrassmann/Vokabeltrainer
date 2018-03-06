@@ -11,6 +11,9 @@ public class Kartei {
 
 	// Standardkonstruktor
 	public Kartei() {
+		
+		kartensammlung = new ArrayList<>();
+		
 	}
 
 	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können

@@ -24,9 +24,9 @@ public class TabStatistik extends JPanel
 	int zahl;
 	Calendar now = Calendar.getInstance();
 	
-	public TabStatistik()
+	public TabStatistik(User u)
 	{
-
+		this.u = u;
 		tabStatistik();
 		initGui();
 	}
@@ -35,8 +35,8 @@ public class TabStatistik extends JPanel
 	private void tabStatistik()
 	{
 		
-		u.getUserDaten();
-		//this.d = new Daten();
+		//u.getUserDaten();
+		this.d = new Daten();
 		
 		//
 		int zahl = 0;
@@ -45,7 +45,7 @@ public class TabStatistik extends JPanel
 		int b = new Integer(zahl);
 		int c = new Integer(zahl);
 		
-		d.getAntwortenKorrekt();
+		//d.getAntwortenKorrekt();
 		d.getAntwortenFalsch();
 		d.getAntwortenTotal();
 		

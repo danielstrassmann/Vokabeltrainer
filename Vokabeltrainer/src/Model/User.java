@@ -21,6 +21,9 @@ public class User {
 	private String benutzersprache;
 
 	public User() {
+	
+		userKarteien = new ArrayList<>();
+		userDaten = new Daten();
 
 	}
 

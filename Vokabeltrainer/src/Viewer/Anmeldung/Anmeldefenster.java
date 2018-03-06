@@ -69,14 +69,14 @@ public class Anmeldefenster extends UserSammlung
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		ArrayList<User> l = new ArrayList<User>();
-		//this.userliste = new UserSammlung();
+		// this.userliste = new UserSammlung();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
 
 		l = userliste.getUserliste();
 		System.out.println(l);
 
-	//	User userTest = new User();
-	//	userTest = l.get(index);
+		// User userTest = new User();
+		// userTest = l.get(index);
 
 		// GUI-Elements
 		this.loginfenster = new JFrame("Vokabeltrainer");
@@ -156,9 +156,14 @@ public class Anmeldefenster extends UserSammlung
 	}
 
 	private void doLogin() {
-		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
-		loginfenster.dispose();
 
+		boolean exit = false;
+
+		while (exit != false) {
+
+			HauptmenuNeu guiNeu = new HauptmenuNeu(u);
+			loginfenster.dispose();
+		}
 	}
 
 	class exitbtn implements ActionListener {
@@ -263,17 +268,17 @@ public class Anmeldefenster extends UserSammlung
 
 	public static void main(String[] args) {
 
-		boolean exit = false;
+		//boolean exit = false;
 
-		while (!exit) {
+		//while (!exit) {
 			Anmeldefenster gui = new Anmeldefenster();
 			gui.paint();
 
-			HauptmenuNeu menu = new HauptmenuNeu(gui.u);
+			// HauptmenuNeu menu = new HauptmenuNeu(gui.u);
 			// menu.setVisible();
 
 			// exit = menu.exit;
 		}
 
 	}
-}
+//}
