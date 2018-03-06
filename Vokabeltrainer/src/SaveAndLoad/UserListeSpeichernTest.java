@@ -30,5 +30,10 @@ public class UserListeSpeichernTest {
 
 		File savedUser = saveHandler.userSpeichern(userliste);
 		
+		UserSammlung loadedUser = saveHandler.userLaden(savedUser);
+		if(loadedUser == null || loadedUser.getUserliste() == null || loadedUser.getUserliste().size() != 2) {
+			System.out.println("falsch");
+		}
+		
 	}
 }

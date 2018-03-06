@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
 import Controller.UserSammlung;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
@@ -48,7 +47,7 @@ public class Registrierung extends UserSammlung {
 
 	private JPanel spracheAuswahlPanel;
 
-	public Registrierung(ArrayList<User> userliste) {
+	public Registrierung() {
 		// Registrierungsfenster
 		this.registrierungsfenster = new JFrame("Registrieren ");
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,10 +79,9 @@ public class Registrierung extends UserSammlung {
 				frmregiSystem = new JFrame("Registrierung");
 				if (a != null && a.equals(b)) {
 					JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
-					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+							JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 					userliste.getUserliste().add(user1);
-					
-					
+
 					File savedUser = saveHandler.userSpeichern(userliste);
 					userliste.setUserliste(l);
 					// System.out.println(value);
@@ -94,10 +92,10 @@ public class Registrierung extends UserSammlung {
 				else
 
 					r_txtpasswort.setText(null);
-					r_txtpasswort2.setText(null);
-				
-					JOptionPane.showConfirmDialog(frmregiSystem, "Passwort stimmt nicht Überein!", "Vokabeltrainer",
-					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+				r_txtpasswort2.setText(null);
+
+				JOptionPane.showConfirmDialog(frmregiSystem, "Passwort stimmt nicht Überein!", "Vokabeltrainer",
+						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 			}
 
 		});
@@ -176,13 +174,12 @@ public class Registrierung extends UserSammlung {
 	}
 
 	public void benutzerregistrieren() {
-		
 
 	}
 
 	public static void main(String[] args) {
-		
-		Registrierung gui = new Registrierung(userliste);
+
+		Registrierung gui = new Registrierung();
 		gui.paint();
 	}
 }

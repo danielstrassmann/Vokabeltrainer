@@ -38,11 +38,12 @@ public class Lernen extends JDialog {
 	private Training t;
 	private Karte k;
 
-	// TESTING, bis Duc Mehtode liefert
 	private User u;
 
-	public Lernen(JFrame owner, int aktuelleBox) {
+	public Lernen(User u, JFrame owner, int aktuelleBox) {
+		
 		super(owner);
+		this.u = u;
 		this.aktuelleBox = aktuelleBox;
 		Training t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();

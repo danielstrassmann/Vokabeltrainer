@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Menuleisten.Tabs;
 
@@ -14,9 +15,11 @@ public class HauptmenuNeu {
 
 	public static JFrame mainFrame;
 	private JPanel hauptPanel;
+	private User u;
 	
-	public HauptmenuNeu()
+	public HauptmenuNeu(User u)
 	{
+		this.u = u;
 		this.mainFrame = new JFrame("Vokabeltrainer Optimus");
 		this.hauptPanel = new JPanel();
 
@@ -48,7 +51,7 @@ public class HauptmenuNeu {
 		MenuleisteOben mlo = new MenuleisteOben();
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		
-		Tabs tab = new Tabs(mlo,mainFrame);
+		Tabs tab = new Tabs(u,mlo,mainFrame);
 		hauptPanel.add(tab, BorderLayout.CENTER);
 		
 

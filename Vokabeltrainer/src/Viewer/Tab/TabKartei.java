@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
+import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
 
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
@@ -49,8 +50,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private Kartei kk;
 	
 	private MenuleisteOben mlo;
+	private User u;
 
-	public TabKartei(MenuleisteOben mlo) {
+	public TabKartei(User u, MenuleisteOben mlo) {
+		this.u = u;
 		this.mlo = mlo;
 		initComponents();
 		initGui();

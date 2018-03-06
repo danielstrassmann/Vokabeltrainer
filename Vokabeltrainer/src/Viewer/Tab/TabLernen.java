@@ -47,10 +47,12 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	private MenuleisteOben mlo;
 	private JFrame parent;
+	private User u;
 	
 
-	public TabLernen(MenuleisteOben mlo, JFrame parent) {
+	public TabLernen(User u,MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
+		this.u = u;
 		this.mlo = mlo;
 		tabLernen();
 		initGui();
@@ -150,7 +152,7 @@ public class TabLernen extends JPanel implements ActionListener {
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
 			BoxLabel source = (BoxLabel) s.getSource();
-			Lernen lernenFenster = new Lernen(parent, source.getId());
+			Lernen lernenFenster = new Lernen(u,parent, source.getId());
 			parent.setEnabled(false);
 			lernenFenster.setAlwaysOnTop(true);
 
