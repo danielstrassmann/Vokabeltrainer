@@ -28,7 +28,8 @@ public class Internationalizing {
 
 	}
 
-	// Testing
+	// Testing, einfach ausführen und schauen was passiert
+	// Hier wird das keyword karteiErstellen ausgelesen
 	public static void main(String[] args) {
 
 		Internationalizing test = new Internationalizing();
