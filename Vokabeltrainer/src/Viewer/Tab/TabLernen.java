@@ -127,11 +127,11 @@ public class TabLernen extends JPanel implements ActionListener {
 		box4.setBounds(50, 350, 300, 25);
 		box5.setBounds(50, 350, 300, 25);
 
-		box1.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
-		box2.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
-		box3.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
-		box4.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
-		box5.setFont(new Font("Bradley Hand ITC", Font.BOLD, 34));
+		box1.setFont(new Font("Arial", Font.BOLD, 30));
+		box2.setFont(new Font("Arial", Font.BOLD, 30));
+		box3.setFont(new Font("Arial", Font.BOLD, 30));
+		box4.setFont(new Font("Arial", Font.BOLD, 30));
+		box5.setFont(new Font("Arial", Font.BOLD, 30));
 
 		boxLabel1.add(box1);
 		boxLabel2.add(box2);
@@ -146,7 +146,7 @@ public class TabLernen extends JPanel implements ActionListener {
 		add(boxLabel5);
 
 		setVisible(true);
-		setBackground(Color.GRAY);
+//		setBackground(Color.GRAY);
 	}
 
 	class boxMausKlick implements MouseListener {
