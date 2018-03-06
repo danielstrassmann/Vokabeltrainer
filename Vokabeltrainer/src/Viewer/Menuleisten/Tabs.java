@@ -36,8 +36,8 @@ private User u;
 		TabLernen tle = new TabLernen(u, mlo, parent);
 		tabsMenu.addTab("Lernen", tle);
 		
-		TabStatistik tst = new TabStatistik(u);
-		tabsMenu.addTab("Statistik", tst);
+		//TabStatistik tst = new TabStatistik(u);
+		//tabsMenu.addTab("Statistik", tst);
 
 		TabKartei tka = new TabKartei(u,mlo);
 		tabsMenu.addTab("Kartei", tka);

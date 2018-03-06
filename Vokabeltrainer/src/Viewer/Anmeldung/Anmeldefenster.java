@@ -62,14 +62,12 @@ public class Anmeldefenster extends UserSammlung
 	private User u;
 	ArrayList<User> l;
 	private UserSammlung userliste;
-	
-	
 
 	public Anmeldefenster() {
 		// ArrayListe
 
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
-		
+
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		ArrayList<User> l = new ArrayList<User>();
 		// this.userliste = new UserSammlung();
@@ -162,11 +160,9 @@ public class Anmeldefenster extends UserSammlung
 
 		boolean exit = false;
 
-		while (!exit) {
+		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
+		loginfenster.setVisible(false);
 
-			HauptmenuNeu guiNeu = new HauptmenuNeu(u);
-			loginfenster.dispose();
-		}
 	}
 
 	class exitbtn implements ActionListener {
@@ -218,8 +214,8 @@ public class Anmeldefenster extends UserSammlung
 			// kann
 			doLogin();
 			eingeloggterBenutzer();
-			//return;
-			
+			// return;
+
 		} else {
 			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
 			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
@@ -272,17 +268,17 @@ public class Anmeldefenster extends UserSammlung
 
 	public static void main(String[] args) {
 
-		//boolean exit = false;
+		// boolean exit = false;
 
-		//while (!exit) {
-			Anmeldefenster gui = new Anmeldefenster();
-			gui.paint();
+		// while (!exit) {
+		Anmeldefenster gui = new Anmeldefenster();
+		gui.paint();
 
-			// HauptmenuNeu menu = new HauptmenuNeu(gui.u);
-			// menu.setVisible();
+		// HauptmenuNeu menu = new HauptmenuNeu(gui.u);
+		// menu.setVisible();
 
-			// exit = menu.exit;
-		}
-
+		// exit = menu.exit;
 	}
-//}
+
+}
+// }
