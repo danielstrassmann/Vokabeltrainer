@@ -109,7 +109,7 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 				kab.comboboxKarteiAbfuellen(u);
 			}
 		} else if (e.getSource() == this.buttonAbbrechen) {
-			
+		
 			dispose();
 		}
 
