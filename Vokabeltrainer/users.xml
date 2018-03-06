@@ -15,4 +15,9 @@
         <benutzersprache>Deutsch</benutzersprache>
         <passwort>passwort</passwort>
     </userliste>
+    <userliste>
+        <benutzername>peter</benutzername>
+        <benutzersprache>Deutsch</benutzersprache>
+        <passwort>passwort</passwort>
+    </userliste>
 </userSammlung>

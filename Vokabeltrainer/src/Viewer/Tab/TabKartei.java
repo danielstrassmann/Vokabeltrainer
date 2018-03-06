@@ -136,6 +136,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 					Kartei kk =  (Kartei) event.getItemSelectable().getSelectedObjects()[0];
 					System.out.println(kk);
+					System.out.println("TabKartei-User: " + u);
 					
 					tableKarteiabfuellen(kk);
 

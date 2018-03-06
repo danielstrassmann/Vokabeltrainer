@@ -5,12 +5,16 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import Model.User;
 import Viewer.Popup.KarteiErstellen;
 
 public class KarteiButton extends JButton {
+	
+	private User u;
 
-	public KarteiButton() 
+	public KarteiButton(User u) 
 	{
+		this.u = u;
 		karteiButton();
 	}
 
@@ -26,7 +30,7 @@ public class KarteiButton extends JButton {
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			KarteiErstellen ke = new KarteiErstellen();
+			KarteiErstellen ke = new KarteiErstellen(u);
 			ke.initComponents();
 			ke.initGui();
 		}

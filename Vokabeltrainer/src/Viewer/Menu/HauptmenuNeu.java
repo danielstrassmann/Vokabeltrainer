@@ -25,6 +25,8 @@ public class HauptmenuNeu {
 
 		hauptPanel();		
 		mainFrame();
+		
+		System.out.println("Hauptmenu-User: " + this.u);
 	}
 	
 	public void mainFrame()
@@ -48,7 +50,7 @@ public class HauptmenuNeu {
 
 		hauptPanel.setSize(300,300);
 		
-		MenuleisteOben mlo = new MenuleisteOben();
+		MenuleisteOben mlo = new MenuleisteOben(u);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		
 		Tabs tab = new Tabs(u,mlo,mainFrame);

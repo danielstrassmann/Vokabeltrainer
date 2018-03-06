@@ -69,7 +69,7 @@ public class Anmeldefenster extends UserSammlung
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
 
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		ArrayList<User> l = new ArrayList<User>();
+		// ArrayList<User> l = new ArrayList<User>();
 		// this.userliste = new UserSammlung();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
 
@@ -190,12 +190,13 @@ public class Anmeldefenster extends UserSammlung
 	public void userLoading() {
 		String ub = loginUsername.getText();
 		System.out.println(l);
-		System.out.println("list size is: " + userliste.getUserliste().size());
+		System.out.println("list size is: " + l.size());
 		for (int i = 0; i < l.size(); i++) {
+			
+			index = i;
 
-			if (l.get(i).benutzername.contentEquals(ub)) {
+			if (l.get(index).benutzername.contentEquals(ub)) {
 				System.out.println("User auf platz: " + i);
-				int index = i;
 				System.out.println("index zahl " + index);
 			}
 
@@ -205,8 +206,8 @@ public class Anmeldefenster extends UserSammlung
 			// System.out.println("Typed: " + loginUsername.getText());
 
 			if ((loginPassword.getText() != null
-					&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(i).getBenutzername())
-							&& (loginPassword.getText().equals(l.get(i).getPasswort())))))) {
+					&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(index).getBenutzername())
+							&& (loginPassword.getText().equals(l.get(index).getPasswort())))))) {
 				u = l.get(i);
 				// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden
 				// kann

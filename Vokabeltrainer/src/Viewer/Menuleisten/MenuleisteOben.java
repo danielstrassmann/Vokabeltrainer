@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import Model.User;
 import Viewer.Buttons.*;
 
 public class MenuleisteOben extends JPanel {
@@ -19,7 +20,10 @@ public class MenuleisteOben extends JPanel {
 	private JPanel subPanelBenutzer;
 	private KarteiAuswahlButton kab;
 	
-	public MenuleisteOben() {
+	private User u;
+	
+	public MenuleisteOben(User u) {
+		this.u = u;
 		menuleisteOben();
 	}
 
@@ -39,7 +43,7 @@ public class MenuleisteOben extends JPanel {
 		this.subPanelKartei = new JPanel();
 		kab = new KarteiAuswahlButton();
 		
-		KarteiButton kb = new KarteiButton();
+		KarteiButton kb = new KarteiButton(u);
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
 		this.subPanelKartei.add(kb);

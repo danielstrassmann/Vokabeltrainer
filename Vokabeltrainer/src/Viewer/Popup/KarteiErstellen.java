@@ -16,7 +16,7 @@ import Viewer.Menu.HauptmenuNeu;
 
 public class KarteiErstellen extends JDialog {
 	private KarteiController kc = new KarteiController();
-	private User u = new User();
+	private User u;
 	private KarteiAuswahlButton kab = new KarteiAuswahlButton();
 
 
@@ -31,7 +31,8 @@ public class KarteiErstellen extends JDialog {
 	private JButton buttonAnlegen;
 	private JButton buttonAbbrechen;
 
-	public KarteiErstellen() {
+	public KarteiErstellen(User u) {
+		this.u = u;
 		initComponents();
 		bindListener();
 		initGui();
