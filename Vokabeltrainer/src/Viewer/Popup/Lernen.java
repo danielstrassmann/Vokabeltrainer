@@ -189,7 +189,7 @@ public class Lernen extends JDialog {
 		} 
 		if(check == false) { 
 			labelRueckmeldung.setForeground(Color.RED);
-			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box");
+			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box ");
 		}
 		
 		// Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt
