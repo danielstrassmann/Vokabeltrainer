@@ -83,9 +83,11 @@ public class Registrierung extends UserSammlung {
 					JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
 							JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 					userliste.getUserliste().add(user1);
-
-					File savedUser = saveHandler.userSpeichern(userliste);
+					l = userliste.getUserliste();
 					userliste.setUserliste(l);
+					
+					File savedUser = saveHandler.userSpeichern(userliste);
+
 					// System.out.println(value);
 					registrierungsfenster.dispose();
 					return;
