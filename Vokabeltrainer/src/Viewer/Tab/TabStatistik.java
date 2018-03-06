@@ -26,7 +26,7 @@ public class TabStatistik extends JPanel {
 	private User u;
 
 	private JLabel labelWerte;
-	private JLabel labelDiagramm;
+	private JPanel labelDiagramm;
 	
 	private DiagrammBasic labelDiagramm2;
 
@@ -58,13 +58,15 @@ public class TabStatistik extends JPanel {
 		labelWerte.setBounds(50, 350, 300, 25);
 //		labelDiagramm2.setBounds(50, 350, 300, 25);
 
-		boxWerte.add(labelWerte);
-		boxDiagramm.add(labelDiagramm2);
+        labelDiagramm.add(labelDiagramm2);
 		
-        labelDiagramm2.setData(100,20);
-
+		boxWerte.add(labelWerte);
+		boxDiagramm.add(labelDiagramm);
+		
+	
 		add(boxWerte);
 		add(boxDiagramm);
+//		add(labelDiagramm2);
 
 		setVisible(true);
 		// setBackground(Color.green);
@@ -131,8 +133,9 @@ public class TabStatistik extends JPanel {
 		
 
 		this.labelWerte = new JLabel("Behälter für die Werfelder");
-		this.labelDiagramm = new JLabel("Behälter für das Diagramm");
+		this.labelDiagramm = new JPanel();
 		this.labelDiagramm2 = new DiagrammBasic();
+        labelDiagramm2.setData(100,20);
 
 		u.getUserDaten();
 		this.d = new Daten();
@@ -182,11 +185,7 @@ public class TabStatistik extends JPanel {
 		JScrollPane jps2 = new JScrollPane(jt2);
 		add(jps2);
 
-		this.labelDiagramm = new JLabel();
-		labelDiagramm.setPreferredSize(new Dimension(300, 300));
-		labelDiagramm.setBackground(Color.RED);
-		labelDiagramm.setBounds(200, 200, 200, 200);
-		add(labelDiagramm);
+
 
 	}
 
