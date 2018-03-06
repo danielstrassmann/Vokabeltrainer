@@ -62,11 +62,14 @@ public class Anmeldefenster extends UserSammlung
 	private User u;
 	ArrayList<User> l;
 	private UserSammlung userliste;
+	
+	
 
 	public Anmeldefenster() {
 		// ArrayListe
 
 		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
+		
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		ArrayList<User> l = new ArrayList<User>();
 		// this.userliste = new UserSammlung();
@@ -159,7 +162,7 @@ public class Anmeldefenster extends UserSammlung
 
 		boolean exit = false;
 
-		while (exit != false) {
+		while (!exit) {
 
 			HauptmenuNeu guiNeu = new HauptmenuNeu(u);
 			loginfenster.dispose();
@@ -204,7 +207,7 @@ public class Anmeldefenster extends UserSammlung
 		}
 
 		if (l.get(index).getBenutzername().equals(loginUsername.getText()))
-			System.out.println(index + "ist der neue Index");
+			System.out.println(index + " ist der neue Index");
 		System.out.println("User u equals : " + u);
 		System.out.println("Typed: " + loginUsername.getText());
 		if ((loginPassword.getText() != null
@@ -215,7 +218,8 @@ public class Anmeldefenster extends UserSammlung
 			// kann
 			doLogin();
 			eingeloggterBenutzer();
-			return;
+			//return;
+			
 		} else {
 			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
 			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
