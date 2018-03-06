@@ -41,7 +41,6 @@ private User u;
 
 		TabKartei tka = new TabKartei(u,mlo);
 		tabsMenu.addTab("Kartei", tka);
-				
 	}
 
 }
