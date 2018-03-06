@@ -20,7 +20,7 @@ public class TabStatistik extends JPanel
 	private User u;
 	JTable jt2;
 	JPanel Gritt;
-	TabStatistik stats;
+	//TabStatistik stats;
 	int zahl;
 	Calendar now = Calendar.getInstance();
 	
@@ -35,7 +35,7 @@ public class TabStatistik extends JPanel
 	private void tabStatistik()
 	{
 		
-		//u.getUserDaten();
+		u.getUserDaten();
 		this.d = new Daten();
 		
 		//
@@ -52,11 +52,12 @@ public class TabStatistik extends JPanel
 		a = d.getAntwortenKorrekt();
 		b = d.getAntwortenFalsch();
 		c = d.getAntwortenTotal();
+		
 		u.setUserDaten(d);
 		
-		a=12;
-		b=12;
-		c=a+b;
+		//a=12;
+		//b=12;
+		//c=a+b;
 		
 		//
 		String[] columns = {"Antworten Korrekt", "Antworten Falsch", "Antworten Total"};
@@ -89,13 +90,7 @@ public class TabStatistik extends JPanel
 	private void initGui()
 	
 	{
-		JFrame jf = new JFrame();
-		TabStatistik stats = new TabStatistik(u);
-		jf.setTitle("Vokabeltrainer");
-		jf.setSize(600,200);
-		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.add(stats);
+
 		
 		setVisible(true);
 		setBackground(Color.green);
@@ -105,3 +100,4 @@ public class TabStatistik extends JPanel
 	}
 	
 }
+
