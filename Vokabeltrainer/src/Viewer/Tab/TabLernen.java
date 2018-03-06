@@ -152,7 +152,7 @@ public class TabLernen extends JPanel implements ActionListener {
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
 			BoxLabel source = (BoxLabel) s.getSource();
-			Lernen lernenFenster = new Lernen(u,parent, source.getId());
+			Lernen lernenFenster = new Lernen(u,parent, source.getId(), mlo);
 			parent.setEnabled(false);
 			lernenFenster.setAlwaysOnTop(true);
 

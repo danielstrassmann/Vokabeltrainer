@@ -18,20 +18,23 @@ public class Training {
 	private MenuleisteOben mlo;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
-	public Training(User u, int boxNummer) {
+	public Training(User u, int boxNummer, MenuleisteOben mlo) {
 
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
 
 		// Karteiliste wird geladen, gemäss aktiver Kartei im UI (TabKartei)
 		// Listener übergibt Objekt KK
-		mlo.addItemChangeListener(new ItemListener() {
+		this.mlo = mlo;
+		this.mlo.addItemChangeListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent event) {
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
 					trainingsKartei = kk;
+					
+					System.out.println(kk);
 				}
 			}
 		});

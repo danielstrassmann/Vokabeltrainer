@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Tab.*;
 
 import Model.*;
@@ -39,13 +40,16 @@ public class Lernen extends JDialog {
 	private Karte k;
 
 	private User u;
+	
+	private MenuleisteOben mlo;
 
-	public Lernen(User u, JFrame owner, int aktuelleBox) {
+	public Lernen(User u, JFrame owner, int aktuelleBox, MenuleisteOben mlo) {
 		
 		super(owner);
 		this.u = u;
+		this.mlo = mlo;
 		this.aktuelleBox = aktuelleBox;
-		Training t = new Training(u, this.aktuelleBox);
+		Training t = new Training(u, this.aktuelleBox, mlo);
 		t.gibZufallsKarteAusBox();
 		k = t.getAktiveKarte();
 		lernen();
