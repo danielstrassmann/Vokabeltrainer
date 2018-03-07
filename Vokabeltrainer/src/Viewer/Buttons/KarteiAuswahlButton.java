@@ -40,14 +40,11 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	}
 
 	public void comboboxKarteiAbfuellen(User u) {
-		if (u.getUserKarteien() != null) {
 			removeAllItems();
 			ArrayList<Kartei> karteiliste = u.getUserKarteien();
 			for (int i = 0; i < karteiliste.size(); i++) {
 				Kartei klk = karteiliste.get(i);
-				addItem(klk);
-			}
-		}
+				addItem(klk);		}
 	}
 
 	class ItemChangeListener implements ItemListener {
