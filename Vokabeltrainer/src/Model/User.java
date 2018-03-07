@@ -9,9 +9,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
 
-	
 	private ArrayList<Kartei> userKarteien;
-	
+
 	private Daten userDaten;
 
 	public String benutzername;
@@ -20,8 +19,10 @@ public class User {
 
 	private String benutzersprache;
 
+	private Kartei aktiveKartei;
+
 	public User() {
-	
+
 		userKarteien = new ArrayList<>();
 		userDaten = new Daten();
 
@@ -32,13 +33,12 @@ public class User {
 		benutzername = username;
 		passwort = userpasswort;
 		/// generiert neue Usersprache nur provisorisch
-		benutzersprache = lang;	
+		benutzersprache = lang;
 		userKarteien = new ArrayList<Kartei>();
 		userDaten = new Daten();
-		
-		
 
 	}
+
 	@XmlElement
 	public String getBenutzername() {
 		return benutzername;
@@ -47,6 +47,7 @@ public class User {
 	public void setBenutzername(String benutzername) {
 		this.benutzername = benutzername;
 	}
+
 	@XmlElement
 	public String getPasswort() {
 		return passwort;
@@ -55,6 +56,7 @@ public class User {
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
+
 	@XmlElement
 	public String getBenutzersprache() {
 		return benutzersprache;
@@ -64,11 +66,10 @@ public class User {
 		this.benutzersprache = benutzersprache;
 	}
 
-
 	public int getNextKarteiId() {
-		return 0; //todo letztes element von liste + 1 oder wenn liste leer 1
+		return 0; // todo letztes element von liste + 1 oder wenn liste leer 1
 	}
-	
+
 	public String toString() {
 		return benutzername + ", " + passwort + ", " + benutzersprache;
 
@@ -82,15 +83,13 @@ public class User {
 		this.userKarteien = userKarteien;
 	}
 
-	public void karteiInSammlung(Kartei kk)
-	{
+	public void karteiInSammlung(Kartei kk) {
 		userKarteien.add(kk);
 	}
-	
-	public int getAnzahlKarteienInSammlung()
-	{
+
+	public int getAnzahlKarteienInSammlung() {
 		int anzahlKarteien = userKarteien.size();
-		return anzahlKarteien;		
+		return anzahlKarteien;
 	}
 
 	public Daten getUserDaten() {
@@ -100,6 +99,18 @@ public class User {
 	public void setUserDaten(Daten userDaten) {
 		this.userDaten = userDaten;
 	}
-	
+
+	public void setAktiveKartei(Kartei kk) {
+		// TODO Auto-generated method stub
+
+		this.aktiveKartei = kk;
+
 	}
 
+	public Kartei getAktiveKartei() {
+		// TODO Auto-generated method stub
+
+		return aktiveKartei;
+
+	}
+}

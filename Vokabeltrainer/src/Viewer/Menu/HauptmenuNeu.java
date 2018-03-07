@@ -3,10 +3,13 @@ package Viewer.Menu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Model.Kartei;
 import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Menuleisten.Tabs;
@@ -52,6 +55,20 @@ public class HauptmenuNeu {
 		
 		MenuleisteOben mlo = new MenuleisteOben(u);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
+		// Karteiliste wird geladen, gemäss aktiver Kartei im UI (TabKartei)
+				// Listener übergibt Objekt KK
+				mlo.addItemChangeListener(new ItemListener() {
+
+					@Override
+					public void itemStateChanged(ItemEvent event) {
+						if (event.getStateChange() == ItemEvent.SELECTED) {
+							Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
+							u.setAktiveKartei(kk);
+							
+							System.out.println(kk);
+						}
+					}
+				});
 		
 		Tabs tab = new Tabs(u,mlo,mainFrame);
 		hauptPanel.add(tab, BorderLayout.CENTER);

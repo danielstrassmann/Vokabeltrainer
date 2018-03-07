@@ -23,26 +23,12 @@ public class Training {
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
 
-		// Karteiliste wird geladen, gemäss aktiver Kartei im UI (TabKartei)
-		// Listener übergibt Objekt KK
-		this.mlo = mlo;
-		this.mlo.addItemChangeListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent event) {
-				if (event.getStateChange() == ItemEvent.SELECTED) {
-					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
-					trainingsKartei = kk;
-					
-					System.out.println(kk);
-				}
-			}
-		});
+		
 
 		// lädt Kartensammlung aus Kartei, damit die Karten nach Box gefiltert werden
 		// könnnen
 		ArrayList<Karte> kartenliste;
-		kartenliste = trainingsKartei.getSammlung();
+		kartenliste = u.getAktiveKartei().getSammlung();
 
 		// Instanziert neue Boxsammlung
 		sammlungBox = new ArrayList<Karte>();
