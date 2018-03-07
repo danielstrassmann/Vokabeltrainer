@@ -2,6 +2,13 @@ package Model;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class Kartei {
 
 	private int id;
@@ -25,6 +32,7 @@ public class Kartei {
 		kartensammlung = new ArrayList<Karte>();
 	}
 
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -33,6 +41,7 @@ public class Kartei {
 		this.id = id;
 	}
 
+	@XmlElement
 	public ArrayList<Karte> getSammlung() {
 		return kartensammlung;
 	}
@@ -50,6 +59,7 @@ public class Kartei {
 		return anzahlKarten;
 	}
 
+	@XmlElement
 	public String getFrage() {
 		return frageKartei;
 	}
@@ -58,6 +68,7 @@ public class Kartei {
 		this.frageKartei = frage;
 	}
 
+	@XmlElement
 	public String getAntwort() {
 		return antwortKartei;
 	}
@@ -67,8 +78,7 @@ public class Kartei {
 	}
 
 	public void add(Karte k1) {
-		// TODO Auto-generated method stub
-
+		kartensammlung.add(k1);
 	}
 
 	public Karte getIndex(int i) {

@@ -29,6 +29,7 @@ public class Karte {
 
 	}
 
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -55,6 +56,7 @@ public class Karte {
 		this.frage = frage;
 	}
 
+	@XmlElement
 	public int getBox() {
 		return box;
 	}
