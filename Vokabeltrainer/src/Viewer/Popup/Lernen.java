@@ -190,11 +190,11 @@ public class Lernen extends JDialog {
 		
 		if ( check == true) {
 			labelRueckmeldung.setForeground(new Color(0, 102, 0));
-			labelRueckmeldung.setText("Richtig, Team Optimus ist stolz auf dich");
+			labelRueckmeldung.setText("Antwort Korrekt! Karte geht in nächste Box.");
 		} 
 		if(check == false) { 
 			labelRueckmeldung.setForeground(Color.RED);
-			labelRueckmeldung.setText("Schade Marmelade, leider Falsch, Karte fliegt in die erste Box ");
+			labelRueckmeldung.setText("Antwort Falsch! Karte geht in erste Box.");
 		}
 		
 		// Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt

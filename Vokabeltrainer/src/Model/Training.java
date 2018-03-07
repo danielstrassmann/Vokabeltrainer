@@ -120,7 +120,7 @@ public class Training {
 		String antwortKarte = aktiveKarte.getAntwort();
 
 		// Wert von Karte wird mit Eingabe in UI abgeglichen
-		if (frageKarte == eingabeFrage && antwortKarte == eingabeAntwort) {
+		if (frageKarte.equals(eingabeFrage) && antwortKarte.equals(eingabeAntwort)) {
 
 			// Karte wandert in nächste Box und wird neu in KartenSammlung in der Kartei
 			// abgelegt, Statistikdaten aktualisieren
