@@ -25,7 +25,6 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 
 	public KarteiAuswahlButton() {
 		bindListener();
-		comboboxKarteiAbfuellen(u);
 	}
 
 	public KarteiAuswahlButton(TabKartei tb) {
