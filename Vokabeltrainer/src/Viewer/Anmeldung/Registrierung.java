@@ -107,6 +107,7 @@ public class Registrierung extends UserSammlung {
 					userliste.setUserliste(l);
 
 					File savedUser = saveHandler.userSpeichern(userliste);
+					saveHandler.karteienSpeichern(user1);
 
 					registrierungsfenster.dispose();
 					return;

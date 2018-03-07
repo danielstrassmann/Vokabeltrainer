@@ -64,7 +64,7 @@ public class Anmeldefenster extends UserSammlung
 	
 	public String ub;
 	Integer index = null;
-	private AbspeichernLaden t;
+	private AbspeichernLaden saveHandler;
 	private User u;
 	ArrayList<User> l;
 	private UserSammlung userliste;
@@ -170,6 +170,8 @@ public class Anmeldefenster extends UserSammlung
 
 		boolean exit = false;
 		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
+		saveHandler.karteienLaden(u);
+		
 		loginfenster.setVisible(false);
 
 	}
