@@ -2,6 +2,8 @@ package Viewer.Buttons;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Locale;
 
 import javax.swing.JComboBox;
@@ -61,9 +63,18 @@ public class BenutzerspracheButton extends JComboBox
 				}
 				else return
 						
-						
-			
-			
+								
 		}
 
+		class spracheChangeListener implements ItemListener {
+
+			@Override
+			public void itemStateChanged(ItemEvent langEvent) {
+				// TODO Auto-generated method stub
+				if (langEvent.getStateChange().equals("Deutsch")) {
+					
+				}
+				
+			}
+		}
 }

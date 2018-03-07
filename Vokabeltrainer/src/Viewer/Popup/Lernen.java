@@ -41,15 +41,13 @@ public class Lernen extends JDialog {
 
 	private User u;
 	
-	private MenuleisteOben mlo;
 
-	public Lernen(User u, JFrame owner, int aktuelleBox, MenuleisteOben mlo) {
+	public Lernen(User u, JFrame owner, int aktuelleBox) {
 		
 		super(owner);
 		this.u = u;
-		this.mlo = mlo;
 		this.aktuelleBox = aktuelleBox;
-		Training t = new Training(u, this.aktuelleBox, mlo);
+		Training t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();
 		k = t.getAktiveKarte();
 		lernen();

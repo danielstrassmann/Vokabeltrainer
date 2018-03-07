@@ -14,11 +14,9 @@ public class Training {
 	private ArrayList<Karte> sammlungBox;
 	private Karte aktiveKarte;
 
-	// wird benötigt um im UI aktive Kartei durch Listener auszulesen
-	private MenuleisteOben mlo;
 
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
-	public Training(User u, int boxNummer, MenuleisteOben mlo) {
+	public Training(User u, int boxNummer) {
 
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
