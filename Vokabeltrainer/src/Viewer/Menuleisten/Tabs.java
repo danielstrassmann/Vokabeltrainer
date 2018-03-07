@@ -33,7 +33,7 @@ private User u;
 		add(tabsMenu);
 		
 		
-		TabLernen tle = new TabLernen(u, mlo, parent);
+		TabLernen tle = new TabLernen(u, parent);
 		tabsMenu.addTab("Lernen", tle);
 		
 		TabStatistik tst = new TabStatistik(u);
