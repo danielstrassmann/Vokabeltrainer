@@ -1,11 +1,10 @@
 package Model;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-import Viewer.Menuleisten.MenuleisteOben;
+
 
 public class Training {
 
@@ -15,19 +14,22 @@ public class Training {
 	private Karte aktiveKarte;
 
 
+
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
 	public Training(User u, int boxNummer) {
 
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
 
-		
+
+		// Instanziert Kartei fürs Training gemäss ausgewählter Kartei von Hauptmenü
+		trainingsKartei = u.getAktiveKartei();
 
 		// lädt Kartensammlung aus Kartei, damit die Karten nach Box gefiltert werden
 		// könnnen
 		ArrayList<Karte> kartenliste;
-		kartenliste = u.getAktiveKartei().getSammlung();
-
+		kartenliste = trainingsKartei.getSammlung();
+		
 		// Instanziert neue Boxsammlung
 		sammlungBox = new ArrayList<Karte>();
 

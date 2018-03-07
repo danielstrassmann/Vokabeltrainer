@@ -55,8 +55,7 @@ public class HauptmenuNeu {
 		
 		MenuleisteOben mlo = new MenuleisteOben(u);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
-		// Karteiliste wird geladen, gemäss aktiver Kartei im UI (TabKartei)
-				// Listener übergibt Objekt KK
+				// Listener übergibt Objekt KK an User, so weiss man, was die aktive Kartei ist
 				mlo.addItemChangeListener(new ItemListener() {
 
 					@Override

@@ -14,6 +14,7 @@ import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Tab.*;
 
 import Model.*;
+import SaveAndLoad.AbspeichernLaden;
 
 public class Lernen extends JDialog {
 
@@ -47,7 +48,7 @@ public class Lernen extends JDialog {
 		super(owner);
 		this.u = u;
 		this.aktuelleBox = aktuelleBox;
-		Training t = new Training(u, this.aktuelleBox);
+		t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();
 		k = t.getAktiveKarte();
 		lernen();
@@ -56,9 +57,11 @@ public class Lernen extends JDialog {
 
 	private void lernen() {
 		this.labelTitelLerner = new JLabel("Sie lernen aktuell in der Box " + aktuelleBox);
-		this.labelQuellName = new JLabel("XXXX Quellkarteiname XXXX");
-		this.labelUbersetzungName = new JLabel("XXXX Übersetzungskarteiname XXXX");
-		this.labelUbersichtKarten = new JLabel("XXXX Es sind noch YY Karten in dieser Box " + aktuelleBox);
+		//Kartei Quellsprache & Zielsprache im UI anzeigen
+		this.labelQuellName = new JLabel(u.getAktiveKartei().getFrage());
+		this.labelUbersetzungName = new JLabel(u.getAktiveKartei().getAntwort());
+		// Anzahl Karten in den Box wird augegeben
+		this.labelUbersichtKarten = new JLabel("Es sind noch " + t.getAnzahlKartenInBox() + " Karten in dieser Box " + aktuelleBox);
 		this.labelRueckmeldung = new JLabel();
 
 		this.textEingabeFrage = new JTextField();
@@ -78,7 +81,7 @@ public class Lernen extends JDialog {
 	}
 
 	private void initGui() {
-		setTitle("aktives Lernen");
+		setTitle("Training");
 		setSize(700, 500);
 		setLayout(null);
 		setResizable(false);
@@ -118,7 +121,7 @@ public class Lernen extends JDialog {
 		add(buttonSwitch);
 
 		// Instanzierung des Zustandes 1
-		textEingabeFrage.setText("FRAGE sollte hier stehen");
+		textEingabeFrage.setText(k.getFrage());
 		textEingabeFrage.setEditable(false);
 
 		this.buttonNaechsteKarte.setVisible(false);
@@ -202,6 +205,8 @@ public class Lernen extends JDialog {
 	private void exitLernen() {
 		t.trainingsDatenAnUserdaten(u);
 		t.karteiAnUser(u);
+		AbspeichernLaden saveHandler = new AbspeichernLaden();
+		saveHandler.karteienSpeichern(u);
 	}
 	
 	public void switchen() {
