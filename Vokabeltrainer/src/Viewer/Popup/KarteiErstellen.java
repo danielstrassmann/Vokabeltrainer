@@ -18,7 +18,7 @@ import Viewer.Menu.HauptmenuNeu;
 public class KarteiErstellen extends JDialog implements ActionListener {
 	private KarteiController kc = new KarteiController();
 	private User u;
-	private KarteiAuswahlButton kab; //= new KarteiAuswahlButton();
+	private KarteiAuswahlButton kab; 
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;

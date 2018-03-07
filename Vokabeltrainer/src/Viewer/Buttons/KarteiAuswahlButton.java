@@ -15,19 +15,24 @@ import Model.Karte;
 import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.KarteiButton.karteiButtonListener;
+import Viewer.Popup.KarteiErstellen;
 import Viewer.Tab.TabKartei;
 
 public class KarteiAuswahlButton extends JComboBox<Kartei> {
+	private User u;
 	private Kartei kk;
 	TabKartei tb;
 
 	public KarteiAuswahlButton() {
 		bindListener();
-	}	
-	
+		comboboxKarteiAbfuellen(u);
+	}
+
 	public KarteiAuswahlButton(TabKartei tb) {
 		this.tb = tb;
 		bindListener();
+		comboboxKarteiAbfuellen(u);
+
 	}
 
 	public void bindListener() {
@@ -35,11 +40,13 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	}
 
 	public void comboboxKarteiAbfuellen(User u) {
-		removeAllItems();
-		ArrayList<Kartei> karteiliste = u.getUserKarteien();
-		for (int i = 0; i < karteiliste.size(); i++) {
-			Kartei klk = karteiliste.get(i);
-			addItem(klk);
+		if (u.getUserKarteien() != null) {
+			removeAllItems();
+			ArrayList<Kartei> karteiliste = u.getUserKarteien();
+			for (int i = 0; i < karteiliste.size(); i++) {
+				Kartei klk = karteiliste.get(i);
+				addItem(klk);
+			}
 		}
 	}
 
@@ -48,15 +55,14 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 		@Override
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
-				  kk =  (Kartei) getSelectedItem();
+				kk = (Kartei) getSelectedItem();
 				System.out.println(kk);
-				
-				//tb.tableKarteiabfuellen(kk);
+
+				// tb.tableKarteiabfuellen(kk);
 
 			}
 
 		}
-		
 
 		public Kartei getSelectedKartei() {
 			return kk;
