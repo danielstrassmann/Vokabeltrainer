@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import Controller.KarteiController;
 import Model.User;
+import SaveAndLoad.AbspeichernLaden;
 import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Menu.HauptmenuNeu;
 
@@ -92,6 +93,7 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		if (e.getSource() == this.buttonAnlegen) {
 			if (textEingabeFrage.getText().equals("") || textEingabeAntwort.getText().equals("")) {
 
@@ -107,6 +109,8 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 				textEingabeFrage.setText(null);
 				textEingabeAntwort.setText(null);
 				kab.comboboxKarteiAbfuellen(u);
+				saveHandler.karteienSpeichern(u);
+				
 			}
 		} else if (e.getSource() == this.buttonAbbrechen) {
 		

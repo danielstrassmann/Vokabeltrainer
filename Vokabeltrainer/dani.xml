@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<karteienSpeicherObjekt>
+    <daten>
+        <antwortenFalsch>0</antwortenFalsch>
+        <antwortenKorrekt>0</antwortenKorrekt>
+        <antwortenTotal>0</antwortenTotal>
+    </daten>
+    <karteien>
+        <antwort>englisch</antwort>
+        <frage>deutsch</frage>
+        <id>0</id>
+        <sammlung>
+            <antwort>House</antwort>
+            <box>1</box>
+            <frage>Haus</frage>
+            <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>Mouse</antwort>
+            <box>1</box>
+            <frage>Maus</frage>
+            <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>asdfadsf</antwort>
+            <box>1</box>
+            <frage>adsfasd</frage>
+            <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>xcvbxcvb</antwort>
+            <box>1</box>
+            <frage>adsfadfcvbxcvb</frage>
+            <id>0</id>
+        </sammlung>
+    </karteien>
+    <karteien>
+        <antwort>schwedisch</antwort>
+        <frage>englisch</frage>
+        <id>2</id>
+    </karteien>
+    <karteien>
+        <antwort>lkajdf</antwort>
+        <frage>dlkadsjf</frage>
+        <id>3</id>
+    </karteien>
+</karteienSpeicherObjekt>

@@ -167,10 +167,10 @@ public class Anmeldefenster extends UserSammlung
 	//passiert nach der Login Validation
 	
 	private void doLogin() {
-
-		boolean exit = false;
+		AbspeichernLaden loadHandler = new AbspeichernLaden();
+		loadHandler.karteienLaden(u);
 		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
-		saveHandler.karteienLaden(u);
+
 		
 		loginfenster.setVisible(false);
 

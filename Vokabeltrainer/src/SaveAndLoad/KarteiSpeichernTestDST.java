@@ -13,14 +13,14 @@ public class KarteiSpeichernTestDST {
 	public static void main(String args[]) throws Exception {
 
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		ArrayList<Kartei> karteiArray = new ArrayList<>();
+	//	ArrayList<Kartei> karteiArray = new ArrayList<>();
 
 		User user1 = new User();
-		user1.setBenutzername("Peter");
+		user1.setBenutzername("dani");
 		user1.setPasswort("eli");
 		user1.setBenutzersprache("de");
 
-		Kartei kartei1 = new Kartei();
+/*	Kartei kartei1 = new Kartei();
 		kartei1.setFrage("deutsch");
 		kartei1.setAntwort("englisch");
 		
@@ -53,11 +53,11 @@ public class KarteiSpeichernTestDST {
 		saveHandler.karteienSpeichern(user1);
 		
 		user1.setUserKarteien(null);
-		user1.setUserDaten(null);
+		user1.setUserDaten(null);*/
 		
 		saveHandler.karteienLaden(user1);
 		if(user1.getUserKarteien() != null || user1.getUserDaten() != null) {
-			System.out.println("falsch");
+			System.out.println("richtig");
 		}
 		
 	}

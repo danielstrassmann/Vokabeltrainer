@@ -24,6 +24,7 @@ import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
+import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menuleisten.MenuleisteOben;
 
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
@@ -179,6 +180,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	// gewählte Karte
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		// neue Karte hinzufügen
 		if (e.getSource() == this.buttonNeu) {
 			if (textFrage.getText().equals("")||textAntwort.getText().equals("") ) {
@@ -189,12 +191,17 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
 				Karte k = new Karte(frageHinzu, antwortHinzu);
+				int id = kk.getAnzahlKartenInSammlung();
+				//TODO Thomas schleife, nicht doppelte ID. 
+				k.setId(id);
+				
 				kk.karteInSammlung(k);
 				tableKarteiabfuellen(kk);
 				System.out.println("Karte erzeugt");
 				this.labelMutation.setBounds(390, 445, 300,25);
 				this.labelMutation.setForeground(new Color (0,102,0));
 				this.labelMutation.setText("Karte erfolgreich angelegt");
+				saveHandler.karteienSpeichern(u);
 			}
 			// Karte ändern
 		} else if (e.getSource() == this.buttonAendern) {
@@ -211,6 +218,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				this.labelMutation.setBounds(390, 485, 300,25);
 				this.labelMutation.setForeground(new Color (0,102,0));
 				this.labelMutation.setText("Karte erfolgreich geändert");
+				saveHandler.karteienSpeichern(u);
 			}
 		}
 
@@ -226,6 +234,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				this.labelMutation.setBounds(390, 525, 300,25);
 				this.labelMutation.setForeground(new Color (0,102,0));
 				this.labelMutation.setText("Karte erfolgreich gelöscht");
+				saveHandler.karteienSpeichern(u);
 				
 
 			}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<karteienSpeicherObjekt>
+    <daten>
+        <antwortenFalsch>4</antwortenFalsch>
+        <antwortenKorrekt>15</antwortenKorrekt>
+        <antwortenTotal>19</antwortenTotal>
+    </daten>
+    <karteien>
+        <antwort>englisch</antwort>
+        <frage>deutsch</frage>
+        <id>0</id>
+        <sammlung>
+            <antwort>House</antwort>
+            <box>1</box>
+            <frage>Haus</frage>
+            <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>Mouse</antwort>
+            <box>1</box>
+            <frage>Maus</frage>
+            <id>0</id>
+        </sammlung>
+    </karteien>
+</karteienSpeicherObjekt>

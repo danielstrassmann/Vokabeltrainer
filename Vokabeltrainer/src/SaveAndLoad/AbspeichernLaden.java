@@ -30,12 +30,12 @@ public class AbspeichernLaden {
 		KarteienSpeicherObjekt daten = new KarteienSpeicherObjekt(u.getUserKarteien(), u.getUserDaten());
 		
 		try {
-		File karteXmlFile = new File(u.getBenutzername() + ".xml");
+		File karteiXmlFile = new File(u.getBenutzername() + ".xml");
 		JAXBContext jaxbContext = JAXBContext.newInstance(KarteienSpeicherObjekt.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.marshal(daten, karteXmlFile);
+		jaxbMarshaller.marshal(daten, karteiXmlFile);
 		
 		} catch (JAXBException ex) {
 			System.out.println(ex);		
@@ -44,13 +44,13 @@ public class AbspeichernLaden {
 	}
 	
 	public void karteienLaden(User u) {
-		File karteXmlFile = new File(u.getBenutzername() + ".xml");
+		File karteiXmlFile = new File(u.getBenutzername() + ".xml");
 		
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(KarteienSpeicherObjekt.class);
 			Unmarshaller jaxbMarshaller = jaxbContext.createUnmarshaller();
 
-			KarteienSpeicherObjekt gelesen = (KarteienSpeicherObjekt) jaxbMarshaller.unmarshal(karteXmlFile);
+			KarteienSpeicherObjekt gelesen = (KarteienSpeicherObjekt) jaxbMarshaller.unmarshal(karteiXmlFile);
 
 			u.setUserKarteien(gelesen.getKarteien());
 			u.setUserDaten(gelesen.getDaten());
