@@ -4,13 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
 
+import java.io.File;
+
+import java.util.ArrayList;
+
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,64 +23,64 @@ import Controller.UserSammlung;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menu.HauptmenuNeu;
-
-import javax.swing.JPasswordField;
-
 import Viewer.Buttons.*;
+
 
 public class Anmeldefenster extends UserSammlung
 
 {
-
-	// Frame
-	private File f;
-	public String ub;
-	public String uc;
-	Integer index = null;
-	private AbspeichernLaden t;
-	private Scanner input;
+		
+	// JFrame
+	
 	private JFrame loginfenster;
 	private JFrame frmLoginSystem;
+	
 	// Labels
+	
 	private JLabel usernameid;
 	private JLabel userpassword;
 	private JLabel frameTitle;
+	private JLabel spracheBez;
+	
 	// Buttons
+	
 	private JButton anmeldeButton;
 	private JButton registrieren;
 	private JButton exitButton;
+	
 	// TextFelder
+	
 	private JTextField loginUsername;
 	private JPasswordField loginPassword;
+	
 	// JPanels
+	
 	private JPanel userpw;
 	private JPanel titelframe;
 	private JPanel buttonBereich;
 	private JPanel loginBereich;
-
-	private JLabel spracheBez;
-
+	
+	// Spezial
+	
+	public String ub;
+	Integer index = null;
+	private AbspeichernLaden t;
 	private User u;
 	ArrayList<User> l;
 	private UserSammlung userliste;
+	
 
 	public Anmeldefenster() {
-		// ArrayListe
 
-		// TODO: Baustelle, UserSammlung mit SaveLoad von Dani laden
-
+		//Essenziell
+		
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		// ArrayList<User> l = new ArrayList<User>();
-		// this.userliste = new UserSammlung();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
-
 		l = userliste.getUserliste();
 		System.out.println(l);
 
-		// User userTest = new User();
-		// userTest = l.get(index);
-
 		// GUI-Elements
+
 		this.loginfenster = new JFrame("Vokabeltrainer");
 		loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginfenster.setLocationRelativeTo(null);
@@ -104,22 +105,25 @@ public class Anmeldefenster extends UserSammlung
 		this.loginBereich = new JPanel();
 
 		BenutzerspracheButton bsb = new BenutzerspracheButton();
-
 		this.spracheBez = new JLabel();
 		this.spracheBez.setText("Benutzersprache");
 
-		// Paint Paint Paint
-
 		// login_Fenster_Zeichnen
+
 		loginfenster.setResizable(false);
 		loginfenster.setLayout(new BorderLayout(10, 10));
-		//
+
+		// Textfelder beschreibbar
+
 		loginUsername.setEditable(true);
 		loginPassword.setEditable(true);
 
+		//KeyListener
+		
 		loginPassword.addKeyListener(new keyList());
 
-		// layout_für_Panels
+		// layout für Panels
+
 		titelframe.setBounds(250, 1, 86, 20);
 		userpw.setLayout(new GridLayout(2, 2, 30, 20));
 
@@ -130,43 +134,50 @@ public class Anmeldefenster extends UserSammlung
 		buttonBereich.add(exitButton);
 
 		// titel
+
 		titelframe.add(frameTitle);
 		titelframe.add(spracheBez);
 		titelframe.add(bsb, BorderLayout.PAGE_END);
-		// Add von_loginbemerkung
+
+		// Add der loginbemerkung
+
 		userpw.add(usernameid);
 		userpw.add(loginUsername);
 		userpw.add(userpassword);
 		userpw.add(loginPassword);
 
-		// Gestaltung_loginfenster
+		// Gestaltung des loginfenster
+
 		loginBereich.add(userpw);
-		//
 		loginfenster.add(titelframe, BorderLayout.NORTH);
 		loginfenster.add(buttonBereich, BorderLayout.SOUTH);
 		loginfenster.add(loginBereich, BorderLayout.CENTER);
 
-		//
+		// Grösse und Sichtbarkeit
+		
 		loginfenster.setSize(500, 200);
 		loginfenster.setVisible(true);
-		//
+		
 	}
 
 	public void paint() {
 
 	}
 
+	//passiert nach der Login Validation
+	
 	private void doLogin() {
 
 		boolean exit = false;
-
 		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
 		loginfenster.setVisible(false);
 
 	}
 
+	//Exit Button
+	
 	class exitbtn implements ActionListener {
-		//
+	
 		public void actionPerformed(ActionEvent e) {
 
 			frmLoginSystem = new JFrame("Exit");
@@ -177,6 +188,8 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
+	//Registrierungs Knopf
+	
 	class regbtn implements ActionListener {
 		//
 		public void actionPerformed(ActionEvent e) {
@@ -187,66 +200,58 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
+	//User Laden
+	
 	public void userLoading() {
+
 		String ub = loginUsername.getText();
 		System.out.println(l);
 		System.out.println("list size is: " + l.size());
 		boolean erfolg = false;
-		
+
 		for (int i = 0; i < l.size(); i++) {
-			
+
 			index = i;
 
-			// if (l.get(index).benutzername.contentEquals(ub)) {
-				// System.out.println("User auf platz: " + index);
-				// System.out.println("index zahl " + index);
-		//	}
-
-			// if (l.get(index).getBenutzername().equals(loginUsername.getText()))
-			// System.out.println(index + " ist der neue Index");
-			// System.out.println("User u equals : " + u);
-			// System.out.println("Typed: " + loginUsername.getText());
-
-			if ((loginPassword.getText() != null
-					&& (loginUsername.getText() != null && (loginUsername.getText().equals(l.get(index).getBenutzername())
+			if ((loginPassword.getText() != null && (loginUsername.getText() != null
+					&& (loginUsername.getText().equals(l.get(index).getBenutzername())
 							&& (loginPassword.getText().equals(l.get(index).getPasswort())))))) {
 				u = l.get(index);
-				// TODO: Irgendwo dieses Objekt U speichern, damit es wieder verwendet werden
-				// kann
+
 				doLogin();
 				System.out.println(u);
-				// eingeloggterBenutzer();
-				
 				erfolg = true;
-
 				return;
 
-			} 
 			}
-		
-		if(erfolg == false) {
+		}
+
+		if (erfolg == false) {
 			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
 			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
 					JOptionPane.PLAIN_MESSAGE);
 
 			return;
-		
+
 		}
 	}
 
+	//Kontroll Methode
+	
 	public void eingeloggterBenutzer() {
 
 		System.out.println(u);
 
 	}
 
+	//Anmelde Button
+	
 	class anmbtn implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			// loginfenster.dispose();
-			// userEinloggen();
+
 			userLoading();
-			// doLogin();
+
 		}
 	}
 
@@ -254,41 +259,30 @@ public class Anmeldefenster extends UserSammlung
 
 		@Override
 		public void keyPressed(KeyEvent arg0) {
-			// TODO Auto-generated method stub
 
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
+
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				// doLogin();
-				// userEinloggen();
 				userLoading();
 			}
 		}
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
 
 		}
 	}
 
+	//MAIN Startpunkt des Programmes
+	
 	public static void main(String[] args) {
 
-		// boolean exit = false;
-
-		// while (!exit) {
 		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint();
 
-		// HauptmenuNeu menu = new HauptmenuNeu(gui.u);
-		// menu.setVisible();
-
-		// exit = menu.exit;
-		//text
 	}
 
 }
-// }
