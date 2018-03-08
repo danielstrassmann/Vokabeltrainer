@@ -40,7 +40,7 @@ public class Anmeldefenster extends UserSammlung
 	private JLabel usernameid;
 	private JLabel userpassword;
 	private JLabel frameTitle;
-	private JLabel spracheBez;
+//	private JLabel spracheBez;
 	
 	// Buttons
 	
@@ -94,7 +94,7 @@ public class Anmeldefenster extends UserSammlung
 
 		this.usernameid = new JLabel("Benutzername       ");
 		this.userpassword = new JLabel("Password          ");
-		this.frameTitle = new JLabel("Login Credentials:                  ");
+		this.frameTitle = new JLabel("              Anmeldedaten:      ");
 
 		this.loginUsername = new JTextField();
 		this.loginPassword = new JPasswordField();
@@ -104,9 +104,9 @@ public class Anmeldefenster extends UserSammlung
 		this.buttonBereich = new JPanel();
 		this.loginBereich = new JPanel();
 
-		BenutzerspracheButton bsb = new BenutzerspracheButton();
-		this.spracheBez = new JLabel();
-		this.spracheBez.setText("Benutzersprache");
+//		BenutzerspracheButton bsb = new BenutzerspracheButton();
+//		this.spracheBez = new JLabel();
+//		this.spracheBez.setText("Benutzersprache");
 
 		// login_Fenster_Zeichnen
 
@@ -136,8 +136,8 @@ public class Anmeldefenster extends UserSammlung
 		// titel
 
 		titelframe.add(frameTitle);
-		titelframe.add(spracheBez);
-		titelframe.add(bsb, BorderLayout.PAGE_END);
+//		titelframe.add(spracheBez);
+//		titelframe.add(bsb, BorderLayout.PAGE_END);
 
 		// Add der loginbemerkung
 
