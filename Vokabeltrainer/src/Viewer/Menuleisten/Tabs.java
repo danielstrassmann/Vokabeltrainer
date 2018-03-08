@@ -40,16 +40,24 @@ public class Tabs extends JPanel {
 
 		TabKartei tka = new TabKartei(u, mlo);
 		tabsMenu.addTab("Kartei", tka);
+
+		tabsMenu.addChangeListener(new TabListener());
 	}
 
-/*	class TabListener implements ChangeListener {
+	class TabListener implements ChangeListener {
 
 		public void stateChanged(ChangeEvent changeEvent) {
-			JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
-			int index = sourceTabbedPane.getSelectedIndex();
-			System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(index));
+			if (tabsMenu.getSelectedIndex() == 0) {
+				System.out.println(" 0 Index == Lernen");
+			}
+			if (tabsMenu.getSelectedIndex() == 1) {
+				TabStatistik s = new TabStatistik(u);
+				s.statistikAktualisieren();
+				System.out.println(" 1 Index == Statistik");
+			}
+			if (tabsMenu.getSelectedIndex() == 2) {
+				System.out.println(" 2 Index == Kartei");
+			}
 		}
-
 	}
-*/
 }

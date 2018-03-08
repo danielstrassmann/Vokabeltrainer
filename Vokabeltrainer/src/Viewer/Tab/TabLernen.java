@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 import Model.Training;
 import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
+import Viewer.Popup.KeineKarten;
 import Viewer.Popup.Lernen;
 
 public class TabLernen extends JPanel implements ActionListener {
@@ -149,6 +150,7 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
+			
 			BoxLabel source = (BoxLabel) s.getSource();
 			Lernen lernenFenster = new Lernen(u,parent, source.getId());
 			parent.setEnabled(false);

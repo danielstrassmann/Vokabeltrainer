@@ -167,6 +167,8 @@ public class Lernen extends JDialog {
 			textEingabeFrage.setEditable(true);
 			textEingabeFrage.setText(k.getFrage());
 			textEingabeFrage.setEditable(false);
+			textEingabeAntwort.setText("");
+			
 		}
 		if (textKontrolleSwitch.getText().equals("2")) {
 
@@ -178,6 +180,7 @@ public class Lernen extends JDialog {
 			textEingabeAntwort.setEditable(true);
 			textEingabeAntwort.setText(k.getAntwort());
 			textEingabeAntwort.setEditable(false);
+			textEingabeFrage.setText("");
 		}
 
 	}
@@ -216,7 +219,7 @@ public class Lernen extends JDialog {
 			buttonKontrollieren.setEnabled(true);
 			textEingabeFrage.setEditable(true);
 			textEingabeFrage.setText("");
-			textEingabeAntwort.setText("ANTWORT sollte hier stehen");
+//			textEingabeAntwort.setText("ANTWORT sollte hier stehen");
 			textEingabeAntwort.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		} else {
@@ -225,7 +228,7 @@ public class Lernen extends JDialog {
 			buttonKontrollieren.setEnabled(true);
 			textEingabeAntwort.setEditable(true);
 			textEingabeAntwort.setText("");
-			textEingabeFrage.setText("FRAGE sollte hier stehen");
+//			textEingabeFrage.setText("FRAGE sollte hier stehen");
 			textEingabeFrage.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		}
@@ -248,7 +251,6 @@ public class Lernen extends JDialog {
 	class switchButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			switchen();
-			karteWechseln();
 		}
 	}
 	

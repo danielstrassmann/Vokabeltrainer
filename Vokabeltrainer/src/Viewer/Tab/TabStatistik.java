@@ -47,7 +47,7 @@ public class TabStatistik extends JPanel {
 
 	}
 	
-	void statistikAktualisieren() {
+	public void statistikAktualisieren() {
 		this.d = u.getUserDaten();
 		
 		this.a = d.getAntwortenKorrekt();
