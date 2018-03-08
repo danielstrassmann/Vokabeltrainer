@@ -44,4 +44,9 @@
         <frage>dlkadsjf</frage>
         <id>3</id>
     </karteien>
+    <karteien>
+        <antwort>daniel</antwort>
+        <frage>manfred</frage>
+        <id>4</id>
+    </karteien>
 </karteienSpeicherObjekt>

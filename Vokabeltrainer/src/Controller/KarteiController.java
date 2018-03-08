@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.ArrayList;
+
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
@@ -15,23 +17,30 @@ public class KarteiController {
 	public void karteiErstellen(String frage, String antwort, User u) {
 		Kartei kk = new Kartei(frage, antwort);
 
-		//if (u.getAktiveKartei().equals(null)) {
-			//int id = 0;
-			//kk.setId(id);
-			//u.karteiInSammlung(kk);
+		// if (u.getAktiveKartei().equals(null)) {
+		// int id = 0;
+		// kk.setId(id);
+		// u.karteiInSammlung(kk);
 
-		//}
+		// }
 
-		//else {
+		// else {
+		// u.karteiInSammlung(kk);
 
-			int id = u.getAnzahlKarteienInSammlung();
-			id++;
-			kk.setId(id);
-			// TODO: Check einbauen, ob ID bereits in Liste exisiert --> wenn Karteien aus
-			// Sammlung gelöscht wurden
-			u.karteiInSammlung(kk);
+		ArrayList<Kartei> userKartei = u.getUserKarteien();
+		if (userKartei == null) {
+			userKartei = new ArrayList<>();
+			u.setUserKarteien(userKartei);
+		}
 
-		//}
+		int id = u.getAnzahlKarteienInSammlung();
+		id++;
+		kk.setId(id);
+		// TODO: Check einbauen, ob ID bereits in Liste exisiert --> wenn Karteien aus
+		// Sammlung gelöscht wurden
+		u.karteiInSammlung(kk);
+
+		// }
 	}
 
 	// Ein Objekt Karte wird erzeugt & in eine Kartei abgelegt
