@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.*;
 
@@ -66,6 +67,8 @@ public class MenuleisteOben extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		subPanelKartei.setBackground(Color.LIGHT_GRAY);
 		subPanelBenutzer.setBackground(Color.LIGHT_GRAY);
+		
+		u.setAktiveKartei((Kartei)kab.getSelectedItem());
 		
 	}
 	
