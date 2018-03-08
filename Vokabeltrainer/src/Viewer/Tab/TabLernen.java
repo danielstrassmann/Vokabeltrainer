@@ -198,6 +198,10 @@ public class TabLernen extends JPanel implements ActionListener {
 
 			parent.setEnabled(true);
 			
+			TabStatistik s = new TabStatistik(u);
+			s.statistikAktualisieren();
+			
+			
 
 		}
 

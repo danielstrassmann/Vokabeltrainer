@@ -11,70 +11,70 @@ import javax.swing.JPanel;
 
 import Model.User;
 
-
-
 public class BenutzerspracheButton extends JComboBox
 
 {
+	public String sprachName;
+	public String sprachCode;
 
 	User u;
 	String value = new String();
 
+	public BenutzerspracheButton() {
+		benutzerSprache();
 
-		public BenutzerspracheButton()
-		{
-			benutzerSprache();
-			
-			
-		}
-		
-		public void benutzerSprache()
-		{
-			addItem("Deutsch");
-			addItem("français");
-			addItem("english");
-			addItem("italiano");
+	}
 
-			setVisible(true);
-			setSize(200,200);
+	public void benutzerSprache() {
+		addItem("Deutsch");
+		addItem("français");
+		addItem("english");
+		addItem("italiano");
+
+		setVisible(true);
+		setSize(200, 200);
+
+		addItemListener(new SpracheChangeListener());
+
+		getSprachCode();
+
+	}
+
+	public void getSprachCode() {
+		this.sprachName = String.valueOf(getSelectedItem());
+		if (this.sprachName == "Deutsch") {
+			String sprachCode = "DE";
+			int lang = 0;
+			System.out.println(sprachCode + lang);
 		}
-		
-		public void spracheAendern(User u) 
-		
-		{
-			u.getBenutzersprache();
-			
-				this.bsp = new BenutzerspracheButton();
-				if (String value = (String) benutzerSprache.getSelectedItem().equals("Deutsch"));{
-					//Locale l = new Locale(u.getBenutzersprache());
-					//ResourceBundle r = ResourceBundle.getBundle("Bundle_Deutsch", l);
-				}
-				else if (String value = (String) benutzerSprache.getSelectedItem().equals("francais")); {
-					//Locale l = new Locale(u.getBenutzersprache());
-					//ResourceBundle r = ResourceBundle.getBundle("Bundle_francais", l);
-				}
-				else if (String value = (String) benutzerSprache.getSelectedItem().equals("english")); {
-					//Locale l = new Locale(u.getBenutzersprache());
-					//ResourceBundle r = ResourceBundle.getBundle("Bundle_english", l);
-				}
-				else if (String value = (String) benutzerSprache.getSelectedItem().equals("italiano")); {
-					//Locale l = new Locale(u.getBenutzersprache());
-					//ResourceBundle r = ResourceBundle.getBundle("Bundle_italiano", l);
-				}
-				else return
-						
-								
+		if (this.sprachName == "français") {
+			String sprachCode = "FR";
+			int lang = 1;
+			System.out.println(sprachCode + lang);
+		}
+		if (this.sprachName == "english") {
+			String sprachCode = "EN";
+			int lang = 2;
+			System.out.println(sprachCode + lang);
+		}
+		if (this.sprachName == "italiano") {
+			String sprachCode = "IT";
+			int lang = 3;
+			System.out.println(sprachCode + lang);
+		} else {
+
 		}
 
-		class spracheChangeListener implements ItemListener {
+	}
 
-			@Override
-			public void itemStateChanged(ItemEvent langEvent) {
-				// TODO Auto-generated method stub
-				if (langEvent.getStateChange().equals("Deutsch")) {
-					
-				}
-				
-			}
+	class SpracheChangeListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent langEvent) {
+			// TODO Auto-generated method stub
+
+			getSprachCode();
 		}
+	}
+
 }
