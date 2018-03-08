@@ -26,11 +26,12 @@ public class KarteiController {
 
 		// else {
 		// u.karteiInSammlung(kk);
-
+		
+// Methode wenn noch keine Karte vorhanden.
 		ArrayList<Kartei> userKartei = u.getUserKarteien();
 		if (userKartei == null) {
 			userKartei = new ArrayList<>();
-			u.setUserKarteien(userKartei);
+			u.setUserKarteien(userKartei); 
 		}
 
 		int id = u.getAnzahlKarteienInSammlung();
