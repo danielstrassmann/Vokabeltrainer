@@ -23,7 +23,7 @@ public class KeineKarten extends JDialog{
 		setLayout(null);
 		setSize(300, 100);
 		setResizable(false);
-		setTitle("WARNUNG: Keine Lernkarten");
+		setTitle("WARNUNG: Keine Lernkarten ");
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setAlwaysOnTop(true);
