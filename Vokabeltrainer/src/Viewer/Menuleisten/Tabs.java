@@ -48,15 +48,12 @@ public class Tabs extends JPanel {
 
 		public void stateChanged(ChangeEvent changeEvent) {
 			if (tabsMenu.getSelectedIndex() == 0) {
-				System.out.println(" 0 Index == Lernen");
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
 				TabStatistik s = new TabStatistik(u);
 				s.statistikAktualisieren();
-				System.out.println(" 1 Index == Statistik");
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
-				System.out.println(" 2 Index == Kartei");
 			}
 		}
 	}

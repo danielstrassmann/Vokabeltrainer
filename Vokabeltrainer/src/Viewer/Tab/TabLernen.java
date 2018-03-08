@@ -48,7 +48,6 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	private JFrame parent;
 	private User u;
-	
 
 	public TabLernen(User u, JFrame parent) {
 		this.parent = parent;
@@ -81,8 +80,6 @@ public class TabLernen extends JPanel implements ActionListener {
 		boxLabel3.addMouseListener(new boxMausKlick());
 		boxLabel4.addMouseListener(new boxMausKlick());
 		boxLabel5.addMouseListener(new boxMausKlick());
-		
-		
 
 	}
 
@@ -106,8 +103,6 @@ public class TabLernen extends JPanel implements ActionListener {
 		boxLabel3.setPreferredSize(new Dimension(200, 700));
 		boxLabel4.setPreferredSize(new Dimension(200, 700));
 		boxLabel5.setPreferredSize(new Dimension(200, 700));
-
-		// boxLabel1.setBorder(new EmptyBorder(50, 50, 0, 0));
 
 		boxLabel1.setBackground(new Color(100, 120, 100));
 		boxLabel1.setOpaque(true);
@@ -145,14 +140,14 @@ public class TabLernen extends JPanel implements ActionListener {
 		add(boxLabel5);
 
 		setVisible(true);
-//		setBackground(Color.GRAY);
+		// setBackground(Color.GRAY);
 	}
 
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
-			
+
 			BoxLabel source = (BoxLabel) s.getSource();
-			Lernen lernenFenster = new Lernen(u,parent, source.getId());
+			Lernen lernenFenster = new Lernen(u, parent, source.getId());
 			parent.setEnabled(false);
 			lernenFenster.setAlwaysOnTop(true);
 
@@ -199,11 +194,6 @@ public class TabLernen extends JPanel implements ActionListener {
 			boxLabel5.setBorder(new CompoundBorder(border, margin5));
 
 			parent.setEnabled(true);
-			
-			TabStatistik s = new TabStatistik(u);
-			s.statistikAktualisieren();
-			
-			
 
 		}
 

@@ -45,22 +45,18 @@ public class BenutzerspracheButton extends JComboBox
 		if (this.sprachName == "Deutsch") {
 			String sprachCode = "DE";
 			int lang = 0;
-			System.out.println(sprachCode + lang);
 		}
 		if (this.sprachName == "français") {
 			String sprachCode = "FR";
 			int lang = 1;
-			System.out.println(sprachCode + lang);
 		}
 		if (this.sprachName == "english") {
 			String sprachCode = "EN";
 			int lang = 2;
-			System.out.println(sprachCode + lang);
 		}
 		if (this.sprachName == "italiano") {
 			String sprachCode = "IT";
 			int lang = 3;
-			System.out.println(sprachCode + lang);
 		} else {
 
 		}

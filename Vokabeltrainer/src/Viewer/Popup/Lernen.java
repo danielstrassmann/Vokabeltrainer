@@ -219,7 +219,6 @@ public class Lernen extends JDialog {
 			buttonKontrollieren.setEnabled(true);
 			textEingabeFrage.setEditable(true);
 			textEingabeFrage.setText("");
-//			textEingabeAntwort.setText("ANTWORT sollte hier stehen");
 			textEingabeAntwort.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		} else {
@@ -228,7 +227,6 @@ public class Lernen extends JDialog {
 			buttonKontrollieren.setEnabled(true);
 			textEingabeAntwort.setEditable(true);
 			textEingabeAntwort.setText("");
-//			textEingabeFrage.setText("FRAGE sollte hier stehen");
 			textEingabeFrage.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		}
@@ -281,7 +279,7 @@ public class Lernen extends JDialog {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+			exitLernen();
 		}
 
 		@Override
