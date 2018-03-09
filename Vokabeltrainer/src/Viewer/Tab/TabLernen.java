@@ -175,7 +175,7 @@ public class TabLernen extends JPanel implements ActionListener {
 			}
 
 			// Kein Karten mit ausgewählter Box gefunden
-			//  Infomeldung kommt, Methodenabbruch
+			// Infomeldung kommt, Methodenabbruch
 			if (counter == 0) {
 				
 				fehlerdialog = new KeineKarten();
