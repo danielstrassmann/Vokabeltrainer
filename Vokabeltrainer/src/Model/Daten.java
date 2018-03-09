@@ -9,6 +9,7 @@ package Model;
 
 public class Daten {
 
+	// Inhalt der Daten	
 	private int antwortenKorrekt;
 	private int antwortenFalsch;
 	private int antwortenTotal;

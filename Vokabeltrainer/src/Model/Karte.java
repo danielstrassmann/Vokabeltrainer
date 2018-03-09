@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Karte {
 
+	// Karten inhalt
 	private int id;
 	private String frage;
 	private String antwort;

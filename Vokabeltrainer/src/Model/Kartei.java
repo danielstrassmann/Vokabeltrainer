@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Kartei {
 
+	//Karteien Inhalt
 	private int id;
 	private ArrayList<Karte> kartensammlung;
 	private String frageKartei;

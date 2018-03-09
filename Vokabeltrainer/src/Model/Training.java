@@ -14,6 +14,7 @@ import java.util.Random;
 
 public class Training {
 
+	// Training
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;
