@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 /**
  * Diese Klasse wird für den User gebraucht
  * 
- * @author Daniel Strassmann St.Gallen / Thomas Brunner
+ * @author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018
  */
 

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
+import Model.Karte;
+import Model.Kartei;
 import Model.Training;
 import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
@@ -26,7 +29,7 @@ import Viewer.Popup.Lernen;
 /**
  * Diese Klasse wird für das Lernen gebraucht
  * 
- * @author Marius Brändle St.Gallen / Duc Thach, Daniel Strassmann, Thomas Brunner
+ * @author Marius Brändle St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
  */
 
@@ -55,6 +58,8 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	private JFrame parent;
 	private User u;
+
+	private KeineKarten fehlerdialog;
 
 	public TabLernen(User u, JFrame parent) {
 		this.parent = parent;
@@ -154,6 +159,30 @@ public class TabLernen extends JPanel implements ActionListener {
 		public void mouseClicked(MouseEvent s) {
 
 			BoxLabel source = (BoxLabel) s.getSource();
+
+			// Ceck ob Box Karten enthält
+			Kartei kk = u.getAktiveKartei();
+			ArrayList<Karte> kartenliste;
+			kartenliste = kk.getSammlung();
+			int counter = 0;
+
+			for (Karte k : kartenliste) {
+
+				if (k.getBox() == source.getId()) {
+					counter++;
+				}
+
+			}
+
+			// Kein Karten mit ausgewählter Box gefunden
+			// Infomeldung kommt, Methodenabbruch
+			if (counter == 0) {
+				
+				fehlerdialog = new KeineKarten();
+				return;
+			}
+			
+
 			Lernen lernenFenster = new Lernen(u, parent, source.getId());
 			parent.setEnabled(false);
 			lernenFenster.setAlwaysOnTop(true);

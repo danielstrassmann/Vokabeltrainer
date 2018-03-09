@@ -5,13 +5,8 @@ import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
-import Viewer.Menuleisten.MenuleisteOben;
-import Viewer.Tab.*;
 
 import Model.*;
 import SaveAndLoad.AbspeichernLaden;
@@ -19,7 +14,7 @@ import SaveAndLoad.AbspeichernLaden;
 /**
  * Diese Klasse wird für das Lernfenster gebraucht
  * 
- * @author Marius Brändle St.Gallen
+ * @author Marius Brändle St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
  */
 
@@ -34,9 +29,6 @@ public class Lernen extends JDialog {
 	private JTextField textEingabeFrage;
 	private JTextField textEingabeAntwort;
 
-	private JTextField textKontrolleSwitch;
-	private JTextField textKontrolleBox;
-
 	private JButton buttonKontrollieren;
 	private JButton buttonAbbrechen;
 	private JButton buttonNaechsteKarte;
@@ -46,15 +38,20 @@ public class Lernen extends JDialog {
 
 	private Training t;
 	private Karte k;
-
 	private User u;
-	
+	private boolean switchButton;
+
+	// Popup-Fehlerdialog, wenn keine Karten mehr in der Box sind
+	private KeineKarten fehlerdialog;
 
 	public Lernen(User u, JFrame owner, int aktuelleBox) {
-		
+
 		super(owner);
+		// wird benötigt, damit Training sauber verlassen werden kann
+
 		this.u = u;
 		this.aktuelleBox = aktuelleBox;
+		this.switchButton = true;
 		t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();
 		k = t.getAktiveKarte();
@@ -64,11 +61,13 @@ public class Lernen extends JDialog {
 
 	private void lernen() {
 		this.labelTitelLerner = new JLabel("Sie lernen aktuell in der Box " + aktuelleBox);
-		//Kartei Quellsprache & Zielsprache im UI anzeigen
+		// Kartei Quellsprache & Zielsprache im UI anzeigen
 		this.labelQuellName = new JLabel(u.getAktiveKartei().getFrage());
 		this.labelUbersetzungName = new JLabel(u.getAktiveKartei().getAntwort());
 		// Anzahl Karten in den Box wird augegeben
-		this.labelUbersichtKarten = new JLabel("Es sind noch " + t.getAnzahlKartenInBox() + " Karten in dieser Box " + aktuelleBox);
+		int kartenInBox = t.getAnzahlKartenInBox();
+		kartenInBox++;
+		this.labelUbersichtKarten = new JLabel("Es sind noch " + kartenInBox + " Karten in dieser Box.");
 		this.labelRueckmeldung = new JLabel();
 
 		this.textEingabeFrage = new JTextField();
@@ -80,10 +79,8 @@ public class Lernen extends JDialog {
 		this.buttonAbbrechen = new JButton("Box wechseln");
 		this.buttonNaechsteKarte = new JButton("nächste Karte");
 
-		this.buttonSwitch = new JButton("SWITCH");
+		this.buttonSwitch = new JButton("Switch");
 
-		this.textKontrolleSwitch = new JTextField("1");
-		this.textKontrolleBox = new JTextField();
 
 	}
 
@@ -94,7 +91,6 @@ public class Lernen extends JDialog {
 		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		this.textKontrolleBox.setText("" + this.aktuelleBox);
 
 		// Location auf dem Fenster Lernen setzten
 		this.labelTitelLerner.setBounds(10, 1, 300, 25);
@@ -120,7 +116,7 @@ public class Lernen extends JDialog {
 
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
-		add(textKontrolleBox);
+		// add(textKontrolleBox);
 
 		add(buttonNaechsteKarte);
 		add(buttonKontrollieren);
@@ -136,18 +132,10 @@ public class Lernen extends JDialog {
 		this.buttonKontrollieren.addActionListener(new kontrollierenButton());
 		this.buttonNaechsteKarte.addActionListener(new naechsteKarteButton());
 		this.buttonSwitch.addActionListener(new switchButton());
-		
+
 		// Listener, welche für das Schliessen des Fenster zuständig sind
 		this.buttonAbbrechen.addActionListener(new boxWaehlenButton());
 		addWindowListener(new exitLernenFenster());
-
-		// Kontrolle welche Box
-		this.textKontrolleBox.setBounds(595, 190, 60, 25);
-		this.textKontrolleBox.setBackground(Color.BLUE);
-		// Kontrolled Switchfunktion
-		this.textKontrolleSwitch.setBounds(595, 350, 50, 25);
-		textKontrolleSwitch.setBackground(Color.RED);
-		add(textKontrolleSwitch);
 
 	}
 
@@ -162,27 +150,47 @@ public class Lernen extends JDialog {
 		labelRueckmeldung.setText("");
 
 		t.gibZufallsKarteAusBox();
+		int kartenInBox = t.getAnzahlKartenInBox();
+		// Muss gemacht werden, da bei Methode t.gibZufallsKarteAusBox bereits die Karte
+		// aus der sammlungBox entfernt wurde
+		// Nur so wird die aktuell angezeigte Karte mitgezählt in der Anzeige
+		kartenInBox++;
+		labelUbersichtKarten.setText("Es sind noch " + kartenInBox + " Karten in dieser Box.");
 		k = t.getAktiveKarte();
 
-		if (textKontrolleSwitch.getText().equals("1")) {
+		if (switchButton == true) {
 
 			// Check ob instanziertes k != null
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
-				dispose();
+				fehlerdialog = new KeineKarten();
+				this.buttonKontrollieren.setEnabled(false);
+				this.buttonNaechsteKarte.setEnabled(false);
+				this.buttonSwitch.setEnabled(false);
+				this.textEingabeAntwort.setEnabled(false);
+				this.labelUbersichtKarten.setText("Es sind noch 0 Karten in dieser Box.");
+				exitLernen();
+				return;
 			}
 			textEingabeFrage.setEditable(true);
 			textEingabeFrage.setText(k.getFrage());
 			textEingabeFrage.setEditable(false);
 			textEingabeAntwort.setText("");
-			
+
 		}
-		if (textKontrolleSwitch.getText().equals("2")) {
+		if (switchButton == false) {
 
 			// Check ob instanziertes k != null
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
-				dispose();
+				fehlerdialog = new KeineKarten();
+				this.buttonKontrollieren.setEnabled(false);
+				this.buttonNaechsteKarte.setEnabled(false);
+				this.buttonSwitch.setEnabled(false);
+				this.textEingabeFrage.setEnabled(false);
+				this.labelUbersichtKarten.setText("Es sind noch 0 Karten in dieser Box.");
+				exitLernen();
+				return;
 			}
 			textEingabeAntwort.setEditable(true);
 			textEingabeAntwort.setText(k.getAntwort());
@@ -196,17 +204,16 @@ public class Lernen extends JDialog {
 		buttonNaechsteKarte.setVisible(true);
 		buttonKontrollieren.setEnabled(false);
 		boolean check = t.antwortPruefen(textEingabeAntwort.getText(), textEingabeFrage.getText());
-		
-		
-		if ( check == true) {
+
+		if (check == true) {
 			labelRueckmeldung.setForeground(new Color(0, 102, 0));
 			labelRueckmeldung.setText("Antwort Korrekt! Karte geht in nächste Box.");
-		} 
-		if(check == false) { 
+		}
+		if (check == false) {
 			labelRueckmeldung.setForeground(Color.RED);
 			labelRueckmeldung.setText("Antwort Falsch! Karte geht in erste Box.");
 		}
-		
+
 		// Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt
 		t.aktiveKarteNeuInTrainingsKartei();
 
@@ -218,10 +225,10 @@ public class Lernen extends JDialog {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		saveHandler.karteienSpeichern(u);
 	}
-	
+
 	public void switchen() {
-		if (textKontrolleSwitch.getText().equals("1")) {
-			textKontrolleSwitch.setText("2");
+		if (switchButton == true) {
+			switchButton = false;
 			labelRueckmeldung.setText("");
 			buttonKontrollieren.setEnabled(true);
 			textEingabeFrage.setEditable(true);
@@ -229,7 +236,7 @@ public class Lernen extends JDialog {
 			textEingabeAntwort.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		} else {
-			textKontrolleSwitch.setText("1");
+			switchButton = true;
 			labelRueckmeldung.setText("");
 			buttonKontrollieren.setEnabled(true);
 			textEingabeAntwort.setEditable(true);
@@ -258,29 +265,29 @@ public class Lernen extends JDialog {
 			switchen();
 		}
 	}
-	
+
 	class boxWaehlenButton implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			exitLernen();
-			
+
 		}
-		
+
 	}
-	
+
 	class exitLernenFenster implements WindowListener {
 
 		@Override
 		public void windowActivated(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void windowClosed(WindowEvent e) {
 			exitLernen();
-			
+
 		}
 
 		@Override
@@ -292,27 +299,27 @@ public class Lernen extends JDialog {
 		@Override
 		public void windowDeactivated(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void windowDeiconified(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void windowIconified(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void windowOpened(WindowEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	}
 
 }

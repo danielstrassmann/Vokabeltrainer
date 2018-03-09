@@ -10,6 +10,8 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Viewer.Popup.KeineKarten;
+
 
 
 public class Training {
@@ -97,23 +99,26 @@ public class Training {
 		// Zufällige Karte wird aus Sammlung ausgegeben
 		Random r = new Random();
 		Karte result = null;
+		
+		try {
 		result = sammlungBox.get(r.nextInt(sammlungBox.size()));
 
 		// Checkt, ob es noch Karten in der Box hat
-		if (result != null) {
+		//if (result != null) {
 
 			sammlungBox.remove(result);
 			this.aktiveKarte = result;
 			return aktiveKarte;
 
+		//}
 		}
 
-		else {
-			System.out.println("Es hat keine Karten mehr in der Box!");
-			Karte k = new Karte();
+		catch(Exception e) {
+			System.out.println("Es hat keine Karten mehr in der Box! " + e.toString());
+			// Karte k = new Karte();
 			// Objekt k ist null, da keine Karten mehr in der Box sind
 			// Muss Marius im UI abfangen!!!
-			aktiveKarte = k;
+			aktiveKarte = null;
 			return aktiveKarte;
 		}
 

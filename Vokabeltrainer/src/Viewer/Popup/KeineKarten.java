@@ -23,7 +23,7 @@ public class KeineKarten extends JDialog{
 	}
 	
 	public void initComponents() {
-		this.labelKeineKarten = new JLabel("Es hat keine Lernkarten in dieser Box");
+		this.labelKeineKarten = new JLabel("Es hat keine Karten mehr in dieser Box");
 		this.bitteBoxWechseln = new JLabel("Bitte Box wechseln");
 	}
 
@@ -31,7 +31,7 @@ public class KeineKarten extends JDialog{
 		setLayout(null);
 		setSize(300, 100);
 		setResizable(false);
-		setTitle("WARNUNG: Keine Lernkarten");
+		setTitle("Box leer");
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setAlwaysOnTop(true);
