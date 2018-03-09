@@ -1,5 +1,11 @@
 package Model;
 
+/**
+ * Diese Klasse wird für den aufbau des Trainigs gebraucht
+ * 
+ * @author Thomas Brunner St.Gallen /
+ * @version 1.0 09.3.2018
+ */
 
 import java.util.ArrayList;
 import java.util.Random;

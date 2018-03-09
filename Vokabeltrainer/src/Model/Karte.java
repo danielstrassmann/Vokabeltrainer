@@ -1,6 +1,13 @@
 
 package Model;
 
+/**
+ * Diese Klasse wird für die Karten gebraucht
+ * 
+ *@author Thomas Brunner St.Gallen /
+ * @version 1.0 09.3.2018
+ */
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

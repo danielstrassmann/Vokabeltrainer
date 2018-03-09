@@ -6,6 +6,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlAccessType;
 
+/**
+ * Diese Klasse wird für den User gebraucht
+ * 
+ * @author Daniel Strassmann St.Gallen / Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
 

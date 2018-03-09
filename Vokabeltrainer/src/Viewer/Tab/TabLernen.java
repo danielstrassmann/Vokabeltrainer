@@ -23,6 +23,13 @@ import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Popup.KeineKarten;
 import Viewer.Popup.Lernen;
 
+/**
+ * Diese Klasse wird für das Lernen gebraucht
+ * 
+ * @author Marius Brändle St.Gallen / Duc Thach, Daniel Strassmann, Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 public class TabLernen extends JPanel implements ActionListener {
 
 	Border margin;

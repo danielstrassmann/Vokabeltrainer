@@ -9,6 +9,13 @@ import javax.swing.event.ChangeListener;
 import Model.User;
 import Viewer.Tab.*;
 
+/**
+ * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class Tabs extends JPanel {
 
 	private JTabbedPane tabsMenu;

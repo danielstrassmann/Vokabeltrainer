@@ -11,6 +11,13 @@ import javax.swing.JPanel;
 
 import Model.User;
 
+/**
+ * Diese Klasse wird für die Benutzersprache gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class BenutzerspracheButton extends JComboBox
 
 {

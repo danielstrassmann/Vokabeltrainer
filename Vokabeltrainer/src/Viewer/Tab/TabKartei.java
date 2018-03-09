@@ -27,6 +27,13 @@ import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menuleisten.MenuleisteOben;
 
+/**
+ * Diese Klasse wird für die Kartei veranschaung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen 
+ * @version 1.0 09.3.2018
+ */
+
 public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	private JTable tableKartei;

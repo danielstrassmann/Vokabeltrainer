@@ -1,5 +1,12 @@
 package Controller;
 
+/**
+ * Diese Klasse wird für die Übersetzung gebraucht
+ * 
+ * @author Thomas Brunner St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 import java.util.Locale;
 import java.util.ResourceBundle;
 

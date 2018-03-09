@@ -3,6 +3,14 @@ package Viewer.Popup;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+/**
+ * Diese Klasse wird für das Popup gebraucht, 
+ * wenn in der Kartei keine Karten mehr vorhanden sind
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class KeineKarten extends JDialog{
 	
 	private JLabel labelKeineKarten;

@@ -14,6 +14,13 @@ import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Menuleisten.Tabs;
 
+/**
+ * Diese Klasse wird für das GUI des Hauptmenus gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class HauptmenuNeu {
 
 	public static JFrame mainFrame;

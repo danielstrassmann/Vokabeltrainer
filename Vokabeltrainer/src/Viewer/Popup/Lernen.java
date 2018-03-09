@@ -16,6 +16,13 @@ import Viewer.Tab.*;
 import Model.*;
 import SaveAndLoad.AbspeichernLaden;
 
+/**
+ * Diese Klasse wird für das Lernfenster gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class Lernen extends JDialog {
 
 	private JLabel labelTitelLerner;

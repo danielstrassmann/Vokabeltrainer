@@ -8,6 +8,12 @@ import javax.swing.*;
 import Viewer.Anmeldung.*;
 import Viewer.Menu.*;
 
+/**
+ * Diese Klasse wird für den Abmeldebutton gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
 
 public class AbmeldeButton extends JButton{
 

@@ -18,6 +18,13 @@ import Viewer.Buttons.KarteiButton.karteiButtonListener;
 import Viewer.Popup.KarteiErstellen;
 import Viewer.Tab.TabKartei;
 
+/**
+ * Diese Klasse wird für die Karteiauswahl gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	private User u;
 	private Kartei kk;

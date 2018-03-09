@@ -9,8 +9,12 @@ import javax.swing.table.DefaultTableModel;
 import Model.Karte;
 
 /**
- * @author 1bestcsharp.blogspot.com
+ * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen / Duc Thach, Daniel Strassmann, Thomas Brunner
+ * @version 1.0 09.3.2018
  */
+
 public class Java_Populate_JTable_Using_ArrayList extends javax.swing.JFrame {
 
 	/**

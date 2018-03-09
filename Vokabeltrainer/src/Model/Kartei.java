@@ -1,5 +1,12 @@
 package Model;
 
+/**
+ * Diese Klasse wird für die Kartei gebraucht
+ * 
+ * @author Thomas Brunner St.Gallen /
+ * @version 1.0 09.3.2018
+ */
+
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlAccessType;

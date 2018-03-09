@@ -1,5 +1,12 @@
 package Controller;
 
+/**
+ * Diese Klasse wird für die Erstellung der UserSammlung gebraucht
+ * 
+ * @author  Daniel Strassmann St.Gallen / Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlAccessType;

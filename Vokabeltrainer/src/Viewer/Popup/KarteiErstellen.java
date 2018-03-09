@@ -15,6 +15,13 @@ import SaveAndLoad.AbspeichernLaden;
 import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Menu.HauptmenuNeu;
 
+/**
+ * Diese Klasse wird für das GUI der Karteierstellung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class KarteiErstellen extends JDialog implements ActionListener {
 	private KarteiController kc = new KarteiController();
 	private User u;

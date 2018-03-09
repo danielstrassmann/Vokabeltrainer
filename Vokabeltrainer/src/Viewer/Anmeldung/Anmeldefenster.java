@@ -26,6 +26,13 @@ import Viewer.Menu.HauptmenuNeu;
 import Viewer.Buttons.*;
 
 
+/**
+ * Diese Klasse wird für die Anmeldung gebraucht
+ * 
+ * @author Duc Thach St.Gallen / Marius Brändle, Daniel Strassmann, Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 public class Anmeldefenster extends UserSammlung
 
 {

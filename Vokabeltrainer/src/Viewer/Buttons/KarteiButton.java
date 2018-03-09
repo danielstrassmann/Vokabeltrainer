@@ -8,6 +8,13 @@ import javax.swing.*;
 import Model.User;
 import Viewer.Popup.KarteiErstellen;
 
+/**
+ * Diese Klasse wird für die Kartei erstellung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class KarteiButton extends JButton {
 	
 	private User u;

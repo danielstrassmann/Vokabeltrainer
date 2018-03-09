@@ -15,6 +15,13 @@ import javax.swing.JTable;
 import Model.Daten;
 import Model.User;
 
+/**
+ * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen / Duc Thach
+ * @version 1.0 09.3.2018
+ */
+
 public class TabStatistik extends JPanel {
 	private JTable jt;
 	private Daten d;
@@ -27,7 +34,6 @@ public class TabStatistik extends JPanel {
 	private DiagrammBasic labelDiagramm;
 
 	JTable jt2;
-	int zahl;
 	Calendar now = Calendar.getInstance();
 
 	public TabStatistik(User u) {
@@ -40,8 +46,9 @@ public class TabStatistik extends JPanel {
 
 	private void initGui() {
 		labelDiagramm.setSize(400, 400);
-
-		add(labelDiagramm, BorderLayout.CENTER);
+		labelDiagramm.setBounds(390, 445, 300,25);
+		
+		add(labelDiagramm, BorderLayout.SOUTH);
 
 		setVisible(true);
 

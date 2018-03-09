@@ -20,6 +20,13 @@ import Controller.UserSammlung;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 
+/**
+ * Diese Klasse wird für die Registrierung gebraucht
+ * 
+ * @author  Duc Thach St.Gallen / Daniel Strassmann, Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 public class Registrierung extends UserSammlung {
 
 	// JFrames

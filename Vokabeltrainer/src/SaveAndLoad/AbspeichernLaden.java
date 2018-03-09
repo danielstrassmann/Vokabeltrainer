@@ -20,6 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import Controller.UserSammlung;
 
+/**
+ * Diese Klasse wird für das Abspeicher und Laden von Daten/Objekten gebraucht
+ * 
+ * @author Daniel Strassmann St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class AbspeichernLaden {
 
 	public AbspeichernLaden() {

@@ -1,5 +1,12 @@
 package Controller;
 
+/**
+ * Diese Klasse wird für die Karteispeicherung gebraucht
+ * 
+ * @author Thomas Brunner St.Gallen / Daniel Strassmann
+ * @version 1.0 09.3.2018
+ */
+
 import java.util.ArrayList;
 
 import Model.Karte;

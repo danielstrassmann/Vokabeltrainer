@@ -9,6 +9,13 @@ import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.*;
 
+/**
+ * Diese Klasse wird für das GUI der Menueleiste gebraucht
+ * 
+ * @author Marius Brändle St.Gallen
+ * @version 1.0 09.3.2018
+ */
+
 public class MenuleisteOben extends JPanel {
 	
 	private JFrame parentFrame;

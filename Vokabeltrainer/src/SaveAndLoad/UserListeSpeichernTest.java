@@ -9,6 +9,13 @@ import Controller.UserSammlung;
 import Model.Karte;
 import Model.User;
 
+/**
+ * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * 
+ * @author Marius Brändle St.Gallen / Duc Thach, Daniel Strassmann, Thomas Brunner
+ * @version 1.0 09.3.2018
+ */
+
 public class UserListeSpeichernTest {
 	public static void main(String args[]) throws Exception {
 

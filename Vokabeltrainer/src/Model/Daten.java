@@ -1,5 +1,12 @@
 package Model;
 
+/**
+ * Diese Klasse wird für die erstellung von Statistikdaten gebraucht
+ * 
+ * @author Thomas Brunner St.Gallen /
+ * @version 1.0 09.3.2018
+ */
+
 public class Daten {
 
 	private int antwortenKorrekt;
