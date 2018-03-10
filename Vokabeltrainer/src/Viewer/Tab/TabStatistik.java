@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.ScrollPane;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -61,11 +63,27 @@ public class TabStatistik extends JPanel {
 	JTable jt2;
 	Calendar now = Calendar.getInstance();
 
+	private String anzahlRichtigString;
+	private String anzahlFalschString;
+	private String totalKartenString;
+	private String richtigString;
+	private String falschString;
+
 	public TabStatistik(User u) {
 		this.u = u;
-
+		setSprache();
 		tabStatistik();
 		initGui();
+	}
+
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.anzahlRichtigString = r.getString("anzahlRichtig");
+		this.anzahlFalschString = r.getString("anzahlFalsch");
+		this.totalKartenString = r.getString("totalKarten");
+		this.richtigString = r.getString("richtig");
+		this.falschString = r.getString("falsch");
 	}
 
 	private void initGui() {
@@ -77,7 +95,7 @@ public class TabStatistik extends JPanel {
 		boxLabelWertProzentRichtig.setPreferredSize(new Dimension(200, 50));
 		boxLabelWertProzentFalsch.setPreferredSize(new Dimension(200, 50));
 
-		boxLabelWertProzentRichtig.setBackground(Color.GREEN);
+		boxLabelWertProzentRichtig.setBackground(new Color(0, 102, 0));
 		boxLabelWertProzentRichtig.setOpaque(true);
 		boxLabelWertProzentFalsch.setBackground(Color.RED);
 		boxLabelWertProzentFalsch.setOpaque(true);
@@ -127,31 +145,31 @@ public class TabStatistik extends JPanel {
 
 		this.prozentFalsch = b * 100 / c;
 		this.prozentRichtig = 100 - prozentFalsch;
-		
-		this.labelWertRichtig.setText("Anzahl Richtig: " + a);
-		this.labelWertFalsch.setText("Anzahl Falsch: " + b);
-		this.labelWertTotal.setText("Total Karten: " + c);
-		this.labelWertProzentRichtig.setText(prozentRichtig + "%" + " Richtig");
-		this.labelWertProzentFalsch.setText(prozentFalsch + "%" + " Falsch");
+
+		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
+		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
+		this.labelWertTotal.setText(totalKartenString + " " + c);
+		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
+		this.labelWertProzentFalsch.setText(prozentFalsch + "% " + falschString);
 
 		labelDiagramm.setData(c, b);
 	}
 
 	private void tabStatistik() {
 		this.labelDiagramm = new DiagrammBasic();
-		
+
 		this.labelWertProzentFalsch = new JLabel();
 		this.labelWertRichtig = new JLabel();
 		this.labelWertFalsch = new JLabel();
 		this.labelWertTotal = new JLabel();
 		this.labelWertProzentRichtig = new JLabel();
-		
+
 		this.boxLabelWertRichtig = new BoxLabel();
 		this.boxLabelWertFalsch = new BoxLabel();
 		this.boxLabelWertTotal = new BoxLabel();
 		this.boxLabelWertProzentRichtig = new BoxLabel();
 		this.boxLabelWertProzentFalsch = new BoxLabel();
-		
+
 		statistikAktualisieren();
 
 	}
@@ -173,7 +191,7 @@ public class TabStatistik extends JPanel {
 		public void paint(Graphics g) {
 			Graphics2D g2d = (Graphics2D) g;
 
-			g2d.setColor(Color.GREEN);
+			g2d.setColor(new Color(0, 102, 0));
 			g2d.fillOval(getPieCenterX(), getPieCenterY(), getPieWidth(), getPieHeight());
 			g2d.setColor(Color.RED);
 			g2d.fillArc(getPieCenterX(), getPieCenterY(), getPieWidth(), getPieHeight(), 90, -this.arc);

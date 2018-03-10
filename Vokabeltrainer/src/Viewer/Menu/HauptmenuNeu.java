@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,61 +28,63 @@ public class HauptmenuNeu {
 	public static JFrame mainFrame;
 	private JPanel hauptPanel;
 	private User u;
-	
-	public HauptmenuNeu(User u)
-	{
-		this.u = u;
-		this.mainFrame = new JFrame("Vokabeltrainer Optimus");
-		this.hauptPanel = new JPanel();
 
-		hauptPanel();		
+	private String frameTitelString;
+
+	public HauptmenuNeu(User u) {
+		this.u = u;
+		this.mainFrame = new JFrame();
+		this.hauptPanel = new JPanel();
+		setSprache();
+		hauptPanel();
 		mainFrame();
-		
-		System.out.println("Hauptmenu-User: " + this.u);
 	}
-	
-	public void mainFrame()
-	{
+
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.frameTitelString = r.getString("vokabeltrainer");
+	}
+
+	public void mainFrame() {
+		mainFrame.setTitle(frameTitelString + " " + "Optimus");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setVisible(true);	
-		mainFrame.setSize(1200,800);
+		mainFrame.setVisible(true);
+		mainFrame.setSize(1200, 800);
 		mainFrame.setResizable(false);
-		mainFrame.setMinimumSize(new Dimension(1000,800));
+		mainFrame.setMinimumSize(new Dimension(1000, 800));
 		mainFrame.setLocationRelativeTo(null);
-		
+
 		mainFrame.add(hauptPanel);
 	}
-	
-	public void hauptPanel()
-	{
+
+	public void hauptPanel() {
 		hauptPanel.setVisible(true);
 		hauptPanel.setBackground(Color.BLACK);
-		
+
 		hauptPanel.setLayout(new BorderLayout());
 
-		hauptPanel.setSize(300,300);
-		
+		hauptPanel.setSize(300, 300);
+
 		MenuleisteOben mlo = new MenuleisteOben(u);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
-				// Listener übergibt Objekt KK an User, so weiss man, was die aktive Kartei ist
-				mlo.addItemChangeListener(new ItemListener() {
+		// Listener übergibt Objekt KK an User, so weiss man, was die aktive Kartei ist
+		mlo.addItemChangeListener(new ItemListener() {
 
-					@Override
-					public void itemStateChanged(ItemEvent event) {
-						if (event.getStateChange() == ItemEvent.SELECTED) {
-							Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
-							u.setAktiveKartei(kk);
-							
-							System.out.println(kk);
-						}
-					}
-				});
-		
-		Tabs tab = new Tabs(u,mlo,mainFrame);
+			@Override
+			public void itemStateChanged(ItemEvent event) {
+				if (event.getStateChange() == ItemEvent.SELECTED) {
+					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
+					u.setAktiveKartei(kk);
+
+					System.out.println(kk);
+				}
+			}
+		});
+
+		Tabs tab = new Tabs(u, mlo, mainFrame);
 		hauptPanel.add(tab, BorderLayout.CENTER);
-		
 
 	}
-	
 
 }

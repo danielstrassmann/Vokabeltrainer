@@ -3,6 +3,8 @@ package Viewer.Popup;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,11 +18,11 @@ import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Menu.HauptmenuNeu;
 
 /**
- * Diese Klasse wird für das GUI der Karteierstellung gebraucht
- * Diese Klasse generiert den Inhalt des Popup-Fenster "KarteiErstellen. Diese
- * Klasse wird mit dem Button "Kartei erstellen" von der Klasse "HauptmenuNeu*
- * aufgerufen. In dieser Klasse kan man eine neue Kartei erstellen, bei welcher
- * die Bezeichnung der Frage und Antwort mitgegeben wird.
+ * Diese Klasse wird für das GUI der Karteierstellung gebraucht Diese Klasse
+ * generiert den Inhalt des Popup-Fenster "KarteiErstellen. Diese Klasse wird
+ * mit dem Button "Kartei erstellen" von der Klasse "HauptmenuNeu* aufgerufen.
+ * In dieser Klasse kan man eine neue Kartei erstellen, bei welcher die
+ * Bezeichnung der Frage und Antwort mitgegeben wird.
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
@@ -29,7 +31,7 @@ import Viewer.Menu.HauptmenuNeu;
 public class KarteiErstellen extends JDialog implements ActionListener {
 	private KarteiController kc = new KarteiController();
 	private User u;
-	private KarteiAuswahlButton kab; 
+	private KarteiAuswahlButton kab;
 
 	private JLabel labelTitelKartei;
 	private JLabel labelBezFrage;
@@ -42,36 +44,58 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	private JButton buttonAnlegen;
 	private JButton buttonAbbrechen;
 
-	public KarteiErstellen(User u,KarteiAuswahlButton kab ) {
+	private String dialogTitelString;
+	private String titelKarteiString;
+	private String bezFrageString;
+	private String bezAntwortString;
+	private String nachrichtRichtigString;
+	private String nachrichtFalschString;
+	private String anlegenButtonString;
+	private String schliessenButtonString;
+
+	public KarteiErstellen(User u, KarteiAuswahlButton kab) {
 		this.kab = kab;
 		this.u = u;
+		setSprache();
 		initComponents();
 		initGui();
 		bindListener();
 
 	}
 
+	private void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.dialogTitelString = r.getString("karteiErstellen");
+		this.titelKarteiString = r.getString("karteiInfotext");
+		this.bezFrageString = r.getString("karteiQuelleEingeben");
+		this.bezAntwortString = r.getString("karteiUebersetzungEingeben");
+		this.nachrichtRichtigString = r.getString("karteiErfolgreichInfotext");
+		this.nachrichtFalschString = r.getString("karteiFehlerInfotext");
+		this.anlegenButtonString = r.getString("erstellen");
+		this.schliessenButtonString = r.getString("schliessen");
+	}
+
 	public void initComponents() {
-		this.labelTitelKartei = new JLabel("Bitte erstellen Sie eine neue Kartei");
-		this.labelBezFrage = new JLabel("Bezeichnung der Quelle eingeben");
-		this.labelBezAntwort = new JLabel("Bezeichnung der Übersetzung eingeben");
+		this.labelTitelKartei = new JLabel(titelKarteiString);
+		this.labelBezFrage = new JLabel(bezFrageString);
+		this.labelBezAntwort = new JLabel(bezAntwortString);
 		this.labelNachricht = new JLabel("");
 
 		this.textEingabeFrage = new JTextField();
 		this.textEingabeAntwort = new JTextField();
 
-		this.buttonAnlegen = new JButton("Anlegen");
-		this.buttonAbbrechen = new JButton("Schliessen");
+		this.buttonAnlegen = new JButton(anlegenButtonString);
+		this.buttonAbbrechen = new JButton(schliessenButtonString);
 	}
 
 	public void initGui() {
 		setLayout(null);
 		setSize(310, 280);
 		setResizable(false);
-		setTitle("Kartei anlegen");
+		setTitle(dialogTitelString);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		// setModalityType(DEFAULT_MODALITY_TYPE);
 		setAlwaysOnTop(true);
 
 		this.labelTitelKartei.setBounds(20, 1, 200, 30);
@@ -109,22 +133,22 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 			if (textEingabeFrage.getText().equals("") || textEingabeAntwort.getText().equals("")) {
 
 				labelNachricht.setForeground(Color.red);
-				labelNachricht.setText("Bitte Quelle und Übersetzung eingeben");
+				labelNachricht.setText(nachrichtFalschString);
 
 			} else {
 				String frageKarteiHinzu = textEingabeFrage.getText();
 				String antwortKarteihinzu = textEingabeAntwort.getText();
 				kc.karteiErstellen(frageKarteiHinzu, antwortKarteihinzu, u);
 				labelNachricht.setForeground(new Color(0, 102, 0));
-				labelNachricht.setText("Kartei erfolgreich angelegt");
+				labelNachricht.setText(nachrichtRichtigString);
 				textEingabeFrage.setText(null);
 				textEingabeAntwort.setText(null);
 				kab.comboboxKarteiAbfuellen(u);
 				saveHandler.karteienSpeichern(u);
-				
+
 			}
 		} else if (e.getSource() == this.buttonAbbrechen) {
-		
+
 			dispose();
 		}
 

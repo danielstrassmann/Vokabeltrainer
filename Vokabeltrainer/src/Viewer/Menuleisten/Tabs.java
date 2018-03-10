@@ -1,6 +1,8 @@
 package Viewer.Menuleisten;
 
 import java.awt.BorderLayout;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -23,14 +25,29 @@ public class Tabs extends JPanel {
 
 	private MenuleisteOben mlo;
 	private User u;
+	
+private String lernenString;
+private String statistikString;
+private String karteiString;
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
 		this.u = u;
 		this.mlo = mlo;
+		setSprache();
 		tabs();
-
+		
 	}
+
+		public void setSprache() {
+			Locale l = new Locale(u.getBenutzersprache());
+			ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+			this.lernenString = r.getString("lernen");
+			this.statistikString = r.getString("statistik");
+			this.karteiString = r.getString("kartei");
+		}
+		
+
 
 	public void tabs() {
 		this.tabsMenu = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -40,13 +57,13 @@ public class Tabs extends JPanel {
 		add(tabsMenu);
 
 		TabLernen tle = new TabLernen(u, parent);
-		tabsMenu.addTab("Lernen", tle);
+		tabsMenu.addTab(lernenString, tle);
 
 		TabStatistik tst = new TabStatistik(u);
-		tabsMenu.addTab("Statistik", tst);
+		tabsMenu.addTab(statistikString, tst);
 
 		TabKartei tka = new TabKartei(u, mlo);
-		tabsMenu.addTab("Kartei", tka);
+		tabsMenu.addTab(karteiString, tka);
 
 		tabsMenu.addChangeListener(new TabListener());
 	}

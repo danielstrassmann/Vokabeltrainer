@@ -10,6 +10,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -62,12 +64,21 @@ public class TabLernen extends JPanel implements ActionListener {
 	private User u;
 
 	private KeineKarten fehlerdialog;
+	
+	private String boxString;
 
 	public TabLernen(User u, JFrame parent) {
 		this.parent = parent;
 		this.u = u;
+		setSprache();
 		tabLernen();
 		initGui();
+	}
+	
+	private void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.boxString = r.getString("box");
 	}
 
 	private void tabLernen() {
@@ -77,11 +88,11 @@ public class TabLernen extends JPanel implements ActionListener {
 		this.boxLabel4 = new BoxLabel();
 		this.boxLabel5 = new BoxLabel();
 
-		this.box1 = new JLabel("BOX 1");
-		this.box2 = new JLabel("BOX 2");
-		this.box3 = new JLabel("BOX 3");
-		this.box4 = new JLabel("BOX 4");
-		this.box5 = new JLabel("BOX 5");
+		this.box1 = new JLabel(boxString + " 1");
+		this.box2 = new JLabel(boxString + " 2");
+		this.box3 = new JLabel(boxString + " 3");
+		this.box4 = new JLabel(boxString + " 4");
+		this.box5 = new JLabel(boxString + " 5");
 
 		boxLabel1.setId(1);
 		boxLabel2.setId(2);
@@ -180,7 +191,7 @@ public class TabLernen extends JPanel implements ActionListener {
 			// Infomeldung kommt, Methodenabbruch
 			if (counter == 0) {
 
-				fehlerdialog = new KeineKarten();
+				fehlerdialog = new KeineKarten(u);
 				return;
 			}
 

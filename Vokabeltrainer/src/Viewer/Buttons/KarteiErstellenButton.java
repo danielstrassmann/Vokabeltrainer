@@ -2,6 +2,8 @@ package Viewer.Buttons;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.*;
 
@@ -18,21 +20,31 @@ import Viewer.Popup.KarteiErstellen;
  * @version 1.0 09.3.2018
  */
 
-public class KarteiButton extends JButton {
+public class KarteiErstellenButton extends JButton {
 
 	private User u;
 	private KarteiAuswahlButton kab;
+	private String karteiErstellenString;
 
-	public KarteiButton(User u, KarteiAuswahlButton kab) {
+	public KarteiErstellenButton(User u, KarteiAuswahlButton kab) {
 		this.u = u;
 		this.kab = kab;
+		setSprache();
 		karteiButton();
+		
+		
+	}
+	
+	private void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.karteiErstellenString = r.getString("karteiErstellen");
 	}
 
 	public void karteiButton() {
 
 		addActionListener(new karteiButtonListener());
-		setText("Kartei erstellen");
+		setText(karteiErstellenString);
 
 	}
 

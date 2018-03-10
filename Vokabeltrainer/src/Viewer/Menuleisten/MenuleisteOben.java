@@ -2,6 +2,8 @@ package Viewer.Menuleisten;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.*;
 
@@ -30,10 +32,24 @@ public class MenuleisteOben extends JPanel {
 	
 	private User u;
 	
+	private String willkommenString;
+	private String karteiString;
+	private String spracheString;
+	
 	public MenuleisteOben(User u) {
 		this.u = u;
+		setSprache();
 		menuleisteOben();
 	}
+	
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.willkommenString = r.getString("willkommen");
+		this.karteiString = r.getString("kartei");
+		this.spracheString = r.getString("benutzersprache");
+	}
+	
 
 	private void menuleisteOben() 
 	{
@@ -43,17 +59,17 @@ public class MenuleisteOben extends JPanel {
 
 		this.willkommen = new JLabel();
 
-		this.willkommen.setText("Willkommen Benutzer");
+		this.willkommen.setText(willkommenString + " " + u.getBenutzername());
 		add(this.willkommen, BorderLayout.LINE_START);
 		
 		this.karteiBez = new JLabel();
-		this.karteiBez.setText("Kartei");
+		this.karteiBez.setText(karteiString);
 		this.subPanelKartei = new JPanel();
 		kab = new KarteiAuswahlButton();
 		
 		kab.comboboxKarteiAbfuellen(u);
 		
-		KarteiButton kb = new KarteiButton(u,kab);
+		KarteiErstellenButton kb = new KarteiErstellenButton(u,kab);
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
 		this.subPanelKartei.add(kb);
@@ -61,10 +77,10 @@ public class MenuleisteOben extends JPanel {
 		add(this.subPanelKartei, BorderLayout.CENTER);
 
 		this.spracheBez = new JLabel();
-		this.spracheBez.setText("Benutzersprache");
+		this.spracheBez.setText(spracheString);
 		this.subPanelBenutzer = new JPanel();
-		AbmeldeButton ab = new AbmeldeButton();
-		BenutzerspracheButton bsb = new BenutzerspracheButton();
+		AbmeldeButton ab = new AbmeldeButton(u);
+		BenutzerspracheCombobox bsb = new BenutzerspracheCombobox(u);
 		this.subPanelBenutzer.add(spracheBez);
 		this.subPanelBenutzer.add(bsb);
 		this.subPanelBenutzer.add(ab);

@@ -10,6 +10,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -63,12 +65,50 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private MenuleisteOben mlo;
 	private User u;
 
+	private String buttonNeuString;
+	private String buttonAendernString;
+	private String buttonLoeschenString;
+	private String karteiTitelString;
+	private String bezFrageString;
+	private String bezAntwortString;
+	private String frageString;
+	private String antwortString;
+	private String boxString;
+	private String falschAnlegenString;
+	private String richtigAnlegenString;
+	private String falschAendernString;
+	private String richtigAendernString;
+	private String falschLoeschenString;
+	private String richtigLoeschenString;
+
 	public TabKartei(User u, MenuleisteOben mlo) {
 		this.u = u;
 		this.mlo = mlo;
+		setSprache();
 		initComponents();
 		initGui();
 		bindListener();
+
+	}
+
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.buttonNeuString = r.getString("neueKarte");
+		this.buttonAendernString = r.getString("karteAendern");
+		this.buttonLoeschenString = r.getString("karteLoeschen");
+		this.karteiTitelString = r.getString("karteiTitel");
+		this.bezFrageString = r.getString("karteFrageEingeben");
+		this.bezAntwortString = r.getString("karteAntwortEingeben");
+		this.frageString = r.getString("frage");
+		this.antwortString = r.getString("antwort");
+		this.boxString = r.getString("aktuelleBox");
+		this.falschAnlegenString = r.getString("falschAnlegen");
+		this.richtigAnlegenString = r.getString("richtigAnlegen");
+		this.falschAendernString = r.getString("falschAendern");
+		this.richtigAendernString = r.getString("richtigAendern");
+		this.falschLoeschenString = r.getString("falschLoeschen");
+		this.richtigLoeschenString = r.getString("richtigLoeschen");
 
 	}
 
@@ -78,13 +118,13 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.textFrage = new JTextField();
 		this.textAntwort = new JTextField();
 
-		this.buttonNeu = new JButton("neue Karte ");
-		this.buttonAendern = new JButton("Karte ändern");
-		this.buttonLoeschen = new JButton("Karte löschen");
+		this.buttonNeu = new JButton(buttonNeuString);
+		this.buttonAendern = new JButton(buttonAendernString);
+		this.buttonLoeschen = new JButton(buttonLoeschenString);
 
-		this.labelTitel = new JLabel("Alle Karten der Kartei");
-		this.labelFrage = new JLabel("Frage eingeben oder ändern");
-		this.labelAntwort = new JLabel("Antwort eingeben oder ändern");
+		this.labelTitel = new JLabel(karteiTitelString);
+		this.labelFrage = new JLabel(bezFrageString);
+		this.labelAntwort = new JLabel(bezAntwortString);
 		this.labelMutation = new JLabel("");
 
 		this.textFrage.setBounds(20, 465, 160, 25);
@@ -109,14 +149,14 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.tableKartei = new JTable();
 		this.scrollPaneKartei = new JScrollPane(tableKartei, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		Object[] spalten = { "Frage", "Antwort", "Aktuelle Box" };
+		Object[] spalten = { frageString, antwortString, boxString };
 		this.modelKartei = new DefaultTableModel();
 
 		this.modelKartei.setColumnIdentifiers(spalten);
 
 		this.tableKartei.setModel(modelKartei);
 
-		this.scrollPaneKartei.setBounds(20, 30, 1090, 400);
+		this.scrollPaneKartei.setBounds(20, 30, 1000, 400);
 
 		add(this.scrollPaneKartei);
 
@@ -146,9 +186,6 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 			public void itemStateChanged(ItemEvent event) {
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
-					System.out.println(kk);
-					System.out.println("TabKartei-User: " + u);
-
 					tableKarteiabfuellen(kk);
 
 				}
@@ -196,7 +233,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 			if (textFrage.getText().equals("") || textAntwort.getText().equals("")) {
 				this.labelMutation.setBounds(390, 445, 300, 25);
 				this.labelMutation.setForeground(Color.red);
-				this.labelMutation.setText("Zuerst Frage und Antwort eintragen");
+				this.labelMutation.setText(falschAnlegenString);
 			} else {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
@@ -207,19 +244,17 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 				kk.karteInSammlung(k);
 				tableKarteiabfuellen(kk);
-				System.out.println("Karte erzeugt");
 				this.labelMutation.setBounds(390, 445, 300, 25);
 				this.labelMutation.setForeground(new Color(0, 102, 0));
-				this.labelMutation.setText("Karte erfolgreich angelegt");
+				this.labelMutation.setText(richtigAnlegenString);
 				saveHandler.karteienSpeichern(u);
 			}
 			// Karte ändern
 		} else if (e.getSource() == this.buttonAendern) {
 			if (textFrage.getText().equals("")) {
-				System.out.println("Karte selektieren");
 				this.labelMutation.setBounds(390, 485, 300, 25);
 				this.labelMutation.setForeground(Color.red);
-				this.labelMutation.setText("Zuerst eine Karte wählen");
+				this.labelMutation.setText(falschAendernString);
 			} else {
 				Karte karte = kk.getIndex(selektierteRow);
 				karte.setFrage(textFrage.getText());
@@ -227,7 +262,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				tableKarteiabfuellen(kk);
 				this.labelMutation.setBounds(390, 485, 300, 25);
 				this.labelMutation.setForeground(new Color(0, 102, 0));
-				this.labelMutation.setText("Karte erfolgreich geändert");
+				this.labelMutation.setText(richtigAendernString);
 				saveHandler.karteienSpeichern(u);
 			}
 		}
@@ -237,13 +272,13 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 			if (textFrage.getText().equals("")) {
 				this.labelMutation.setBounds(390, 525, 300, 25);
 				this.labelMutation.setForeground(Color.red);
-				this.labelMutation.setText("Zuerst eine Karte wählen");
+				this.labelMutation.setText(falschLoeschenString);
 			} else {
 				Karte karte = kk.remove(selektierteRow);
 				tableKarteiabfuellen(kk);
 				this.labelMutation.setBounds(390, 525, 300, 25);
 				this.labelMutation.setForeground(new Color(0, 102, 0));
-				this.labelMutation.setText("Karte erfolgreich gelöscht");
+				this.labelMutation.setText(richtigLoeschenString);
 				saveHandler.karteienSpeichern(u);
 
 			}

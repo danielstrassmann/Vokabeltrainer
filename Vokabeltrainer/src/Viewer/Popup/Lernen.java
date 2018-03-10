@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import Model.*;
 import SaveAndLoad.AbspeichernLaden;
@@ -45,9 +47,20 @@ public class Lernen extends JDialog {
 	private Karte k;
 	private User u;
 	private boolean switchButton;
-
+	
 	// Popup-Fehlerdialog, wenn keine Karten mehr in der Box sind
 	private KeineKarten fehlerdialog;
+	
+	private String frameTitelString;
+	private String lernenAktuellString;
+	private String karteninBox1String;
+	private String karteninBox2String;
+	private String kontrollierenString;
+	private String boxWechselnString;
+	private String naechsteKarteString;
+	private String modusWechselnString;
+	private String richtigBeantwortetString;
+	private String falschBeantwortetString;
 
 	public Lernen(User u, JFrame owner, int aktuelleBox) {
 
@@ -60,19 +73,35 @@ public class Lernen extends JDialog {
 		t = new Training(u, this.aktuelleBox);
 		t.gibZufallsKarteAusBox();
 		k = t.getAktiveKarte();
+		setSprache();
 		lernen();
 		initGui();
 	}
+	
+	private void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		frameTitelString = r.getString("training");        
+		lernenAktuellString = r.getString("lernenAktuelleBox");     
+		karteninBox1String = r.getString("lernenKartenInBox1");      
+		karteninBox2String = r.getString("lernenKartenInBox2");   
+		kontrollierenString = r.getString("kontrollieren");
+		boxWechselnString = r.getString("boxWechseln");
+		naechsteKarteString = r.getString("naechsteKarte")   ; 
+		modusWechselnString = r.getString("modusWechseln");
+		richtigBeantwortetString = r.getString("richtigBeantwortet");
+		falschBeantwortetString = r.getString("falschBeantwortet");
+	}
 
 	private void lernen() {
-		this.labelTitelLerner = new JLabel("Sie lernen aktuell in der Box " + aktuelleBox);
+		this.labelTitelLerner = new JLabel(lernenAktuellString + aktuelleBox);
 		// Kartei Quellsprache & Zielsprache im UI anzeigen
 		this.labelQuellName = new JLabel(u.getAktiveKartei().getFrage());
 		this.labelUbersetzungName = new JLabel(u.getAktiveKartei().getAntwort());
 		// Anzahl Karten in den Box wird augegeben
 		int kartenInBox = t.getAnzahlKartenInBox();
 		kartenInBox++;
-		this.labelUbersichtKarten = new JLabel("Es sind noch " + kartenInBox + " Karten in dieser Box.");
+		this.labelUbersichtKarten = new JLabel(karteninBox1String +" "+ kartenInBox + " "+ karteninBox2String);
 		this.labelRueckmeldung = new JLabel();
 
 		this.textEingabeFrage = new JTextField();
@@ -80,17 +109,17 @@ public class Lernen extends JDialog {
 
 		this.textEingabeAntwort = new JTextField();
 
-		this.buttonKontrollieren = new JButton("Kontrollieren");
-		this.buttonAbbrechen = new JButton("Box wechseln");
-		this.buttonNaechsteKarte = new JButton("nächste Karte");
+		this.buttonKontrollieren = new JButton(kontrollierenString);
+		this.buttonAbbrechen = new JButton(boxWechselnString);
+		this.buttonNaechsteKarte = new JButton(naechsteKarteString);
 
-		this.buttonSwitch = new JButton("Switch");
+		this.buttonSwitch = new JButton(modusWechselnString);
 
 
 	}
 
 	private void initGui() {
-		setTitle("Training");
+		setTitle(frameTitelString);
 		setSize(700, 500);
 		setLayout(null);
 		setResizable(false);
@@ -160,7 +189,7 @@ public class Lernen extends JDialog {
 		// aus der sammlungBox entfernt wurde
 		// Nur so wird die aktuell angezeigte Karte mitgezählt in der Anzeige
 		kartenInBox++;
-		labelUbersichtKarten.setText("Es sind noch " + kartenInBox + " Karten in dieser Box.");
+		labelUbersichtKarten.setText(karteninBox1String +" "+ kartenInBox + " "+ karteninBox2String);
 		k = t.getAktiveKarte();
 
 		if (switchButton == true) {
@@ -168,12 +197,12 @@ public class Lernen extends JDialog {
 			// Check ob instanziertes k != null
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
-				fehlerdialog = new KeineKarten();
+				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeAntwort.setEnabled(false);
-				this.labelUbersichtKarten.setText("Es sind noch 0 Karten in dieser Box.");
+				this.labelUbersichtKarten.setText(karteninBox1String +" 0 "+ karteninBox2String);
 				exitLernen();
 				return;
 			}
@@ -188,12 +217,12 @@ public class Lernen extends JDialog {
 			// Check ob instanziertes k != null
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
-				fehlerdialog = new KeineKarten();
+				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeFrage.setEnabled(false);
-				this.labelUbersichtKarten.setText("Es sind noch 0 Karten in dieser Box.");
+				this.labelUbersichtKarten.setText(karteninBox1String +" 0 "+ karteninBox2String);
 				exitLernen();
 				return;
 			}
@@ -212,11 +241,11 @@ public class Lernen extends JDialog {
 
 		if (check == true) {
 			labelRueckmeldung.setForeground(new Color(0, 102, 0));
-			labelRueckmeldung.setText("Antwort Korrekt! Karte geht in nächste Box.");
+			labelRueckmeldung.setText(richtigBeantwortetString);
 		}
 		if (check == false) {
 			labelRueckmeldung.setForeground(Color.RED);
-			labelRueckmeldung.setText("Antwort Falsch! Karte geht in erste Box.");
+			labelRueckmeldung.setText(falschBeantwortetString);
 		}
 
 		// Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt
