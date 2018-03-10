@@ -35,10 +35,10 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	}
 
 	private void setSprache() {
-		this.deutschString = "DE";
-		this.englischString = "EN";
-		this.franzoesischString = "FR";
-		this.italienischString = "IT";
+		this.deutschString = "Deutsch";
+		this.englischString = "English";
+		this.franzoesischString = "Francais";
+		this.italienischString = "Italiano";
 
 	}
 
@@ -60,7 +60,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 			setSelectedItem(englischString);
 		} else if (u.getBenutzersprache().equals("FR")) {
 			setSelectedItem(franzoesischString);
-		} else if (u.getBenutzersprache().equals("it")) {
+		} else if (u.getBenutzersprache().equals("IT")) {
 			setSelectedItem(italienischString);
 		}
 	}
