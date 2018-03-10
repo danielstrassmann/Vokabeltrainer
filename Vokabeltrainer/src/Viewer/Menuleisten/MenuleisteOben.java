@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.*;
 
+import Controller.UserSammlung;
 import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.*;
@@ -32,13 +33,15 @@ public class MenuleisteOben extends JPanel {
 	private BenutzerspracheCombobox bsb;
 
 	private User u;
+	private UserSammlung userliste;
 
 	private String willkommenString;
 	private String karteiString;
 	private String spracheString;
 
-	public MenuleisteOben(User u) {
+	public MenuleisteOben(User u, UserSammlung userliste) {
 		this.u = u;
+		this.userliste = userliste;
 		setSprache();
 		menuleisteOben();
 	}
@@ -78,7 +81,7 @@ public class MenuleisteOben extends JPanel {
 		this.spracheBez.setText(spracheString);
 		this.subPanelBenutzer = new JPanel();
 		AbmeldeButton ab = new AbmeldeButton(u);
-		BenutzerspracheCombobox bsb = new BenutzerspracheCombobox(u);
+		BenutzerspracheCombobox bsb = new BenutzerspracheCombobox(u, userliste);
 		this.subPanelBenutzer.add(spracheBez);
 		this.subPanelBenutzer.add(bsb);
 		this.subPanelBenutzer.add(ab);

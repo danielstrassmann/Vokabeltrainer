@@ -25,10 +25,10 @@ public class Tabs extends JPanel {
 
 	private MenuleisteOben mlo;
 	private User u;
-	
-private String lernenString;
-private String statistikString;
-private String karteiString;
+
+	private String lernenString;
+	private String statistikString;
+	private String karteiString;
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -36,18 +36,16 @@ private String karteiString;
 		this.mlo = mlo;
 		setSprache();
 		tabs();
-		
+
 	}
 
-		public void setSprache() {
-			Locale l = new Locale(u.getBenutzersprache());
-			ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
-			this.lernenString = r.getString("lernen");
-			this.statistikString = r.getString("statistik");
-			this.karteiString = r.getString("kartei");
-		}
-		
-
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.lernenString = r.getString("lernen");
+		this.statistikString = r.getString("statistik");
+		this.karteiString = r.getString("kartei");
+	}
 
 	public void tabs() {
 		this.tabsMenu = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -78,6 +76,7 @@ private String karteiString;
 				s.statistikAktualisieren();
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
+
 			}
 		}
 	}

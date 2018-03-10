@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controller.UserSammlung;
 import Model.Kartei;
 import Model.User;
 import Viewer.Menuleisten.MenuleisteOben;
@@ -28,11 +29,13 @@ public class HauptmenuNeu {
 	public static JFrame mainFrame;
 	private JPanel hauptPanel;
 	private User u;
+	private UserSammlung userliste;
 
 	private String frameTitelString;
 
-	public HauptmenuNeu(User u) {
+	public HauptmenuNeu(User u, UserSammlung userliste) {
 		this.u = u;
+		this.userliste = userliste;
 		this.mainFrame = new JFrame();
 		this.hauptPanel = new JPanel();
 		setSprache();
@@ -66,7 +69,7 @@ public class HauptmenuNeu {
 
 		hauptPanel.setSize(300, 300);
 
-		MenuleisteOben mlo = new MenuleisteOben(u);
+		MenuleisteOben mlo = new MenuleisteOben(u, userliste);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		// Listener übergibt Objekt KK an User, so weiss man, was die aktive Kartei ist
 		mlo.addItemChangeListener(new ItemListener() {

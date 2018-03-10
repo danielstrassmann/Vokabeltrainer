@@ -2,8 +2,8 @@
 <karteienSpeicherObjekt>
     <daten>
         <antwortenFalsch>15</antwortenFalsch>
-        <antwortenKorrekt>8</antwortenKorrekt>
-        <antwortenTotal>23</antwortenTotal>
+        <antwortenKorrekt>12</antwortenKorrekt>
+        <antwortenTotal>27</antwortenTotal>
     </daten>
     <karteien>
         <antwort>englisch</antwort>
@@ -11,7 +11,7 @@
         <id>0</id>
         <sammlung>
             <antwort>House</antwort>
-            <box>1</box>
+            <box>3</box>
             <frage>Haus</frage>
             <id>0</id>
         </sammlung>
@@ -32,6 +32,12 @@
             <box>1</box>
             <frage>adsfadfcvbxcvb</frage>
             <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>asxv</antwort>
+            <box>1</box>
+            <frage>asdfad</frage>
+            <id>4</id>
         </sammlung>
     </karteien>
     <karteien>

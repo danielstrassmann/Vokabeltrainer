@@ -176,7 +176,7 @@ public class Anmeldefenster extends UserSammlung
 	private void doLogin() {
 		AbspeichernLaden loadHandler = new AbspeichernLaden();
 		loadHandler.karteienLaden(u);
-		HauptmenuNeu guiNeu = new HauptmenuNeu(u);
+		HauptmenuNeu guiNeu = new HauptmenuNeu(u,userliste);
 
 		
 		loginfenster.setVisible(false);

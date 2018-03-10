@@ -238,6 +238,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
 				Karte k = new Karte(frageHinzu, antwortHinzu);
+				//TODO Thomas abfangen null
 				int id = kk.getAnzahlKartenInSammlung();
 				// TODO Thomas schleife, nicht doppelte ID.
 				k.setId(id);

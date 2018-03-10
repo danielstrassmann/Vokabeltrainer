@@ -20,7 +20,7 @@ import Model.User;
 @XmlAccessorType(XmlAccessType.NONE)
 public class UserSammlung {
 
-	public ArrayList<User> userliste = new ArrayList<User>();
+	public  ArrayList<User> userliste = new ArrayList<User>();
 
 	public UserSammlung() {
 	}
