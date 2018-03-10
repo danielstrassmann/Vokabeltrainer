@@ -82,6 +82,8 @@ public class HauptmenuNeu {
 			}
 		});
 
+		
+		
 		Tabs tab = new Tabs(u, mlo, mainFrame);
 		hauptPanel.add(tab, BorderLayout.CENTER);
 

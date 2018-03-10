@@ -19,29 +19,30 @@ import Viewer.Buttons.*;
  */
 
 public class MenuleisteOben extends JPanel {
-	
+
 	private JFrame parentFrame;
 
 	private JLabel willkommen;
 	private JLabel karteiBez;
 	private JLabel spracheBez;
-	
+
 	private JPanel subPanelKartei;
 	private JPanel subPanelBenutzer;
 	private KarteiAuswahlButton kab;
-	
+	private BenutzerspracheCombobox bsb;
+
 	private User u;
-	
+
 	private String willkommenString;
 	private String karteiString;
 	private String spracheString;
-	
+
 	public MenuleisteOben(User u) {
 		this.u = u;
 		setSprache();
 		menuleisteOben();
 	}
-	
+
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -49,27 +50,24 @@ public class MenuleisteOben extends JPanel {
 		this.karteiString = r.getString("kartei");
 		this.spracheString = r.getString("benutzersprache");
 	}
-	
 
-	private void menuleisteOben() 
-	{
+	private void menuleisteOben() {
 		setLayout(new BorderLayout(10, 10));
 		setVisible(true);
-
 
 		this.willkommen = new JLabel();
 
 		this.willkommen.setText(willkommenString + " " + u.getBenutzername());
 		add(this.willkommen, BorderLayout.LINE_START);
-		
+
 		this.karteiBez = new JLabel();
 		this.karteiBez.setText(karteiString);
 		this.subPanelKartei = new JPanel();
 		kab = new KarteiAuswahlButton();
-		
+
 		kab.comboboxKarteiAbfuellen(u);
-		
-		KarteiErstellenButton kb = new KarteiErstellenButton(u,kab);
+
+		KarteiErstellenButton kb = new KarteiErstellenButton(u, kab);
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
 		this.subPanelKartei.add(kb);
@@ -90,13 +88,13 @@ public class MenuleisteOben extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		subPanelKartei.setBackground(Color.LIGHT_GRAY);
 		subPanelBenutzer.setBackground(Color.LIGHT_GRAY);
-		
-		u.setAktiveKartei((Kartei)kab.getSelectedItem());
-		
+
+		u.setAktiveKartei((Kartei) kab.getSelectedItem());
+
 	}
-	
+
 	public void addItemChangeListener(ItemListener itemListener) {
 		kab.addItemListener(itemListener);
+
 	}
-	
 }

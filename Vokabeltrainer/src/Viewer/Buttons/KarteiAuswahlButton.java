@@ -67,7 +67,7 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 				kk = (Kartei) getSelectedItem();
 				System.out.println(kk);
 
-				// tb.tableKarteiabfuellen(kk);
+				
 
 			}
 

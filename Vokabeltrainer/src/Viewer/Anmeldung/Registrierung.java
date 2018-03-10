@@ -150,7 +150,7 @@ public class Registrierung extends UserSammlung {
 		this.r_txtpasswort = new JPasswordField("");
 		this.r_txtpasswort2 = new JPasswordField("");
 		this.spracheAuswahlPanel = new JPanel();
-		String spracheAuswahlListe[] = { "Deutsch", "français", "english", "italiano " };
+		String spracheAuswahlListe[] = { "DE", "EN", "FR", "IT" };
 		this.benutzerSprache = new JComboBox(spracheAuswahlListe);
 
 	}
