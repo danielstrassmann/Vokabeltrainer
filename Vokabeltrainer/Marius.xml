@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <karteienSpeicherObjekt>
     <daten>
-        <antwortenFalsch>119</antwortenFalsch>
-        <antwortenKorrekt>48</antwortenKorrekt>
-        <antwortenTotal>167</antwortenTotal>
+        <antwortenFalsch>123</antwortenFalsch>
+        <antwortenKorrekt>57</antwortenKorrekt>
+        <antwortenTotal>180</antwortenTotal>
     </daten>
     <karteien>
         <antwort>Englisch</antwort>
@@ -23,13 +23,13 @@
         </sammlung>
         <sammlung>
             <antwort>Test</antwort>
-            <box>3</box>
+            <box>1</box>
             <frage>Test</frage>
             <id>2</id>
         </sammlung>
         <sammlung>
             <antwort>1</antwort>
-            <box>1</box>
+            <box>2</box>
             <frage>1</frage>
             <id>3</id>
         </sammlung>
@@ -41,7 +41,7 @@
         </sammlung>
         <sammlung>
             <antwort>Menu</antwort>
-            <box>3</box>
+            <box>1</box>
             <frage>Menu</frage>
             <id>5</id>
         </sammlung>
@@ -53,25 +53,25 @@
         </sammlung>
         <sammlung>
             <antwort>3</antwort>
-            <box>1</box>
+            <box>2</box>
             <frage>3</frage>
             <id>7</id>
         </sammlung>
         <sammlung>
             <antwort>4</antwort>
-            <box>1</box>
+            <box>2</box>
             <frage>4</frage>
             <id>8</id>
         </sammlung>
         <sammlung>
             <antwort>5</antwort>
-            <box>3</box>
+            <box>4</box>
             <frage>5</frage>
             <id>9</id>
         </sammlung>
         <sammlung>
             <antwort>6</antwort>
-            <box>1</box>
+            <box>2</box>
             <frage>6</frage>
             <id>10</id>
         </sammlung>
@@ -80,5 +80,23 @@
         <antwort>Französisch</antwort>
         <frage>Deutsch</frage>
         <id>2</id>
+        <sammlung>
+            <antwort>D-F1</antwort>
+            <box>2</box>
+            <frage>D-F1</frage>
+            <id>0</id>
+        </sammlung>
+        <sammlung>
+            <antwort>F1</antwort>
+            <box>2</box>
+            <frage>F1</frage>
+            <id>1</id>
+        </sammlung>
+        <sammlung>
+            <antwort>F2</antwort>
+            <box>1</box>
+            <frage>F2</frage>
+            <id>2</id>
+        </sammlung>
     </karteien>
 </karteienSpeicherObjekt>
