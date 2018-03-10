@@ -68,14 +68,19 @@ public class Registrierung extends UserSammlung {
 	private JPanel spracheAuswahlPanel;
 
 	// UserSammlung
-
+	
 	private UserSammlung userliste;
 
 	public Registrierung(UserSammlung l) {
-
+		addr();
+		userliste = l;
+	}
+	public void addr() {
+		
+	
 		// Registrierungsfenster
 
-		userliste = l;
+		
 		this.registrierungsfenster = new JFrame("Registrieren ");
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		registrierungsfenster.setLocationRelativeTo(null);
@@ -104,7 +109,7 @@ public class Registrierung extends UserSammlung {
 		this.r_txtpasswort = new JPasswordField("");
 		this.r_txtpasswort2 = new JPasswordField("");
 		this.spracheAuswahlPanel = new JPanel();
-		String spracheAuswahlListe[] = { "DE", "EN", "FR", "IT" };
+		String spracheAuswahlListe[] = { "Deutsch", "français", "english", "italiano " };
 		this.benutzerSprache = new JComboBox(spracheAuswahlListe);
 
 	}

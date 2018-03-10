@@ -78,9 +78,9 @@ public class Anmeldefenster extends UserSammlung
 	
 
 	public Anmeldefenster() {
-
-		//Essenziell
-		
+		add();
+	}
+	public void add() {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
 		l = userliste.getUserliste();
@@ -166,6 +166,10 @@ public class Anmeldefenster extends UserSammlung
 		loginfenster.setVisible(true);
 		
 	}
+	
+		//Essenziell
+		
+		
 
 	public void paint() {
 
@@ -176,7 +180,7 @@ public class Anmeldefenster extends UserSammlung
 	private void doLogin() {
 		AbspeichernLaden loadHandler = new AbspeichernLaden();
 		loadHandler.karteienLaden(u);
-		HauptmenuNeu guiNeu = new HauptmenuNeu(u,userliste);
+		HauptmenuNeu guiNeu = new HauptmenuNeu(u, userliste);
 
 		
 		loginfenster.setVisible(false);
