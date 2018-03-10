@@ -26,10 +26,14 @@ public class Tabs extends JPanel {
 
 	private MenuleisteOben mlo;
 	private User u;
+
+	private String lernenString;
+	private String statistikString;
+	private String karteiString;
 	
-private String lernenString;
-private String statistikString;
-private String karteiString;
+	private TabLernen tle;
+	private TabStatistik tst;
+	private TabKartei tka;
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -37,18 +41,16 @@ private String karteiString;
 		this.mlo = mlo;
 		setSprache();
 		tabs();
-		
+
 	}
 
-		public void setSprache() {
-			Locale l = new Locale(u.getBenutzersprache());
-			ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
-			this.lernenString = r.getString("lernen");
-			this.statistikString = r.getString("statistik");
-			this.karteiString = r.getString("kartei");
-		}
-		
-
+	public void setSprache() {
+		Locale l = new Locale(u.getBenutzersprache());
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.lernenString = r.getString("lernen");
+		this.statistikString = r.getString("statistik");
+		this.karteiString = r.getString("kartei");
+	}
 
 	public void tabs() {
 		this.tabsMenu = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -63,45 +65,47 @@ private String karteiString;
 
 		tabsMenu.addChangeListener(new TabListener());
 	}
-	
+
 	public void setLernenTab() {
-		TabLernen tle = new TabLernen(u, parent);
-		tabsMenu.insertTab(lernenString,null, tle, lernenString,0);
+		this.tle = new TabLernen(u, parent);
+		tabsMenu.insertTab(lernenString, null, tle, lernenString, 0);
 	}
-	
+
 	public void setStatistikTab() {
-		TabStatistik tst = new TabStatistik(u);
+		this.tst = new TabStatistik(u);
 		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
 	}
-	
+
 	public void setKarteiTab() {
-		TabKartei tka = new TabKartei(u, mlo);
-		tabsMenu.insertTab(karteiString,null, tka, karteiString, 2);
+		this.tka = new TabKartei(u, mlo);
+		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
-	
-	public void removeLernenTab() {
-		
+
+/*	public void removeLernenTab() {
+
 	}
-	
+
 	public void removeStatistikTab() {
-
+		remove(1);
+		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
 	}
-	
+
 	public void removeKarteiTab() {
-		
-	}
 
+	}
+*/
 	class TabListener implements ChangeListener {
 
 		public void stateChanged(ChangeEvent changeEvent) {
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
-				repaint();
-				revalidate();
+
+
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
-
+	//			tst.statistikAktualisieren();
+	//			removeStatistikTab();
 			}
 		}
 	}
