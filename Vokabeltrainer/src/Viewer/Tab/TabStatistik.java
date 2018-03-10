@@ -16,7 +16,9 @@ import Model.Daten;
 import Model.User;
 
 /**
- * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * Diese Klasse wird für die Statistik veranschaung gebraucht. Diese Klasse
+ * generiert den Inhalt des Tab "Statistik". Diese Klasse wird von der Klasse
+ * "Tabs" aufgerufen.
  * 
  * @author Marius Brändle St.Gallen / Duc Thach
  * @version 1.0 09.3.2018
@@ -26,7 +28,7 @@ public class TabStatistik extends JPanel {
 	private JTable jt;
 	private Daten d;
 	private User u;
-	
+
 	private int a;
 	private int b;
 	private int c;
@@ -39,28 +41,27 @@ public class TabStatistik extends JPanel {
 	public TabStatistik(User u) {
 		this.u = u;
 
-
 		tabStatistik();
 		initGui();
 	}
 
 	private void initGui() {
 		labelDiagramm.setSize(400, 400);
-		labelDiagramm.setBounds(390, 445, 300,25);
-		
+		labelDiagramm.setBounds(390, 445, 300, 25);
+
 		add(labelDiagramm, BorderLayout.SOUTH);
 
 		setVisible(true);
 
 	}
-	
+
 	public void statistikAktualisieren() {
 		this.d = u.getUserDaten();
-		
+
 		this.a = d.getAntwortenKorrekt();
 		this.b = d.getAntwortenFalsch();
 		this.c = d.getAntwortenTotal();
-		
+
 		labelDiagramm.setData(c, b);
 	}
 
@@ -68,7 +69,6 @@ public class TabStatistik extends JPanel {
 		this.labelDiagramm = new DiagrammBasic();
 
 		statistikAktualisieren();
-
 
 		String[] columns = { "Antworten Korrekt", "Antworten Falsch", "Antworten Total" };
 		Object[][] data = { { "" + a, "" + b, "" + c } }; // parameter einsetzten
@@ -87,8 +87,6 @@ public class TabStatistik extends JPanel {
 
 		JScrollPane jps = new JScrollPane(jt);
 		add(jps);
-
-
 
 	}
 

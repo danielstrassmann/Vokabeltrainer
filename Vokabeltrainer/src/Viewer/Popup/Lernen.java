@@ -13,6 +13,11 @@ import SaveAndLoad.AbspeichernLaden;
 
 /**
  * Diese Klasse wird für das Lernfenster gebraucht
+ * Diese Klasse generiert das Popup-Fenster "Lernen". Hier werden Lernkarten aus
+ * der ausgewählten Kartei ausgewählt und können gelernt werden. Entweder man
+ * sieht den Quellfrage und gibt die Übersetzungslösung ein oder man kehrt es
+ * mit dem SWITCH zur Quelllösung um. Diese Kartei wird von der Klasse
+ * "TabLernen" aufgerufen.
  * 
  * @author Marius Brändle St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018

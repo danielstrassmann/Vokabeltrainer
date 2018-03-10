@@ -27,7 +27,9 @@ import Viewer.Popup.KeineKarten;
 import Viewer.Popup.Lernen;
 
 /**
- * Diese Klasse wird für das Lernen gebraucht
+ * Diese Klasse wird für das Lernen gebraucht. Diese Klasse generiert den
+ * Inhalt des Tab "Lernen". Aus dieser Klasse wird das Popup-Fenster" Lernen
+ * aufgerufen. Diese Klasse wird von der Klasse "Tabs" aufgerufen
  * 
  * @author Marius Brändle St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
@@ -177,11 +179,10 @@ public class TabLernen extends JPanel implements ActionListener {
 			// Kein Karten mit ausgewählter Box gefunden
 			// Infomeldung kommt, Methodenabbruch
 			if (counter == 0) {
-				
+
 				fehlerdialog = new KeineKarten();
 				return;
 			}
-			
 
 			Lernen lernenFenster = new Lernen(u, parent, source.getId());
 			parent.setEnabled(false);

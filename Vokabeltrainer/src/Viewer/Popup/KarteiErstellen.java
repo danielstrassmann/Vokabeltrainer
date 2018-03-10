@@ -17,6 +17,10 @@ import Viewer.Menu.HauptmenuNeu;
 
 /**
  * Diese Klasse wird für das GUI der Karteierstellung gebraucht
+ * Diese Klasse generiert den Inhalt des Popup-Fenster "KarteiErstellen. Diese
+ * Klasse wird mit dem Button "Kartei erstellen" von der Klasse "HauptmenuNeu*
+ * aufgerufen. In dieser Klasse kan man eine neue Kartei erstellen, bei welcher
+ * die Bezeichnung der Frage und Antwort mitgegeben wird.
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018

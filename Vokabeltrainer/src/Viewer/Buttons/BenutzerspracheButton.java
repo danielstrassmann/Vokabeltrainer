@@ -13,6 +13,10 @@ import Model.User;
 
 /**
  * Diese Klasse wird für die Benutzersprache gebraucht
+ * Diese Klasse generiert die Combobox "Benutzersprache" Wenn diese Combobox betätigt
+ * wird, kann die Menusprache gewechselt werden
+ * Der Combobox wird der Klasse "MenuLeisteOben" und "anmeldefenster" hinzugefügt.
+ * 
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018

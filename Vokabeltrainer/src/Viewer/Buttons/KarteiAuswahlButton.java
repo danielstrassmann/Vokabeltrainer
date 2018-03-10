@@ -20,6 +20,9 @@ import Viewer.Tab.TabKartei;
 
 /**
  * Diese Klasse wird für die Karteiauswahl gebraucht
+ * Diese Klasse generiert die Combobox "KarteiAuswahl" Wenn diese Combobox betätigt
+ * wird, kann die Kartei gewechselt werden
+ * Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
