@@ -126,6 +126,7 @@ public class TabStatistik extends JPanel {
 		boxLabelWertProzentRichtig.add(labelWertProzentRichtig);
 		boxLabelWertProzentFalsch.add(labelWertProzentFalsch);
 
+		
 		add(boxLabelWertRichtig);
 		add(boxLabelWertFalsch);
 		add(boxLabelWertTotal);
@@ -136,6 +137,11 @@ public class TabStatistik extends JPanel {
 		setVisible(true);
 	}
 
+	public void loeschenInhalt() {
+		labelDiagramm.setData(0, 0);
+		this.labelWertRichtig.setText(anzahlRichtigString + " " + 0);
+	}
+	
 	public void statistikAktualisieren() {
 		this.d = u.getUserDaten();
 

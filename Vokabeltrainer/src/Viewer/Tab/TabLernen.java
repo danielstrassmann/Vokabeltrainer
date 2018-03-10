@@ -22,9 +22,7 @@ import javax.swing.border.LineBorder;
 
 import Model.Karte;
 import Model.Kartei;
-import Model.Training;
 import Model.User;
-import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Popup.KeineKarten;
 import Viewer.Popup.Lernen;
 
@@ -242,6 +240,7 @@ public class TabLernen extends JPanel implements ActionListener {
 			boxLabel5.setBorder(new CompoundBorder(border, margin5));
 
 			parent.setEnabled(true);
+			
 
 		}
 

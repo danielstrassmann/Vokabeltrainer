@@ -14,6 +14,7 @@ import Viewer.Tab.*;
 /**
  * Diese Klasse wird für die Statistik veranschaung gebraucht
  * 
+ * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
  */
@@ -56,16 +57,38 @@ private String karteiString;
 		setVisible(true);
 		add(tabsMenu);
 
-		TabLernen tle = new TabLernen(u, parent);
-		tabsMenu.addTab(lernenString, tle);
-
-		TabStatistik tst = new TabStatistik(u);
-		tabsMenu.addTab(statistikString, tst);
-
-		TabKartei tka = new TabKartei(u, mlo);
-		tabsMenu.addTab(karteiString, tka);
+		setLernenTab();
+		setStatistikTab();
+		setKarteiTab();
 
 		tabsMenu.addChangeListener(new TabListener());
+	}
+	
+	public void setLernenTab() {
+		TabLernen tle = new TabLernen(u, parent);
+		tabsMenu.insertTab(lernenString,null, tle, lernenString,0);
+	}
+	
+	public void setStatistikTab() {
+		TabStatistik tst = new TabStatistik(u);
+		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
+	}
+	
+	public void setKarteiTab() {
+		TabKartei tka = new TabKartei(u, mlo);
+		tabsMenu.insertTab(karteiString,null, tka, karteiString, 2);
+	}
+	
+	public void removeLernenTab() {
+		
+	}
+	
+	public void removeStatistikTab() {
+
+	}
+	
+	public void removeKarteiTab() {
+		
 	}
 
 	class TabListener implements ChangeListener {
@@ -74,10 +97,11 @@ private String karteiString;
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
-				TabStatistik s = new TabStatistik(u);
-				s.statistikAktualisieren();
+				repaint();
+				revalidate();
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
+
 			}
 		}
 	}
