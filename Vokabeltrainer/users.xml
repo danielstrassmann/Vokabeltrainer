@@ -35,4 +35,9 @@
         <benutzersprache>english</benutzersprache>
         <passwort>a</passwort>
     </userliste>
+    <userliste>
+        <benutzername>T</benutzername>
+        <benutzersprache>français</benutzersprache>
+        <passwort>t</passwort>
+    </userliste>
 </userSammlung>

@@ -14,6 +14,7 @@ import Viewer.Tab.*;
 /**
  * Diese Klasse wird für die Statistik veranschaung gebraucht
  * 
+ * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
  */
@@ -29,6 +30,13 @@ public class Tabs extends JPanel {
 	private String lernenString;
 	private String statistikString;
 	private String karteiString;
+<<<<<<< HEAD
+=======
+	
+	private TabLernen tle;
+	private TabStatistik tst;
+	private TabKartei tka;
+>>>>>>> branch 'master' of https://github.com/danielstrassmann/Vokabeltrainer.git
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -54,29 +62,57 @@ public class Tabs extends JPanel {
 		setVisible(true);
 		add(tabsMenu);
 
-		TabLernen tle = new TabLernen(u, parent);
-		tabsMenu.addTab(lernenString, tle);
-
-		TabStatistik tst = new TabStatistik(u);
-		tabsMenu.addTab(statistikString, tst);
-
-		TabKartei tka = new TabKartei(u, mlo);
-		tabsMenu.addTab(karteiString, tka);
+		setLernenTab();
+		setStatistikTab();
+		setKarteiTab();
 
 		tabsMenu.addChangeListener(new TabListener());
 	}
 
+	public void setLernenTab() {
+		this.tle = new TabLernen(u, parent);
+		tabsMenu.insertTab(lernenString, null, tle, lernenString, 0);
+	}
+
+	public void setStatistikTab() {
+		this.tst = new TabStatistik(u);
+		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
+	}
+
+	public void setKarteiTab() {
+		this.tka = new TabKartei(u, mlo);
+		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
+	}
+
+/*	public void removeLernenTab() {
+
+	}
+
+	public void removeStatistikTab() {
+		remove(1);
+		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
+	}
+
+	public void removeKarteiTab() {
+
+	}
+*/
 	class TabListener implements ChangeListener {
 
 		public void stateChanged(ChangeEvent changeEvent) {
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
-				TabStatistik s = new TabStatistik(u);
-				s.statistikAktualisieren();
+
+
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
+<<<<<<< HEAD
 
+=======
+	//			tst.statistikAktualisieren();
+	//			removeStatistikTab();
+>>>>>>> branch 'master' of https://github.com/danielstrassmann/Vokabeltrainer.git
 			}
 		}
 	}

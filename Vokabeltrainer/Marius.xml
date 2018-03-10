@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <karteienSpeicherObjekt>
     <daten>
-        <antwortenFalsch>123</antwortenFalsch>
+        <antwortenFalsch>129</antwortenFalsch>
         <antwortenKorrekt>57</antwortenKorrekt>
-        <antwortenTotal>180</antwortenTotal>
+        <antwortenTotal>186</antwortenTotal>
     </daten>
     <karteien>
         <antwort>Englisch</antwort>
