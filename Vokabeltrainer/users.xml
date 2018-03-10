@@ -30,4 +30,9 @@
         <benutzersprache>Deutsch</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>Pit</benutzername>
+        <benutzersprache>english</benutzersprache>
+        <passwort>a</passwort>
+    </userliste>
 </userSammlung>

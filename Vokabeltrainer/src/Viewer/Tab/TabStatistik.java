@@ -143,16 +143,36 @@ public class TabStatistik extends JPanel {
 		this.b = d.getAntwortenFalsch();
 		this.c = d.getAntwortenTotal();
 
-		this.prozentFalsch = b * 100 / c;
+		berechnenProzentFalsch(b, c);
+
 		this.prozentRichtig = 100 - prozentFalsch;
 
 		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
 		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
 		this.labelWertTotal.setText(totalKartenString + " " + c);
 		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
-		this.labelWertProzentFalsch.setText(prozentFalsch + "% " + falschString);
 
 		labelDiagramm.setData(c, b);
+	}
+	
+	public void berechnenProzentFalsch(int b, int c) {
+		if (c == 0) {
+			if (b == 0) {
+				b = 1;
+			}
+			c = 1;
+			this.prozentFalsch = b * 100 / c;
+			this.b = 0;
+			this.c = 0;
+			this.labelWertProzentFalsch.setText(0 + "% " + falschString);
+		} else {
+
+			this.c = c;
+			this.b = b;
+			this.prozentFalsch = b * 100 / c;
+			this.labelWertProzentFalsch.setText(prozentFalsch + "% " + falschString);
+
+		}
 	}
 
 	private void tabStatistik() {
