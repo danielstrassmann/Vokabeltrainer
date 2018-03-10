@@ -30,13 +30,12 @@ public class Tabs extends JPanel {
 	private String lernenString;
 	private String statistikString;
 	private String karteiString;
-<<<<<<< HEAD
-=======
+
 	
 	private TabLernen tle;
 	private TabStatistik tst;
 	private TabKartei tka;
->>>>>>> branch 'master' of https://github.com/danielstrassmann/Vokabeltrainer.git
+
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -107,12 +106,7 @@ public class Tabs extends JPanel {
 
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
-<<<<<<< HEAD
 
-=======
-	//			tst.statistikAktualisieren();
-	//			removeStatistikTab();
->>>>>>> branch 'master' of https://github.com/danielstrassmann/Vokabeltrainer.git
 			}
 		}
 	}
