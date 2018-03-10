@@ -4,13 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.ScrollPane;
 import java.util.Calendar;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.Scrollable;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
 
 import Model.Daten;
 import Model.User;
@@ -33,7 +40,23 @@ public class TabStatistik extends JPanel {
 	private int b;
 	private int c;
 
+	private int prozentRichtig;
+	private int prozentFalsch;
+
 	private DiagrammBasic labelDiagramm;
+	private JScrollPane jps;
+
+	private JLabel labelWertRichtig;
+	private JLabel labelWertFalsch;
+	private JLabel labelWertTotal;
+	private JLabel labelWertProzentRichtig;
+	private JLabel labelWertProzentFalsch;
+
+	private BoxLabel boxLabelWertRichtig;
+	private BoxLabel boxLabelWertFalsch;
+	private BoxLabel boxLabelWertTotal;
+	private BoxLabel boxLabelWertProzentRichtig;
+	private BoxLabel boxLabelWertProzentFalsch;
 
 	JTable jt2;
 	Calendar now = Calendar.getInstance();
@@ -46,13 +69,53 @@ public class TabStatistik extends JPanel {
 	}
 
 	private void initGui() {
-		labelDiagramm.setSize(400, 400);
-		labelDiagramm.setBounds(390, 445, 300, 25);
+		labelDiagramm.setSize(500, 500);
 
-		add(labelDiagramm, BorderLayout.SOUTH);
+		boxLabelWertRichtig.setPreferredSize(new Dimension(200, 50));
+		boxLabelWertFalsch.setPreferredSize(new Dimension(200, 50));
+		boxLabelWertTotal.setPreferredSize(new Dimension(200, 50));
+		boxLabelWertProzentRichtig.setPreferredSize(new Dimension(200, 50));
+		boxLabelWertProzentFalsch.setPreferredSize(new Dimension(200, 50));
+
+		boxLabelWertProzentRichtig.setBackground(Color.GREEN);
+		boxLabelWertProzentRichtig.setOpaque(true);
+		boxLabelWertProzentFalsch.setBackground(Color.RED);
+		boxLabelWertProzentFalsch.setOpaque(true);
+
+		labelWertRichtig.setBounds(10, 15, 300, 25);
+		labelWertFalsch.setBounds(10, 15, 300, 25);
+		labelWertTotal.setBounds(10, 15, 300, 25);
+		labelWertProzentFalsch.setBounds(38, 15, 300, 25);
+		labelWertProzentRichtig.setBounds(38, 15, 300, 25);
+
+		labelWertRichtig.setFont(new Font("Arial", Font.BOLD, 20));
+		labelWertFalsch.setFont(new Font("Arial", Font.BOLD, 20));
+		labelWertTotal.setFont(new Font("Arial", Font.BOLD, 20));
+		labelWertProzentRichtig.setFont(new Font("Arial", Font.BOLD, 20));
+		labelWertProzentFalsch.setFont(new Font("Arial", Font.BOLD, 20));
+
+		Border border = getBorder();
+		LineBorder margin = new LineBorder(Color.GRAY, 2);
+		boxLabelWertRichtig.setBorder(new CompoundBorder(border, margin));
+		boxLabelWertFalsch.setBorder(new CompoundBorder(border, margin));
+		boxLabelWertTotal.setBorder(new CompoundBorder(border, margin));
+		boxLabelWertProzentFalsch.setBorder(new CompoundBorder(border, margin));
+		boxLabelWertProzentRichtig.setBorder(new CompoundBorder(border, margin));
+
+		boxLabelWertRichtig.add(labelWertRichtig);
+		boxLabelWertFalsch.add(labelWertFalsch);
+		boxLabelWertTotal.add(labelWertTotal);
+		boxLabelWertProzentRichtig.add(labelWertProzentRichtig);
+		boxLabelWertProzentFalsch.add(labelWertProzentFalsch);
+
+		add(boxLabelWertRichtig);
+		add(boxLabelWertFalsch);
+		add(boxLabelWertTotal);
+		add(boxLabelWertProzentRichtig);
+		add(boxLabelWertProzentFalsch);
+		add(labelDiagramm);
 
 		setVisible(true);
-
 	}
 
 	public void statistikAktualisieren() {
@@ -62,31 +125,34 @@ public class TabStatistik extends JPanel {
 		this.b = d.getAntwortenFalsch();
 		this.c = d.getAntwortenTotal();
 
+		this.prozentFalsch = b * 100 / c;
+		this.prozentRichtig = 100 - prozentFalsch;
+		
+		this.labelWertRichtig.setText("Anzahl Richtig: " + a);
+		this.labelWertFalsch.setText("Anzahl Falsch: " + b);
+		this.labelWertTotal.setText("Total Karten: " + c);
+		this.labelWertProzentRichtig.setText(prozentRichtig + "%" + " Richtig");
+		this.labelWertProzentFalsch.setText(prozentFalsch + "%" + " Falsch");
+
 		labelDiagramm.setData(c, b);
 	}
 
 	private void tabStatistik() {
 		this.labelDiagramm = new DiagrammBasic();
-
+		
+		this.labelWertProzentFalsch = new JLabel();
+		this.labelWertRichtig = new JLabel();
+		this.labelWertFalsch = new JLabel();
+		this.labelWertTotal = new JLabel();
+		this.labelWertProzentRichtig = new JLabel();
+		
+		this.boxLabelWertRichtig = new BoxLabel();
+		this.boxLabelWertFalsch = new BoxLabel();
+		this.boxLabelWertTotal = new BoxLabel();
+		this.boxLabelWertProzentRichtig = new BoxLabel();
+		this.boxLabelWertProzentFalsch = new BoxLabel();
+		
 		statistikAktualisieren();
-
-		String[] columns = { "Antworten Korrekt", "Antworten Falsch", "Antworten Total" };
-		Object[][] data = { { "" + a, "" + b, "" + c } }; // parameter einsetzten
-
-		// String[] timesoll = { "Zuletzt gelernt" };
-		// Object[][] timeist = {
-		// { now.get(Calendar.DATE) + "." + now.get(Calendar.MONTH) + "." +
-		// now.get(Calendar.YEAR) } }; // Calendar.YEAR
-
-		jt = new JTable(data, columns);
-		jt.isCellEditable(1, 1);
-		// jt2 = new JTable(timeist, timesoll);
-		jt.setPreferredScrollableViewportSize(new Dimension(450, 16));
-		jt.setFillsViewportHeight(true);
-		jt.setEnabled(false);
-
-		JScrollPane jps = new JScrollPane(jt);
-		add(jps);
 
 	}
 
@@ -114,7 +180,7 @@ public class TabStatistik extends JPanel {
 		}
 
 		private void recalculateArc() {
-			double percentage = (100 / totalCards) * wrongCards;
+			double percentage = (wrongCards * 100) / totalCards;
 			double arc = 360.0 / 100.0 * percentage;
 			this.arc = (int) arc;
 		}
