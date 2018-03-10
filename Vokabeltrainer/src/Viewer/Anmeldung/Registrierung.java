@@ -87,58 +87,12 @@ public class Registrierung extends UserSammlung {
 		// bestaetigungs Button
 
 		this.btnok = new JButton("OK");
-		btnok.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				ArrayList<User> l;
-				AbspeichernLaden saveHandler = new AbspeichernLaden();
-				User user1 = new User(null, null, null);
-				l = userliste.getUserliste();
-				String a = new String(r_txtpasswort.getText());
-				String b = new String(r_txtpasswort2.getText());
-
-				user1.setBenutzername(r_txtname.getText());
-				user1.setPasswort(r_txtpasswort.getText());
-				
-				String value = (String) benutzerSprache.getSelectedItem();
-				user1.setBenutzersprache(value);
-				
-				frmregiSystem = new JFrame("Registrierung");
-				
-				if (a != null && a.equals(b)) {
-					JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
-							JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
-					userliste.getUserliste().add(user1);
-					l = userliste.getUserliste();
-					userliste.setUserliste(l);
-
-					File savedUser = saveHandler.userSpeichern(userliste);
-					saveHandler.karteienSpeichern(user1);
-
-					registrierungsfenster.dispose();
-					return;
-				}
-
-				else
-
-				r_txtpasswort.setText(null);
-				r_txtpasswort2.setText(null);
-
-				JOptionPane.showConfirmDialog(frmregiSystem, "Passwort stimmt nicht Überein!", "Vokabeltrainer",
-						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
-			}
-
-		});
+		btnok.addActionListener(new regibtn());
 
 		// exit Button
 
 		this.btnexit = new JButton("Exit");
-		btnexit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
+		btnexit.addActionListener(new exitbtn()); 
 
 		// JFrame Objekte Generieren
 
@@ -202,5 +156,72 @@ public class Registrierung extends UserSammlung {
 		registrierungsfenster.setVisible(true);
 
 	}
+	
+	class regibtn implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+	registrieren();		
 
+	}
+			
+
+	public void registrieren() {
+			
+			ArrayList<User> l;
+			AbspeichernLaden saveHandler = new AbspeichernLaden();
+			User user1 = new User(null, null, null);
+			l = userliste.getUserliste();
+			String a = new String(r_txtpasswort.getText());
+			String b = new String(r_txtpasswort2.getText());
+
+			user1.setBenutzername(r_txtname.getText());
+			user1.setPasswort(r_txtpasswort.getText());
+			
+			String value = (String) benutzerSprache.getSelectedItem();
+			user1.setBenutzersprache(value);
+			
+			frmregiSystem = new JFrame("Registrierung");
+			
+			if (a != null && a.equals(b)) {
+				JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
+						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+				userliste.getUserliste().add(user1);
+				l = userliste.getUserliste();
+				userliste.setUserliste(l);
+
+				File savedUser = saveHandler.userSpeichern(userliste);
+				saveHandler.karteienSpeichern(user1);
+
+				registrierungsfenster.dispose();
+				return;
+			}
+
+			else
+
+			r_txtpasswort.setText(null);
+			r_txtpasswort2.setText(null);
+
+			JOptionPane.showConfirmDialog(frmregiSystem, "Passwort stimmt nicht Überein!", "Vokabeltrainer",
+					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+		}
+	}
+		
+		
+
+
+	public void exit() {
+		
+		System.exit(0);
+	}
+	
+	
+	class exitbtn implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			exit();
+
+		}
+	}
 }
