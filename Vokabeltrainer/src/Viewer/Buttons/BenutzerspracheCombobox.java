@@ -9,6 +9,13 @@ import Controller.UserSammlung;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 
+/**
+ * In dieser Klasse wirde die ComboBox für die Auswahl der Benutzersprache
+ * erstellt-
+ * 
+ * @author Marius Brändle St.Gallen / Duc Thach
+ * @version 1.0 09.3.2018
+ */
 public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 
 	private User u;
@@ -18,6 +25,14 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	private String franzoesischString;
 	private String italienischString;
 
+	/**
+	 * Benutzersprache ComboBox erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param userliste
+	 *            Nimmt die Userliste mit.
+	 */
 	public BenutzerspracheCombobox(User u, UserSammlung userliste) {
 		this.u = u;
 		this.userliste = userliste;
@@ -28,6 +43,10 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 
 	}
 
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	private void setSprache() {
 		this.deutschString = "Deutsch";
 		this.englischString = "English";
@@ -36,6 +55,10 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 
 	}
 
+	/**
+	 * Fügt die Auswählbaren Sprachen der ComboBox hinzu
+	 * 
+	 */
 	public void sprachComboboxAbfuellen() {
 		addItem(deutschString);
 		addItem(englischString);
@@ -43,10 +66,18 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 		addItem(italienischString);
 	}
 
+	/**
+	 * Fügt dieser ComboBox den Listener hinzu
+	 * 
+	 */
 	public void bindListener() {
 		addItemListener(this);
 	}
 
+	/**
+	 * Holt die gesetzte Sprache der letzten Session
+	 * 
+	 */
 	public void gespeicherteSpracheSetzen() {
 		if (u.getBenutzersprache().equals("DE")) {
 			setSelectedItem(deutschString);
@@ -59,6 +90,11 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 		}
 	}
 
+	/**
+	 * Definiert den Listener und entscheidet, was passiert wenn man die
+	 * Benutzersprache ändert.
+	 * 
+	 */
 	@Override
 	public void itemStateChanged(ItemEvent event) {
 		if (event.getStateChange() == ItemEvent.SELECTED) {

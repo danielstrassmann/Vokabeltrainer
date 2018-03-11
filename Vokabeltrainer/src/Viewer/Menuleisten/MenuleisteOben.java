@@ -45,13 +45,23 @@ public class MenuleisteOben extends JPanel {
 	private String karteiString;
 	private String spracheString;
 
+	/**
+	 * TabStatistik erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param userliste
+	 *            nimmt die Usersammlung mit
+	 */
 	public MenuleisteOben(User u, UserSammlung userliste) {
 		this.u = u;
 		this.userliste = userliste;
 		setSprache();
 		menuleisteOben();
 	}
-
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen Datenfelder zu.
+	 */
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -59,7 +69,9 @@ public class MenuleisteOben extends JPanel {
 		this.karteiString = r.getString("kartei");
 		this.spracheString = r.getString("benutzersprache");
 	}
-
+	/**
+	 * Erstellt alle Felder, welche benötigt werden.
+	 */
 	private void menuleisteOben() {
 		setLayout(new BorderLayout(10, 10));
 		setVisible(true);
@@ -101,7 +113,9 @@ public class MenuleisteOben extends JPanel {
 		u.setAktiveKartei((Kartei) kab.getSelectedItem());
 
 	}
-
+	/**
+	 * Erstellt den Itemlistener für die einzelne Buttons
+	 */
 	public void addItemChangeListener(ItemListener itemListener) {
 		kab.addItemListener(itemListener);
 

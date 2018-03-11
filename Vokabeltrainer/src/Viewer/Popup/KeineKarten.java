@@ -9,8 +9,8 @@ import javax.swing.JLabel;
 import Model.User;
 
 /**
- * Diese Klasse wird für das Popup gebraucht, wenn in der Kartei keine Karten
- * mehr vorhanden sind
+ * Diese Klasse wird für das Popup gebraucht, wenn in der Box keine Karten mehr
+ * vorhanden sind
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
@@ -27,6 +27,12 @@ public class KeineKarten extends JDialog {
 	private String keineKartenString;
 	private String boxWechselnString;
 
+	/**
+	 * KeineKarten erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 */
 	public KeineKarten(User u) {
 		this.u = u;
 		setSprache();
@@ -34,6 +40,10 @@ public class KeineKarten extends JDialog {
 		initGui();
 	}
 
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -42,11 +52,18 @@ public class KeineKarten extends JDialog {
 		this.boxWechselnString = r.getString("bitteboxWechseln");
 	}
 
+	/**
+	 * Erstellt alle Felder, welche benötigt werden.
+	 */
+
 	public void initComponents() {
 		this.labelKeineKarten = new JLabel(keineKartenString);
 		this.bitteBoxWechseln = new JLabel(boxWechselnString);
 	}
 
+	/**
+	 * Initialisiert das GUI.
+	 */
 	public void initGui() {
 		setLayout(null);
 		setSize(300, 100);

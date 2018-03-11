@@ -24,14 +24,23 @@ public class AbmeldeButton extends JButton {
 
 	private User u;
 	private String abmeldenString;
-	
 
-	public AbmeldeButton(User u)	{
+	/**
+	 * Abmeldebutton erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 */
+	public AbmeldeButton(User u) {
 		this.u = u;
 		setSprache();
 		abmeldeButton();
 	}
-	
+
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -45,6 +54,9 @@ public class AbmeldeButton extends JButton {
 
 	}
 
+	/**
+	 * Diese Innere Klasse ist zuständig für den Listener auf den abmeldeButton.
+	 */
 	class abmeldeButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Anmeldefenster anmeldeFenster = new Anmeldefenster();

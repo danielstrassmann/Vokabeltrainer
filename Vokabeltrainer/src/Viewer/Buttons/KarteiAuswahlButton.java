@@ -11,10 +11,9 @@ import Model.User;
 import Viewer.Tab.TabKartei;
 
 /**
- * Diese Klasse wird für die Karteiauswahl gebraucht
- * Diese Klasse generiert die Combobox "KarteiAuswahl" Wenn diese Combobox betätigt
- * wird, kann die Kartei gewechselt werden
- * Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
+ * Diese Klasse wird für die Karteiauswahl gebraucht Diese Klasse generiert die
+ * Combobox "KarteiAuswahl" Wenn diese Combobox betätigt wird, kann die Kartei
+ * gewechselt werden Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
  * 
  * @author Marius Brändle St.Gallen
  * @version 1.0 09.3.2018
@@ -41,14 +40,14 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 	}
 
 	public void comboboxKarteiAbfuellen(User u) {
-			removeAllItems();
-			ArrayList<Kartei> karteiliste = u.getUserKarteien();
-			if(karteiliste != null) {
+		removeAllItems();
+		ArrayList<Kartei> karteiliste = u.getUserKarteien();
+		if (karteiliste != null) {
 			for (int i = 0; i < karteiliste.size(); i++) {
 				Kartei klk = karteiliste.get(i);
-				addItem(klk);		}
+				addItem(klk);
 			}
-			
+		}
 	}
 
 	class ItemChangeListener implements ItemListener {
@@ -58,11 +57,7 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				kk = (Kartei) getSelectedItem();
 				System.out.println(kk);
-
-				
-
 			}
-
 		}
 
 		public Kartei getSelectedKartei() {

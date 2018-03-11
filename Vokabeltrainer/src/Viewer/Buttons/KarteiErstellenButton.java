@@ -31,10 +31,14 @@ public class KarteiErstellenButton extends JButton {
 		this.kab = kab;
 		setSprache();
 		karteiButton();
-		
-		
+
 	}
-	
+
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
+
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -48,6 +52,9 @@ public class KarteiErstellenButton extends JButton {
 
 	}
 
+	/**
+	 * Diese Innere Klasse ist zuständig für den Listener auf den Button.
+	 */
 	class karteiButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			KarteiErstellen ke = new KarteiErstellen(u, kab);

@@ -53,7 +53,10 @@ public class Lernen extends JDialog {
 	private User u;
 	private boolean switchButton;
 
-	// Popup-Fehlerdialog, wenn keine Karten mehr in der Box sind
+	/**
+	 *
+	 * Popup-Fehlerdialog, wenn keine Karten mehr in der Box sind
+	 */
 	private KeineKarten fehlerdialog;
 
 	private String frameTitelString;
@@ -67,10 +70,22 @@ public class Lernen extends JDialog {
 	private String richtigBeantwortetString;
 	private String falschBeantwortetString;
 
+	/**
+	 * Popup Lernen erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param owner
+	 *            Definition ob parent/child.
+	 * @param aktuelleBox
+	 *            Gibt die Nummer der ausgewählten Box mit.
+	 */
 	public Lernen(User u, JFrame owner, int aktuelleBox) {
 
 		super(owner);
-		// wird benötigt, damit Training sauber verlassen werden kann
+		/**
+		 * wird benötigt, damit Training sauber verlassen werden kann
+		 */
 
 		this.u = u;
 		this.aktuelleBox = aktuelleBox;
@@ -83,6 +98,10 @@ public class Lernen extends JDialog {
 		initGui();
 	}
 
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -98,12 +117,22 @@ public class Lernen extends JDialog {
 		falschBeantwortetString = r.getString("falschBeantwortet");
 	}
 
+	/**
+	 * Erstellt alle Felder, welche für das TabStatistik benötigt werden.
+	 */
 	private void lernen() {
 		this.labelTitelLerner = new JLabel(lernenAktuellString + aktuelleBox);
-		// Kartei Quellsprache & Zielsprache im UI anzeigen
+		/**
+		 * Kartei Quellsprache & Zielsprache im UI anzeigen
+		 * 
+		 */
 		this.labelQuellName = new JLabel(u.getAktiveKartei().getFrage());
 		this.labelUbersetzungName = new JLabel(u.getAktiveKartei().getAntwort());
-		// Anzahl Karten in den Box wird augegeben
+
+		/**
+		 * Anzahl Karten in den Box wird augegeben
+		 * 
+		 */
 		int kartenInBox = t.getAnzahlKartenInBox();
 		kartenInBox++;
 		this.labelUbersichtKarten = new JLabel(karteninBox1String + " " + kartenInBox + " " + karteninBox2String);
@@ -122,6 +151,9 @@ public class Lernen extends JDialog {
 
 	}
 
+	/**
+	 * Initialisiert das GUI.
+	 */
 	private void initGui() {
 		setTitle(frameTitelString);
 		setSize(700, 500);
@@ -130,7 +162,10 @@ public class Lernen extends JDialog {
 		setVisible(true);
 		setLocationRelativeTo(null);
 
-		// Location auf dem Fenster Lernen setzten
+		/**
+		 * Location auf dem Fenster Lernen setzten
+		 * 
+		 */
 		this.labelTitelLerner.setBounds(10, 1, 300, 25);
 		this.labelQuellName.setBounds(10, 100, 300, 25);
 		this.labelUbersetzungName.setBounds(10, 180, 300, 25);
@@ -145,23 +180,26 @@ public class Lernen extends JDialog {
 		this.buttonAbbrechen.setBounds(370, 400, 200, 25);
 		this.buttonSwitch.setBounds(380, 140, 140, 25);
 
-		// Hinzufügen zum Fenster Lernen
+		/**
+		 * Hinzufügen zum Fenster Lernen
+		 * 
+		 */
 		add(labelTitelLerner);
 		add(labelQuellName);
 		add(labelUbersetzungName);
 		add(labelUbersichtKarten);
 		add(labelRueckmeldung);
-
 		add(textEingabeFrage);
 		add(textEingabeAntwort);
-		// add(textKontrolleBox);
-
 		add(buttonNaechsteKarte);
 		add(buttonKontrollieren);
 		add(buttonAbbrechen);
 		add(buttonSwitch);
 
-		// Instanzierung des Zustandes 1
+		/**
+		 * Instanzierung des Zustandes 1
+		 * 
+		 */
 		textEingabeFrage.setText(k.getFrage());
 		textEingabeFrage.setEditable(false);
 
@@ -171,17 +209,26 @@ public class Lernen extends JDialog {
 		this.buttonNaechsteKarte.addActionListener(new naechsteKarteButton());
 		this.buttonSwitch.addActionListener(new switchButton());
 
-		// Listener, welche für das Schliessen des Fenster zuständig sind
+		/**
+		 * Listener, welche für das Schliessen des Fenster zuständig sind
+		 * 
+		 */
 		this.buttonAbbrechen.addActionListener(new boxWaehlenButton());
 		addWindowListener(new exitLernenFenster());
 
 	}
 
-	// Kartei wechsel Button für WindowListener in TabLernen öffentlich machen
+	/**
+	 * Kartei wechsel Button für WindowListener in TabLernen öffentlich machen
+	 * 
+	 */
 	public JButton getButtonAbbrechen() {
 		return buttonAbbrechen;
 	}
 
+	/**
+	 * Handhabt die Funktion der Kartewechseln nach dem Random-Prinzip
+	 */
 	public void karteWechseln() {
 		buttonNaechsteKarte.setVisible(false);
 		buttonKontrollieren.setEnabled(true);
@@ -189,16 +236,20 @@ public class Lernen extends JDialog {
 
 		t.gibZufallsKarteAusBox();
 		int kartenInBox = t.getAnzahlKartenInBox();
-		// Muss gemacht werden, da bei Methode t.gibZufallsKarteAusBox bereits die Karte
-		// aus der sammlungBox entfernt wurde
-		// Nur so wird die aktuell angezeigte Karte mitgezählt in der Anzeige
-		kartenInBox++;
+		/**
+		 * Muss gemacht werden, da bei Methode t.gibZufallsKarteAusBox bereits die Karte
+		 * aus der sammlungBox entfernt wurde. Nur so wird die aktuell angezeigte Karte
+		 * mitgezählt in der Anzeige kartenInBox++;
+		 * 
+		 */
 		labelUbersichtKarten.setText(karteninBox1String + " " + kartenInBox + " " + karteninBox2String);
 		k = t.getAktiveKarte();
 
 		if (switchButton == true) {
 
-			// Check ob instanziertes k != null
+			/**
+			 * Check ob instanziertes k != null
+			 */
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
@@ -207,7 +258,6 @@ public class Lernen extends JDialog {
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeAntwort.setEnabled(false);
 				this.labelUbersichtKarten.setText(karteninBox1String + " 0 " + karteninBox2String);
-				//exitLernen();
 				return;
 			}
 			textEingabeFrage.setEditable(true);
@@ -218,7 +268,10 @@ public class Lernen extends JDialog {
 		}
 		if (switchButton == false) {
 
-			// Check ob instanziertes k != null
+			/**
+			 * Check ob instanziertes k != null
+			 * 
+			 */
 			if (k == null) {
 				System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
@@ -227,7 +280,6 @@ public class Lernen extends JDialog {
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeFrage.setEnabled(false);
 				this.labelUbersichtKarten.setText(karteninBox1String + " 0 " + karteninBox2String);
-				//exitLernen();
 				return;
 			}
 			textEingabeAntwort.setEditable(true);
@@ -238,6 +290,10 @@ public class Lernen extends JDialog {
 
 	}
 
+	/**
+	 * Kontrolliert die Eingabe mit der entsprechenden Lösung.
+	 * 
+	 */
 	public void kontrolleEingabe() {
 		buttonNaechsteKarte.setVisible(true);
 		buttonKontrollieren.setEnabled(false);
@@ -247,18 +303,25 @@ public class Lernen extends JDialog {
 			labelRueckmeldung.setForeground(new Color(0, 102, 0));
 			labelRueckmeldung.setText(richtigBeantwortetString);
 		}
-		
-		
+
 		if (check == false) {
 			labelRueckmeldung.setForeground(Color.RED);
 			labelRueckmeldung.setText(falschBeantwortetString);
 		}
 
-		// Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt
+		/**
+		 * Karte wird nach Überprüfen der Eingabe neu in Trainingskartei abgelegt
+		 * 
+		 */
 		t.aktiveKarteNeuInTrainingsKartei();
 
 	}
 
+	/**
+	 * Definiert was passiert, wenn das Fenster mithilfe des ExitButtons oder
+	 * Buttonabbrechen geschlossen wird.
+	 * 
+	 */
 	private void exitLernen() {
 		t.trainingsDatenAnUserdaten(u);
 		t.karteiAnUser(u);
@@ -266,6 +329,10 @@ public class Lernen extends JDialog {
 		saveHandler.karteienSpeichern(u);
 	}
 
+	/**
+	 * Definiert das Switchen zwischen der Frage-Eingabe und der Antwort-Eingabe
+	 * 
+	 */
 	public void switchen() {
 		if (switchButton == true) {
 			switchButton = false;
@@ -300,7 +367,10 @@ public class Lernen extends JDialog {
 		}
 	}
 
-	// Wechselt die Abfragemöglichkeit vom Quell zum Zielwort
+	/**
+	 * Wechselt die Abfragemöglichkeit vom Quell zum Zielwort
+	 * 
+	 */
 	class switchButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			switchen();
@@ -311,7 +381,6 @@ public class Lernen extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// exitLernen();
 
 		}
 
@@ -334,7 +403,7 @@ public class Lernen extends JDialog {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			// TODO Auto-generated method stub
-			//exitLernen();
+			// exitLernen();
 		}
 
 		@Override

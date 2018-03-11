@@ -52,6 +52,14 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	private String anlegenButtonString;
 	private String schliessenButtonString;
 
+	/**
+	 * PopUp KarteiErstellen erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param kab
+	 *            Nimmt den KarteiAuswahlButton mit
+	 */
 	public KarteiErstellen(User u, KarteiAuswahlButton kab) {
 		this.kab = kab;
 		this.u = u;
@@ -62,6 +70,10 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 
 	}
 
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -74,6 +86,10 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 		this.anlegenButtonString = r.getString("erstellen");
 		this.schliessenButtonString = r.getString("schliessen");
 	}
+
+	/**
+	 * Erstellt alle Felder, welche benötigt werden.
+	 */
 
 	public void initComponents() {
 		this.labelTitelKartei = new JLabel(titelKarteiString);
@@ -88,6 +104,9 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 		this.buttonAbbrechen = new JButton(schliessenButtonString);
 	}
 
+	/**
+	 * Initialisiert das GUI.
+	 */
 	public void initGui() {
 		setLayout(null);
 		setSize(310, 280);
@@ -120,11 +139,17 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 		add(buttonAbbrechen);
 	}
 
+	/**
+	 * Fügt die Listeners den einzelnen Felder zu.
+	 */
 	public void bindListener() {
 		buttonAnlegen.addActionListener(this);
 		buttonAbbrechen.addActionListener(this);
 	}
 
+	/**
+	 * Erstellt den Buttonlistener
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
