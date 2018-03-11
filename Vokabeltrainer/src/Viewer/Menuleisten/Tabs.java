@@ -86,12 +86,43 @@ public class Tabs extends JPanel {
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
+				//tst.setSprache();
+				//tst.statistikSpracheAktualisieren();
 				tst.statistikAktualisieren();
 
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
-
+				//tka.setSprache();
+				//tka.karteiSpracheAktualisieren();
+				
 			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

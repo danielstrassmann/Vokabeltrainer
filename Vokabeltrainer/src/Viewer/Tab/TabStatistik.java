@@ -85,6 +85,13 @@ public class TabStatistik extends JPanel {
 		this.richtigString = r.getString("richtig");
 		this.falschString = r.getString("falsch");
 	}
+	
+	public void statistikSpracheAktualisieren() {
+		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
+		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
+		this.labelWertTotal.setText(totalKartenString + " " + c);
+		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
+	}
 
 	private void initGui() {
 		labelDiagramm.setSize(500, 500);

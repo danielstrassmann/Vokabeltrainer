@@ -70,10 +70,16 @@
             <id>9</id>
         </sammlung>
         <sammlung>
+            <antwort>3</antwort>
+            <box>1</box>
+            <frage>3</frage>
+            <id>10</id>
+        </sammlung>
+        <sammlung>
             <antwort>6</antwort>
             <box>1</box>
             <frage>6</frage>
-            <id>10</id>
+            <id>11</id>
         </sammlung>
     </karteien>
     <karteien>
