@@ -12,8 +12,6 @@ import java.util.Random;
 
 import Viewer.Popup.KeineKarten;
 
-
-
 public class Training {
 
 	// Training
@@ -22,14 +20,11 @@ public class Training {
 	private ArrayList<Karte> sammlungBox;
 	private Karte aktiveKarte;
 
-
-
 	// Konstruktor instanziert Training mit Userdaten & Karten in Box
 	public Training(User u, int boxNummer) {
 
 		// Instanziert Daten neue Statistikdaten mit Wert 0
 		trainingsDaten = new Daten();
-
 
 		// Instanziert Kartei fürs Training gemäss ausgewählter Kartei von Hauptmenü
 		trainingsKartei = u.getAktiveKartei();
@@ -38,7 +33,7 @@ public class Training {
 		// könnnen
 		ArrayList<Karte> kartenliste;
 		kartenliste = trainingsKartei.getSammlung();
-		
+
 		// Instanziert neue Boxsammlung
 		sammlungBox = new ArrayList<Karte>();
 
@@ -57,7 +52,6 @@ public class Training {
 	// Alternativer Konstruktor - für Testzwecke
 	public Training() {
 	}
-	
 
 	public Kartei getTrainingsKartei() {
 		return trainingsKartei;
@@ -99,21 +93,21 @@ public class Training {
 		// Zufällige Karte wird aus Sammlung ausgegeben
 		Random r = new Random();
 		Karte result = null;
-		
-		try {
-		result = sammlungBox.get(r.nextInt(sammlungBox.size()));
 
-		// Checkt, ob es noch Karten in der Box hat
-		//if (result != null) {
+		try {
+			result = sammlungBox.get(r.nextInt(sammlungBox.size()));
+
+			// Checkt, ob es noch Karten in der Box hat
+			// if (result != null) {
 
 			sammlungBox.remove(result);
 			this.aktiveKarte = result;
 			return aktiveKarte;
 
-		//}
+			// }
 		}
 
-		catch(Exception e) {
+		catch (Exception e) {
 			System.out.println("Es hat keine Karten mehr in der Box! " + e.toString());
 			// Karte k = new Karte();
 			// Objekt k ist null, da keine Karten mehr in der Box sind
@@ -134,6 +128,11 @@ public class Training {
 		// Wert von Karte wird mit Eingabe in UI abgeglichen
 		if (frageKarte.equals(eingabeFrage) && antwortKarte.equals(eingabeAntwort)) {
 
+			// Karte richtig und befindet sich bereits in Box 5, muss wieder in SammlungBox
+			if (aktiveKarte.getBox() == 5) {
+				sammlungBox.add(aktiveKarte);
+			}
+
 			// Karte wandert in nächste Box und wird neu in KartenSammlung in der Kartei
 			// abgelegt, Statistikdaten aktualisieren
 			aktiveKarte.karteInNaechsteBox();
@@ -143,6 +142,12 @@ public class Training {
 		}
 
 		else {
+
+			// Karte falsch und befindet sich bereits in Box 1, muss wieder in SammlungBox
+			if (aktiveKarte.getBox() == 1) {
+				sammlungBox.add(aktiveKarte);
+			}
+
 			// Karte wandert in erste Box und wird neu in KartenSammlung in der Kartei
 			// abgelegt, Statistikdaten aktualisieren
 			aktiveKarte.karteInErsteBox();

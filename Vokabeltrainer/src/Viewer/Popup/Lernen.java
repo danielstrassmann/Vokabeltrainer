@@ -14,12 +14,11 @@ import Model.*;
 import SaveAndLoad.AbspeichernLaden;
 
 /**
- * Diese Klasse wird für das Lernfenster gebraucht
- * Diese Klasse generiert das Popup-Fenster "Lernen". Hier werden Lernkarten aus
- * der ausgewählten Kartei ausgewählt und können gelernt werden. Entweder man
- * sieht den Quellfrage und gibt die Übersetzungslösung ein oder man kehrt es
- * mit dem SWITCH zur Quelllösung um. Diese Kartei wird von der Klasse
- * "TabLernen" aufgerufen.
+ * Diese Klasse wird für das Lernfenster gebraucht Diese Klasse generiert das
+ * Popup-Fenster "Lernen". Hier werden Lernkarten aus der ausgewählten Kartei
+ * ausgewählt und können gelernt werden. Entweder man sieht den Quellfrage und
+ * gibt die Übersetzungslösung ein oder man kehrt es mit dem SWITCH zur
+ * Quelllösung um. Diese Kartei wird von der Klasse "TabLernen" aufgerufen.
  * 
  * @author Marius Brändle St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
@@ -47,10 +46,10 @@ public class Lernen extends JDialog {
 	private Karte k;
 	private User u;
 	private boolean switchButton;
-	
+
 	// Popup-Fehlerdialog, wenn keine Karten mehr in der Box sind
 	private KeineKarten fehlerdialog;
-	
+
 	private String frameTitelString;
 	private String lernenAktuellString;
 	private String karteninBox1String;
@@ -77,17 +76,17 @@ public class Lernen extends JDialog {
 		lernen();
 		initGui();
 	}
-	
+
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
-		frameTitelString = r.getString("training");        
-		lernenAktuellString = r.getString("lernenAktuelleBox");     
-		karteninBox1String = r.getString("lernenKartenInBox1");      
-		karteninBox2String = r.getString("lernenKartenInBox2");   
+		frameTitelString = r.getString("training");
+		lernenAktuellString = r.getString("lernenAktuelleBox");
+		karteninBox1String = r.getString("lernenKartenInBox1");
+		karteninBox2String = r.getString("lernenKartenInBox2");
 		kontrollierenString = r.getString("kontrollieren");
 		boxWechselnString = r.getString("boxWechseln");
-		naechsteKarteString = r.getString("naechsteKarte")   ; 
+		naechsteKarteString = r.getString("naechsteKarte");
 		modusWechselnString = r.getString("modusWechseln");
 		richtigBeantwortetString = r.getString("richtigBeantwortet");
 		falschBeantwortetString = r.getString("falschBeantwortet");
@@ -101,7 +100,7 @@ public class Lernen extends JDialog {
 		// Anzahl Karten in den Box wird augegeben
 		int kartenInBox = t.getAnzahlKartenInBox();
 		kartenInBox++;
-		this.labelUbersichtKarten = new JLabel(karteninBox1String +" "+ kartenInBox + " "+ karteninBox2String);
+		this.labelUbersichtKarten = new JLabel(karteninBox1String + " " + kartenInBox + " " + karteninBox2String);
 		this.labelRueckmeldung = new JLabel();
 
 		this.textEingabeFrage = new JTextField();
@@ -114,7 +113,6 @@ public class Lernen extends JDialog {
 		this.buttonNaechsteKarte = new JButton(naechsteKarteString);
 
 		this.buttonSwitch = new JButton(modusWechselnString);
-
 
 	}
 
@@ -189,7 +187,7 @@ public class Lernen extends JDialog {
 		// aus der sammlungBox entfernt wurde
 		// Nur so wird die aktuell angezeigte Karte mitgezählt in der Anzeige
 		kartenInBox++;
-		labelUbersichtKarten.setText(karteninBox1String +" "+ kartenInBox + " "+ karteninBox2String);
+		labelUbersichtKarten.setText(karteninBox1String + " " + kartenInBox + " " + karteninBox2String);
 		k = t.getAktiveKarte();
 
 		if (switchButton == true) {
@@ -202,8 +200,8 @@ public class Lernen extends JDialog {
 				this.buttonNaechsteKarte.setEnabled(false);
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeAntwort.setEnabled(false);
-				this.labelUbersichtKarten.setText(karteninBox1String +" 0 "+ karteninBox2String);
-				exitLernen();
+				this.labelUbersichtKarten.setText(karteninBox1String + " 0 " + karteninBox2String);
+				//exitLernen();
 				return;
 			}
 			textEingabeFrage.setEditable(true);
@@ -222,8 +220,8 @@ public class Lernen extends JDialog {
 				this.buttonNaechsteKarte.setEnabled(false);
 				this.buttonSwitch.setEnabled(false);
 				this.textEingabeFrage.setEnabled(false);
-				this.labelUbersichtKarten.setText(karteninBox1String +" 0 "+ karteninBox2String);
-				exitLernen();
+				this.labelUbersichtKarten.setText(karteninBox1String + " 0 " + karteninBox2String);
+				//exitLernen();
 				return;
 			}
 			textEingabeAntwort.setEditable(true);
@@ -243,6 +241,8 @@ public class Lernen extends JDialog {
 			labelRueckmeldung.setForeground(new Color(0, 102, 0));
 			labelRueckmeldung.setText(richtigBeantwortetString);
 		}
+		
+		
 		if (check == false) {
 			labelRueckmeldung.setForeground(Color.RED);
 			labelRueckmeldung.setText(falschBeantwortetString);
@@ -278,6 +278,7 @@ public class Lernen extends JDialog {
 			textEingabeFrage.setEditable(false);
 			buttonNaechsteKarte.setVisible(false);
 		}
+		t.getSammlungBox().add(k);
 		karteWechseln();
 	}
 
@@ -304,7 +305,7 @@ public class Lernen extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			exitLernen();
+			// exitLernen();
 
 		}
 
@@ -327,7 +328,7 @@ public class Lernen extends JDialog {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			// TODO Auto-generated method stub
-			exitLernen();
+			//exitLernen();
 		}
 
 		@Override

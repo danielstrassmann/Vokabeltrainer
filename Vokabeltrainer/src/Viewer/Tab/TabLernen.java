@@ -172,7 +172,17 @@ public class TabLernen extends JPanel implements ActionListener {
 			BoxLabel source = (BoxLabel) s.getSource();
 
 			// Ceck ob Box Karten enthält
+			
+			
 			Kartei kk = u.getAktiveKartei();
+			
+			// Check ob User überhaupt eine Kartei angelegt hat
+			if(kk == null) {
+				fehlerdialog = new KeineKarten(u);
+				return;
+				
+			}
+			
 			ArrayList<Karte> kartenliste;
 			kartenliste = kk.getSammlung();
 			int counter = 0;

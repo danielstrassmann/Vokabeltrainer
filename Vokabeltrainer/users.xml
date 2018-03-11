@@ -17,7 +17,7 @@
     </userliste>
     <userliste>
         <benutzername>brunnert</benutzername>
-        <benutzersprache>Deutsch</benutzersprache>
+        <benutzersprache>DE</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
     <userliste>
@@ -39,5 +39,10 @@
         <benutzername>T</benutzername>
         <benutzersprache>français</benutzersprache>
         <passwort>t</passwort>
+    </userliste>
+    <userliste>
+        <benutzername>palmer</benutzername>
+        <benutzersprache>Deutsch</benutzersprache>
+        <passwort>eli</passwort>
     </userliste>
 </userSammlung>
