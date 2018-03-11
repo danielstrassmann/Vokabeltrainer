@@ -41,7 +41,6 @@ public class Tabs extends JPanel {
 		this.mlo = mlo;
 		setSprache();
 		tabs();
-
 	}
 
 	public void setSprache() {
