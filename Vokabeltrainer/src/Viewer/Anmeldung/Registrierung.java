@@ -31,48 +31,76 @@ import SaveAndLoad.AbspeichernLaden;
 
 public class Registrierung extends UserSammlung {
 
-	// JFrames
+	/**
+	 * JFrames
+	 * 
+	 */
 
 	private JFrame registrierungsfenster;
 	private JFrame frmregiSystem;
 
-	// JPanels
+	/**
+	 * JPanels
+	 * 
+	 */
 
 	private JPanel userinterface;
 	private JPanel linkeseite;
 	private JPanel rechteseite;
 	private JPanel buttons;
 
-	// JButtons
+	/**
+	 * JButtons
+	 * 
+	 */
 
 	private JButton btnok;
 	private JButton btnexit;
 
-	// JTextField mit Label
+	/**
+	 * JTextField mit Label
+	 * 
+	 */
 
 	private JLabel r_lblname;
 	private JTextField r_txtname;
 
-	// JPasswordField mit Label
+	/**
+	 * JPasswordField mit Label
+	 * 
+	 */
 
 	private JLabel r_lblpasswort;
 	private JPasswordField r_txtpasswort;
 
-	// JPasswordField mit Label
+	/**
+	 * JPasswordField mit Label
+	 * 
+	 */
 
 	private JLabel r_lblpasswort2;
 	private JPasswordField r_txtpasswort2;
 
-	// SprachBox
+	/**
+	 * SprachBox
+	 * 
+	 */
 
 	private JLabel benutzersp;
 	private JComboBox benutzerSprache;
 	private JPanel spracheAuswahlPanel;
 
-	// UserSammlung
+	/**
+	 * UserSammlung
+	 * 
+	 */
 
 	private UserSammlung userliste;
 
+	/**
+	 * Uebersetzungs Strings
+	 * 
+	 */
 	private String frameTitelString;
 	private String nameString;
 	private String passwortString;
@@ -82,12 +110,22 @@ public class Registrierung extends UserSammlung {
 	private String vokabeltrainerString;
 	private String passwortFalschString;
 
+	/**
+	 * Registrierungs Konstruktor
+	 * @param l
+	 * 			Wird als Userliste für die Abspeicherung gebraucht
+	 * 
+	 */
 	public Registrierung(UserSammlung l) {
 		setSprache();
 		addr();
 		userliste = l;
 	}
 
+	/**
+	 * Setzten der Usersprache für das UI
+	 * 
+	 */
 	public void setSprache() {
 		String sprachcode = new String("DE");
 		String systemUsersprache = System.getProperty("user.language");
@@ -119,7 +157,10 @@ public class Registrierung extends UserSammlung {
 
 	public void addr() {
 
-		// Registrierungsfenster
+		/**
+		 * Registrierungsfenster
+		 * 
+		 */
 
 		this.registrierungsfenster = new JFrame(frameTitelString);
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -129,17 +170,26 @@ public class Registrierung extends UserSammlung {
 		this.buttons = new JPanel();
 		this.userinterface = new JPanel();
 
-		// bestaetigungs Button
+		/**
+		 * bestaetigungs Button
+		 * 
+		 */
 
 		this.btnok = new JButton("OK");
 		btnok.addActionListener(new regibtn());
 
-		// exit Button
+		/**
+		 * exit Button
+		 * 
+		 */
 
 		this.btnexit = new JButton("Exit");
 		btnexit.addActionListener(new exitbtn());
 
-		// JFrame Objekte Generieren
+		/**
+		 * JFrame Objekte Generieren
+		 * 
+		 */
 
 		this.r_lblname = new JLabel("   " + nameString);
 		this.r_lblpasswort = new JLabel("   " + passwortString);
@@ -156,24 +206,36 @@ public class Registrierung extends UserSammlung {
 
 	public void paint() {
 
-		// JFrame einstellungen
+		/**
+		 * JFrame einstellungen
+		 * 
+		 */
 
 		registrierungsfenster.setResizable(false);
 		registrierungsfenster.setLayout(new BorderLayout(1, 1));
 
-		// textfelder bearbeitbar
+		/**
+		 * Textfelder bearbeitbar
+		 * 
+		 */
 
 		r_txtname.setEditable(true);
 		r_txtpasswort.setEditable(true);
 		r_txtpasswort2.setEditable(true);
 
-		// layout_für_Panels
+		/**
+		 * Layout für Panels
+		 * 
+		 */
 
 		userinterface.setLayout(new GridLayout(1, 2, 10, 10));
 		rechteseite.setLayout(new GridLayout(4, 1, 10, 10));
 		linkeseite.setLayout(new GridLayout(4, 1, 10, 10));
 
-		// ButtonPanels
+		/**
+		 * ButtonPanels
+		 * 
+		 */
 
 		buttons.add(btnok);
 		buttons.add(btnexit);
@@ -183,7 +245,10 @@ public class Registrierung extends UserSammlung {
 		linkeseite.add(r_lblpasswort2);
 		linkeseite.add(benutzersp);
 
-		// Add Objekte an Panels und JFrame
+		/**
+		 * Add Objekte an Panels und JFrame
+		 * 
+		 */
 
 		rechteseite.add(r_txtname);
 		rechteseite.add(r_txtpasswort);
@@ -193,7 +258,10 @@ public class Registrierung extends UserSammlung {
 		userinterface.add(linkeseite);
 		userinterface.add(rechteseite);
 
-		// Gestaltung_loginfenster
+		/**
+		 * Gestaltung Loginfenster
+		 * 
+		 */
 
 		registrierungsfenster.add(buttons, BorderLayout.SOUTH);
 		registrierungsfenster.add(userinterface, BorderLayout.CENTER);
@@ -201,7 +269,12 @@ public class Registrierung extends UserSammlung {
 		registrierungsfenster.setVisible(true);
 
 	}
-
+	
+	/**
+	 * Registrierungs Button Funktion
+	 *
+	 */
+	
 	class regibtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -209,7 +282,11 @@ public class Registrierung extends UserSammlung {
 			registrieren();
 
 		}
-
+		
+		/**
+		 * Registrierungs Methode mit abspeicherung der neuen Userliste
+		 * 
+		 */
 		public void registrieren() {
 
 			ArrayList<User> l;
@@ -257,11 +334,19 @@ public class Registrierung extends UserSammlung {
 		}
 	}
 
+	/**
+	 *Exit aus dem Programm
+	 * 
+	 */
 	public void exit() {
 
 		System.exit(0);
 	}
 
+	/**
+	 * Exit Button Funktion
+	 *
+	 */
 	class exitbtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
