@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <karteienSpeicherObjekt>
     <daten>
-        <antwortenFalsch>129</antwortenFalsch>
-        <antwortenKorrekt>57</antwortenKorrekt>
-        <antwortenTotal>186</antwortenTotal>
+        <antwortenFalsch>135</antwortenFalsch>
+        <antwortenKorrekt>63</antwortenKorrekt>
+        <antwortenTotal>198</antwortenTotal>
     </daten>
     <karteien>
         <antwort>Englisch</antwort>
@@ -11,7 +11,7 @@
         <id>1</id>
         <sammlung>
             <antwort>One</antwort>
-            <box>2</box>
+            <box>1</box>
             <frage>Eins</frage>
             <id>0</id>
         </sammlung>
@@ -35,31 +35,31 @@
         </sammlung>
         <sammlung>
             <antwort>Test2</antwort>
-            <box>2</box>
+            <box>3</box>
             <frage>Test2</frage>
             <id>4</id>
         </sammlung>
         <sammlung>
             <antwort>Menu</antwort>
-            <box>1</box>
+            <box>3</box>
             <frage>Menu</frage>
             <id>5</id>
         </sammlung>
         <sammlung>
             <antwort>2</antwort>
-            <box>2</box>
+            <box>3</box>
             <frage>2</frage>
             <id>6</id>
         </sammlung>
         <sammlung>
             <antwort>3</antwort>
-            <box>2</box>
+            <box>1</box>
             <frage>3</frage>
             <id>7</id>
         </sammlung>
         <sammlung>
             <antwort>4</antwort>
-            <box>2</box>
+            <box>3</box>
             <frage>4</frage>
             <id>8</id>
         </sammlung>
@@ -71,7 +71,7 @@
         </sammlung>
         <sammlung>
             <antwort>6</antwort>
-            <box>2</box>
+            <box>1</box>
             <frage>6</frage>
             <id>10</id>
         </sammlung>

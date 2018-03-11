@@ -157,8 +157,10 @@ public class TabStatistik extends JPanel {
 		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
 		this.labelWertTotal.setText(totalKartenString + " " + c);
 		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
-
+		
 		labelDiagramm.setData(c, b);
+		
+		
 	}
 	
 	public void berechnenProzentFalsch(int b, int c) {

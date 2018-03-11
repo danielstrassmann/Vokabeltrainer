@@ -31,11 +31,9 @@ public class Tabs extends JPanel {
 	private String statistikString;
 	private String karteiString;
 
-	
 	private TabLernen tle;
 	private TabStatistik tst;
 	private TabKartei tka;
-
 
 	public Tabs(User u, MenuleisteOben mlo, JFrame parent) {
 		this.parent = parent;
@@ -83,26 +81,13 @@ public class Tabs extends JPanel {
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
 
-/*	public void removeLernenTab() {
-
-	}
-
-	public void removeStatistikTab() {
-		remove(1);
-		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
-	}
-
-	public void removeKarteiTab() {
-
-	}
-*/
 	class TabListener implements ChangeListener {
 
 		public void stateChanged(ChangeEvent changeEvent) {
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			if (tabsMenu.getSelectedIndex() == 1) {
-
+				tst.statistikAktualisieren();
 
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
