@@ -1,15 +1,9 @@
 package Viewer.Buttons;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.swing.JComboBox;
-import javax.swing.JPanel;
 
 import Controller.UserSammlung;
 import Model.User;

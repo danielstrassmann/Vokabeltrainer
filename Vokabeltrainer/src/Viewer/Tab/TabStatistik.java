@@ -1,13 +1,11 @@
 package Viewer.Tab;
 
-import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.ScrollPane;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -16,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.Scrollable;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
@@ -69,6 +66,12 @@ public class TabStatistik extends JPanel {
 	private String richtigString;
 	private String falschString;
 
+	/**
+	 * 
+	 * TabStatistik erstellen
+	 * 
+	 * @param u Alle Daten des Users fliessen in die TabStatistik ein.
+	 */
 	public TabStatistik(User u) {
 		this.u = u;
 		setSprache();
@@ -76,6 +79,12 @@ public class TabStatistik extends JPanel {
 		initGui();
 	}
 
+	/**
+	 * 
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 * 
+	 */
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -85,7 +94,12 @@ public class TabStatistik extends JPanel {
 		this.richtigString = r.getString("richtig");
 		this.falschString = r.getString("falsch");
 	}
-	
+
+	/**
+	 * 
+	 * Aktualisiert die Sprache des ausgewählten Sprachcodes.
+	 * 
+	 */
 	public void statistikSpracheAktualisieren() {
 		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
 		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
@@ -93,6 +107,11 @@ public class TabStatistik extends JPanel {
 		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
 	}
 
+	/**
+	 * 
+	 * Initialisiert das GUI
+	 * 
+	 */
 	private void initGui() {
 		labelDiagramm.setSize(500, 500);
 
@@ -133,7 +152,6 @@ public class TabStatistik extends JPanel {
 		boxLabelWertProzentRichtig.add(labelWertProzentRichtig);
 		boxLabelWertProzentFalsch.add(labelWertProzentFalsch);
 
-		
 		add(boxLabelWertRichtig);
 		add(boxLabelWertFalsch);
 		add(boxLabelWertTotal);
@@ -144,11 +162,12 @@ public class TabStatistik extends JPanel {
 		setVisible(true);
 	}
 
-	public void loeschenInhalt() {
-		labelDiagramm.setData(0, 0);
-		this.labelWertRichtig.setText(anzahlRichtigString + " " + 0);
-	}
-	
+	/**
+	 * 
+	 * Aktualisiert alle Daten der Statistik. Dies wird immer ausgeführt, wenn das
+	 * TabStatistik ausgewählt wird.
+	 * 
+	 */
 	public void statistikAktualisieren() {
 		this.d = u.getUserDaten();
 
@@ -164,12 +183,22 @@ public class TabStatistik extends JPanel {
 		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
 		this.labelWertTotal.setText(totalKartenString + " " + c);
 		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
-		
+
 		labelDiagramm.setData(c, b);
-		
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * Berechnet den Prozentwert aus den Anzahl Falschen und den Total gelernten
+	 * Karten aus. Zusätzlich wird abgefangen, dass keine Division durch 0
+	 * stattfindet.
+	 * 
+	 * @param b
+	 *            Anzahl Falsch gelöste Karten
+	 * @param c
+	 *            Total gelöste Karten
+	 */
 	public void berechnenProzentFalsch(int b, int c) {
 		if (c == 0) {
 			if (b == 0) {
@@ -190,6 +219,12 @@ public class TabStatistik extends JPanel {
 		}
 	}
 
+	/**
+	 * 
+	 * Erstellt alle Felder, welche für das TabStatistik benötigt werden.
+	 * 
+	 */
+
 	private void tabStatistik() {
 		this.labelDiagramm = new DiagrammBasic();
 
@@ -209,6 +244,11 @@ public class TabStatistik extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * In dieser Inneren Klasse wird das Diagramm erstellt und gezeichnet.
+	 * 
+	 */
 	public class DiagrammBasic extends Canvas {
 
 		private int marginX;
@@ -254,6 +294,16 @@ public class TabStatistik extends JPanel {
 			return getHeight() - marginY * 2;
 		}
 
+		/**
+		 * 
+		 * 
+		 * Hier wird abgefangen, dass es eine Division durch 0 gibt.
+		 * 
+		 * @param totalCard
+		 *            Anzahl gelernten Karten.
+		 * @param wrongCards
+		 *            Anzahl Falsch gelöste Karten.
+		 */
 		public void setData(int totalCards, int wrongCards) {
 			if (totalCards == 0) {
 				if (wrongCards == 0) {

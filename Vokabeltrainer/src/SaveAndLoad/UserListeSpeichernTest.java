@@ -1,12 +1,8 @@
 package SaveAndLoad;
 
 import java.io.File;
-import java.io.FileWriter;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 
 import Controller.UserSammlung;
-import Model.Karte;
 import Model.User;
 
 /**

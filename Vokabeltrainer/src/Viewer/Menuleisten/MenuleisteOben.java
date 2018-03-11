@@ -1,16 +1,22 @@
 package Viewer.Menuleisten;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ItemListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Controller.UserSammlung;
 import Model.Kartei;
 import Model.User;
-import Viewer.Buttons.*;
+import Viewer.Buttons.AbmeldeButton;
+import Viewer.Buttons.BenutzerspracheCombobox;
+import Viewer.Buttons.KarteiAuswahlButton;
+import Viewer.Buttons.KarteiErstellenButton;
 
 /**
  * Diese Klasse wird für das GUI der Menueleiste gebraucht

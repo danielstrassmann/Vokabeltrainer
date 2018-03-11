@@ -15,7 +15,6 @@ import Controller.KarteiController;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 import Viewer.Buttons.KarteiAuswahlButton;
-import Viewer.Menu.HauptmenuNeu;
 
 /**
  * Diese Klasse wird für das GUI der Karteierstellung gebraucht Diese Klasse

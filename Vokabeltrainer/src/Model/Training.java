@@ -10,8 +10,6 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Viewer.Popup.KeineKarten;
-
 public class Training {
 
 	// Training

@@ -1,8 +1,6 @@
 package Viewer.Popup;
 
 import java.awt.Color;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -10,7 +8,15 @@ import java.awt.event.WindowListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import Model.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import Model.Karte;
+import Model.Training;
+import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 
 /**

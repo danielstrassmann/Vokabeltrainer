@@ -27,8 +27,8 @@ import Viewer.Popup.KeineKarten;
 import Viewer.Popup.Lernen;
 
 /**
- * Diese Klasse wird für das Lernen gebraucht. Diese Klasse generiert den
- * Inhalt des Tab "Lernen". Aus dieser Klasse wird das Popup-Fenster" Lernen
+ * Diese Klasse wird für das Lernen gebraucht. Diese Klasse generiert den Inhalt
+ * des Tab "Lernen". Aus dieser Klasse wird das Popup-Fenster" Lernen
  * aufgerufen. Diese Klasse wird von der Klasse "Tabs" aufgerufen
  * 
  * @author Marius Brändle St.Gallen / Thomas Brunner
@@ -62,8 +62,18 @@ public class TabLernen extends JPanel implements ActionListener {
 	private User u;
 
 	private KeineKarten fehlerdialog;
-	
+
 	private String boxString;
+
+	/**
+	 * 
+	 * TabStatistik erstellen
+	 * 
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param parent
+	 *            Definition ob parent/child.
+	 */
 
 	public TabLernen(User u, JFrame parent) {
 		this.parent = parent;
@@ -72,13 +82,25 @@ public class TabLernen extends JPanel implements ActionListener {
 		tabLernen();
 		initGui();
 	}
-	
+
+	/**
+	 * 
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 * 
+	 */
 	private void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
 		this.boxString = r.getString("box");
 	}
 
+	/**
+	 * 
+	 * Erstellt alle Felder, welche für das TabStatistik benötigt werden.
+	 * 
+	 */
+	
 	private void tabLernen() {
 		this.boxLabel1 = new BoxLabel();
 		this.boxLabel2 = new BoxLabel();
@@ -105,7 +127,11 @@ public class TabLernen extends JPanel implements ActionListener {
 		boxLabel5.addMouseListener(new boxMausKlick());
 
 	}
-
+	/**
+	 * 
+	 * Initialisiert das GUI.
+	 *  
+	 */
 	private void initGui() {
 		Border border = getBorder();
 		margin1 = new LineBorder(new Color(100, 100, 100), 15);
@@ -165,24 +191,27 @@ public class TabLernen extends JPanel implements ActionListener {
 		setVisible(true);
 		// setBackground(Color.GRAY);
 	}
-
+	/**
+	 * 
+	 * Diese Innere Klasse ist zuständig für den Mausklick, welcher auf die "Box" erfolgen soll.
+	 *  
+	 */
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
 
 			BoxLabel source = (BoxLabel) s.getSource();
 
 			// Ceck ob Box Karten enthält
-			
-			
+
 			Kartei kk = u.getAktiveKartei();
-			
+
 			// Check ob User überhaupt eine Kartei angelegt hat
-			if(kk == null) {
+			if (kk == null) {
 				fehlerdialog = new KeineKarten(u);
 				return;
-				
+
 			}
-			
+
 			ArrayList<Karte> kartenliste;
 			kartenliste = kk.getSammlung();
 			int counter = 0;
@@ -241,7 +270,11 @@ public class TabLernen extends JPanel implements ActionListener {
 
 			});
 		}
-
+		/**
+		 * 
+		 * Was passiert, wenn das neu geöffnete Fenster wieder geschlossen wird.
+		 *  
+		 */
 		private void exitForm() {
 			boxLabel1.setBorder(new CompoundBorder(border, margin1));
 			boxLabel2.setBorder(new CompoundBorder(border, margin2));
@@ -250,7 +283,6 @@ public class TabLernen extends JPanel implements ActionListener {
 			boxLabel5.setBorder(new CompoundBorder(border, margin5));
 
 			parent.setEnabled(true);
-			
 
 		}
 

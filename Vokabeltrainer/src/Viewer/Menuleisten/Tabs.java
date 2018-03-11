@@ -4,12 +4,16 @@ import java.awt.BorderLayout;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Model.User;
-import Viewer.Tab.*;
+import Viewer.Tab.TabKartei;
+import Viewer.Tab.TabLernen;
+import Viewer.Tab.TabStatistik;
 
 /**
  * Diese Klasse wird für die Statistik veranschaung gebraucht

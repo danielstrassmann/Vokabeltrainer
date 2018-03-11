@@ -2,12 +2,6 @@ package SaveAndLoad;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-
-import Model.Daten;
-import Model.Karte;
-import Model.Kartei;
-import Model.User;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -19,6 +13,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import Controller.UserSammlung;
+import Model.Daten;
+import Model.Karte;
+import Model.Kartei;
+import Model.User;
 
 /**
  * Diese Klasse wird für das Abspeicher und Laden von Daten/Objekten gebraucht

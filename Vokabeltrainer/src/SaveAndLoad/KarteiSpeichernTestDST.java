@@ -1,12 +1,5 @@
 package SaveAndLoad;
 
-import java.io.File;
-import java.util.ArrayList;
-
-import Controller.UserSammlung;
-import Model.Daten;
-import Model.Karte;
-import Model.Kartei;
 import Model.User;
 
 /**

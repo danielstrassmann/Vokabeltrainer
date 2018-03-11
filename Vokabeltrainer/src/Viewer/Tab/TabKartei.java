@@ -1,8 +1,6 @@
 package Viewer.Tab;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -22,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
@@ -81,6 +78,13 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private String falschLoeschenString;
 	private String richtigLoeschenString;
 
+	/** 
+	 * TabKartei erstellen
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param mlo
+	 *            Klasse MenuleisteOben wird hier hinzugefügt
+	 */
 	public TabKartei(User u, MenuleisteOben mlo) {
 		this.u = u;
 		this.mlo = mlo;
@@ -93,6 +97,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	/**
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Datenfelder zu.
+	 */
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -113,25 +121,31 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.richtigLoeschenString = r.getString("richtigLoeschen");
 	}
 
+	/**
+	 * Aktualisiert die Sprache des ausgewählten Sprachcodes.
+	 */
 	public void karteiSpracheAktualisieren() {
 		this.buttonNeu.setText(buttonNeuString);
 		this.buttonAendern.setText(buttonAendernString);
 		this.buttonLoeschen.setText(buttonLoeschenString);
-		
+
 		this.labelTitel.setText(karteiTitelString);
 		this.labelFrage.setText(bezFrageString);
 		this.labelAntwort.setText(bezAntwortString);
-		
+
 		this.labelMutation.setText(falschAnlegenString);
-		
+
 		this.labelMutation.setText(richtigAnlegenString);
 		this.labelMutation.setText(falschAendernString);
 		this.labelMutation.setText(richtigAendernString);
 		this.labelMutation.setText(richtigLoeschenString);
 		this.labelMutation.setText(falschLoeschenString);
 	}
-	
-	// Initaliziere Komponenten und setze Grössen und Positionen
+
+	/**
+	 * Initaliziere Komponenten und setze Grössen und Positionen
+	 */
+
 	private void initComponents() {
 
 		this.textFrage = new JTextField();
@@ -140,7 +154,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.buttonNeu = new JButton();
 		this.buttonAendern = new JButton();
 		this.buttonLoeschen = new JButton();
-		
+
 		this.buttonNeu.setText(buttonNeuString);
 		this.buttonAendern.setText(buttonAendernString);
 		this.buttonLoeschen.setText(buttonLoeschenString);
@@ -149,7 +163,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelFrage = new JLabel();
 		this.labelAntwort = new JLabel();
 		this.labelMutation = new JLabel("");
-		
+
 		this.labelTitel.setText(karteiTitelString);
 		this.labelFrage.setText(bezFrageString);
 		this.labelAntwort.setText(bezAntwortString);
@@ -167,8 +181,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelMutation.setBounds(390, 445, 200, 25);
 	}
 
-	// Initaliziere Table und setze DefaultTablemodel. Komponenten auf Panel
-	// hinzufügen
+	/**
+	 * Initialisiert das GUI.Initaliziere Table und setze DefaultTablemodel.
+	 * Komponenten auf Panel hinzufügen
+	 */
+
 	private void initGui() {
 
 		setLayout(null);
@@ -201,7 +218,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
-	// Listeners den Buttons und Table hinzufügen
+	/**
+	 * Listeners den Buttons und Table hinzufügen
+	 */
 	private void bindListener() {
 		buttonNeu.addActionListener(this);
 		buttonAendern.addActionListener(this);
@@ -222,7 +241,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
-	// selektierte Kartei in Table abfüllen
+	/**
+	 * selektierte Kartei in Table abfüllen
+	 */
+
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
@@ -241,7 +263,10 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		}
 	}
 
-	// MouseListener. fügt gewählte Row in Textfields Frage und Antwort ab
+	/**
+	 * MouseListener. fügt gewählte Row in Textfields Frage und Antwort ab
+	 */
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		selektierteRow = tableKartei.getSelectedRow();
@@ -251,8 +276,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
-	// ActionListener. Fügt neue Karten hinzu, Ändert gewählte Karte, löscht
-	// gewählte Karte
+	/**
+	 * ActionListener. Fügt neue Karten hinzu, Ändert gewählte Karte, löscht
+	 * gewählte Karte
+	 */
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
@@ -278,7 +306,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				this.labelMutation.setText(richtigAnlegenString);
 				saveHandler.karteienSpeichern(u);
 			}
-			// Karte ändern
+			/**
+			 * Karte ändern
+			 */
 		} else if (e.getSource() == this.buttonAendern) {
 			if (textFrage.getText().equals("")) {
 				this.labelMutation.setBounds(390, 485, 400, 25);
@@ -295,8 +325,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				saveHandler.karteienSpeichern(u);
 			}
 		}
-
-		// Karte löschen
+		/**
+		 * Karte löschen
+		 */ 
 		else if (e.getSource() == this.buttonLoeschen) {
 			if (textFrage.getText().equals("")) {
 				this.labelMutation.setBounds(390, 525, 400, 25);

@@ -1,21 +1,13 @@
 package Viewer.Buttons;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
-import javax.swing.JPanel;
 
-import Model.Karte;
 import Model.Kartei;
 import Model.User;
-import Viewer.Buttons.KarteiErstellenButton.karteiButtonListener;
-import Viewer.Popup.KarteiErstellen;
 import Viewer.Tab.TabKartei;
 
 /**

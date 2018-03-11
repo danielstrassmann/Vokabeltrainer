@@ -6,27 +6,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.JPasswordField;
-import javax.security.auth.login.AppConfigurationEntry.LoginModuleControlFlag;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Controller.UserSammlung;
 import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menu.HauptmenuNeu;
-import Viewer.Buttons.*;
 
 /**
  * Diese Klasse wird für die Anmeldung gebraucht
