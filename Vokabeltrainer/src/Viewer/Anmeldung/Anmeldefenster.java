@@ -96,14 +96,15 @@ public class Anmeldefenster extends UserSammlung
 
 	public void setSprache() {
 		String sprachcode = new String("DE");
+		String systemUsersprache =  System.getProperty("user.language");
 
-		if (System.getProperty("user.language").equals("en")) {
+		if (systemUsersprache.equals("en")) {
 			sprachcode = "EN";
 		}
-		if (System.getProperty("user.language").equals("fr")) {
+		if (systemUsersprache.equals("fr")) {
 			sprachcode = "FR";
 		}
-		if (System.getProperty("user.language").equals("it")) {
+		if (systemUsersprache.equals("it")) {
 			sprachcode = "IT";
 		} else {
 			sprachcode = "DE";

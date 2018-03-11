@@ -90,18 +90,19 @@ public class Registrierung extends UserSammlung {
 
 	public void setSprache() {
 		String sprachcode = new String("DE");
-	
-		if (System.getProperty("user.language").equals("en")) {
+		String systemUsersprache = System.getProperty("user.language");
+
+		if (systemUsersprache.equals("en")) {
 			sprachcode = "EN";
 		}
-		if (System.getProperty("user.language").equals("fr")) {
+		if (systemUsersprache.equals("fr")) {
 			sprachcode = "FR";
 		}
-		if (System.getProperty("user.language").equals("it")) {
+		if (systemUsersprache.equals("it")) {
 			sprachcode = "IT";
 		} else {
 			sprachcode = "DE";
-			
+
 		}
 		Locale l = new Locale(sprachcode);
 		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
@@ -140,10 +141,10 @@ public class Registrierung extends UserSammlung {
 
 		// JFrame Objekte Generieren
 
-		this.r_lblname = new JLabel("   "+ nameString);
-		this.r_lblpasswort = new JLabel("   "+ passwortString);
-		this.r_lblpasswort2 = new JLabel("   "+ passwortbestaetigenString);
-		this.benutzersp = new JLabel("   "+ sprachauswaehlenString);
+		this.r_lblname = new JLabel("   " + nameString);
+		this.r_lblpasswort = new JLabel("   " + passwortString);
+		this.r_lblpasswort2 = new JLabel("   " + passwortbestaetigenString);
+		this.benutzersp = new JLabel("   " + sprachauswaehlenString);
 		this.r_txtname = new JTextField("");
 		this.r_txtpasswort = new JPasswordField("");
 		this.r_txtpasswort2 = new JPasswordField("");
