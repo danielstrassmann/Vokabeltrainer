@@ -45,4 +45,24 @@
         <benutzersprache>Deutsch</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>dani</benutzername>
+        <benutzersprache>Deutsch</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
+    <userliste>
+        <benutzername>neu</benutzername>
+        <benutzersprache>français</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
+    <userliste>
+        <benutzername>sprache</benutzername>
+        <benutzersprache>DE</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
+    <userliste>
+        <benutzername>sprache2</benutzername>
+        <benutzersprache>FR</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
 </userSammlung>

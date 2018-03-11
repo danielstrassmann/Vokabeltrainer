@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,7 +25,7 @@ import SaveAndLoad.AbspeichernLaden;
 /**
  * Diese Klasse wird für die Registrierung gebraucht
  * 
- * @author  Duc Thach St.Gallen / Daniel Strassmann, Thomas Brunner
+ * @author Duc Thach St.Gallen / Daniel Strassmann, Thomas Brunner
  * @version 1.0 09.3.2018
  */
 
@@ -68,20 +70,57 @@ public class Registrierung extends UserSammlung {
 	private JPanel spracheAuswahlPanel;
 
 	// UserSammlung
-	
+
 	private UserSammlung userliste;
 
+	private String frameTitelString;
+	private String nameString;
+	private String passwortString;
+	private String passwortbestaetigenString;
+	private String sprachauswaehlenString;
+	private String erfolgreichString;
+	private String vokabeltrainerString;
+	private String passwortFalschString;
+
 	public Registrierung(UserSammlung l) {
+		setSprache();
 		addr();
 		userliste = l;
 	}
-	public void addr() {
-		
+
+	public void setSprache() {
+		String sprachcode = new String("DE");
 	
+		if (System.getProperty("user.language").equals("en")) {
+			sprachcode = "EN";
+		}
+		if (System.getProperty("user.language").equals("fr")) {
+			sprachcode = "FR";
+		}
+		if (System.getProperty("user.language").equals("it")) {
+			sprachcode = "IT";
+		} else {
+			sprachcode = "DE";
+			
+		}
+		Locale l = new Locale(sprachcode);
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.frameTitelString = r.getString("registrieren");
+		this.nameString = r.getString("benutzername");
+		this.passwortString = r.getString("passwort");
+		this.passwortbestaetigenString = r.getString("passwortBestaetigen");
+		this.sprachauswaehlenString = r.getString("benutzersprache");
+		this.erfolgreichString = r.getString("erfolgreichRegistriert");
+		this.vokabeltrainerString = r.getString("vokabeltrainer");
+		this.passwortFalschString = r.getString("passwortFalsch");
+
+	}
+
+	public void addr() {
+
 		// Registrierungsfenster
 
-		
-		this.registrierungsfenster = new JFrame("Registrieren ");
+		this.registrierungsfenster = new JFrame(frameTitelString);
 		registrierungsfenster.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		registrierungsfenster.setLocationRelativeTo(null);
 		this.linkeseite = new JPanel();
@@ -97,19 +136,19 @@ public class Registrierung extends UserSammlung {
 		// exit Button
 
 		this.btnexit = new JButton("Exit");
-		btnexit.addActionListener(new exitbtn()); 
+		btnexit.addActionListener(new exitbtn());
 
 		// JFrame Objekte Generieren
 
-		this.r_lblname = new JLabel("   Name");
-		this.r_lblpasswort = new JLabel("   Passwort");
-		this.r_lblpasswort2 = new JLabel("   Passwort bestätigen");
-		this.benutzersp = new JLabel("   Sprache Auswählen");
-		this.r_txtname = new JTextField("Name");
+		this.r_lblname = new JLabel("   "+ nameString);
+		this.r_lblpasswort = new JLabel("   "+ passwortString);
+		this.r_lblpasswort2 = new JLabel("   "+ passwortbestaetigenString);
+		this.benutzersp = new JLabel("   "+ sprachauswaehlenString);
+		this.r_txtname = new JTextField("");
 		this.r_txtpasswort = new JPasswordField("");
 		this.r_txtpasswort2 = new JPasswordField("");
 		this.spracheAuswahlPanel = new JPanel();
-		String spracheAuswahlListe[] = { "Deutsch", "français", "english", "italiano " };
+		String spracheAuswahlListe[] = { "Deutsch", "English", "Francais", "Italiano " };
 		this.benutzerSprache = new JComboBox(spracheAuswahlListe);
 
 	}
@@ -161,18 +200,17 @@ public class Registrierung extends UserSammlung {
 		registrierungsfenster.setVisible(true);
 
 	}
-	
+
 	class regibtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-	registrieren();		
 
-	}
-			
+			registrieren();
 
-	public void registrieren() {
-			
+		}
+
+		public void registrieren() {
+
 			ArrayList<User> l;
 			AbspeichernLaden saveHandler = new AbspeichernLaden();
 			User user1 = new User(null, null, null);
@@ -182,14 +220,20 @@ public class Registrierung extends UserSammlung {
 
 			user1.setBenutzername(r_txtname.getText());
 			user1.setPasswort(r_txtpasswort.getText());
-			
-			String value = (String) benutzerSprache.getSelectedItem();
-			user1.setBenutzersprache(value);
-			
-			frmregiSystem = new JFrame("Registrierung");
-			
+
+			if (benutzerSprache.getSelectedItem().equals("English")) {
+				user1.setBenutzersprache("EN");
+			} else if (benutzerSprache.getSelectedItem().equals("Francais")) {
+				user1.setBenutzersprache("FR");
+			} else if (benutzerSprache.getSelectedItem().equals("Italiano")) {
+				user1.setBenutzersprache("IT");
+			} else
+				user1.setBenutzersprache("DE");
+
+			frmregiSystem = new JFrame(frameTitelString);
+
 			if (a != null && a.equals(b)) {
-				JOptionPane.showConfirmDialog(frmregiSystem, "Erfolgreich Registriert", "Vokabeltrainer",
+				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString + " Optimus",
 						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 				userliste.getUserliste().add(user1);
 				l = userliste.getUserliste();
@@ -204,23 +248,19 @@ public class Registrierung extends UserSammlung {
 
 			else
 
-			r_txtpasswort.setText(null);
+				r_txtpasswort.setText(null);
 			r_txtpasswort2.setText(null);
 
-			JOptionPane.showConfirmDialog(frmregiSystem, "Passwort stimmt nicht Überein!", "Vokabeltrainer",
+			JOptionPane.showConfirmDialog(frmregiSystem, passwortFalschString, vokabeltrainerString + " Optimus",
 					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 		}
 	}
-		
-		
-
 
 	public void exit() {
-		
+
 		System.exit(0);
 	}
-	
-	
+
 	class exitbtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

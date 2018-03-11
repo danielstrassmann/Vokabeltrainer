@@ -84,10 +84,12 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public TabKartei(User u, MenuleisteOben mlo) {
 		this.u = u;
 		this.mlo = mlo;
+		this.kk = u.getAktiveKartei();
 		setSprache();
 		initComponents();
 		initGui();
 		bindListener();
+		tableKarteiabfuellen(kk);
 
 	}
 
@@ -201,15 +203,16 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		modelKartei.setRowCount(0);
 		textFrage.setText("");
 		textAntwort.setText("");
-		ArrayList<Karte> kartenSammlung = kk.getSammlung();
-		Object kartenInTable[] = new Object[3];
-		for (int i = 0; i < kartenSammlung.size(); i++) {
-			Karte k = kartenSammlung.get(i);
-			kartenInTable[0] = k.getFrage();
-			kartenInTable[1] = k.getAntwort();
-			kartenInTable[2] = k.getBox();
-			modelKartei.addRow(kartenInTable);
-
+		if (kk != null) {
+			ArrayList<Karte> kartenSammlung = kk.getSammlung();
+			Object kartenInTable[] = new Object[3];
+			for (int i = 0; i < kartenSammlung.size(); i++) {
+				Karte k = kartenSammlung.get(i);
+				kartenInTable[0] = k.getFrage();
+				kartenInTable[1] = k.getAntwort();
+				kartenInTable[2] = k.getBox();
+				modelKartei.addRow(kartenInTable);
+			}
 		}
 	}
 
@@ -238,7 +241,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
 				Karte k = new Karte(frageHinzu, antwortHinzu);
-				//TODO Thomas abfangen null
+				// TODO Thomas abfangen null
 				int id = kk.getAnzahlKartenInSammlung();
 				// TODO Thomas schleife, nicht doppelte ID.
 				k.setId(id);
