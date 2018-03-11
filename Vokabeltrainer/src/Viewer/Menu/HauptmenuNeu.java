@@ -50,7 +50,7 @@ public class HauptmenuNeu {
 	}
 
 	public void mainFrame() {
-		mainFrame.setTitle(frameTitelString + " " + "Optimus");
+		mainFrame.setTitle(frameTitelString);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setVisible(true);
 		mainFrame.setSize(1200, 800);

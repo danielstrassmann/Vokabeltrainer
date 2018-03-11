@@ -233,7 +233,7 @@ public class Registrierung extends UserSammlung {
 			frmregiSystem = new JFrame(frameTitelString);
 
 			if (a != null && a.equals(b)) {
-				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString + " Optimus",
+				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString,
 						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 				userliste.getUserliste().add(user1);
 				l = userliste.getUserliste();
@@ -251,7 +251,7 @@ public class Registrierung extends UserSammlung {
 				r_txtpasswort.setText(null);
 			r_txtpasswort2.setText(null);
 
-			JOptionPane.showConfirmDialog(frmregiSystem, passwortFalschString, vokabeltrainerString + " Optimus",
+			JOptionPane.showConfirmDialog(frmregiSystem, passwortFalschString, vokabeltrainerString,
 					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 		}
 	}

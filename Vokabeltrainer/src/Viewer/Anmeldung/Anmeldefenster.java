@@ -10,8 +10,11 @@ import java.awt.event.KeyListener;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JPasswordField;
+import javax.security.auth.login.AppConfigurationEntry.LoginModuleControlFlag;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,50 +28,50 @@ import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menu.HauptmenuNeu;
 import Viewer.Buttons.*;
 
-
 /**
  * Diese Klasse wird für die Anmeldung gebraucht
  * 
- * @author Duc Thach St.Gallen / Marius Brändle, Daniel Strassmann, Thomas Brunner
+ * @author Duc Thach St.Gallen / Marius Brändle, Daniel Strassmann, Thomas
+ *         Brunner
  * @version 1.0 09.3.2018
  */
 
 public class Anmeldefenster extends UserSammlung
 
 {
-		
+
 	// JFrame
-	
+
 	private JFrame loginfenster;
 	private JFrame frmLoginSystem;
-	
+
 	// Labels
-	
+
 	private JLabel usernameid;
 	private JLabel userpassword;
 	private JLabel frameTitle;
-//	private JLabel spracheBez;
-	
+	// private JLabel spracheBez;
+
 	// Buttons
-	
+
 	private JButton anmeldeButton;
 	private JButton registrieren;
 	private JButton exitButton;
-	
+
 	// TextFelder
-	
+
 	private JTextField loginUsername;
 	private JPasswordField loginPassword;
-	
+
 	// JPanels
-	
+
 	private JPanel userpw;
 	private JPanel titelframe;
 	private JPanel buttonBereich;
 	private JPanel loginBereich;
-	
+
 	// Spezial
-	
+
 	public String ub;
 	Integer index = null;
 	private AbspeichernLaden saveHandler;
@@ -76,10 +79,50 @@ public class Anmeldefenster extends UserSammlung
 	ArrayList<User> l;
 	private UserSammlung userliste;
 	
+	private String frameTitelString;
+	private String anmeldenButtonString;
+	private String registrierenButtonString;
+	private String exitString;
+	private String benutzernameString;
+	private String passwortString;
+	private String anmeldedatenString;
+	private String wirklichSchliessenString;
+	private String loginDatenfalschString;
 
 	public Anmeldefenster() {
+		setSprache();
 		add();
 	}
+
+	public void setSprache() {
+		String sprachcode = new String("DE");
+
+		if (System.getProperty("user.language").equals("en")) {
+			sprachcode = "EN";
+		}
+		if (System.getProperty("user.language").equals("fr")) {
+			sprachcode = "FR";
+		}
+		if (System.getProperty("user.language").equals("it")) {
+			sprachcode = "IT";
+		} else {
+			sprachcode = "DE";
+
+		}
+		Locale l = new Locale(sprachcode);
+		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		this.frameTitelString = r.getString("vokabeltrainer");
+		this.anmeldenButtonString = r.getString("anmelden");
+		this.registrierenButtonString = r.getString("registrieren");
+		this.exitString = r.getString("exit");
+		this.benutzernameString = r.getString("benutzername");
+		this.passwortString = r.getString("passwort");
+		this.anmeldedatenString = r.getString("anmeldedaten");
+		this.wirklichSchliessenString = r.getString("wirklichSchliessen");
+		this.loginDatenfalschString = r.getString("loginFalsch");
+		
+	}
+
 	public void add() {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
@@ -88,20 +131,20 @@ public class Anmeldefenster extends UserSammlung
 
 		// GUI-Elements
 
-		this.loginfenster = new JFrame("Vokabeltrainer");
+		this.loginfenster = new JFrame(frameTitelString);
 		loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginfenster.setLocationRelativeTo(null);
 
-		this.anmeldeButton = new JButton("Anmelden");
-		this.registrieren = new JButton("Registrieren");
-		this.exitButton = new JButton("Exit");
+		this.anmeldeButton = new JButton(anmeldenButtonString);
+		this.registrieren = new JButton(registrierenButtonString);
+		this.exitButton = new JButton(exitString);
 		anmeldeButton.addActionListener(new anmbtn());
 		registrieren.addActionListener(new regbtn());
 		exitButton.addActionListener(new exitbtn());
 
-		this.usernameid = new JLabel("Benutzername       ");
-		this.userpassword = new JLabel("Password          ");
-		this.frameTitle = new JLabel("              Anmeldedaten:      ");
+		this.usernameid = new JLabel(benutzernameString +"       ");
+		this.userpassword = new JLabel(passwortString +"          ");
+		this.frameTitle = new JLabel("              "+ anmeldedatenString+"      ");
 
 		this.loginUsername = new JTextField();
 		this.loginPassword = new JPasswordField();
@@ -110,10 +153,6 @@ public class Anmeldefenster extends UserSammlung
 		this.titelframe = new JPanel();
 		this.buttonBereich = new JPanel();
 		this.loginBereich = new JPanel();
-
-//		BenutzerspracheButton bsb = new BenutzerspracheButton();
-//		this.spracheBez = new JLabel();
-//		this.spracheBez.setText("Benutzersprache");
 
 		// login_Fenster_Zeichnen
 
@@ -125,8 +164,8 @@ public class Anmeldefenster extends UserSammlung
 		loginUsername.setEditable(true);
 		loginPassword.setEditable(true);
 
-		//KeyListener
-		
+		// KeyListener
+
 		loginPassword.addKeyListener(new keyList());
 
 		// layout für Panels
@@ -143,8 +182,6 @@ public class Anmeldefenster extends UserSammlung
 		// titel
 
 		titelframe.add(frameTitle);
-//		titelframe.add(spracheBez);
-//		titelframe.add(bsb, BorderLayout.PAGE_END);
 
 		// Add der loginbemerkung
 
@@ -161,48 +198,45 @@ public class Anmeldefenster extends UserSammlung
 		loginfenster.add(loginBereich, BorderLayout.CENTER);
 
 		// Grösse und Sichtbarkeit
-		
+
 		loginfenster.setSize(500, 200);
 		loginfenster.setVisible(true);
-		
+
 	}
-	
-		//Essenziell
-		
-		
+
+	// Essenziell
 
 	public void paint() {
 
 	}
 
-	//passiert nach der Login Validation
-	
+	// passiert nach der Login Validation
+
 	private void doLogin() {
 		AbspeichernLaden loadHandler = new AbspeichernLaden();
 		loadHandler.karteienLaden(u);
 		HauptmenuNeu guiNeu = new HauptmenuNeu(u, userliste);
 
-		
 		loginfenster.setVisible(false);
 
 	}
 
-	//Exit Button
-	
+	// Exit Button
+
 	class exitbtn implements ActionListener {
-	
+
 		public void actionPerformed(ActionEvent e) {
 
-			frmLoginSystem = new JFrame("Exit");
-			if (JOptionPane.showConfirmDialog(frmLoginSystem, "Wirklich Schliessen?", "Vokabeltrainer",
+			frmLoginSystem = new JFrame(exitString);
+			if (JOptionPane.showConfirmDialog(frmLoginSystem, wirklichSchliessenString, frameTitelString,
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
 				System.exit(0);
 			}
 		}
 	}
 
-	//Registrierungs Knopf
-	
+	// Registrierungs Knopf
+
 	class regbtn implements ActionListener {
 		//
 		public void actionPerformed(ActionEvent e) {
@@ -213,8 +247,8 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
-	//User Laden
-	
+	// User Laden
+
 	public void userLoading() {
 
 		String ub = loginUsername.getText();
@@ -240,8 +274,8 @@ public class Anmeldefenster extends UserSammlung
 		}
 
 		if (erfolg == false) {
-			frmLoginSystem = new JFrame("Login Daten nicht Korrekt");
-			JOptionPane.showConfirmDialog(frmLoginSystem, "Login Daten Falsch", "Vokabeltrainer",
+			frmLoginSystem = new JFrame(loginDatenfalschString);
+			JOptionPane.showConfirmDialog(frmLoginSystem, loginDatenfalschString, frameTitelString,
 					JOptionPane.PLAIN_MESSAGE);
 
 			return;
@@ -249,16 +283,16 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
-	//Kontroll Methode
-	
+	// Kontroll Methode
+
 	public void eingeloggterBenutzer() {
 
 		System.out.println(u);
 
 	}
 
-	//Anmelde Button
-	
+	// Anmelde Button
+
 	class anmbtn implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
@@ -289,8 +323,8 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
-	//MAIN Startpunkt des Programmes
-	
+	// MAIN Startpunkt des Programmes
+
 	public static void main(String[] args) {
 
 		Anmeldefenster gui = new Anmeldefenster();
