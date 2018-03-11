@@ -78,8 +78,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	private String falschLoeschenString;
 	private String richtigLoeschenString;
 
-	/** 
+	/**
 	 * TabKartei erstellen
+	 * 
 	 * @param u
 	 *            Alle Daten des Users fliessen in die TabStatistik ein.
 	 * @param mlo
@@ -204,9 +205,6 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 		add(this.scrollPaneKartei);
 
-		add(this.textFrage);
-		add(this.textAntwort);
-
 		add(this.buttonNeu);
 		add(this.buttonAendern);
 		add(this.buttonLoeschen);
@@ -215,6 +213,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		add(this.labelFrage);
 		add(this.labelAntwort);
 		add(this.labelMutation);
+
+		add(this.textFrage);
+		add(this.textAntwort);
 
 	}
 
@@ -327,7 +328,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		}
 		/**
 		 * Karte löschen
-		 */ 
+		 */
 		else if (e.getSource() == this.buttonLoeschen) {
 			if (textFrage.getText().equals("")) {
 				this.labelMutation.setBounds(390, 525, 400, 25);

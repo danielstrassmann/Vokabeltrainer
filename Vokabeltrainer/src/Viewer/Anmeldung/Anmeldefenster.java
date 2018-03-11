@@ -74,7 +74,7 @@ public class Anmeldefenster extends UserSammlung
 	private User u;
 	ArrayList<User> l;
 	private UserSammlung userliste;
-	
+
 	private String frameTitelString;
 	private String anmeldenButtonString;
 	private String registrierenButtonString;
@@ -92,7 +92,7 @@ public class Anmeldefenster extends UserSammlung
 
 	public void setSprache() {
 		String sprachcode = new String("DE");
-		String systemUsersprache =  System.getProperty("user.language");
+		String systemUsersprache = System.getProperty("user.language");
 
 		if (systemUsersprache.equals("en")) {
 			sprachcode = "EN";
@@ -117,7 +117,7 @@ public class Anmeldefenster extends UserSammlung
 		this.anmeldedatenString = r.getString("anmeldedaten");
 		this.wirklichSchliessenString = r.getString("wirklichSchliessen");
 		this.loginDatenfalschString = r.getString("loginFalsch");
-		
+
 	}
 
 	public void add() {
@@ -139,9 +139,9 @@ public class Anmeldefenster extends UserSammlung
 		registrieren.addActionListener(new regbtn());
 		exitButton.addActionListener(new exitbtn());
 
-		this.usernameid = new JLabel(benutzernameString +"       ");
-		this.userpassword = new JLabel(passwortString +"          ");
-		this.frameTitle = new JLabel("              "+ anmeldedatenString+"      ");
+		this.usernameid = new JLabel(benutzernameString + "       ");
+		this.userpassword = new JLabel(passwortString + "          ");
+		this.frameTitle = new JLabel("              " + anmeldedatenString + "      ");
 
 		this.loginUsername = new JTextField();
 		this.loginPassword = new JPasswordField();
@@ -266,7 +266,6 @@ public class Anmeldefenster extends UserSammlung
 				System.out.println(u);
 				erfolg = true;
 				return;
-
 			}
 		}
 
@@ -274,9 +273,7 @@ public class Anmeldefenster extends UserSammlung
 			frmLoginSystem = new JFrame(loginDatenfalschString);
 			JOptionPane.showConfirmDialog(frmLoginSystem, loginDatenfalschString, frameTitelString,
 					JOptionPane.PLAIN_MESSAGE);
-
 			return;
-
 		}
 	}
 
@@ -285,7 +282,6 @@ public class Anmeldefenster extends UserSammlung
 	public void eingeloggterBenutzer() {
 
 		System.out.println(u);
-
 	}
 
 	// Anmelde Button
@@ -293,9 +289,7 @@ public class Anmeldefenster extends UserSammlung
 	class anmbtn implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-
 			userLoading();
-
 		}
 	}
 
@@ -303,12 +297,10 @@ public class Anmeldefenster extends UserSammlung
 
 		@Override
 		public void keyPressed(KeyEvent arg0) {
-
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				userLoading();
 			}
@@ -316,17 +308,13 @@ public class Anmeldefenster extends UserSammlung
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
-
 		}
 	}
 
 	// MAIN Startpunkt des Programmes
 
 	public static void main(String[] args) {
-
 		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint();
-
 	}
-
 }

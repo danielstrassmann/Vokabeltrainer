@@ -3,6 +3,8 @@ package Viewer.Popup;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Locale;
@@ -180,6 +182,8 @@ public class Lernen extends JDialog {
 		this.buttonAbbrechen.setBounds(370, 400, 200, 25);
 		this.buttonSwitch.setBounds(380, 140, 140, 25);
 
+		this.textEingabeAntwort.addKeyListener(new keyList());
+		this.textEingabeFrage.addKeyListener(new keyList());
 		/**
 		 * Hinzufügen zum Fenster Lernen
 		 * 
@@ -430,6 +434,23 @@ public class Lernen extends JDialog {
 
 		}
 
+	}
+	class keyList implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				kontrolleEingabe();
+			}
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+		}
 	}
 
 }
