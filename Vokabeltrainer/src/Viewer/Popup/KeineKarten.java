@@ -28,6 +28,7 @@ public class KeineKarten extends JDialog {
 	private String boxWechselnString;
 
 	public KeineKarten(User u) {
+		this.u = u;
 		setSprache();
 		initComponents();
 		initGui();
