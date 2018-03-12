@@ -54,6 +54,10 @@ public class AbmeldeButton extends JButton {
 
 	}
 
+	public void spracheAktualisieren() {
+		setSprache();
+		setText(abmeldenString);
+	}
 	/**
 	 * Diese Innere Klasse ist zuständig für den Listener auf den abmeldeButton.
 	 */
@@ -63,5 +67,6 @@ public class AbmeldeButton extends JButton {
 			HauptmenuNeu.mainFrame.dispose();
 		}
 	}
+	
 
 }

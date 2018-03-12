@@ -115,6 +115,13 @@ public class Tabs extends JPanel {
 		this.tka = new TabKartei(u, mlo);
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
+	
+	public void spracheAktualisieren() {
+		setSprache();
+		tabsMenu.setTitleAt(0, lernenString);
+		tabsMenu.setTitleAt(1, statistikString);
+		tabsMenu.setTitleAt(2, karteiString);
+	}
 
 	/**
 	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab

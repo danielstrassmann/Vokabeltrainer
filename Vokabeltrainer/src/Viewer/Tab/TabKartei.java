@@ -125,7 +125,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	/**
 	 * Aktualisiert die Sprache des ausgewählten Sprachcodes.
 	 */
-	public void karteiSpracheAktualisieren() {
+	public void spracheAktualisieren() {
+		setSprache();
 		this.buttonNeu.setText(buttonNeuString);
 		this.buttonAendern.setText(buttonAendernString);
 		this.buttonLoeschen.setText(buttonLoeschenString);
@@ -134,13 +135,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.labelFrage.setText(bezFrageString);
 		this.labelAntwort.setText(bezAntwortString);
 
-		this.labelMutation.setText(falschAnlegenString);
+		Object[] spalten = { frageString, antwortString, boxString };
+		this.modelKartei.setColumnIdentifiers(spalten);
+		this.scrollPaneKartei.repaint();
+		
 
-		this.labelMutation.setText(richtigAnlegenString);
-		this.labelMutation.setText(falschAendernString);
-		this.labelMutation.setText(richtigAendernString);
-		this.labelMutation.setText(richtigLoeschenString);
-		this.labelMutation.setText(falschLoeschenString);
 	}
 
 	/**
@@ -198,7 +197,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.modelKartei = new DefaultTableModel();
 
 		this.modelKartei.setColumnIdentifiers(spalten);
-
+		
 		this.tableKartei.setModel(modelKartei);
 
 		this.scrollPaneKartei.setBounds(20, 30, 1000, 400);

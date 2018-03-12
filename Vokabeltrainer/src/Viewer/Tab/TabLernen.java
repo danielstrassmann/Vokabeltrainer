@@ -191,6 +191,15 @@ public class TabLernen extends JPanel implements ActionListener {
 		setVisible(true);
 		// setBackground(Color.GRAY);
 	}
+	
+	public void spracheAktualisieren() {
+		setSprache();
+		this.box1.setText(boxString + " 1");
+		this.box2.setText(boxString + " 2");
+		this.box3.setText(boxString + " 3");
+		this.box4.setText(boxString + " 4");
+		this.box5.setText(boxString + " 5");
+	}
 	/**
 	 * 
 	 * Diese Innere Klasse ist zuständig für den Mausklick, welcher auf die "Box" erfolgen soll.

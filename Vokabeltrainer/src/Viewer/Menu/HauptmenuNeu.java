@@ -100,5 +100,9 @@ public class HauptmenuNeu {
 		hauptPanel.add(tab, BorderLayout.CENTER);
 
 	}
-
+public void spracheAktualisieren() {
+	setSprache();
+	mainFrame.setTitle(frameTitelString);
+	
+}
 }

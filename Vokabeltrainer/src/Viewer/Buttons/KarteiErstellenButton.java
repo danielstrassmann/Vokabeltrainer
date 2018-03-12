@@ -51,6 +51,12 @@ public class KarteiErstellenButton extends JButton {
 		setText(karteiErstellenString);
 
 	}
+	
+	public void spracheAktualisieren() {
+		setSprache();
+		setText(karteiErstellenString);
+		
+	}
 
 	/**
 	 * Diese Innere Klasse ist zuständig für den Listener auf den Button.

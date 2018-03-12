@@ -125,5 +125,11 @@ public class MenuleisteOben extends JPanel {
 		bsb.addBenutzerspracheListener(listener);
 	}
 	
+public void spracheAktualisieren() {
+	setSprache();
+	this.willkommen.setText(willkommenString + " " + u.getBenutzername());
+	this.karteiBez.setText(karteiString);
+	this.spracheBez.setText(spracheString);
+}
 
 }

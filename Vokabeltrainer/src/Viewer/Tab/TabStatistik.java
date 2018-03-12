@@ -100,7 +100,8 @@ public class TabStatistik extends JPanel {
 	 * Aktualisiert die Sprache des ausgewählten Sprachcodes.
 	 * 
 	 */
-	public void statistikSpracheAktualisieren() {
+	public void spracheAktualisieren() {
+		setSprache();
 		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
 		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
 		this.labelWertTotal.setText(totalKartenString + " " + c);
@@ -179,10 +180,7 @@ public class TabStatistik extends JPanel {
 
 		this.prozentRichtig = 100 - prozentFalsch;
 
-		this.labelWertRichtig.setText(anzahlRichtigString + " " + a);
-		this.labelWertFalsch.setText(anzahlFalschString + " " + b);
-		this.labelWertTotal.setText(totalKartenString + " " + c);
-		this.labelWertProzentRichtig.setText(prozentRichtig + "% " + richtigString);
+		spracheAktualisieren();
 
 		labelDiagramm.setData(c, b);
 
