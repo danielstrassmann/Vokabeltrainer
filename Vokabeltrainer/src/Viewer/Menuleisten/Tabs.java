@@ -88,6 +88,15 @@ public class Tabs extends JPanel {
 
 		tabsMenu.addChangeListener(new TabListener());
 	}
+	
+	public void tabSpracheAktualisieren() {
+		
+		// Methoden von Daniel
+		this.tst.statistikSpracheAktualisieren();
+		this.tka.karteiSpracheAktualisieren();
+		// Lernen ist nicht notwendig, da es keine Sprachen anzupassen gibt
+		
+	}
 
 	/**
 	 * Erstellt das Tab Lernen aus der Klasse TabLernen.
