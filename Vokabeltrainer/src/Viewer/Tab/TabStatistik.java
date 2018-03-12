@@ -121,9 +121,9 @@ public class TabStatistik extends JPanel {
 		boxLabelWertProzentRichtig.setPreferredSize(new Dimension(200, 50));
 		boxLabelWertProzentFalsch.setPreferredSize(new Dimension(200, 50));
 
-		boxLabelWertProzentRichtig.setBackground(new Color(0, 102, 0));
+		boxLabelWertProzentRichtig.setBackground(new Color(100, 200, 100));
 		boxLabelWertProzentRichtig.setOpaque(true);
-		boxLabelWertProzentFalsch.setBackground(Color.RED);
+		boxLabelWertProzentFalsch.setBackground(new Color(204, 0, 0));
 		boxLabelWertProzentFalsch.setOpaque(true);
 
 		labelWertRichtig.setBounds(10, 15, 300, 25);
@@ -266,9 +266,9 @@ public class TabStatistik extends JPanel {
 		public void paint(Graphics g) {
 			Graphics2D g2d = (Graphics2D) g;
 
-			g2d.setColor(new Color(0, 102, 0));
+			g2d.setColor(new Color(100, 200, 100));
 			g2d.fillOval(getPieCenterX(), getPieCenterY(), getPieWidth(), getPieHeight());
-			g2d.setColor(Color.RED);
+			g2d.setColor(new Color(204, 0, 0));
 			g2d.fillArc(getPieCenterX(), getPieCenterY(), getPieWidth(), getPieHeight(), 90, -this.arc);
 		}
 

@@ -246,6 +246,7 @@ public class Lernen extends JDialog {
 		 * mitgezählt in der Anzeige kartenInBox++;
 		 * 
 		 */
+		kartenInBox++;
 		labelUbersichtKarten.setText(karteninBox1String + " " + kartenInBox + " " + karteninBox2String);
 		k = t.getAktiveKarte();
 
