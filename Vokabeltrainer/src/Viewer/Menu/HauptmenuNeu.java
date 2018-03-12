@@ -89,7 +89,7 @@ public class HauptmenuNeu {
 					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
 					u.setAktiveKartei(kk);
 
-					System.out.println(kk);
+					//System.out.println(kk);
 				}
 			}
 		});

@@ -150,7 +150,7 @@ public class Anmeldefenster extends UserSammlung
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
 		l = userliste.getUserliste();
-		System.out.println(l); 
+		//System.out.println(l); 
 		
 		/**
 		 *GUI-Elements
@@ -316,8 +316,8 @@ public class Anmeldefenster extends UserSammlung
 	public void userLoading() {
 
 		String ub = loginUsername.getText();
-		System.out.println(l);
-		System.out.println("list size is: " + l.size());
+		//System.out.println(l);
+		//System.out.println("list size is: " + l.size());
 		boolean erfolg = false;
 
 		for (int i = 0; i < l.size(); i++) {
@@ -330,7 +330,7 @@ public class Anmeldefenster extends UserSammlung
 				u = l.get(index);
 
 				doLogin();
-				System.out.println(u);
+				//System.out.println(u);
 				erfolg = true;
 				return;
 			}
@@ -351,7 +351,7 @@ public class Anmeldefenster extends UserSammlung
 
 	public void eingeloggterBenutzer() {
 
-		System.out.println(u);
+		//System.out.println(u);
 	}
 
 	/**

@@ -56,7 +56,7 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				kk = (Kartei) getSelectedItem();
-				System.out.println(kk);
+				//System.out.println(kk);
 			}
 		}
 

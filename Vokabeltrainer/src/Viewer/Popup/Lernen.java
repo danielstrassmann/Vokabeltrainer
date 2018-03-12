@@ -256,7 +256,7 @@ public class Lernen extends JDialog {
 			 * Check ob instanziertes k != null
 			 */
 			if (k == null) {
-				System.out.println("Keine Karten mehr vorhanden in Box");
+				//System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
@@ -278,7 +278,7 @@ public class Lernen extends JDialog {
 			 * 
 			 */
 			if (k == null) {
-				System.out.println("Keine Karten mehr vorhanden in Box");
+				//System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
