@@ -164,6 +164,7 @@ public class Lernen extends JDialog {
 		setVisible(true);
 		setLocationRelativeTo(null);
 
+
 		/**
 		 * Location auf dem Fenster Lernen setzten
 		 * 
@@ -327,7 +328,7 @@ public class Lernen extends JDialog {
 	 * Buttonabbrechen geschlossen wird.
 	 * 
 	 */
-	private void exitLernen() {
+	public void exitLernen() {
 		t.trainingsDatenAnUserdaten(u);
 		t.karteiAnUser(u);
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
@@ -401,14 +402,14 @@ public class Lernen extends JDialog {
 
 		@Override
 		public void windowClosed(WindowEvent e) {
-			exitLernen();
+			// exitLernen();
 
 		}
 
 		@Override
 		public void windowClosing(WindowEvent e) {
 			// TODO Auto-generated method stub
-			// exitLernen();
+			//exitLernen();
 		}
 
 		@Override

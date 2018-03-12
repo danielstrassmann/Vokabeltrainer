@@ -76,7 +76,9 @@ public class HauptmenuNeu {
 
 			@Override
 			public void benutzerspracheChanged() {
-//TODO TBR
+				// TODO TBR
+				// für TabLernen, TabKartei, TabStatistik, mlo --> geht über Tabs
+				
 
 			}
 		});
@@ -89,7 +91,7 @@ public class HauptmenuNeu {
 					Kartei kk = (Kartei) event.getItemSelectable().getSelectedObjects()[0];
 					u.setAktiveKartei(kk);
 
-					//System.out.println(kk);
+					// System.out.println(kk);
 				}
 			}
 		});

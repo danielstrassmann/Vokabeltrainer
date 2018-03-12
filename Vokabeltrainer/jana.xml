@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<karteienSpeicherObjekt>
+    <daten>
+        <antwortenFalsch>0</antwortenFalsch>
+        <antwortenKorrekt>0</antwortenKorrekt>
+        <antwortenTotal>0</antwortenTotal>
+    </daten>
+</karteienSpeicherObjekt>

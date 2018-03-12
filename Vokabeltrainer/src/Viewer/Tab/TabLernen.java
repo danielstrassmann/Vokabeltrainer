@@ -256,7 +256,9 @@ public class TabLernen extends JPanel implements ActionListener {
 
 			lernenFenster.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent evt) {
-					exitForm();					
+					lernenFenster.exitLernen();
+					exitForm();	
+					
 				}
 			});
 
@@ -265,6 +267,7 @@ public class TabLernen extends JPanel implements ActionListener {
 				@Override
 				public void actionPerformed(ActionEvent evt) {
 					exitForm();
+					lernenFenster.exitLernen();
 					lernenFenster.dispose();
 				}
 

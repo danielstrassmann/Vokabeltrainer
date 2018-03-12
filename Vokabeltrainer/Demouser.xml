@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <karteienSpeicherObjekt>
     <daten>
-        <antwortenFalsch>0</antwortenFalsch>
-        <antwortenKorrekt>19</antwortenKorrekt>
-        <antwortenTotal>19</antwortenTotal>
+        <antwortenFalsch>1</antwortenFalsch>
+        <antwortenKorrekt>20</antwortenKorrekt>
+        <antwortenTotal>21</antwortenTotal>
     </daten>
     <karteien>
         <antwort>Englisch</antwort>
@@ -53,19 +53,13 @@
         </sammlung>
         <sammlung>
             <antwort>water</antwort>
-            <box>1</box>
+            <box>2</box>
             <frage>Wasser</frage>
             <id>7</id>
         </sammlung>
         <sammlung>
-            <antwort>fire</antwort>
-            <box>3</box>
-            <frage>Feuer</frage>
-            <id>8</id>
-        </sammlung>
-        <sammlung>
             <antwort>writer</antwort>
-            <box>5</box>
+            <box>1</box>
             <frage>Schreiber</frage>
             <id>9</id>
         </sammlung>
@@ -80,6 +74,12 @@
             <box>2</box>
             <frage>Kopfhörer</frage>
             <id>11</id>
+        </sammlung>
+        <sammlung>
+            <antwort>tree</antwort>
+            <box>1</box>
+            <frage>Baum</frage>
+            <id>12</id>
         </sammlung>
     </karteien>
     <karteien>
@@ -235,5 +235,10 @@
             <frage>Kopfhörer</frage>
             <id>11</id>
         </sammlung>
+    </karteien>
+    <karteien>
+        <antwort>Schwedisch</antwort>
+        <frage>Deutsch</frage>
+        <id>4</id>
     </karteien>
 </karteienSpeicherObjekt>

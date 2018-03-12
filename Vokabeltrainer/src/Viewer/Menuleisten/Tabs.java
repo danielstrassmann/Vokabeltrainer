@@ -97,6 +97,7 @@ public class Tabs extends JPanel {
 		this.tle = new TabLernen(u, parent);
 		tabsMenu.insertTab(lernenString, null, tle, lernenString, 0);
 	}
+
 	/**
 	 * Erstellt das Tab Statistik aus der Klasse TabStatistik.
 	 */
@@ -105,6 +106,7 @@ public class Tabs extends JPanel {
 		this.tst = new TabStatistik(u);
 		tabsMenu.insertTab(statistikString, null, tst, statistikString, 1);
 	}
+
 	/**
 	 * Erstellt das Tab Kartei aus der Klasse TabKartei.
 	 */
@@ -113,8 +115,10 @@ public class Tabs extends JPanel {
 		this.tka = new TabKartei(u, mlo);
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
+
 	/**
-	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab wechselt.
+	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab
+	 * wechselt.
 	 */
 
 	class TabListener implements ChangeListener {
@@ -123,7 +127,8 @@ public class Tabs extends JPanel {
 			if (tabsMenu.getSelectedIndex() == 0) {
 			}
 			/**
-			 * Wenn das Tab Statistik angewählt wird, dann wird diese automatisch aktualisiert.
+			 * Wenn das Tab Statistik angewählt wird, dann wird diese automatisch
+			 * aktualisiert.
 			 */
 
 			if (tabsMenu.getSelectedIndex() == 1) {
