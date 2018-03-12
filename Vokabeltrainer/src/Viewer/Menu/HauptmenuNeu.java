@@ -17,6 +17,9 @@ import Model.User;
 import Viewer.Buttons.BenutzerspracheListener;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Menuleisten.Tabs;
+import Viewer.Tab.TabKartei;
+import Viewer.Tab.TabLernen;
+import Viewer.Tab.TabStatistik;
 
 /**
  * Diese Klasse wird für das GUI des Hauptmenus gebraucht
@@ -33,6 +36,12 @@ public class HauptmenuNeu {
 	private UserSammlung userliste;
 
 	private String frameTitelString;
+	
+	private MenuleisteOben mlo;
+	
+
+	private Tabs tabs;
+	
 
 	public HauptmenuNeu(User u, UserSammlung userliste) {
 		this.u = u;
@@ -70,12 +79,16 @@ public class HauptmenuNeu {
 
 		hauptPanel.setSize(300, 300);
 
-		MenuleisteOben mlo = new MenuleisteOben(u, userliste);
+		this.mlo = new MenuleisteOben(u, userliste);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		mlo.addBenutzerspracheChanged(new BenutzerspracheListener() {
 
 			@Override
 			public void benutzerspracheChanged() {
+				
+				tabs.tabSpracheAktualisieren();
+				
+				
 				// TODO TBR
 				// für TabLernen, TabKartei, TabStatistik, mlo --> geht über Tabs
 				
@@ -96,8 +109,8 @@ public class HauptmenuNeu {
 			}
 		});
 
-		Tabs tab = new Tabs(u, mlo, mainFrame);
-		hauptPanel.add(tab, BorderLayout.CENTER);
+		this.tabs = new Tabs(u, mlo, mainFrame);
+		hauptPanel.add(tabs, BorderLayout.CENTER);
 
 	}
 public void spracheAktualisieren() {

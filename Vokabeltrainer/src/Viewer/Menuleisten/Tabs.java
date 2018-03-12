@@ -88,6 +88,15 @@ public class Tabs extends JPanel {
 
 		tabsMenu.addChangeListener(new TabListener());
 	}
+	
+	public void tabSpracheAktualisieren() {
+		
+		// Methoden von Daniel
+		this.tst.statistikSpracheAktualisieren();
+		this.tka.karteiSpracheAktualisieren();
+		// Lernen ist nicht notwendig, da es keine Sprachen anzupassen gibt
+		
+	}
 
 	/**
 	 * Erstellt das Tab Lernen aus der Klasse TabLernen.
@@ -116,12 +125,36 @@ public class Tabs extends JPanel {
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
 	
+<<<<<<< HEAD
 	public void spracheAktualisieren() {
 		setSprache();
 		tabsMenu.setTitleAt(0, lernenString);
 		tabsMenu.setTitleAt(1, statistikString);
 		tabsMenu.setTitleAt(2, karteiString);
 	}
+=======
+	
+	public TabLernen getLerntenTab() {
+		
+		return this.tle;		
+		
+	}
+	
+	
+	public TabStatistik getStatistikTab() {
+		
+		return this.tst;		
+		
+	}
+	
+	
+	public TabKartei getKarteiTab() {
+		
+		return this.tka;		
+		
+	}
+	
+>>>>>>> branch 'master' of https://github.com/danielstrassmann/Vokabeltrainer.git
 
 	/**
 	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab
