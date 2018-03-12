@@ -12,11 +12,17 @@ import java.util.ArrayList;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
+import Viewer.Popup.KeineKarten;
 
 public class KarteiController {
+	
+	// Braucht man nur, um Instanz KeineKarten zu erzeugen
+	private User u;
 
 	// Standardkonstruktor
-	public KarteiController() {
+	public KarteiController(User u) {
+		
+		this.u = u;
 
 	}
 
@@ -49,6 +55,12 @@ public class KarteiController {
 	// Ein Objekt Karte wird erzeugt & in eine Kartei abgelegt
 	// ID wird beim ablegen in ArrayList erzeugt
 	public void karteInKarteiAblegen(String frage, String antwort, Kartei kk) {
+		
+		if (kk == null) {
+			KeineKarten fehlerdialog = new KeineKarten(this.u);
+			return;
+		}
+		
 		Karte k = new Karte(frage, antwort);
 		int id = kk.getAnzahlKartenInSammlung();
 		id++;

@@ -28,7 +28,7 @@ import Viewer.Buttons.KarteiAuswahlButton;
  */
 
 public class KarteiErstellen extends JDialog implements ActionListener {
-	private KarteiController kc = new KarteiController();
+	private KarteiController kc;
 	private User u;
 	private KarteiAuswahlButton kab;
 
@@ -63,6 +63,7 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	public KarteiErstellen(User u, KarteiAuswahlButton kab) {
 		this.kab = kab;
 		this.u = u;
+		this.kc = new KarteiController(this.u);
 		setSprache();
 		initComponents();
 		initGui();

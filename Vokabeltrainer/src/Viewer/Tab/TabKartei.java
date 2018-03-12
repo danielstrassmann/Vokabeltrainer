@@ -93,7 +93,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.u = u;
 		this.mlo = mlo;
 		this.kk = u.getAktiveKartei();
-		this.kc = new KarteiController();
+		this.kc = new KarteiController(this.u);
 		setSprache();
 		initComponents();
 		initGui();
