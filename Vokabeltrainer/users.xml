@@ -65,4 +65,9 @@
         <benutzersprache>FR</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>Demouser</benutzername>
+        <benutzersprache>DE</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
 </userSammlung>
