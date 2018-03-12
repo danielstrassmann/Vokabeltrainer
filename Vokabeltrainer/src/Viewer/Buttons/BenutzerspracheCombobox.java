@@ -2,6 +2,7 @@ package Viewer.Buttons;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
@@ -24,6 +25,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	private String englischString;
 	private String franzoesischString;
 	private String italienischString;
+	private ArrayList<BenutzerspracheListener> listeners;
 
 	/**
 	 * Benutzersprache ComboBox erstellen
@@ -40,6 +42,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 		sprachComboboxAbfuellen();
 		gespeicherteSpracheSetzen();
 		bindListener();
+		listeners = new ArrayList<>();
 
 	}
 
@@ -109,6 +112,18 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 			}
 			AbspeichernLaden savehandler = new AbspeichernLaden();
 			savehandler.userSpeichern(userliste);
+			fireBenutzerspracheChanged();
 		}
+	}
+
+	public void addBenutzerspracheListener(BenutzerspracheListener listener) {
+		listeners.add(listener);
+	}
+
+	public void fireBenutzerspracheChanged() {
+		for (BenutzerspracheListener l : listeners) {
+			l.benutzerspracheChanged();
+		}
+
 	}
 }

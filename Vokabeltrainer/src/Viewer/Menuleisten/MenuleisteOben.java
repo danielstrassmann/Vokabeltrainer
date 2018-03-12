@@ -15,6 +15,7 @@ import Model.Kartei;
 import Model.User;
 import Viewer.Buttons.AbmeldeButton;
 import Viewer.Buttons.BenutzerspracheCombobox;
+import Viewer.Buttons.BenutzerspracheListener;
 import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Buttons.KarteiErstellenButton;
 
@@ -99,7 +100,7 @@ public class MenuleisteOben extends JPanel {
 		this.spracheBez.setText(spracheString);
 		this.subPanelBenutzer = new JPanel();
 		AbmeldeButton ab = new AbmeldeButton(u);
-		BenutzerspracheCombobox bsb = new BenutzerspracheCombobox(u, userliste);
+		this.bsb = new BenutzerspracheCombobox(u, userliste);
 		this.subPanelBenutzer.add(spracheBez);
 		this.subPanelBenutzer.add(bsb);
 		this.subPanelBenutzer.add(ab);
@@ -118,6 +119,13 @@ public class MenuleisteOben extends JPanel {
 	 */
 	public void addItemChangeListener(ItemListener itemListener) {
 		kab.addItemListener(itemListener);
-
+		
+	}
+	public void addBenutzerspracheChanged(BenutzerspracheListener listener) {
+		bsb.addBenutzerspracheListener(listener);
+	}
+	
+	public void removeallbenutzerspracheListener() {
+		bsb.removeallbenutzerspracheListerner();
 	}
 }

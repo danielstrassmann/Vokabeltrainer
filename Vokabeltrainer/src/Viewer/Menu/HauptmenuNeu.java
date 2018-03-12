@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import Controller.UserSammlung;
 import Model.Kartei;
 import Model.User;
+import Viewer.Buttons.BenutzerspracheListener;
 import Viewer.Menuleisten.MenuleisteOben;
 import Viewer.Menuleisten.Tabs;
 
@@ -37,7 +38,6 @@ public class HauptmenuNeu {
 		this.u = u;
 		this.userliste = userliste;
 		this.mainFrame = new JFrame();
-		this.hauptPanel = new JPanel();
 		setSprache();
 		hauptPanel();
 		mainFrame();
@@ -58,10 +58,11 @@ public class HauptmenuNeu {
 		mainFrame.setMinimumSize(new Dimension(1000, 800));
 		mainFrame.setLocationRelativeTo(null);
 
-		mainFrame.add(hauptPanel);
 	}
 
 	public void hauptPanel() {
+		this.hauptPanel = new JPanel();
+		mainFrame.add(hauptPanel);
 		hauptPanel.setVisible(true);
 		hauptPanel.setBackground(Color.BLACK);
 
@@ -71,6 +72,14 @@ public class HauptmenuNeu {
 
 		MenuleisteOben mlo = new MenuleisteOben(u, userliste);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
+		mlo.addBenutzerspracheChanged(new BenutzerspracheListener() {
+
+			@Override
+			public void benutzerspracheChanged() {
+
+
+			}
+		});
 		// Listener übergibt Objekt KK an User, so weiss man, was die aktive Kartei ist
 		mlo.addItemChangeListener(new ItemListener() {
 
@@ -85,8 +94,6 @@ public class HauptmenuNeu {
 			}
 		});
 
-		
-		
 		Tabs tab = new Tabs(u, mlo, mainFrame);
 		hauptPanel.add(tab, BorderLayout.CENTER);
 
