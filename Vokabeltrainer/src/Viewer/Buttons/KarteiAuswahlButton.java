@@ -64,4 +64,9 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 			return kk;
 		}
 	}
+
+	public void spracheAktualisieren() {
+		// TODO Auto-generated method stub
+		
+	}
 }

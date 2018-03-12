@@ -37,7 +37,9 @@ public class MenuleisteOben extends JPanel {
 	private JPanel subPanelKartei;
 	private JPanel subPanelBenutzer;
 	private KarteiAuswahlButton kab;
+	private KarteiErstellenButton kb;
 	private BenutzerspracheCombobox bsb;
+	private AbmeldeButton ab;
 
 	private User u;
 	private UserSammlung userliste;
@@ -89,7 +91,7 @@ public class MenuleisteOben extends JPanel {
 
 		kab.comboboxKarteiAbfuellen(u);
 
-		KarteiErstellenButton kb = new KarteiErstellenButton(u, kab);
+		this.kb = new KarteiErstellenButton(u, kab);
 		this.subPanelKartei.add(karteiBez);
 		this.subPanelKartei.add(kab);
 		this.subPanelKartei.add(kb);
@@ -99,7 +101,7 @@ public class MenuleisteOben extends JPanel {
 		this.spracheBez = new JLabel();
 		this.spracheBez.setText(spracheString);
 		this.subPanelBenutzer = new JPanel();
-		AbmeldeButton ab = new AbmeldeButton(u);
+		this.ab = new AbmeldeButton(u);
 		this.bsb = new BenutzerspracheCombobox(u, userliste);
 		this.subPanelBenutzer.add(spracheBez);
 		this.subPanelBenutzer.add(bsb);
@@ -130,6 +132,15 @@ public void spracheAktualisieren() {
 	this.willkommen.setText(willkommenString + " " + u.getBenutzername());
 	this.karteiBez.setText(karteiString);
 	this.spracheBez.setText(spracheString);
+}
+
+
+public void buttonSpracheAktualisieren() {
+	
+	// Wenn Sprache geändert, wird Sprache im GUI aktualisiert
+	this.kb.spracheAktualisieren();
+	this.ab.spracheAktualisieren();
+			
 }
 
 }

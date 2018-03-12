@@ -86,11 +86,11 @@ public class HauptmenuNeu {
 			@Override
 			public void benutzerspracheChanged() {
 				
+				// Wenn Sprache geändert, wird Sprache im GUI aktualisiert
+				tabs.spracheAktualisieren();
 				tabs.tabSpracheAktualisieren();
-				
-				
-				// TODO TBR
-				// für TabLernen, TabKartei, TabStatistik, mlo --> geht über Tabs
+				mlo.spracheAktualisieren();
+				mlo.buttonSpracheAktualisieren();
 				
 
 			}
