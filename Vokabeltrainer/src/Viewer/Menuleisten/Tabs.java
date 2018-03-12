@@ -115,6 +115,28 @@ public class Tabs extends JPanel {
 		this.tka = new TabKartei(u, mlo);
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
+	
+	
+	public TabLernen getLerntenTab() {
+		
+		return this.tle;		
+		
+	}
+	
+	
+	public TabStatistik getStatistikTab() {
+		
+		return this.tst;		
+		
+	}
+	
+	
+	public TabKartei getKarteiTab() {
+		
+		return this.tka;		
+		
+	}
+	
 
 	/**
 	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab

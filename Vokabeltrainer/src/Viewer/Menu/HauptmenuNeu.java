@@ -33,6 +33,8 @@ public class HauptmenuNeu {
 	private UserSammlung userliste;
 
 	private String frameTitelString;
+	
+	private MenuleisteOben mlo;
 
 	public HauptmenuNeu(User u, UserSammlung userliste) {
 		this.u = u;
@@ -70,12 +72,14 @@ public class HauptmenuNeu {
 
 		hauptPanel.setSize(300, 300);
 
-		MenuleisteOben mlo = new MenuleisteOben(u, userliste);
+		this.mlo = new MenuleisteOben(u, userliste);
 		hauptPanel.add(mlo, BorderLayout.PAGE_START);
 		mlo.addBenutzerspracheChanged(new BenutzerspracheListener() {
 
 			@Override
 			public void benutzerspracheChanged() {
+				
+				
 				// TODO TBR
 				// für TabLernen, TabKartei, TabStatistik, mlo --> geht über Tabs
 				
