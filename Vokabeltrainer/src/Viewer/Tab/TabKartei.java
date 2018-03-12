@@ -242,10 +242,15 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	}
 
+	public void karteiAktualisierne() {
+		tableKarteiabfuellen(this.kk);
+	}
+	
 	/**
 	 * selektierte Kartei in Table abfüllen
 	 */
 
+	
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);

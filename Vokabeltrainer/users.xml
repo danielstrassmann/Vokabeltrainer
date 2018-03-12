@@ -70,4 +70,9 @@
         <benutzersprache>DE</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>Test123</benutzername>
+        <benutzersprache>DE</benutzersprache>
+        <passwort>123</passwort>
+    </userliste>
 </userSammlung>

@@ -133,6 +133,7 @@ public class Tabs extends JPanel {
 
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
+				tka.karteiAktualisierne();
 				// tka.setSprache();
 				// tka.karteiSpracheAktualisieren();
 
