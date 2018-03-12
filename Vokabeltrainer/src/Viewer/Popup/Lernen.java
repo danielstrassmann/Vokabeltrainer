@@ -218,8 +218,6 @@ public class Lernen extends JDialog {
 		 * Listener, welche für das Schliessen des Fenster zuständig sind
 		 * 
 		 */
-		this.buttonAbbrechen.addActionListener(new boxWaehlenButton());
-		addWindowListener(new exitLernenFenster());
 
 	}
 
@@ -383,60 +381,8 @@ public class Lernen extends JDialog {
 		}
 	}
 
-	class boxWaehlenButton implements ActionListener {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
 
-		}
-
-	}
-
-	class exitLernenFenster implements WindowListener {
-
-		@Override
-		public void windowActivated(WindowEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void windowClosed(WindowEvent e) {
-			// exitLernen();
-
-		}
-
-		@Override
-		public void windowClosing(WindowEvent e) {
-			// TODO Auto-generated method stub
-			//exitLernen();
-		}
-
-		@Override
-		public void windowDeactivated(WindowEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void windowDeiconified(WindowEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void windowIconified(WindowEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void windowOpened(WindowEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-	}
 	class keyList implements KeyListener {
 
 		@Override
