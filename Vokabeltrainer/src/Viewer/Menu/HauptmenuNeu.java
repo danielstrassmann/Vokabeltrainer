@@ -24,7 +24,7 @@ import Viewer.Tab.TabStatistik;
 /**
  * Diese Klasse wird für das GUI des Hauptmenus gebraucht
  * 
- * @author Marius Brändle St.Gallen
+ * @author Marius Brändle St.Gallen / Thomas Brunner, Daniel Strassmann
  * @version 1.0 09.3.2018
  */
 
