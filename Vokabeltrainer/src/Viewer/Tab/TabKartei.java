@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
@@ -58,6 +59,8 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	private int selektierteRow;
 	private Kartei kk;
+	
+	private KarteiController kc;
 
 	private MenuleisteOben mlo;
 	private User u;
@@ -90,6 +93,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.u = u;
 		this.mlo = mlo;
 		this.kk = u.getAktiveKartei();
+		this.kc = new KarteiController();
 		setSprache();
 		initComponents();
 		initGui();
@@ -298,13 +302,14 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 			} else {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
-				Karte k = new Karte(frageHinzu, antwortHinzu);
+				kc.karteInKarteiAblegen(frageHinzu, antwortHinzu, kk);
+				
+				// Karte k = new Karte(frageHinzu, antwortHinzu);
 				// TODO Thomas abfangen null
-				int id = kk.getAnzahlKartenInSammlung();
+				// int id = kk.getAnzahlKartenInSammlung();
 				// TODO Thomas schleife, nicht doppelte ID.
-				k.setId(id);
-
-				kk.karteInSammlung(k);
+				// k.setId(id);
+				// kk.karteInSammlung(k);
 				tableKarteiabfuellen(kk);
 				this.labelMutation.setBounds(390, 445, 400, 25);
 				this.labelMutation.setForeground(new Color(0, 102, 0));

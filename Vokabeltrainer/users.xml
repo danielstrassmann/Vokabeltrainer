@@ -80,4 +80,9 @@
         <benutzersprache>DE</benutzersprache>
         <passwort>eli</passwort>
     </userliste>
+    <userliste>
+        <benutzername>thomas</benutzername>
+        <benutzersprache>DE</benutzersprache>
+        <passwort>eli</passwort>
+    </userliste>
 </userSammlung>

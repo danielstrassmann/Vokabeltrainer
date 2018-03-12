@@ -24,31 +24,26 @@ public class KarteiController {
 	public void karteiErstellen(String frage, String antwort, User u) {
 		Kartei kk = new Kartei(frage, antwort);
 
-		// if (u.getAktiveKartei().equals(null)) {
-		// int id = 0;
-		// kk.setId(id);
-		// u.karteiInSammlung(kk);
-
-		// }
-
-		// else {
-		// u.karteiInSammlung(kk);
-		
-// Methode wenn noch keine Karte vorhanden.
+		// Methode wenn noch keine Kartei vorhanden.
 		ArrayList<Kartei> userKartei = u.getUserKarteien();
 		if (userKartei == null) {
 			userKartei = new ArrayList<>();
-			u.setUserKarteien(userKartei); 
+			u.setUserKarteien(userKartei);
 		}
 
 		int id = u.getAnzahlKarteienInSammlung();
 		id++;
+
+		// stellt sicher, dass keine Kartei in Sammlung eine doppelte ID hat
+		for (Kartei kartei : userKartei) {
+			if (kartei.getId() == id) {
+				id++;
+			}
+		}
+
 		kk.setId(id);
-		// TODO: Check einbauen, ob ID bereits in Liste exisiert --> wenn Karteien aus
-		// Sammlung gelöscht wurden
 		u.karteiInSammlung(kk);
 
-		// }
 	}
 
 	// Ein Objekt Karte wird erzeugt & in eine Kartei abgelegt
@@ -57,9 +52,18 @@ public class KarteiController {
 		Karte k = new Karte(frage, antwort);
 		int id = kk.getAnzahlKartenInSammlung();
 		id++;
+
+		ArrayList<Karte> kartenliste;
+		kartenliste = kk.getSammlung();
+
+		// stellt sicher, dass keine Karte in Sammlung eine doppelte ID hat
+		for (Karte karte : kartenliste) {
+			if (karte.getId() == id) {
+				id++;
+			}
+		}
+
 		k.setId(id);
-		// TODO: Check einbauen, ob ID bereits in Liste exisiert --> wenn Karten aus
-		// Sammlung gelöscht wurden
 		kk.karteInSammlung(k);
 	}
 
