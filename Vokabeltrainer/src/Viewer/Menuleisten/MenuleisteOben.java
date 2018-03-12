@@ -125,7 +125,5 @@ public class MenuleisteOben extends JPanel {
 		bsb.addBenutzerspracheListener(listener);
 	}
 	
-	public void removeallbenutzerspracheListener() {
-		bsb.removeallbenutzerspracheListerner();
-	}
+
 }
