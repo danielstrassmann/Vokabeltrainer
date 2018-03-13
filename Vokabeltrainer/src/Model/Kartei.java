@@ -3,7 +3,7 @@ package Model;
 /**
  * Diese Klasse wird für die Kartei gebraucht
  * 
- * @author Thomas Brunner St.Gallen /
+ * @author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018
  */
 
@@ -18,22 +18,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Kartei {
 
-	//Karteien Inhalt
+	/**
+	 * Karteien-Inhalt
+	 * 
+	 */
 	private int id;
 	private ArrayList<Karte> kartensammlung;
 	private String frageKartei;
 	private String antwortKartei;
 
-	// Standardkonstruktor
+	/**
+	 * Standardkonstruktor
+	 * 
+	 */
 	public Kartei() {
-		
+
 		kartensammlung = new ArrayList<>();
-		
+
 	}
 
-	// Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können
-	// Die ID wird bei erst beim Ablegen der Kartei in die Sammlung des Users
-	// erzeugt
+	/**
+	 * Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können Die ID wird
+	 * bei erst beim Ablegen der Kartei in die Sammlung des Users erzeugt
+	 */
+
 	public Kartei(String frage, String antwort) {
 		this.frageKartei = frage;
 		this.antwortKartei = antwort;
@@ -53,7 +61,7 @@ public class Kartei {
 	public ArrayList<Karte> getSammlung() {
 		return kartensammlung;
 	}
-	
+
 	public void setSammlung(ArrayList<Karte> kartensammlung) {
 		this.kartensammlung = kartensammlung;
 	}
@@ -96,7 +104,8 @@ public class Kartei {
 	public Karte remove(int i) {
 		return kartensammlung.remove(i);
 	}
+
 	public String toString() {
-		return (frageKartei +" - " + antwortKartei);
+		return (frageKartei + " - " + antwortKartei);
 	}
 }

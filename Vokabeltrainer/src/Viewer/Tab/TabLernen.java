@@ -71,6 +71,7 @@ public class TabLernen extends JPanel implements ActionListener {
 	 * 
 	 * @param u
 	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 * 
 	 * @param parent
 	 *            Definition ob parent/child.
 	 */
@@ -100,7 +101,7 @@ public class TabLernen extends JPanel implements ActionListener {
 	 * Erstellt alle Felder, welche für das TabStatistik benötigt werden.
 	 * 
 	 */
-	
+
 	private void tabLernen() {
 		this.boxLabel1 = new BoxLabel();
 		this.boxLabel2 = new BoxLabel();
@@ -127,10 +128,11 @@ public class TabLernen extends JPanel implements ActionListener {
 		boxLabel5.addMouseListener(new boxMausKlick());
 
 	}
+
 	/**
 	 * 
 	 * Initialisiert das GUI.
-	 *  
+	 * 
 	 */
 	private void initGui() {
 		Border border = getBorder();
@@ -189,9 +191,9 @@ public class TabLernen extends JPanel implements ActionListener {
 		add(boxLabel5);
 
 		setVisible(true);
-		// setBackground(Color.GRAY);
+
 	}
-	
+
 	public void spracheAktualisieren() {
 		setSprache();
 		this.box1.setText(boxString + " 1");
@@ -200,21 +202,29 @@ public class TabLernen extends JPanel implements ActionListener {
 		this.box4.setText(boxString + " 4");
 		this.box5.setText(boxString + " 5");
 	}
+
 	/**
 	 * 
-	 * Diese Innere Klasse ist zuständig für den Mausklick, welcher auf die "Box" erfolgen soll.
-	 *  
+	 * Diese Innere Klasse ist zuständig für den Mausklick, welcher auf die "Box"
+	 * erfolgen soll.
+	 * 
 	 */
 	class boxMausKlick implements MouseListener {
 		public void mouseClicked(MouseEvent s) {
 
 			BoxLabel source = (BoxLabel) s.getSource();
 
-			// Ceck ob Box Karten enthält
+			/**
+			 * Ceck ob Box Karten enthält
+			 * 
+			 */
 
 			Kartei kk = u.getAktiveKartei();
 
-			// Check ob User überhaupt eine Kartei angelegt hat
+			/**
+			 * Check ob User überhaupt eine Kartei angelegt hat
+			 * 
+			 */
 			if (kk == null) {
 				fehlerdialog = new KeineKarten(u);
 				return;
@@ -233,8 +243,10 @@ public class TabLernen extends JPanel implements ActionListener {
 
 			}
 
-			// Kein Karten mit ausgewählter Box gefunden
-			// Infomeldung kommt, Methodenabbruch
+			/**
+			 * Kein Karten mit ausgewählter Box gefunden Infomeldung kommt, Methodenabbruch
+			 * 
+			 */
 			if (counter == 0) {
 
 				fehlerdialog = new KeineKarten(u);
@@ -266,8 +278,8 @@ public class TabLernen extends JPanel implements ActionListener {
 			lernenFenster.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent evt) {
 					lernenFenster.exitLernen();
-					exitForm();	
-					
+					exitForm();
+
 				}
 			});
 
@@ -282,10 +294,11 @@ public class TabLernen extends JPanel implements ActionListener {
 
 			});
 		}
+
 		/**
 		 * 
 		 * Was passiert, wenn das neu geöffnete Fenster wieder geschlossen wird.
-		 *  
+		 * 
 		 */
 		private void exitForm() {
 			boxLabel1.setBorder(new CompoundBorder(border, margin1));

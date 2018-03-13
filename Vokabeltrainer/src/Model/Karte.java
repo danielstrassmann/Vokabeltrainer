@@ -4,7 +4,7 @@ package Model;
 /**
  * Diese Klasse wird für die Karten gebraucht
  * 
- *@author Thomas Brunner St.Gallen /
+ *@author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018
  */
 
@@ -17,11 +17,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Karte {
 
-	// Karten inhalt
+	/**
+	 * Karten-Inhalt
+	 * 
+	 */
 	private int id;
 	private String frage;
 	private String antwort;
-	// gibt an, in welcher Box die Karte liegt
+	/**
+	 * gibt an, in welcher Box die Karte liegt
+	 * 
+	 */
 	private int box;
 
 	public Karte() {
@@ -29,8 +35,11 @@ public class Karte {
 	}
 
 	public Karte(String frage, String antwort) {
-		// die ID wird erst gesetzt, wenn die Karte in die ArrayList der Kartei abgelegt
-		// wird
+		/**
+		 * die ID wird erst gesetzt, wenn die Karte in die ArrayList der Kartei abgelegt
+		 * wird
+		 * 
+		 */
 		this.frage = frage;
 		this.antwort = antwort;
 		box = 1;
@@ -84,12 +93,11 @@ public class Karte {
 		}
 
 	}
-	
+
 	public void frageModifizieren(String frageNeu) {
 		frage = frageNeu;
 	}
-	
-	
+
 	public void antwortModifizieren(String antwortNeu) {
 		antwort = antwortNeu;
 	}

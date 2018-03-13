@@ -23,7 +23,7 @@ import Viewer.Buttons.KarteiAuswahlButton;
  * In dieser Klasse kan man eine neue Kartei erstellen, bei welcher die
  * Bezeichnung der Frage und Antwort mitgegeben wird.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Daniel Strassmann St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
  */
 

@@ -33,7 +33,7 @@ import Viewer.Menuleisten.MenuleisteOben;
  * Kartei angehängten Lernkarten bearbeiten, hinzufügen oder löschen. Diese
  * Klasse wird von der Klasse "Tabs" aufgerufen.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Daniel Strassmann St.Gallen / Thomas Brunner
  * @version 1.0 09.3.2018
  */
 

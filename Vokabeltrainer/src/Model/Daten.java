@@ -3,17 +3,18 @@ package Model;
 /**
  * Diese Klasse wird für die erstellung von Statistikdaten gebraucht
  * 
- * @author Thomas Brunner St.Gallen /
+ * @author Thomas Brunner St.Gallen
  * @version 1.0 09.3.2018
  */
 
 public class Daten {
 
-	// Inhalt der Daten	
+	/**
+	 * Inhalt der Statistikdaten
+	 */
 	private int antwortenKorrekt;
 	private int antwortenFalsch;
 	private int antwortenTotal;
-	// Attribut definieren für Zeit, die man Spielt? Wie macht mann das?
 
 	public Daten() {
 		antwortenKorrekt = 0;
@@ -44,17 +45,16 @@ public class Daten {
 	public void setAntwortenTotal(int antwortenTotal) {
 		this.antwortenTotal = antwortenTotal;
 	}
-	
+
 	public void antwortRichtig() {
-		this.antwortenKorrekt ++;
-		this.antwortenTotal ++;
-	}
-	
-	public void antwortFalsch() {
-		this.antwortenFalsch ++;
+		this.antwortenKorrekt++;
 		this.antwortenTotal++;
-		
 	}
-	
+
+	public void antwortFalsch() {
+		this.antwortenFalsch++;
+		this.antwortenTotal++;
+
+	}
 
 }
