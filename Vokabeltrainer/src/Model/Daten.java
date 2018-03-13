@@ -1,7 +1,8 @@
 package Model;
 
 /**
- * Diese Klasse wird für die erstellung von Statistikdaten gebraucht
+ * In dieser Klasse werden die Statstikdaten verwaltet, welche auf dem User
+ * gepseichert sind
  * 
  * @author Thomas Brunner St.Gallen
  * @version 1.0 09.3.2018
