@@ -300,7 +300,7 @@ public class Registrierung extends UserSammlung {
 			boolean erfolg = true;
 			loginok = false;
 			bnok = true;
-			ArrayList<User> l;
+			ArrayList<User> l; 
 			l = userliste.getUserliste();
 			AbspeichernLaden saveHandler = new AbspeichernLaden();
 			User user1 = new User(null, null, null);
