@@ -15,7 +15,7 @@ import Viewer.Tab.TabKartei;
  * Combobox "KarteiAuswahl" Wenn diese Combobox betätigt wird, kann die Kartei
  * gewechselt werden Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Daniel Strassmann St. Gallen
  * @version 1.0 09.3.2018
  */
 
@@ -39,6 +39,15 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 		addItemListener(new ItemChangeListener());
 	}
 
+	/**
+	 * Combobox wird mit allen Karteien des Benutzers abgefüllt.
+	 * 
+	 * @param u
+	 *            ist der User, der eingelogt ist. Damit auf die richtige Karteien
+	 *            zugegriffen werden
+	 * 
+	 */
+
 	public void comboboxKarteiAbfuellen(User u) {
 		removeAllItems();
 		ArrayList<Kartei> karteiliste = u.getUserKarteien();
@@ -56,7 +65,7 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 		public void itemStateChanged(ItemEvent event) {
 			if (event.getStateChange() == ItemEvent.SELECTED) {
 				kk = (Kartei) getSelectedItem();
-				//System.out.println(kk);
+				// System.out.println(kk);
 			}
 		}
 
@@ -65,8 +74,4 @@ public class KarteiAuswahlButton extends JComboBox<Kartei> {
 		}
 	}
 
-	public void spracheAktualisieren() {
-		// TODO Auto-generated method stub
-		
-	}
 }

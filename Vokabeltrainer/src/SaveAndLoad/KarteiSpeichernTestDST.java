@@ -3,7 +3,7 @@ package SaveAndLoad;
 import Model.User;
 
 /**
- * Diese Klasse wird für die Statistik veranschaung gebraucht
+ * TestKlasse für 
  * 
  * @author Marius Brändle St.Gallen / Duc Thach, Daniel Strassmann, Thomas Brunner
  * @version 1.0 09.3.2018

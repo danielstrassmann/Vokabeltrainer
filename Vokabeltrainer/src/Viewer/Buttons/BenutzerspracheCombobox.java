@@ -11,10 +11,10 @@ import Model.User;
 import SaveAndLoad.AbspeichernLaden;
 
 /**
- * In dieser Klasse wirde die ComboBox für die Auswahl der Benutzersprache
- * erstellt-
+ * In dieser Klasse wird die ComboBox für die Auswahl der Benutzersprache
+ * erstellt. 
  * 
- * @author Marius Brändle St.Gallen / Duc Thach
+ * @author Daniel Strassmann St.Gallen
  * @version 1.0 09.3.2018
  */
 public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
@@ -27,14 +27,6 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	private String italienischString;
 	private ArrayList<BenutzerspracheListener> listeners;
 
-	/**
-	 * Benutzersprache ComboBox erstellen
-	 * 
-	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
-	 * @param userliste
-	 *            Nimmt die Userliste mit.
-	 */
 	public BenutzerspracheCombobox(User u, UserSammlung userliste) {
 		this.u = u;
 		this.userliste = userliste;
@@ -47,7 +39,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	private void setSprache() {
@@ -59,7 +51,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	}
 
 	/**
-	 * Fügt die Auswählbaren Sprachen der ComboBox hinzu
+	 * Fügt die auswählbaren Sprachen der ComboBox hinzu
 	 * 
 	 */
 	public void sprachComboboxAbfuellen() {
@@ -78,7 +70,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	}
 
 	/**
-	 * Holt die gesetzte Sprache der letzten Session
+	 * Holt die gesetzte Sprache der letzten Session und setzt das entsprechende Item in der Combobox.
 	 * 
 	 */
 	public void gespeicherteSpracheSetzen() {
@@ -115,11 +107,16 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 			fireBenutzerspracheChanged();
 		}
 	}
-
+/**
+ *  eigener Listener damit die Sprache in das Hauptmenu übergeben werden kann.
+ * @param listener 
+ */
 	public void addBenutzerspracheListener(BenutzerspracheListener listener) {
 		listeners.add(listener);
 	}
-
+/**
+ *  eigener Listener damit die Sprache in das Hauptmenu übergeben werden kann.
+ */
 	public void fireBenutzerspracheChanged() {
 		for (BenutzerspracheListener l : listeners) {
 			l.benutzerspracheChanged();

@@ -31,7 +31,8 @@ public class KeineKarten extends JDialog {
 	 * KeineKarten erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            aktueller User. Wichtig für die richtige Sprache.
+	 * 
 	 */
 	public KeineKarten(User u) {
 		this.u = u;
@@ -41,7 +42,7 @@ public class KeineKarten extends JDialog {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	public void setSprache() {

@@ -12,11 +12,11 @@ import Viewer.Anmeldung.Anmeldefenster;
 import Viewer.Menu.HauptmenuNeu;
 
 /**
- * Diese Klasse generiert den Button "abmelden" Wenn dieser Button betätigt
+ * Diese Klasse generiert den Button "abmelden". Wenn dieser Button betätigt
  * wird, wird das mainframe geschlossen und das Anmeldefenster wieder geöffnet
  * Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Marius Brändle St.Gallen / Daniel Strassmann
  * @version 1.0 10.03.2018
  */
 
@@ -38,7 +38,7 @@ public class AbmeldeButton extends JButton {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	private void setSprache() {

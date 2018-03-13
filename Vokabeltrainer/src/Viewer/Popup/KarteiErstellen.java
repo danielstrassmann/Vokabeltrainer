@@ -56,7 +56,8 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	 * PopUp KarteiErstellen erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            Instanz des eingeloggten Users
+	 * 
 	 * @param kab
 	 *            Nimmt den KarteiAuswahlButton mit
 	 */
@@ -72,7 +73,7 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	private void setSprache() {
@@ -149,7 +150,9 @@ public class KarteiErstellen extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Erstellt den Buttonlistener
+	 * Erstellt den Buttonlistener Hier wird abgefangen, ob wirklich eine gültige
+	 * Kartei erstellt wurde. Einge gültige Kartei ist nur wenn beide Felder
+	 * abgefüllt sind.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
