@@ -76,7 +76,8 @@ public class Lernen extends JDialog {
 	 * Popup Lernen erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            aktuell eingelogter Benutzer. Wird für Sprache und richtige Kartei
+	 *            verwendet
 	 * @param owner
 	 *            Definition ob parent/child.
 	 * @param aktuelleBox
@@ -163,7 +164,6 @@ public class Lernen extends JDialog {
 		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);
-
 
 		/**
 		 * Location auf dem Fenster Lernen setzten
@@ -255,7 +255,7 @@ public class Lernen extends JDialog {
 			 * Check ob instanziertes k != null
 			 */
 			if (k == null) {
-				//System.out.println("Keine Karten mehr vorhanden in Box");
+				// System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
@@ -277,7 +277,7 @@ public class Lernen extends JDialog {
 			 * 
 			 */
 			if (k == null) {
-				//System.out.println("Keine Karten mehr vorhanden in Box");
+				// System.out.println("Keine Karten mehr vorhanden in Box");
 				fehlerdialog = new KeineKarten(u);
 				this.buttonKontrollieren.setEnabled(false);
 				this.buttonNaechsteKarte.setEnabled(false);
@@ -380,8 +380,6 @@ public class Lernen extends JDialog {
 			switchen();
 		}
 	}
-
-
 
 	class keyList implements KeyListener {
 

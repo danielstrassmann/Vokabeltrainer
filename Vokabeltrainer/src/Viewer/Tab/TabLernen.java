@@ -70,7 +70,7 @@ public class TabLernen extends JPanel implements ActionListener {
 	 * TabStatistik erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            aktueller eingeloggter Benutzer. genutzt für richtige Sprache und aktuelle Kartei
 	 * 
 	 * @param parent
 	 *            Definition ob parent/child.
@@ -86,7 +86,7 @@ public class TabLernen extends JPanel implements ActionListener {
 
 	/**
 	 * 
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 * 
 	 */

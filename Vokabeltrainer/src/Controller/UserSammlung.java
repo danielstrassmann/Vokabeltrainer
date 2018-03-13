@@ -1,9 +1,10 @@
 package Controller;
 
 /**
- * Diese Klasse wird für die Erstellung der UserSammlung gebraucht
+ * Diese Klasse wird für die Erstellung der UserSammlung gebraucht. Mit Hilfe des Package Save&Load wird das XML anhand Objekte der userliste erstellt.
+ * Userliste ist eine ArrayList von Usern
  * 
- * @author  Daniel Strassmann St.Gallen / Thomas Brunner
+ * @author  Daniel Strassmann St. Gallen
  * @version 1.0 09.3.2018
  */
 
@@ -20,7 +21,7 @@ import Model.User;
 @XmlAccessorType(XmlAccessType.NONE)
 public class UserSammlung {
 
-	public  ArrayList<User> userliste = new ArrayList<User>();
+	public ArrayList<User> userliste = new ArrayList<User>();
 
 	public UserSammlung() {
 	}

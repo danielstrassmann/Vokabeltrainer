@@ -59,7 +59,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 
 	private int selektierteRow;
 	private Kartei kk;
-	
+
 	private KarteiController kc;
 
 	private MenuleisteOben mlo;
@@ -85,9 +85,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	 * TabKartei erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            aktuell eingelogter Benutzer. Wird für Sprache und aktive Kartei
+	 *            verwendet
 	 * @param mlo
-	 *            Klasse MenuleisteOben wird hier hinzugefügt
+	 *            wird für Listerner genutzt, damit der Wechsel der Kartei auch in
+	 *            TabKartei üebrgeben wird
 	 */
 	public TabKartei(User u, MenuleisteOben mlo) {
 		this.u = u;
@@ -103,7 +105,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	public void setSprache() {
@@ -142,7 +144,6 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		Object[] spalten = { frageString, antwortString, boxString };
 		this.modelKartei.setColumnIdentifiers(spalten);
 		this.scrollPaneKartei.repaint();
-		
 
 	}
 
@@ -201,7 +202,7 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 		this.modelKartei = new DefaultTableModel();
 
 		this.modelKartei.setColumnIdentifiers(spalten);
-		
+
 		this.tableKartei.setModel(modelKartei);
 
 		this.scrollPaneKartei.setBounds(20, 30, 1000, 400);
@@ -248,12 +249,11 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	public void karteiAktualisierne() {
 		tableKarteiabfuellen(this.kk);
 	}
-	
+
 	/**
 	 * selektierte Kartei in Table abfüllen
 	 */
 
-	
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
@@ -293,7 +293,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		// neue Karte hinzufügen
+		/**
+		 * neue Karte hinzufügen
+		 */
 		if (e.getSource() == this.buttonNeu) {
 			if (textFrage.getText().equals("") || textAntwort.getText().equals("")) {
 				this.labelMutation.setBounds(390, 445, 400, 25);
@@ -303,13 +305,6 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 				String frageHinzu = textFrage.getText();
 				String antwortHinzu = textAntwort.getText();
 				kc.karteInKarteiAblegen(frageHinzu, antwortHinzu, kk);
-				
-				// Karte k = new Karte(frageHinzu, antwortHinzu);
-				// TODO Thomas abfangen null
-				// int id = kk.getAnzahlKartenInSammlung();
-				// TODO Thomas schleife, nicht doppelte ID.
-				// k.setId(id);
-				// kk.karteInSammlung(k);
 				tableKarteiabfuellen(kk);
 				this.labelMutation.setBounds(390, 445, 400, 25);
 				this.labelMutation.setForeground(new Color(0, 102, 0));

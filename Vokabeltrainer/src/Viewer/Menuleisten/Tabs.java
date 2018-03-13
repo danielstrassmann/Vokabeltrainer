@@ -43,9 +43,9 @@ public class Tabs extends JPanel {
 	 * TabStatistik erstellen
 	 * 
 	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
+	 *            aktueller User
 	 * @param mlo
-	 *            Wird aus der Menuleisteoben erstellt.
+	 *            Instanz von MenuLeisteoben, damit Listerner übergeben werden kann.
 	 * @param parent
 	 *            Definition ob parent/child.
 	 */
@@ -59,7 +59,7 @@ public class Tabs extends JPanel {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 	public void setSprache() {
@@ -88,14 +88,14 @@ public class Tabs extends JPanel {
 
 		tabsMenu.addChangeListener(new TabListener());
 	}
-	
+
 	public void tabSpracheAktualisieren() {
-		
+
 		// Wenn Sprache geändert, wird Sprache im GUI aktualisiert
 		this.tle.spracheAktualisieren();
 		this.tst.spracheAktualisieren();
 		this.tka.spracheAktualisieren();
-				
+
 	}
 
 	/**
@@ -124,7 +124,6 @@ public class Tabs extends JPanel {
 		this.tka = new TabKartei(u, mlo);
 		tabsMenu.insertTab(karteiString, null, tka, karteiString, 2);
 	}
-	
 
 	public void spracheAktualisieren() {
 		setSprache();
@@ -132,27 +131,25 @@ public class Tabs extends JPanel {
 		tabsMenu.setTitleAt(1, statistikString);
 		tabsMenu.setTitleAt(2, karteiString);
 	}
-	
+
 	public TabLernen getLerntenTab() {
-		
-		return this.tle;		
-		
+
+		return this.tle;
+
 	}
-	
-	
+
 	public TabStatistik getStatistikTab() {
-		
-		return this.tst;		
-		
+
+		return this.tst;
+
 	}
-	
-	
+
 	public TabKartei getKarteiTab() {
-		
-		return this.tka;		
-		
+
+		return this.tka;
+
 	}
-	
+
 	/**
 	 * Erstellt den Listener, welche definiert, was passiert, wenn man das Tab
 	 * wechselt.
@@ -169,15 +166,11 @@ public class Tabs extends JPanel {
 			 */
 
 			if (tabsMenu.getSelectedIndex() == 1) {
-				// tst.setSprache();
-				// tst.statistikSpracheAktualisieren();
 				tst.statistikAktualisieren();
 
 			}
 			if (tabsMenu.getSelectedIndex() == 2) {
 				tka.karteiAktualisierne();
-				// tka.setSprache();
-				// tka.karteiSpracheAktualisieren();
 
 			}
 		}
