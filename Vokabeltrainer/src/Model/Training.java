@@ -22,7 +22,11 @@ public class Training {
 	 * Konstruktor instanziert Training mit Userdaten & Karten in Box
 	 * 
 	 * @param u
+	 *            Instanz User muss übergeben werden, damit die Trainingsdaten
+	 *            (Karten & Daten) dem korrekten User übergeben wird
 	 * @param boxNummer
+	 *            Instanz Boxnummer wird von Klasse TabLenrnen übergeben, damit die
+	 *            SammlungBox im Konsturktor korrekt abgefüllt wird
 	 */
 	public Training(User u, int boxNummer) {
 
@@ -111,7 +115,8 @@ public class Training {
 	/**
 	 * Was zurückgeben, wenn es keine Karten mehr in der Box gibt?
 	 * 
-	 * @return
+	 * @return Eine Instanz Karte aus Sammlung Box wird zufällig ausgegeben Wenn die
+	 *         Box leer ist, wird eine Instanz Karte mit "null" geliefert
 	 */
 	public Karte gibZufallsKarteAusBox() {
 
@@ -152,8 +157,11 @@ public class Training {
 	 * Inputwerte kommen von Klasse Lernen
 	 * 
 	 * @param eingabeAntwort
+	 *            Eingabe des Antwort vom GUI (Klasse Lernen)
 	 * @param eingabeFrage
-	 * @return
+	 *            Eingabe der Frage vom GUI (Klasse Lernen)
+	 * @return Übergibt an Klasse Lernen, ob Karte korrekt oder falsch beantwortet
+	 *         wurde. Je nach Wert des boolean verhaltet sich das GUI anders.
 	 */
 	public boolean antwortPruefen(String eingabeAntwort, String eingabeFrage) {
 		/**
@@ -237,6 +245,8 @@ public class Training {
 	 * Daten vom Training werden an User übertagen
 	 * 
 	 * @param u
+	 *            Instanz User muss übergeben werden, damit die Statistikdaten dem
+	 *            korrekten User übergeben werden
 	 */
 	public void trainingsDatenAnUserdaten(User u) {
 
@@ -280,6 +290,9 @@ public class Training {
 	 * Übergibt die Trainingskartei neu in die Userkarteiensammlung
 	 * 
 	 * @param u
+	 *            Instanz User muss übergeben werden, damit die TrainingsKartei
+	 *            (beinhaltet modifizierte Karten durch Training), korrekt dem User
+	 *            übergeben werden
 	 */
 	public void karteiAnUser(User u) {
 		int id = trainingsKartei.getId();

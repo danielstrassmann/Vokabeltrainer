@@ -7,9 +7,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * Diese Klasse bildet die Grundlagen für Userinstanzen. Es ist die wichtigste Model-Klasse!
- * Auf dem User werden Userdaten, Trainingsdaten und Karteisammlungen, welche Karten enthalten, gespeichert
- * Ausserdem wird die aktive Kartei und aktive Sprache gespeichert, damit das GUI korrekt geladen wird
+ * Diese Klasse bildet die Grundlagen für Userinstanzen. Es ist die wichtigste
+ * Model-Klasse! Auf dem User werden Userdaten, Trainingsdaten und
+ * Karteisammlungen, welche Karten enthalten, gespeichert Ausserdem wird die
+ * aktive Kartei und aktive Sprache gespeichert, damit das GUI korrekt geladen
+ * wird
  * 
  * @author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018
@@ -18,10 +20,6 @@ import javax.xml.bind.annotation.XmlElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class User {
 
-	/**
-	 * User-Inhalt
-	 * 
-	 */
 	private ArrayList<Kartei> userKarteien;
 
 	private Daten userDaten;
@@ -79,15 +77,6 @@ public class User {
 	}
 
 	/**
-	 * holt die Karten ID der naechsten Karte
-	 * 
-	 * @return
-	 */
-	public int getNextKarteiId() {
-		return 0;
-	}
-
-	/**
 	 * Benutzername Passwort und Benutzersprache als String
 	 * 
 	 */
@@ -108,6 +97,8 @@ public class User {
 	 * fügt der Sammlung eine Kartei hinzu
 	 * 
 	 * @param kk
+	 *            Instanz Kartei muss übergeben werden, damit die Kartei in die
+	 *            Karteiensammlung des Users hinzugefügt werden kann
 	 */
 	public void karteiInSammlung(Kartei kk) {
 		userKarteien.add(kk);
@@ -116,7 +107,8 @@ public class User {
 	/**
 	 * holt sich die Anzahlkarten in der Kartei
 	 * 
-	 * @return
+	 * @return Anzahl Karteien werden benötigt, um in Klasse KarteiController eine
+	 *         ID zu vergeben
 	 */
 	public int getAnzahlKarteienInSammlung() {
 		int anzahlKarteien = userKarteien.size();

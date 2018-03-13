@@ -10,9 +10,7 @@ package Model;
 
 public class Daten {
 
-	/**
-	 * Inhalt der Statistikdaten
-	 */
+
 	private int antwortenKorrekt;
 	private int antwortenFalsch;
 	private int antwortenTotal;

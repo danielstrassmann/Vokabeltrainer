@@ -34,6 +34,13 @@ public class KarteiController {
 	/**
 	 * Erstellt eine Kartei und legt diese in der Instanz User in die Sammlung ab
 	 * 
+	 * @param frage
+	 *            Quellsprache der Kartei
+	 * @param antwort
+	 *            Zielsprache der Kartei
+	 * @param u
+	 *            Instanz User muss übergeben werden, damit die Kartei auf dem User
+	 *            gespeichert werden kann
 	 */
 	public void karteiErstellen(String frage, String antwort, User u) {
 		Kartei kk = new Kartei(frage, antwort);
@@ -71,8 +78,13 @@ public class KarteiController {
 	 * in ArrayList erzeugt
 	 * 
 	 * @param frage
+	 *            Ist die Quellsprache der Karte
 	 * @param antwort
+	 *            Ist die Zielsprache der Karte
 	 * @param kk
+	 *            Instanz Kartei muss übergeben werden, damit die Karte in der
+	 *            richtigen Kartei angelegt wird, welche auf dem User gespeichert
+	 *            ist
 	 */
 	public void karteInKarteiAblegen(String frage, String antwort, Kartei kk) {
 
