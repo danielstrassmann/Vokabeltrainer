@@ -2,7 +2,7 @@
 package Model;
 
 /**
- * Diese Klasse wird für die Karten gebraucht
+ * Diese Klasse ist Grundlage für Karteninstanzen. Jedes Attribut kann mit Getter- und Setter-Methoden verändert werden.
  * 
  *@author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018

@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 /**
- * Diese Klasse wird für den User gebraucht
+ * Diese Klasse bildet die Grundlagen für Userinstanzen. Es ist die wichtigste Model-Klasse!
+ * Auf dem User werden Userdaten, Trainingsdaten und Karteisammlungen, welche Karten enthalten, gespeichert
+ * Ausserdem wird die aktive Kartei und aktive Sprache gespeichert, damit das GUI korrekt geladen wird
  * 
  * @author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018

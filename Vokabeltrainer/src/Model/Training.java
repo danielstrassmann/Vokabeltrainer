@@ -1,7 +1,8 @@
 package Model;
 
 /**
- * Diese Klasse wird für den aufbau des Trainigs gebraucht
+ * Diese Klasse wird für das Durchführen des Trainigs benötigt
+ * Karteien und Karten werden vom User ausgelesen und nach dem Training aktualisiert und wieder zurückgegeben
  * 
  * @author Thomas Brunner St.Gallen 
  * @version 1.0 09.3.2018
@@ -12,10 +13,6 @@ import java.util.Random;
 
 public class Training {
 
-	/**
-	 * Training
-	 * 
-	 */
 	private Kartei trainingsKartei;
 	private Daten trainingsDaten;
 	private ArrayList<Karte> sammlungBox;

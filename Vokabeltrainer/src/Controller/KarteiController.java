@@ -1,7 +1,8 @@
 package Controller;
 
 /**
- * Diese Klasse wird für die Karteispeicherung gebraucht
+ * In dieser Controller-Klasse werden Karteien und Karten erstellt
+ * Der KarteiController wird in den Klassen TabKartei und KarteiErstellen wiederverwendet
  * 
  * @author Thomas Brunner St.Gallen
  * @version 1.0 09.3.2018

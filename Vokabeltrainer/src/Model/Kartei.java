@@ -1,7 +1,8 @@
 package Model;
 
 /**
- * Diese Klasse wird für die Kartei gebraucht
+ * Diese Klasse ist Grundlage für Karteiinstanzen. Jedes Attribut kann mit Getter- und Setter-Methoden verändert werden.
+ * Eine Kartei besitzt eine Sammlung vom Typ Karte
  * 
  * @author Thomas Brunner St.Gallen / Daniel Strassmann
  * @version 1.0 09.3.2018
