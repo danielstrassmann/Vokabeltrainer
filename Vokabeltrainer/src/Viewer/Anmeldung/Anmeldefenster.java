@@ -128,7 +128,7 @@ public class Anmeldefenster extends UserSammlung
 
 		}
 		Locale l = new Locale(sprachcode);
-		ResourceBundle r = ResourceBundle.getBundle("Controller/Bundle", l);
+		ResourceBundle r = ResourceBundle.getBundle("Controller.Bundle", l);
 		this.frameTitelString = r.getString("vokabeltrainer");
 		this.anmeldenButtonString = r.getString("anmelden");
 		this.registrierenButtonString = r.getString("registrieren");
