@@ -109,6 +109,11 @@ public class Registrierung extends UserSammlung {
 	private String erfolgreichString;
 	private String vokabeltrainerString;
 	private String passwortFalschString;
+	private String benutzervorhandenString;
+	private String invalidString;
+	private boolean loginok;
+	private boolean bnok;
+	Integer index = null;
 
 	/**
 	 * Registrierungs Konstruktor
@@ -152,6 +157,8 @@ public class Registrierung extends UserSammlung {
 		this.erfolgreichString = r.getString("erfolgreichRegistriert");
 		this.vokabeltrainerString = r.getString("vokabeltrainer");
 		this.passwortFalschString = r.getString("passwortFalsch");
+		this.benutzervorhandenString = r.getString("benutzervorhanden");
+		this.invalidString = r.getString("invalid");
 
 	}
 
@@ -278,27 +285,55 @@ public class Registrierung extends UserSammlung {
 	class regibtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
 			registrieren();
+			
 
 		}
 		
+		
 		/**
-		 * Registrierungs Methode mit abspeicherung der neuen Userliste
-		 * 
+		 * Registrierungs Methode mit abspeicherung der neuen Userliste und check ob der Username Gueltig ist.
+		 * Kontrolliert vorhandene User (Namenskonflikt)
 		 */
 		public void registrieren() {
 
+			boolean erfolg = true;
+			loginok = false;
+			bnok = true;
 			ArrayList<User> l;
+			l = userliste.getUserliste();
 			AbspeichernLaden saveHandler = new AbspeichernLaden();
 			User user1 = new User(null, null, null);
-			l = userliste.getUserliste();
+			
 			String a = new String(r_txtpasswort.getText());
 			String b = new String(r_txtpasswort2.getText());
 
 			user1.setBenutzername(r_txtname.getText());
 			user1.setPasswort(r_txtpasswort.getText());
-
+			
+			for (int i = 0; i < l.size(); i++) {
+				
+				index = i;
+				
+				if (r_txtname.getText().equals(l.get(index).getBenutzername())) {
+					frmregiSystem = new JFrame(benutzervorhandenString);
+					JOptionPane.showConfirmDialog(frmregiSystem, benutzervorhandenString, frameTitelString,
+					JOptionPane.PLAIN_MESSAGE);
+					bnok = false;
+					
+					return;
+				} 
+			}
+			
+			if (r_txtname.getText().equals("")) {
+				erfolg = false;
+				frmregiSystem = new JFrame(invalidString);
+				JOptionPane.showConfirmDialog(frmregiSystem, invalidString, frameTitelString,
+				JOptionPane.PLAIN_MESSAGE);
+			}
+			
+			userlogging();
+			
 			if (benutzerSprache.getSelectedItem().equals("English")) {
 				user1.setBenutzersprache("EN");
 			} else if (benutzerSprache.getSelectedItem().equals("Francais")) {
@@ -309,31 +344,42 @@ public class Registrierung extends UserSammlung {
 				user1.setBenutzersprache("DE");
 
 			frmregiSystem = new JFrame(frameTitelString);
-
-			if (a != null && a.equals(b)) {
-				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString,
-						JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+				
+		if (loginok == true && bnok == true && a.equals(b) && erfolg == true) {	
 				userliste.getUserliste().add(user1);
 				l = userliste.getUserliste();
 				userliste.setUserliste(l);
 
 				File savedUser = saveHandler.userSpeichern(userliste);
 				saveHandler.karteienSpeichern(user1);
-
+				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString,
+				JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 				registrierungsfenster.dispose();
+				loginok = false;
 				return;
 			}
+		}
+	}	
 
-			else
-
+	/**
+	 * Checkt ob ein Passwort eingegeben wurde und nicht leerbleibt
+	 * 
+	 */
+	public void userlogging() {
+		
+		if (r_txtpasswort.getPassword().length > 0) {
+			loginok = true;
+			return;
+			
+		} else {
+				JOptionPane.showConfirmDialog(frmregiSystem, passwortFalschString, vokabeltrainerString,
+				JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 				r_txtpasswort.setText(null);
-			r_txtpasswort2.setText(null);
-
-			JOptionPane.showConfirmDialog(frmregiSystem, passwortFalschString, vokabeltrainerString,
-					JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
+				r_txtpasswort2.setText(null);
+				return;
 		}
 	}
-
+	
 	/**
 	 *Exit aus dem Programm
 	 * 
