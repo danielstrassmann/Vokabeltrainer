@@ -20,9 +20,9 @@ import Viewer.Buttons.KarteiAuswahlButton;
 import Viewer.Buttons.KarteiErstellenButton;
 
 /**
- * Diese Klasse wird für das GUI der Menueleiste gebraucht
+ * Diese Klasse wird für das GUI der Menueleiste gebraucht.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Daniel Strassmann St.Gallen / Marius Brändle
  * @version 1.0 09.3.2018
  */
 
@@ -48,22 +48,16 @@ public class MenuleisteOben extends JPanel {
 	private String karteiString;
 	private String spracheString;
 
-	/**
-	 * TabStatistik erstellen
-	 * 
-	 * @param u
-	 *            Alle Daten des Users fliessen in die TabStatistik ein.
-	 * @param userliste
-	 *            nimmt die Usersammlung mit
-	 */
 	public MenuleisteOben(User u, UserSammlung userliste) {
 		this.u = u;
 		this.userliste = userliste;
 		setSprache();
 		menuleisteOben();
 	}
+
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen Datenfelder zu.
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
+	 * Datenfelder zu.
 	 */
 	public void setSprache() {
 		Locale l = new Locale(u.getBenutzersprache());
@@ -72,6 +66,7 @@ public class MenuleisteOben extends JPanel {
 		this.karteiString = r.getString("kartei");
 		this.spracheString = r.getString("benutzersprache");
 	}
+
 	/**
 	 * Erstellt alle Felder, welche benötigt werden.
 	 */
@@ -116,31 +111,44 @@ public class MenuleisteOben extends JPanel {
 		u.setAktiveKartei((Kartei) kab.getSelectedItem());
 
 	}
+
 	/**
-	 * Erstellt den Itemlistener für die einzelne Buttons
+	 * Itemlistener damit im Hauptmenu die neue ausgewählte Kartei empfangen und
+	 * weitergegeben werden kann
+	 * 
+	 * @param itemListener
 	 */
 	public void addItemChangeListener(ItemListener itemListener) {
 		kab.addItemListener(itemListener);
-		
+
 	}
+
+	/**
+	 * Itemlistener damit im Hauptmenu die neue ausgewählte Sprache empfangen und
+	 * weitergegeben werden kann.
+	 * 
+	 * @param listener
+	 */
 	public void addBenutzerspracheChanged(BenutzerspracheListener listener) {
 		bsb.addBenutzerspracheListener(listener);
 	}
-	
-public void spracheAktualisieren() {
-	setSprache();
-	this.willkommen.setText(willkommenString + " " + u.getBenutzername());
-	this.karteiBez.setText(karteiString);
-	this.spracheBez.setText(spracheString);
-}
 
+	/**
+	 * Methode damit die Sprache aktualisiert wird
+	 */
+	public void spracheAktualisieren() {
+		setSprache();
+		this.willkommen.setText(willkommenString + " " + u.getBenutzername());
+		this.karteiBez.setText(karteiString);
+		this.spracheBez.setText(spracheString);
+	}
 
-public void buttonSpracheAktualisieren() {
-	
-	// Wenn Sprache geändert, wird Sprache im GUI aktualisiert
-	this.kb.spracheAktualisieren();
-	this.ab.spracheAktualisieren();
-			
-}
+	public void buttonSpracheAktualisieren() {
+
+		// Wenn Sprache geändert, wird Sprache im GUI aktualisiert
+		this.kb.spracheAktualisieren();
+		this.ab.spracheAktualisieren();
+
+	}
 
 }

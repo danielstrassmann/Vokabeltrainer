@@ -11,12 +11,12 @@ import Model.User;
 import Viewer.Popup.KarteiErstellen;
 
 /**
- * Diese Klasse wird für die Kartei erstellung gebraucht. Diese Klasse generiert
+ * Diese Klasse wird für die Kartei erstellung gebraucht. Sie generiert
  * den Button "KarteiButton" Wenn dieser Button betätigt wird, wird das
  * PopUp-Fenster "KarteiErstellen" geöffnet und man kann eine neue Kartei
  * erstellen Der Button wird der Klasse "MenuLeisteOben" hinzugefügt.
  * 
- * @author Marius Brändle St.Gallen
+ * @author Marius Brändle St. Gallen
  * @version 1.0 09.3.2018
  */
 
@@ -35,7 +35,7 @@ public class KarteiErstellenButton extends JButton {
 	}
 
 	/**
-	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundls den einzelnen
+	 * Weisst die einzelnen SprachStrings aus den Sprachen-Bundles den einzelnen
 	 * Datenfelder zu.
 	 */
 
