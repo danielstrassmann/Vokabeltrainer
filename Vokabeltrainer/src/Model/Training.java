@@ -19,11 +19,11 @@ public class Training {
 	private Karte aktiveKarte;
 
 	/**
-	 * Konstruktor instanziert Training mit Userdaten & Karten in Box
+	 * Konstruktor instanziert Training mit Userdaten und Karten in Box
 	 * 
 	 * @param u
 	 *            Instanz User muss übergeben werden, damit die Trainingsdaten
-	 *            (Karten & Daten) dem korrekten User übergeben wird
+	 *            (Karten und Daten) dem korrekten User übergeben wird
 	 * @param boxNummer
 	 *            Instanz Boxnummer wird von Klasse TabLenrnen übergeben, damit die
 	 *            SammlungBox im Konsturktor korrekt abgefüllt wird

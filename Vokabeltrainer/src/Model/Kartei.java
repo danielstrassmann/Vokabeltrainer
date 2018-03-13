@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 public class Kartei {
 
-	
 	private int id;
 	private ArrayList<Karte> kartensammlung;
 	private String frageKartei;
@@ -38,8 +37,12 @@ public class Kartei {
 	/**
 	 * Erstellt eine neue Kartei, wo Lernkarten abgelegt werden können Die ID wird
 	 * bei erst beim Ablegen der Kartei in die Sammlung des Users erzeugt
+	 * 
+	 * @param frage
+	 *            Quellsprache der Kartei
+	 * @param antwort
+	 *            Zielsprache der Datei
 	 */
-
 	public Kartei(String frage, String antwort) {
 		this.frageKartei = frage;
 		this.antwortKartei = antwort;
