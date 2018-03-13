@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
+import Controller.AbspeichernLaden;
 import Controller.UserSammlung;
 import Model.User;
-import SaveAndLoad.AbspeichernLaden;
 
 /**
  * In dieser Klasse wird die ComboBox für die Auswahl der Benutzersprache
@@ -109,7 +109,7 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	}
 /**
  *  eigener Listener damit die Sprache in das Hauptmenu übergeben werden kann.
- * @param listener 
+ * @param listener Benutzersprache Listener
  */
 	public void addBenutzerspracheListener(BenutzerspracheListener listener) {
 		listeners.add(listener);

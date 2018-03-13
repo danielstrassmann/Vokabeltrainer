@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Controller.AbspeichernLaden;
 import Controller.UserSammlung;
 import Model.User;
-import SaveAndLoad.AbspeichernLaden;
 
 /**
  * Diese Klasse wird für die Registrierung gebraucht

@@ -116,7 +116,7 @@ public class MenuleisteOben extends JPanel {
 	 * Itemlistener damit im Hauptmenu die neue ausgewählte Kartei empfangen und
 	 * weitergegeben werden kann
 	 * 
-	 * @param itemListener
+	 * @param itemListener ausgewählte Kartei
 	 */
 	public void addItemChangeListener(ItemListener itemListener) {
 		kab.addItemListener(itemListener);
@@ -127,7 +127,7 @@ public class MenuleisteOben extends JPanel {
 	 * Itemlistener damit im Hauptmenu die neue ausgewählte Sprache empfangen und
 	 * weitergegeben werden kann.
 	 * 
-	 * @param listener
+	 * @param listener BenutzerspracheListener
 	 */
 	public void addBenutzerspracheChanged(BenutzerspracheListener listener) {
 		bsb.addBenutzerspracheListener(listener);

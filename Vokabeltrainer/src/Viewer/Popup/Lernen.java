@@ -16,10 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controller.AbspeichernLaden;
 import Model.Karte;
 import Model.Training;
 import Model.User;
-import SaveAndLoad.AbspeichernLaden;
 
 /**
  * Diese Klasse wird für das Lernfenster gebraucht Diese Klasse generiert das
@@ -223,7 +223,7 @@ public class Lernen extends JDialog {
 
 	/**
 	 * Kartei wechsel Button für WindowListener in TabLernen öffentlich machen
-	 * 
+	 * @return buttonAbbrechen
 	 */
 	public JButton getButtonAbbrechen() {
 		return buttonAbbrechen;

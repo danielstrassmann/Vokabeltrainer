@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Controller.AbspeichernLaden;
 import Controller.UserSammlung;
 import Model.User;
-import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menu.HauptmenuNeu;
 
 /**
@@ -384,11 +384,11 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
-	/**
-	 * MAIN Startpunkt des Programmes
-	 * 
-	 */
 
+	/**
+	 * Main Startpunkt des Programms
+	 * @param args neues Anmeldefenster
+	 */
 	public static void main(String[] args) {
 		Anmeldefenster gui = new Anmeldefenster();
 		gui.paint();

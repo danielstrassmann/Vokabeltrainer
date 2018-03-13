@@ -70,7 +70,8 @@ public class TabStatistik extends JPanel {
 	 * 
 	 * TabStatistik erstellen
 	 * 
-	 * @param u Alle Daten des Users fliessen in die TabStatistik ein.
+	 * @param u
+	 *            Alle Daten des Users fliessen in die TabStatistik ein.
 	 */
 	public TabStatistik(User u) {
 		this.u = u;
@@ -293,14 +294,12 @@ public class TabStatistik extends JPanel {
 		}
 
 		/**
-		 * 
-		 * 
 		 * Hier wird abgefangen, dass es eine Division durch 0 gibt.
 		 * 
-		 * @param totalCard
-		 *            Anzahl gelernten Karten.
+		 * @param totalCards
+		 *            Anzahl gelernte Karten
 		 * @param wrongCards
-		 *            Anzahl Falsch gelöste Karten.
+		 *            Anzahl falsch gelöste Karten
 		 */
 		public void setData(int totalCards, int wrongCards) {
 			if (totalCards == 0) {

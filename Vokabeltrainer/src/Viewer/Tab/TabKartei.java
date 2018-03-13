@@ -20,11 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.AbspeichernLaden;
 import Controller.KarteiController;
 import Model.Karte;
 import Model.Kartei;
 import Model.User;
-import SaveAndLoad.AbspeichernLaden;
 import Viewer.Menuleisten.MenuleisteOben;
 
 /**
@@ -251,9 +251,9 @@ public class TabKartei extends JPanel implements ActionListener, MouseListener {
 	}
 
 	/**
-	 * selektierte Kartei in Table abfüllen
+	 * selektierte Kartei in Tabele abfüllen
+	 * @param kk aktuelle Kartei
 	 */
-
 	public void tableKarteiabfuellen(Kartei kk) {
 		this.kk = kk;
 		modelKartei.setRowCount(0);
