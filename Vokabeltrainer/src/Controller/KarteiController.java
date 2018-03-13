@@ -24,6 +24,10 @@ public class KarteiController {
 
 	/**
 	 * Standardkonstruktor
+	 * 
+	 * @param u
+	 *            Instanz User muss übergeben werden, damit der Fehlerdialog
+	 *            KeineKarten in der richtigen Usersprache ausgelöst werden kann
 	 */
 	public KarteiController(User u) {
 
@@ -74,8 +78,8 @@ public class KarteiController {
 	}
 
 	/**
-	 * Ein Objekt Karte wird erzeugt & in eine Kartei abgelegt ID wird beim ablegen
-	 * in ArrayList erzeugt
+	 * Ein Objekt Karte wird erzeugt und in eine Kartei abgelegt ID wird beim
+	 * ablegen in ArrayList erzeugt
 	 * 
 	 * @param frage
 	 *            Ist die Quellsprache der Karte
