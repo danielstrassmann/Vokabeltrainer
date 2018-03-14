@@ -150,9 +150,7 @@ public class Anmeldefenster extends UserSammlung
 				userliste = new UserSammlung();
 				Registrierung gui = new Registrierung(userliste);
 				gui.paint();
-				// User user = new User("administrator", "eli", "de");
-				// userliste.getUserliste().add(user);
-				// saveHandler.karteienSpeichern(user);
+
 			} catch (IOException e) {
 				System.out.println("Probleme beim Erstellen des users.xml");
 			}
@@ -264,15 +262,27 @@ public class Anmeldefenster extends UserSammlung
 
 	/**
 	 * passiert nach der Login Validation und oeffnet das Hauptmenu
+	 * Prüfung, dass auch ein XML-File geladen wird. Ansonsten wird ein neues erstellt.
 	 * 
 	 */
 	private void doLogin() {
 		AbspeichernLaden loadHandler = new AbspeichernLaden();
-		loadHandler.karteienLaden(u);
-		HauptmenuNeu guiNeu = new HauptmenuNeu(u, userliste);
+		File userXmlFile = new File(u.getBenutzername() + ".xml");
+		if (userXmlFile.exists() == false) {
+			try {
+				userXmlFile.createNewFile();
+				HauptmenuNeu guiNeu = new HauptmenuNeu(u, userliste);
+				loginfenster.setVisible(false);
+			} catch (IOException e) {
+				System.out.println("Probleme beim Erstellen des users.xml");
+			}
+		} else {
+			loadHandler.karteienLaden(u);
+			HauptmenuNeu guiNeu = new HauptmenuNeu(u, userliste);
 
-		loginfenster.setVisible(false);
+			loginfenster.setVisible(false);
 
+		}
 	}
 
 	/**
