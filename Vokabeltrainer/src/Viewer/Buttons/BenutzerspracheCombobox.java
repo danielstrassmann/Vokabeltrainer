@@ -94,13 +94,13 @@ public class BenutzerspracheCombobox extends JComboBox implements ItemListener {
 	public void itemStateChanged(ItemEvent event) {
 		if (event.getStateChange() == ItemEvent.SELECTED) {
 			if (getSelectedItem() == deutschString) {
-				u.setBenutzersprache("DE");
+				u.setBenutzersprache("de");
 			} else if (getSelectedItem() == englischString) {
-				u.setBenutzersprache("EN");
+				u.setBenutzersprache("en");
 			} else if (getSelectedItem() == franzoesischString) {
-				u.setBenutzersprache("FR");
+				u.setBenutzersprache("fr");
 			} else if (getSelectedItem() == italienischString) {
-				u.setBenutzersprache("IT");
+				u.setBenutzersprache("it");
 			}
 			AbspeichernLaden savehandler = new AbspeichernLaden();
 			savehandler.userSpeichern(userliste);

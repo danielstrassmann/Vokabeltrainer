@@ -132,19 +132,19 @@ public class Registrierung extends UserSammlung {
 	 * 
 	 */
 	public void setSprache() {
-		String sprachcode = new String("DE");
+		String sprachcode = new String("de");
 		String systemUsersprache = System.getProperty("user.language");
 
 		if (systemUsersprache.equals("en")) {
-			sprachcode = "EN";
+			sprachcode = "en";
 		}
 		if (systemUsersprache.equals("fr")) {
-			sprachcode = "FR";
+			sprachcode = "fr";
 		}
 		if (systemUsersprache.equals("it")) {
-			sprachcode = "IT";
+			sprachcode = "it";
 		} else {
-			sprachcode = "DE";
+			sprachcode = "de";
 
 		}
 		Locale l = new Locale(sprachcode);

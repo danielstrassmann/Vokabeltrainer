@@ -149,6 +149,7 @@ public class Anmeldefenster extends UserSammlung
 	public void add() {
 		AbspeichernLaden saveHandler = new AbspeichernLaden();
 		this.userliste = saveHandler.userLaden(new File("users.xml"));
+		
 		l = userliste.getUserliste();
 		//System.out.println(l); 
 		
