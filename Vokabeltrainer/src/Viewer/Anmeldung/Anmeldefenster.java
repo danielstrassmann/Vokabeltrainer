@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -40,7 +41,6 @@ public class Anmeldefenster extends UserSammlung
 	 * JFrame
 	 * 
 	 */
-	
 	private JFrame loginfenster;
 	private JFrame frmLoginSystem;
 
@@ -48,7 +48,6 @@ public class Anmeldefenster extends UserSammlung
 	 * Labels
 	 * 
 	 */
-	
 	private JLabel usernameid;
 	private JLabel userpassword;
 	private JLabel frameTitle;
@@ -57,7 +56,6 @@ public class Anmeldefenster extends UserSammlung
 	 * Buttons
 	 * 
 	 */
-	
 	private JButton anmeldeButton;
 	private JButton registrieren;
 	private JButton exitButton;
@@ -66,7 +64,6 @@ public class Anmeldefenster extends UserSammlung
 	 * TextFelder
 	 * 
 	 */
-	
 	private JTextField loginUsername;
 	private JPasswordField loginPassword;
 
@@ -74,7 +71,6 @@ public class Anmeldefenster extends UserSammlung
 	 * JPanels
 	 * 
 	 */
-	
 	private JPanel userpw;
 	private JPanel titelframe;
 	private JPanel buttonBereich;
@@ -84,7 +80,6 @@ public class Anmeldefenster extends UserSammlung
 	 * Spezial
 	 * 
 	 */
-	
 	public String ub;
 	Integer index = null;
 	private AbspeichernLaden saveHandler;
@@ -104,7 +99,7 @@ public class Anmeldefenster extends UserSammlung
 
 	public Anmeldefenster() {
 		setSprache();
-		add();
+		anmeldeDatenLaden();
 	}
 
 	/**
@@ -142,22 +137,40 @@ public class Anmeldefenster extends UserSammlung
 	}
 
 	/**
-	 *Userliste laden
+	 * Anmeldedaten laden und prüfen ob das XML bereits vorhanden ist. Wenn nicht,
+	 * wird ein neues erstellt und man wird direkt in die Registrierung
+	 * weitergeleitet.
+	 */
+	public void anmeldeDatenLaden() {
+		AbspeichernLaden saveHandler = new AbspeichernLaden();
+		File xmlFile = new File("users.xml");
+		if (xmlFile.exists() == false) {
+			try {
+				xmlFile.createNewFile();
+				userliste = new UserSammlung();
+				Registrierung gui = new Registrierung(userliste);
+				gui.paint();
+				// User user = new User("administrator", "eli", "de");
+				// userliste.getUserliste().add(user);
+				// saveHandler.karteienSpeichern(user);
+			} catch (IOException e) {
+				System.out.println("Probleme beim Erstellen des users.xml");
+			}
+
+			saveHandler.userSpeichern(userliste);
+		} else {
+			this.userliste = saveHandler.userLaden(new File("users.xml"));
+			add();
+		}
+
+		l = userliste.getUserliste();
+	}
+
+	/**
+	 * GUI-Elements
 	 * 
 	 */
-	
 	public void add() {
-		AbspeichernLaden saveHandler = new AbspeichernLaden();
-		this.userliste = saveHandler.userLaden(new File("users.xml"));
-		
-		l = userliste.getUserliste();
-		//System.out.println(l); 
-		
-		/**
-		 *GUI-Elements
-		 * 
-		 */
-		
 		this.loginfenster = new JFrame(frameTitelString);
 		loginfenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginfenster.setLocationRelativeTo(null);
@@ -182,10 +195,9 @@ public class Anmeldefenster extends UserSammlung
 		this.loginBereich = new JPanel();
 
 		/**
-		 *  Login Fenster zeichnen
-		 *  
+		 * Login Fenster zeichnen
+		 * 
 		 */
-
 		loginfenster.setResizable(false);
 		loginfenster.setLayout(new BorderLayout(10, 10));
 
@@ -193,7 +205,6 @@ public class Anmeldefenster extends UserSammlung
 		 * Textfelder beschreibbar
 		 * 
 		 */
-
 		loginUsername.setEditable(true);
 		loginPassword.setEditable(true);
 
@@ -201,14 +212,12 @@ public class Anmeldefenster extends UserSammlung
 		 * KeyListener
 		 * 
 		 */
-
 		loginPassword.addKeyListener(new keyList());
 
 		/**
 		 * Layout für Panels
 		 * 
 		 */
-
 		titelframe.setBounds(250, 1, 86, 20);
 		userpw.setLayout(new GridLayout(2, 2, 30, 20));
 
@@ -216,7 +225,6 @@ public class Anmeldefenster extends UserSammlung
 		 * ButtonPanels hinzufügen
 		 * 
 		 */
-
 		buttonBereich.add(anmeldeButton);
 		buttonBereich.add(registrieren);
 		buttonBereich.add(exitButton);
@@ -225,14 +233,12 @@ public class Anmeldefenster extends UserSammlung
 		 * Titel des Fensters (Label)
 		 * 
 		 */
-
 		titelframe.add(frameTitle);
 
 		/**
 		 * Add der loginbemerkung (Labels)
 		 * 
 		 */
-
 		userpw.add(usernameid);
 		userpw.add(loginUsername);
 		userpw.add(userpassword);
@@ -242,24 +248,17 @@ public class Anmeldefenster extends UserSammlung
 		 * Gestaltung des Loginfenster
 		 * 
 		 */
-
 		loginBereich.add(userpw);
 		loginfenster.add(titelframe, BorderLayout.NORTH);
 		loginfenster.add(buttonBereich, BorderLayout.SOUTH);
 		loginfenster.add(loginBereich, BorderLayout.CENTER);
 
-		/** 
+		/**
 		 * Grösse und Sichtbarkeit des Loginfensters
 		 * 
 		 */
-
 		loginfenster.setSize(500, 200);
 		loginfenster.setVisible(true);
-
-	}
-
-
-	public void paint() {
 
 	}
 
@@ -267,7 +266,6 @@ public class Anmeldefenster extends UserSammlung
 	 * passiert nach der Login Validation und oeffnet das Hauptmenu
 	 * 
 	 */
-
 	private void doLogin() {
 		AbspeichernLaden loadHandler = new AbspeichernLaden();
 		loadHandler.karteienLaden(u);
@@ -281,7 +279,6 @@ public class Anmeldefenster extends UserSammlung
 	 * Exit Button und Schliesst das Programm
 	 * 
 	 */
-
 	class exitbtn implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
@@ -298,27 +295,24 @@ public class Anmeldefenster extends UserSammlung
 	 * Registrierungs Knopf oeffnet das Registrierungsfenster
 	 * 
 	 */
-
 	class regbtn implements ActionListener {
 		//
 		public void actionPerformed(ActionEvent e) {
 
 			Registrierung gui = new Registrierung(userliste);
 			gui.paint();
+			loginfenster.dispose();
 
 		}
 	}
 
 	/**
-	 * User Laden 
+	 * User Laden
 	 * 
 	 */
-
 	public void userLoading() {
 
 		String ub = loginUsername.getText();
-		//System.out.println(l);
-		//System.out.println("list size is: " + l.size());
 		boolean erfolg = false;
 
 		for (int i = 0; i < l.size(); i++) {
@@ -331,7 +325,6 @@ public class Anmeldefenster extends UserSammlung
 				u = l.get(index);
 
 				doLogin();
-				//System.out.println(u);
 				erfolg = true;
 				return;
 			}
@@ -346,20 +339,9 @@ public class Anmeldefenster extends UserSammlung
 	}
 
 	/**
-	 * Kontroll Methode zeigt den eingeloggten Benutzer
-	 * 
-	 */
-
-	public void eingeloggterBenutzer() {
-
-		//System.out.println(u);
-	}
-
-	/**
 	 * Anmelde Button
 	 * 
 	 */
-
 	class anmbtn implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
@@ -385,13 +367,13 @@ public class Anmeldefenster extends UserSammlung
 		}
 	}
 
-
 	/**
 	 * Main Startpunkt des Programms
-	 * @param args neues Anmeldefenster
+	 * 
+	 * @param args
+	 *            neues Anmeldefenster
 	 */
 	public static void main(String[] args) {
 		Anmeldefenster gui = new Anmeldefenster();
-		gui.paint();
 	}
 }

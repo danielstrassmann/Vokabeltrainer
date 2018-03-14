@@ -355,6 +355,7 @@ public class Registrierung extends UserSammlung {
 				JOptionPane.showConfirmDialog(frmregiSystem, erfolgreichString, vokabeltrainerString,
 				JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE);
 				registrierungsfenster.dispose();
+				Anmeldefenster anmeldefenster = new Anmeldefenster();
 				loginok = false;
 				return;
 			}
@@ -385,7 +386,7 @@ public class Registrierung extends UserSammlung {
 	 * 
 	 */
 	public void exit() {
-
+		
 		System.exit(0);
 	}
 
@@ -396,7 +397,7 @@ public class Registrierung extends UserSammlung {
 	class exitbtn implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			Anmeldefenster anmeldefenster = new Anmeldefenster();
 			exit();
 
 		}
